@@ -3,39 +3,34 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AutoRoy Cloud – אתרים, אוטומציות וצ׳אטים חכמים</title>
-<meta name="description" content="AutoRoy Cloud – בניית אתרים, אוטומציות וצ׳אטים חכמים לעסקים. אתרי ווב מודרניים, זרימות לידים, ו-AutoAgent שמדבר עם הלקוחות שלך.">
+<title>AutoRoy 🚀 Cloud DevOps & Automations</title>
+<meta name="description" content="AutoRoy Cloud - פתרונות DevOps ואוטומציות לעסקים: תשתיות ענן, צ'אטים, מערכות לידים ואתרי נחיתה מהירים." />
+
+<!-- Favicon – ודא שהקובץ קיים ברוט של הפרויקט -->
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+
 <style>
 :root {
---bg-body: radial-gradient(circle at top, #1a2a6c 0, #020617 45%, #020617 100%);
---bg-card: rgba(15, 23, 42, 0.96);
---bg-section: rgba(15, 23, 42, 0.9);
---bg-chip: rgba(15, 23, 42, 0.85);
---primary: #00c853;
---primary-alt: #00b0ff;
---accent: #a855f7;
---accent-soft: #22c55e;
+--bg: #050816;
+--bg-alt: #050816;
+--bg-elevated: rgba(15, 23, 42, 0.92);
+--bg-elevated-light: #ffffff;
+--primary: #6366f1; /* אינדיגו */
+--primary-soft: rgba(99, 102, 241, 0.15);
+--accent: #22d3ee; /* טורקיז */
+--accent-soft: rgba(34, 211, 238, 0.18);
 --text-main: #e5e7eb;
 --text-muted: #9ca3af;
---border-soft: rgba(148, 163, 184, 0.35);
---border-strong: rgba(148, 163, 184, 0.7);
---shadow-soft: 0 22px 60px rgba(15, 23, 42, 0.9);
---radius-lg: 22px;
---radius-md: 18px;
---radius-sm: 999px;
-}
+--border-subtle: rgba(148, 163, 184, 0.4);
+--danger: #f97373;
 
-/* מצב אור – מחליף וריאנטים */
-body.light-mode {
---bg-body: linear-gradient(to bottom, #e5f4ff 0, #f9fafb 40%, #eef2ff 100%);
---bg-section: #ffffff;
---bg-card: #f9fafb;
---bg-chip: #eef2ff;
---text-main: #0f172a;
---text-muted: #6b7280;
---border-soft: rgba(148, 163, 184, 0.45);
---border-strong: rgba(148, 163, 184, 0.8);
---shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.08);
+--radius-lg: 22px;
+--radius-md: 16px;
+--radius-pill: 999px;
+
+--shadow-soft: 0 24px 60px rgba(15, 23, 42, 0.75);
+--shadow-chip: 0 10px 30px rgba(79, 70, 229, 0.45);
+--nav-height: 64px;
 }
 
 * {
@@ -44,15 +39,78 @@ margin: 0;
 padding: 0;
 }
 
-html {
-scroll-behavior: smooth;
-}
-
 body {
 font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Rubik', sans-serif;
-background: var(--bg-body);
+background:
+radial-gradient(circle at top, #1f2937 0, transparent 55%),
+radial-gradient(circle at bottom, #1e1b4b 0, transparent 60%),
+var(--bg);
 color: var(--text-main);
 min-height: 100vh;
+line-height: 1.5;
+-webkit-font-smoothing: antialiased;
+transition: background 0.35s ease, color 0.35s ease;
+}
+
+body.light {
+background: #f3f4f6;
+color: #111827;
+}
+
+body.light .card,
+body.light .section-inner {
+background: var(--bg-elevated-light);
+border-color: rgba(148, 163, 184, 0.35);
+box-shadow: 0 18px 40px rgba(15, 23, 42, 0.15);
+}
+
+body.light .hero-gradient {
+background: radial-gradient(circle at top, #eef2ff 0, #eff6ff 40%, #f9fafb 100%);
+}
+
+body.light .nav {
+background: rgba(249, 250, 251, 0.9);
+border-bottom: 1px solid rgba(209, 213, 219, 0.8);
+box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+body.light .nav-logo-text {
+color: #111827;
+}
+
+body.light .nav-link {
+color: #111827;
+}
+
+body.light .hero-title span {
+color: #111827;
+}
+
+body.light .pill-soft {
+background: rgba(129, 140, 248, 0.07);
+border-color: rgba(129, 140, 248, 0.35);
+color: #1f2937;
+}
+
+body.light .feature-label {
+color: #4b5563;
+}
+
+body.light .pill-outline {
+border-color: rgba(129, 140, 248, 0.5);
+color: #111827;
+}
+
+body.light .input,
+body.light textarea {
+background: #f9fafb;
+color: #111827;
+border-color: rgba(148, 163, 184, 0.6);
+}
+
+body.light footer {
+border-top-color: rgba(209, 213, 219, 0.9);
+color: #4b5563;
 }
 
 a {
@@ -60,1274 +118,1185 @@ color: inherit;
 text-decoration: none;
 }
 
-.page-wrapper {
-max-width: 1160px;
+.page {
+max-width: 1120px;
 margin: 0 auto;
-padding: 16px 16px 56px;
+padding: 0 16px 40px;
 }
 
-/* ========== THEME TOGGLE ========== */
-.theme-toggle {
-position: fixed;
-top: 14px;
-left: 14px;
-width: 38px;
-height: 38px;
-border-radius: 999px;
-border: 1px solid var(--border-strong);
-background: rgba(15, 23, 42, 0.95);
-color: #f9fafb;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 1.2rem;
-cursor: pointer;
-box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
-z-index: 50;
-transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease, color 0.2s ease;
-}
+/* --- NAVBAR --- */
 
-body.light-mode .theme-toggle {
-background: rgba(255, 255, 255, 0.95);
-color: #0f172a;
-box-shadow: 0 14px 30px rgba(15, 23, 42, 0.25);
-}
-
-.theme-toggle:hover {
-transform: translateY(-1px);
-box-shadow: 0 20px 46px rgba(15, 23, 42, 0.95);
-}
-
-@media (max-width: 640px) {
-.theme-toggle {
-top: 10px;
-left: 10px;
-width: 34px;
-height: 34px;
-font-size: 1.05rem;
-}
-}
-
-/* ========== HEADER + NAV ========== */
-header {
+.nav {
 position: sticky;
 top: 0;
-z-index: 30;
-backdrop-filter: blur(16px);
-background: linear-gradient(
-to bottom,
-rgba(15, 23, 42, 0.96),
-rgba(15, 23, 42, 0.88)
-);
-border-radius: 18px;
-border: 1px solid rgba(148, 163, 184, 0.5);
-box-shadow: 0 20px 54px rgba(15, 23, 42, 0.95);
-margin-bottom: 18px;
-transition: background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-body.light-mode header {
-background: linear-gradient(
-to bottom,
-rgba(255, 255, 255, 0.9),
-rgba(249, 250, 251, 0.94)
-);
-box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
-border-color: rgba(148, 163, 184, 0.5);
-}
-
-.nav-inner {
+z-index: 40;
+height: var(--nav-height);
 display: flex;
 align-items: center;
 justify-content: space-between;
-padding: 8px 14px;
-gap: 12px;
+padding: 0 16px;
+background: rgba(5, 8, 22, 0.92);
+backdrop-filter: blur(20px);
+border-bottom: 1px solid rgba(148, 163, 184, 0.35);
 }
 
-.logo-area {
+.nav-left {
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+.nav-logo {
+width: 32px;
+height: 32px;
+border-radius: 12px;
+background: radial-gradient(circle at 30% 0, #facc15, transparent 55%),
+linear-gradient(135deg, #4f46e5, #06b6d4);
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 12px 30px rgba(79, 70, 229, 0.7);
+transform: translateY(1px);
+}
+
+.nav-logo span {
+font-size: 18px;
+}
+
+.nav-logo-text {
+font-weight: 700;
+font-size: 0.98rem;
+letter-spacing: 0.02em;
+}
+
+.nav-logo-sub {
+display: block;
+font-size: 0.7rem;
+color: var(--text-muted);
+}
+
+.nav-links {
+display: flex;
+align-items: center;
+gap: 18px;
+font-size: 0.9rem;
+}
+
+.nav-link {
+position: relative;
+color: var(--text-main);
+cursor: pointer;
+padding-bottom: 2px;
+}
+
+.nav-link::after {
+content: "";
+position: absolute;
+right: 0;
+bottom: -3px;
+width: 0;
+height: 2px;
+border-radius: 999px;
+background: linear-gradient(90deg, var(--accent), var(--primary));
+transition: width 0.2s ease;
+}
+
+.nav-link:hover::after {
+width: 100%;
+}
+
+.nav-actions {
 display: flex;
 align-items: center;
 gap: 10px;
 }
 
-.logo-mark {
-width: 38px;
-height: 38px;
-border-radius: 14px;
-background:
-radial-gradient(circle at 30% 10%, #ffffff55, transparent 55%),
-radial-gradient(circle at 80% 80%, #22c55e55, transparent 50%);
+.theme-toggle {
+width: 34px;
+height: 34px;
+border-radius: 50%;
+border: 1px solid rgba(148, 163, 184, 0.6);
+background: radial-gradient(circle at 30% 0, #fde68a 0, #1f2937 55%);
 display: flex;
 align-items: center;
 justify-content: center;
-font-size: 1.6rem;
-box-shadow:
-0 0 0 1px rgba(148, 163, 184, 0.7),
-0 12px 24px rgba(0, 0, 0, 0.6);
-animation: floatLogo 6s ease-in-out infinite;
-}
-
-body.light-mode .logo-mark {
-box-shadow:
-0 0 0 1px rgba(148, 163, 184, 0.7),
-0 10px 20px rgba(148, 163, 184, 0.5);
-}
-
-@keyframes floatLogo {
-0%, 100% { transform: translateY(0px); }
-50% { transform: translateY(-3px); }
-}
-
-.logo-text-main {
+cursor: pointer;
 font-size: 1.05rem;
-font-weight: 700;
-letter-spacing: 0.08em;
-text-transform: uppercase;
+box-shadow: 0 14px 28px rgba(15, 23, 42, 0.7);
+transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.logo-text-sub {
-font-size: 0.7rem;
-color: var(--text-muted);
-letter-spacing: 0.16em;
-text-transform: uppercase;
-}
-
-nav ul {
-display: flex;
-list-style: none;
-gap: 8px;
-font-size: 0.83rem;
-flex-wrap: wrap;
-justify-content: flex-end;
-}
-
-nav li a {
-padding: 6px 10px;
-border-radius: var(--radius-sm);
-border: 1px solid transparent;
-transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.12s;
-white-space: nowrap;
-}
-
-nav li a:hover {
-background: rgba(15, 23, 42, 0.9);
-border-color: rgba(148, 163, 184, 0.7);
+.theme-toggle:hover {
 transform: translateY(-1px);
+box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
 }
 
-body.light-mode nav li a:hover {
-background: rgba(229, 231, 235, 0.9);
+.theme-toggle span {
+pointer-events: none;
 }
 
-.cta-nav {
-padding: 7px 14px;
-border-radius: var(--radius-sm);
-background: linear-gradient(120deg, var(--primary), var(--primary-alt));
-color: #fff;
-font-size: 0.84rem;
-font-weight: 600;
-box-shadow: 0 14px 30px rgba(0, 184, 148, 0.6);
-border: none;
+.pill-nav {
+display: none;
+padding: 6px 12px;
+border-radius: 999px;
+border: 1px solid rgba(148, 163, 184, 0.7);
+font-size: 0.8rem;
+color: var(--text-main);
 }
 
-@media (max-width: 768px) {
-.nav-inner {
-flex-direction: column;
-align-items: flex-start;
-}
-nav ul {
-justify-content: flex-start;
-}
+.hamburger {
+display: none;
+width: 32px;
+height: 32px;
+border-radius: 999px;
+border: 1px solid rgba(148, 163, 184, 0.7);
+display: none;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+background: rgba(15, 23, 42, 0.9);
 }
 
-/* ========== GENERIC SECTIONS ========== */
-section {
-margin-bottom: 26px;
-border-radius: var(--radius-lg);
-background: var(--bg-section);
-border: 1px solid var(--border-soft);
-box-shadow: var(--shadow-soft);
-padding: 20px 18px;
+.hamburger-line {
+width: 14px;
+height: 1.5px;
+background: #e5e7eb;
 position: relative;
-overflow: hidden;
-transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-section::before {
+.hamburger-line::before,
+.hamburger-line::after {
 content: "";
 position: absolute;
-inset: 0;
-pointer-events: none;
+width: 14px;
+height: 1.5px;
+background: #e5e7eb;
+left: 0;
+}
+
+.hamburger-line::before {
+top: -4px;
+}
+
+.hamburger-line::after {
+top: 4px;
+}
+
+.nav-mobile {
+display: none;
+}
+
+/* --- HERO --- */
+
+.hero {
+padding-top: 26px;
+padding-bottom: 40px;
+}
+
+.hero-gradient {
+border-radius: 28px;
+padding: 20px 18px 26px;
 background:
-radial-gradient(circle at top right, rgba(56, 189, 248, 0.13), transparent 55%),
-radial-gradient(circle at bottom left, rgba(34, 197, 94, 0.12), transparent 50%);
-opacity: 0.9;
-mix-blend-mode: screen;
-}
-
-body.light-mode section::before {
-background:
-radial-gradient(circle at top right, rgba(59, 130, 246, 0.13), transparent 55%),
-radial-gradient(circle at bottom left, rgba(52, 211, 153, 0.12), transparent 50%);
-}
-
-section > * {
-position: relative;
-z-index: 1;
-}
-
-section h2 {
-font-size: 1.35rem;
-margin-bottom: 6px;
-}
-
-section .section-subtitle {
-font-size: 0.9rem;
-color: var(--text-muted);
-margin-bottom: 14px;
-}
-
-/* Reveal animation */
-.reveal {
-opacity: 0;
-transform: translateY(14px);
-transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-}
-
-.reveal.visible {
-opacity: 1;
-transform: translateY(0);
-}
-
-/* ========== HERO ========== */
-#hero {
+radial-gradient(circle at top left, rgba(56, 189, 248, 0.16) 0, transparent 55%),
+radial-gradient(circle at top right, rgba(129, 140, 248, 0.2) 0, transparent 60%),
+radial-gradient(circle at bottom, rgba(56, 189, 248, 0.16) 0, transparent 55%),
+linear-gradient(145deg, #020617, #020617 32%, #050816 100%);
+box-shadow: var(--shadow-soft);
+border: 1px solid rgba(148, 163, 184, 0.45);
 display: grid;
-grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
-gap: 18px;
-align-items: center;
-background:
-radial-gradient(circle at top, rgba(59, 130, 246, 0.4), rgba(15, 23, 42, 0.98));
-padding-bottom: 18px;
-}
-
-body.light-mode #hero {
-background:
-radial-gradient(circle at top, rgba(59, 130, 246, 0.2), rgba(255, 255, 255, 0.98));
-}
-
-@media (max-width: 860px) {
-#hero {
-grid-template-columns: minmax(0, 1fr);
-}
-}
-
-@media (max-width: 640px) {
-#hero {
-padding: 16px 14px 18px;
-}
+gap: 22px;
 }
 
 .hero-kicker {
-font-size: 0.8rem;
-color: var(--text-muted);
-letter-spacing: 0.18em;
+font-size: 0.82rem;
+letter-spacing: 0.24em;
 text-transform: uppercase;
-margin-bottom: 8px;
+color: var(--accent);
+margin-bottom: 6px;
 }
 
 .hero-title {
-font-size: clamp(1.9rem, 2.4vw + 1rem, 2.5rem);
-line-height: 1.15;
+font-size: clamp(2.1rem, 3.1vw + 1.2rem, 3rem);
+font-weight: 800;
+line-height: 1.12;
 margin-bottom: 10px;
 }
 
 .hero-title span {
-background: linear-gradient(120deg, var(--primary), var(--primary-alt), var(--accent));
+background: linear-gradient(90deg, #4f46e5, #22d3ee, #a855f7);
 -webkit-background-clip: text;
 background-clip: text;
 color: transparent;
 }
 
-.hero-subtitle {
-font-size: 0.95rem;
+.hero-sub {
+font-size: 0.98rem;
 color: var(--text-muted);
-max-width: 32rem;
-margin-bottom: 16px;
+max-width: 36rem;
 }
 
-.hero-actions {
+.hero-sub strong {
+color: var(--accent);
+font-weight: 600;
+}
+
+.hero-ctas {
+margin-top: 16px;
 display: flex;
 flex-wrap: wrap;
 gap: 10px;
-margin-bottom: 12px;
 }
 
-.hero-btn-main {
-padding: 10px 16px;
-border-radius: var(--radius-sm);
-border: none;
-background: linear-gradient(120deg, var(--primary), var(--primary-alt));
-color: #fff;
-font-size: 0.95rem;
-font-weight: 600;
-cursor: pointer;
-box-shadow: 0 18px 38px rgba(0, 184, 148, 0.7);
-transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.hero-btn-main:hover {
-transform: translateY(-1px) scale(1.01);
-box-shadow: 0 22px 50px rgba(0, 184, 148, 0.85);
-}
-
-.hero-btn-secondary {
-padding: 9px 14px;
-border-radius: var(--radius-sm);
-border: 1px solid rgba(148, 163, 184, 0.9);
-background: rgba(15, 23, 42, 0.95);
-color: var(--text-main);
-font-size: 0.9rem;
-cursor: pointer;
-transition: transform 0.12s, border-color 0.18s, background 0.18s;
-}
-
-body.light-mode .hero-btn-secondary {
-background: #ffffff;
-}
-
-.hero-btn-secondary:hover {
-transform: translateY(-1px);
-background: rgba(15, 23, 42, 1);
-border-color: var(--primary-alt);
-color: #e5e7eb;
-}
-
-body.light-mode .hero-btn-secondary:hover {
-background: #e5f3ff;
-color: #0f172a;
-}
-
-.hero-meta {
-font-size: 0.78rem;
-color: var(--text-muted);
-}
-
-.hero-highlight {
-font-weight: 600;
-color: var(--text-main);
-}
-
-.hero-chips {
-margin-top: 10px;
-display: flex;
-flex-wrap: wrap;
-gap: 6px;
-font-size: 0.75rem;
-}
-
-.hero-chip {
-padding: 5px 9px;
-border-radius: var(--radius-sm);
-background: var(--bg-chip);
-border: 1px solid rgba(148, 163, 184, 0.55);
-color: var(--text-muted);
-}
-
-.hero-right {
-border-radius: 18px;
-border: 1px dashed rgba(148, 163, 184, 0.9);
-padding: 12px 12px 10px;
-background: rgba(15, 23, 42, 0.92);
-font-size: 0.85rem;
-position: relative;
-overflow: hidden;
-}
-
-body.light-mode .hero-right {
-background: #f9fafb;
-}
-
-.hero-right::after {
-content: "";
-position: absolute;
-inset: 0;
-background: radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.25), transparent 60%);
-opacity: 0.6;
-pointer-events: none;
-}
-
-.hero-right-title {
-font-size: 0.95rem;
-margin-bottom: 6px;
-font-weight: 600;
-}
-
-.hero-right ul {
-list-style: none;
-padding-right: 14px;
-}
-
-.hero-right li {
-margin-bottom: 4px;
-position: relative;
-color: var(--text-muted);
-}
-
-.hero-right li::before {
-content: "•";
-position: absolute;
-right: -10px;
-color: var(--primary);
-}
-
-@media (max-width: 860px) {
-.hero-right {
-margin-top: 4px;
-}
-}
-
-@media (max-width: 480px) {
-.hero-title {
-font-size: 1.7rem;
-}
-.hero-subtitle {
-font-size: 0.9rem;
-}
-}
-
-/* ========== ABOUT ========== */
-#about p {
-font-size: 0.9rem;
-margin-bottom: 10px;
-color: var(--text-main);
-}
-
-#about ul {
-list-style: none;
-padding-right: 14px;
-font-size: 0.86rem;
-color: var(--text-muted);
-}
-
-#about li {
-margin-bottom: 4px;
-position: relative;
-}
-
-#about li::before {
-content: "▹";
-position: absolute;
-right: -12px;
-color: var(--primary-alt);
-font-size: 0.7rem;
-top: 3px;
-}
-
-/* ========== SERVICES ========== */
-.cards-grid {
-display: grid;
-grid-template-columns: repeat(3, minmax(0, 1fr));
-gap: 14px;
-}
-
-@media (max-width: 900px) {
-.cards-grid {
-grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-}
-
-@media (max-width: 640px) {
-.cards-grid {
-grid-template-columns: minmax(0, 1fr);
-}
-}
-
-.card {
-background: var(--bg-card);
-border-radius: var(--radius-md);
-border: 1px solid var(--border-soft);
-padding: 12px 12px 10px;
-font-size: 0.88rem;
-position: relative;
-overflow: hidden;
-transition: background 0.2s ease, border-color 0.2s ease, transform 0.12s ease, box-shadow 0.12s ease;
-}
-
-.card::before {
-content: "";
-position: absolute;
-inset: 0;
-background: radial-gradient(circle at top left, rgba(56,189,248,0.16), transparent 55%);
-opacity: 0;
-transition: opacity 0.25s ease-out;
-pointer-events: none;
-}
-
-.card:hover::before {
-opacity: 1;
-}
-
-.card:hover {
-transform: translateY(-2px);
-box-shadow: 0 18px 36px rgba(15, 23, 42, 0.75);
-border-color: rgba(148, 163, 184, 0.6);
-}
-
-body.light-mode .card:hover {
-box-shadow: 0 14px 30px rgba(148, 163, 184, 0.35);
-}
-
-.card h3 {
-font-size: 1rem;
-margin-bottom: 4px;
-}
-
-.card p {
-font-size: 0.85rem;
-color: var(--text-muted);
-margin-bottom: 6px;
-}
-
-/* ========== PROJECTS ========== */
-.project-card {
-background: var(--bg-card);
-border-radius: var(--radius-md);
-border: 1px solid var(--border-soft);
-padding: 14px 14px 12px;
-display: grid;
-grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-gap: 12px;
+.btn-primary {
+display: inline-flex;
 align-items: center;
-transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.15s ease;
-}
-
-body.light-mode .project-card {
-background: #f9fafb;
-}
-
-.project-card:hover {
-box-shadow: 0 20px 50px rgba(15, 23, 42, 0.85);
-border-color: rgba(148, 163, 184, 0.7);
-}
-
-@media (max-width: 860px) {
-.project-card {
-grid-template-columns: minmax(0, 1fr);
-}
-}
-
-.project-title {
-font-size: 1rem;
-margin-bottom: 4px;
-}
-
-.project-tech {
-font-size: 0.78rem;
-color: var(--text-muted);
-margin-bottom: 8px;
-}
-
-.project-card p {
-font-size: 0.86rem;
-color: var(--text-muted);
-}
-
-.project-actions {
-margin-top: 10px;
-display: flex;
+justify-content: center;
 gap: 8px;
-flex-wrap: wrap;
+padding: 10px 18px;
+border-radius: var(--radius-pill);
+background: linear-gradient(120deg, #6366f1, #22d3ee);
+color: #fff;
+font-weight: 600;
+font-size: 0.95rem;
+border: none;
+cursor: pointer;
+box-shadow: var(--shadow-chip);
+transition: transform 0.16s ease, box-shadow 0.16s ease, opacity 0.16s ease;
 }
 
-.project-btn {
-padding: 7px 12px;
-border-radius: var(--radius-sm);
-border: 1px solid rgba(148, 163, 184, 0.9);
-background: rgba(15, 23, 42, 0.95);
-font-size: 0.83rem;
-cursor: pointer;
-transition: background 0.16s, border-color 0.16s, transform 0.12s;
+.btn-primary:hover {
+transform: translateY(-1px) scale(1.01);
+box-shadow: 0 16px 40px rgba(56, 189, 248, 0.6);
+}
+
+.btn-outline {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 6px;
+padding: 9px 16px;
+border-radius: var(--radius-pill);
+border: 1px solid rgba(129, 140, 248, 0.75);
 color: #e5e7eb;
-}
-
-body.light-mode .project-btn {
-background: #ffffff;
-color: #0f172a;
-}
-
-.project-btn:hover {
-background: rgba(15, 23, 42, 1);
-border-color: var(--primary-alt);
-transform: translateY(-1px);
-}
-
-body.light-mode .project-btn:hover {
-background: #e5f3ff;
-}
-
-.project-highlight {
-border-radius: 16px;
-border: 1px dashed rgba(148, 163, 184, 0.8);
-padding: 10px 10px 8px;
-font-size: 0.8rem;
-color: var(--text-muted);
-background: rgba(15, 23, 42, 0.9);
-}
-
-body.light-mode .project-highlight {
-background: #ffffff;
-}
-
-/* ========== REVIEWS (FORM) ========== */
-#reviews {
-margin-bottom: 26px;
-}
-
-.reviews-layout {
-display: grid;
-grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-gap: 14px;
-}
-
-@media (max-width: 860px) {
-.reviews-layout {
-grid-template-columns: minmax(0, 1fr);
-}
-}
-
-.review-info {
-font-size: 0.87rem;
-color: var(--text-muted);
-}
-
-.review-info p {
-margin-bottom: 8px;
-}
-
-.review-form-card {
-background: var(--bg-card);
-border-radius: 16px;
-border: 1px solid var(--border-soft);
-padding: 12px 12px 10px;
-}
-
-body.light-mode .review-form-card {
-background: #f9fafb;
-}
-
-.form-row {
-margin-bottom: 8px;
-}
-
-label {
-font-size: 0.8rem;
-color: var(--text-muted);
-display: block;
-margin-bottom: 2px;
-}
-
-input[type="text"],
-input[type="email"],
-textarea,
-select {
-width: 100%;
-border-radius: 10px;
-border: 1px solid var(--border-soft);
-background: rgba(15, 23, 42, 0.97);
-color: var(--text-main);
-font-size: 0.86rem;
-padding: 8px 10px;
-resize: vertical;
-min-height: 38px;
-transition: border-color 0.16s, box-shadow 0.16s, background 0.16s;
-}
-
-body.light-mode input[type="text"],
-body.light-mode input[type="email"],
-body.light-mode textarea,
-body.light-mode select {
-background: #ffffff;
-}
-
-textarea {
-min-height: 70px;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-outline: none;
-border-color: var(--primary);
-box-shadow:
-0 0 0 1px rgba(34, 197, 94, 0.24),
-0 0 16px rgba(34, 197, 94, 0.28);
-background: rgba(15, 23, 42, 1);
-}
-
-body.light-mode input:focus,
-body.light-mode textarea:focus,
-body.light-mode select:focus {
-background: #ffffff;
-}
-
-.small-hint {
-font-size: 0.75rem;
-color: var(--text-muted);
-}
-
-.review-submit-btn {
-margin-top: 4px;
-padding: 8px 12px;
-border-radius: var(--radius-sm);
-border: none;
-background: linear-gradient(120deg, var(--primary-alt), var(--accent));
-color: #fff;
-font-size: 0.86rem;
-font-weight: 600;
-cursor: pointer;
-box-shadow: 0 14px 30px rgba(59, 130, 246, 0.65);
-transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.review-submit-btn:hover {
-transform: translateY(-1px);
-box-shadow: 0 18px 38px rgba(59, 130, 246, 0.85);
-}
-
-.status-message {
-margin-top: 4px;
-font-size: 0.78rem;
-}
-
-.status-success {
-color: #bbf7d0;
-}
-
-.status-error {
-color: #fecaca;
-}
-
-body.light-mode .status-success {
-color: #16a34a;
-}
-
-body.light-mode .status-error {
-color: #b91c1c;
-}
-
-/* ========== CONTACT ========== */
-.contact-layout {
-display: grid;
-grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-gap: 14px;
-}
-
-@media (max-width: 860px) {
-.contact-layout {
-grid-template-columns: minmax(0, 1fr);
-}
-}
-
-form {
-display: grid;
-gap: 8px;
-}
-
-.contact-btn {
-margin-top: 4px;
-padding: 9px 12px;
-border-radius: var(--radius-sm);
-border: none;
-background: linear-gradient(120deg, var(--primary), var(--primary-alt));
-color: #fff;
 font-size: 0.9rem;
-font-weight: 600;
+background: transparent;
 cursor: pointer;
-box-shadow: 0 14px 30px rgba(0, 184, 148, 0.6);
-transition: transform 0.15s ease, box-shadow 0.15s ease;
+transition: background 0.16s ease, transform 0.16s ease;
 }
 
-.contact-btn:hover {
+.btn-outline:hover {
+background: rgba(15, 23, 42, 0.8);
 transform: translateY(-1px);
-box-shadow: 0 18px 40px rgba(0, 184, 148, 0.8);
 }
 
-.contact-info {
-font-size: 0.85rem;
+.hero-right {
+border-radius: 22px;
+border: 1px solid rgba(148, 163, 184, 0.45);
+background:
+radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 58%),
+radial-gradient(circle at bottom, rgba(129, 140, 248, 0.2), transparent 62%),
+rgba(15, 23, 42, 0.9);
+padding: 18px 16px 16px;
+position: relative;
+overflow: hidden;
+}
+
+.hero-right-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 8px;
+font-size: 0.78rem;
 color: var(--text-muted);
-background: var(--bg-card);
-border-radius: 16px;
-border: 1px solid var(--border-soft);
-padding: 10px;
 }
 
-body.light-mode .contact-info {
-background: #f9fafb;
-}
-
-.contact-info p {
-margin-bottom: 6px;
-}
-
-.whatsapp-link {
+.pill-soft {
 display: inline-flex;
 align-items: center;
 gap: 6px;
-margin-top: 4px;
+padding: 4px 10px;
+border-radius: 999px;
+border: 1px solid rgba(148, 163, 184, 0.7);
+background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.2), transparent 60%);
+font-size: 0.75rem;
+}
+
+.pill-soft-dot {
+width: 7px;
+height: 7px;
+border-radius: 999px;
+background: #22c55e;
+box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.3);
+}
+
+.hero-console {
+border-radius: 18px;
+border: 1px solid rgba(148, 163, 184, 0.45);
+padding: 14px 14px 16px;
+background:
+radial-gradient(circle at top, rgba(15, 23, 42, 0.2), transparent 60%),
+rgba(2, 6, 23, 0.95);
+position: relative;
+overflow: hidden;
+}
+
+.hero-console-grid {
+display: grid;
+grid-template-columns: 1.2fr 1fr;
+gap: 10px;
+}
+
+.console-heading {
 font-size: 0.85rem;
-padding: 6px 10px;
-border-radius: var(--radius-sm);
-border: 1px solid rgba(34, 197, 94, 0.6);
-background: rgba(22, 163, 74, 0.15);
-color: #bbf7d0;
+margin-bottom: 4px;
+color: #e5e7eb;
+font-weight: 600;
 }
 
-body.light-mode .whatsapp-link {
-background: #ecfdf3;
-color: #166534;
+.console-sub {
+font-size: 0.78rem;
+color: var(--text-muted);
+margin-bottom: 8px;
 }
 
-/* ========== BACK TO TOP ========== */
-.back-to-top {
-position: fixed;
-left: 14px;
-bottom: 14px;
-width: 34px;
-height: 34px;
-border-radius: var(--radius-sm);
-border: 1px solid var(--border-strong);
-background: rgba(15, 23, 42, 0.98);
-color: #f9fafb;
+.mini-badges {
+display: flex;
+flex-wrap: wrap;
+gap: 6px;
+margin-bottom: 10px;
+}
+
+.mini-badge {
+font-size: 0.7rem;
+padding: 3px 8px;
+border-radius: 999px;
+border: 1px solid rgba(148, 163, 184, 0.6);
+color: var(--text-muted);
+}
+
+.hero-matrix {
+border-radius: 18px;
+border: 1px solid rgba(148, 163, 184, 0.5);
+background:
+radial-gradient(circle at center, rgba(56, 189, 248, 0.08), transparent 55%),
+radial-gradient(circle at bottom, rgba(129, 140, 248, 0.12), transparent 68%),
+#020617;
+height: 160px;
+position: relative;
+overflow: hidden;
+}
+
+.hero-matrix-orbit {
+position: absolute;
+inset: 22px;
+border-radius: 999px;
+border: 1px dashed rgba(129, 140, 248, 0.7);
+opacity: 0.7;
+animation: orbitRotate 16s linear infinite;
+}
+
+.hero-matrix-orbit:nth-child(2) {
+inset: 34px;
+animation-duration: 22s;
+animation-direction: reverse;
+border-style: solid;
+border-color: rgba(56, 189, 248, 0.7);
+}
+
+.hero-matrix-node {
+position: absolute;
+width: 10px;
+height: 10px;
+border-radius: 999px;
+background: radial-gradient(circle, #e5e7eb, #4f46e5);
+box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.4);
+}
+
+.hero-matrix-node:nth-child(3) {
+top: 18px;
+right: 40%;
+}
+
+.hero-matrix-node:nth-child(4) {
+bottom: 22px;
+left: 18%;
+}
+
+.hero-matrix-node:nth-child(5) {
+bottom: 26px;
+right: 14%;
+}
+
+.hero-matrix-node:nth-child(6) {
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 16px;
+height: 16px;
+background: radial-gradient(circle, #f97316, #4f46e5);
+box-shadow:
+0 0 0 4px rgba(248, 250, 252, 0.08),
+0 0 40px rgba(129, 140, 248, 0.85);
+}
+
+.hero-matrix-label {
+position: absolute;
+bottom: 10px;
+left: 12px;
+font-size: 0.75rem;
+color: var(--text-muted);
+}
+
+@keyframes orbitRotate {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+
+/* --- SECTIONS --- */
+
+.section {
+margin-bottom: 32px;
+}
+
+.section-inner {
+border-radius: var(--radius-lg);
+border: 1px solid rgba(148, 163, 184, 0.45);
+background: rgba(15, 23, 42, 0.9);
+padding: 20px 18px 22px;
+box-shadow: 0 20px 50px rgba(15, 23, 42, 0.7);
+}
+
+.section-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+gap: 12px;
+margin-bottom: 14px;
+}
+
+.section-title {
+font-size: 1.1rem;
+font-weight: 600;
+}
+
+.section-subtitle {
+font-size: 0.82rem;
+color: var(--text-muted);
+max-width: 22rem;
+}
+
+.pill-outline {
+padding: 4px 10px;
+border-radius: 999px;
+border: 1px solid rgba(148, 163, 184, 0.7);
+font-size: 0.75rem;
+color: var(--text-muted);
+}
+
+.features-grid {
+display: grid;
+gap: 10px;
+}
+
+.card {
+border-radius: var(--radius-md);
+border: 1px solid rgba(148, 163, 184, 0.4);
+background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.12), transparent 65%),
+rgba(15, 23, 42, 0.96);
+padding: 12px 14px 14px;
+}
+
+.card-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 6px;
+font-size: 0.92rem;
+font-weight: 600;
+}
+
+.feature-label {
+font-size: 0.75rem;
+color: var(--text-muted);
+margin-bottom: 3px;
+}
+
+.feature-body {
+font-size: 0.82rem;
+color: var(--text-muted);
+}
+
+.chip-row {
+margin-top: 8px;
+display: flex;
+flex-wrap: wrap;
+gap: 6px;
+}
+
+.chip {
+font-size: 0.72rem;
+padding: 3px 8px;
+border-radius: 999px;
+background: rgba(15, 23, 42, 0.85);
+border: 1px solid rgba(148, 163, 184, 0.55);
+color: #e5e7eb;
+}
+
+/* --- HOW IT WORKS --- */
+
+.steps {
+display: grid;
+gap: 8px;
+font-size: 0.85rem;
+color: var(--text-muted);
+}
+
+.step-row {
+display: flex;
+gap: 8px;
+align-items: flex-start;
+}
+
+.step-num {
+width: 22px;
+height: 22px;
+border-radius: 999px;
+background: rgba(79, 70, 229, 0.2);
 display: flex;
 align-items: center;
 justify-content: center;
-font-size: 1.1rem;
-cursor: pointer;
-box-shadow: 0 16px 40px rgba(15, 23, 42, 0.95);
-z-index: 40;
-opacity: 0;
-pointer-events: none;
-transition: opacity 0.2s ease-out, transform 0.2s ease-out, background 0.2s ease, color 0.2s ease;
+font-size: 0.78rem;
+color: var(--accent);
 }
 
-body.light-mode .back-to-top {
-background: rgba(255, 255, 255, 0.96);
-color: #0f172a;
-box-shadow: 0 12px 30px rgba(15, 23, 42, 0.2);
+/* --- CONTACT / LEADS --- */
+
+.form-grid {
+display: grid;
+gap: 10px;
 }
 
-.back-to-top.visible {
-opacity: 1;
-pointer-events: auto;
-transform: translateY(0);
+.field-label {
+font-size: 0.8rem;
+margin-bottom: 3px;
 }
 
-.back-to-top.hidden-start {
-transform: translateY(8px);
+.input,
+textarea {
+width: 100%;
+border-radius: 10px;
+border: 1px solid rgba(148, 163, 184, 0.6);
+background: rgba(15, 23, 42, 0.9);
+padding: 9px 10px;
+font-size: 0.86rem;
+color: var(--text-main);
+resize: vertical;
+min-height: 38px;
 }
 
-@media (max-width: 640px) {
-.back-to-top {
-left: 10px;
-bottom: 10px;
+textarea {
+min-height: 76px;
+}
+
+.input::placeholder,
+textarea::placeholder {
+color: #6b7280;
+}
+
+.input:focus,
+textarea:focus {
+outline: none;
+border-color: var(--accent);
+box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.4);
+}
+
+.form-footer {
+margin-top: 8px;
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+align-items: center;
+justify-content: space-between;
+}
+
+.form-note {
+font-size: 0.75rem;
+color: var(--text-muted);
+max-width: 18rem;
+}
+
+.btn-small {
+padding: 7px 14px;
+font-size: 0.84rem;
+}
+
+/* --- REVIEWS --- */
+
+.reviews-layout {
+display: grid;
+gap: 12px;
+}
+
+.reviews-list {
+display: grid;
+gap: 8px;
+font-size: 0.8rem;
+color: var(--text-muted);
+}
+
+.review-card {
+border-radius: 12px;
+padding: 8px 9px;
+background: rgba(15, 23, 42, 0.9);
+border: 1px solid rgba(148, 163, 184, 0.55);
+}
+
+.review-name {
+font-weight: 600;
+font-size: 0.8rem;
+margin-bottom: 3px;
+}
+
+.review-badge {
+font-size: 0.72rem;
+color: var(--accent);
+}
+
+footer {
+margin-top: 24px;
+padding-top: 14px;
+border-top: 1px solid rgba(51, 65, 85, 0.8);
+font-size: 0.78rem;
+color: var(--text-muted);
+display: flex;
+justify-content: space-between;
+gap: 10px;
+flex-wrap: wrap;
+}
+
+/* --- RESPONSIVE --- */
+
+@media (min-width: 768px) {
+.page {
+padding: 0 20px 56px;
+}
+
+.hero {
+padding-top: 32px;
+padding-bottom: 48px;
+}
+
+.hero-gradient {
+padding: 28px 26px 30px;
+grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+align-items: center;
+}
+
+.features-grid {
+grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.form-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.reviews-layout {
+grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+}
+
+.nav {
+padding-inline: 20px;
+}
+
+.pill-nav {
+display: inline-flex;
+}
+}
+
+@media (max-width: 767px) {
+.nav-links {
+display: none;
+}
+
+.hamburger {
+display: flex;
+}
+
+.nav-mobile {
+position: fixed;
+inset: var(--nav-height) 0 auto 0;
+background: rgba(5, 8, 22, 0.97);
+backdrop-filter: blur(18px);
+border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+display: none;
+flex-direction: column;
+padding: 10px 16px 14px;
+gap: 8px;
+z-index: 30;
+}
+
+.nav-mobile a {
+padding: 6px 0;
+font-size: 0.9rem;
+}
+
+.nav-mobile.show {
+display: flex;
+}
+
+.hero-gradient {
+border-radius: 22px;
+}
+
+.hero-console-grid {
+grid-template-columns: minmax(0, 1fr);
+}
+
+.hero-matrix {
+margin-top: 6px;
+}
+
+.section-inner {
+border-radius: 18px;
 }
 }
 </style>
 </head>
 <body>
-<!-- כפתור תאורה -->
-<div class="theme-toggle" id="themeToggle">🌙</div>
-
-<div class="page-wrapper" id="top">
-<header class="reveal">
-<div class="nav-inner">
-<div class="logo-area">
-<div class="logo-mark">🚀</div>
+<!-- NAV -->
+<header class="nav">
+<div class="nav-left">
+<div class="nav-logo"><span>🚀</span></div>
 <div>
-<div class="logo-text-main">AutoRoy Cloud</div>
-<div class="logo-text-sub">WEB • AUTOMATIONS • CHAT</div>
+<div class="nav-logo-text">AutoRoy Cloud</div>
+<span class="nav-logo-sub">DevOps &amp; Automations</span>
 </div>
 </div>
-<nav>
-<ul>
-<li><a href="#hero">דף הבית</a></li>
-<li><a href="#about">מי אני</a></li>
-<li><a href="#services">שירותים</a></li>
-<li><a href="#projects">פרויקטים</a></li>
-<li><a href="#reviews">ביקורות</a></li>
-<li><a href="#contact" class="cta-nav">צור קשר</a></li>
-</ul>
+
+<nav class="nav-links">
+<a href="#services" class="nav-link">שירותים</a>
+<a href="#process" class="nav-link">איך זה עובד</a>
+<a href="#contact" class="nav-link">יצירת קשר</a>
+<a href="#reviews" class="nav-link">ביקורות</a>
 </nav>
+
+<div class="nav-actions">
+<button class="theme-toggle" id="themeToggle" aria-label="Theme toggle">
+<span>🌙</span>
+</button>
+<button class="pill-nav">פתרונות ענן &amp; AI</button>
+<button class="hamburger" id="hamburger" aria-label="תפריט">
+<div class="hamburger-line"></div>
+</button>
 </div>
 </header>
 
+<nav class="nav-mobile" id="navMobile">
+<a href="#services" class="nav-link" onclick="closeMobile()">שירותים</a>
+<a href="#process" class="nav-link" onclick="closeMobile()">איך זה עובד</a>
+<a href="#contact" class="nav-link" onclick="closeMobile()">יצירת קשר</a>
+<a href="#reviews" class="nav-link" onclick="closeMobile()">ביקורות</a>
+</nav>
+
+<main class="page">
 <!-- HERO -->
-<section id="hero" class="reveal">
-<div>
-<div class="hero-kicker">AUTOROY CLOUD</div>
+<section class="hero">
+<div class="hero-gradient">
+<div class="hero-left">
+<div class="hero-kicker">CLOUD • DEVOPS • AUTOMATIONS</div>
 <h1 class="hero-title">
-אוטומציות, צ׳אטים ואתרים<br />
-שמייצרים לך עבודה – לא כאב ראש.
+פיתוח מערכות<br />
+<span>DevOps &amp; Automations</span><br />
+לעסקים שרוצים לעבוד חכם.
 </h1>
-<p class="hero-subtitle">
-אני בונה לעסקים תשתיות חכמות: אתרי ווב מודרניים, צ׳אט חכם ו-AutoAgent
-שמרכז לידים ומדבר עם לקוחות – בזמן שאתה עסוק בלגדול.
+<p class="hero-sub">
+AutoRoy Cloud מחבר בין <strong>תשתיות ענן יציבות</strong>,
+<strong>אוטומציות חכמות</strong> וצ'אטים שמטפלים בלידים
+– כדי שלקוחות יקבלו תשובה, גם כשאתה באמצע החיים.
 </p>
 
-<div class="hero-actions">
-<a href="#contact">
-<button class="hero-btn-main">בוא נדבר על העסק שלך</button>
+<div class="hero-ctas">
+<a href="#contact" class="btn-primary">
+רוצה שגם העסק יעוף קדימה? 🚀
 </a>
-<a href="#projects">
-<button class="hero-btn-secondary">לראות את צ׳אט הדמו (AutoRoy Chat)</button>
+<a href="#services" class="btn-outline">
+לראות יכולות בפועל
 </a>
-</div>
-
-<div class="hero-meta">
-<span class="hero-highlight">התמקדות בעסקים קטנים ובינוניים</span> • אתר, אוטומציות וצ׳אט
-שעובדים יחד כמערכת אחת.
-</div>
-
-<div class="hero-chips">
-<div class="hero-chip">⚙️ DevOps & Automations</div>
-<div class="hero-chip">💬 Smart Chat & AutoAgent</div>
-<div class="hero-chip">🌐 Modern Web Experiences</div>
 </div>
 </div>
 
 <div class="hero-right">
-<div class="hero-right-title">מה אפשר לבנות ביחד?</div>
-<ul>
-<li>אתר או דף נחיתה מותאם למובייל, מוכן ללידים.</li>
-<li>אוטומציות שמחברות טפסים, Google Sheets, מייל ו-WhatsApp.</li>
-<li>צ׳אט חכם (AutoAgent) שמקבל לקוחות, שואל שאלות ומעביר אליך את הפרטים.</li>
-</ul>
+<div class="hero-right-header">
+<span>תמונת מצב • AutoRoy Cloud</span>
+<span class="pill-soft">
+<span class="pill-soft-dot"></span> סביבת דמו לסקייל
+</span>
 </div>
-</section>
 
-<!-- ABOUT -->
-<section id="about" class="reveal">
-<h2>מי עומד מאחורי AutoRoy?</h2>
-<p>
-היי, אני רוי. מתמקד ב-DevOps, אוטומציות ובניית מערכות ווב שמרגישות כמו מוצר של סטארט־אפ – גם כשמדובר בעסק קטן.
-המטרה שלי היא לחבר בין טכנולוגיה לבין צורך עסקי אמיתי: פחות כאב ראש, יותר סדר ויותר פניות חדשות.
+<div class="hero-console">
+<div class="hero-console-grid">
+<div>
+<div class="console-heading">מה האתר הזה מדגים?</div>
+<div class="console-sub">
+איך אפשר לחבר בין תשתיות, אוטומציות וצ'אט – בצורה נקייה ומודרנית.
+</div>
+
+<div class="mini-badges">
+<div class="mini-badge">⚙️ DevOps Pipeline דמו</div>
+<div class="mini-badge">🤖 אוטומציות לידים</div>
+<div class="mini-badge">💬 צ'אט ומסרים</div>
+</div>
+
+<p class="feature-body">
+זהו אתר תדמית שמציג את הסטייל, החשיבה והיכולות.
+מאחורה אפשר לחבר בקלות: Tally, Zapier, WhatsApp Business,
+מערכות CRM ועוד.
 </p>
-<p>
-אני אוהב לקחת רעיון, לפרק אותו לתהליך פשוט, ולבנות סביבו מערכת שעובדת 24/7: אתר, צ׳אט, ואוטומציות שמחברות הכל
-ביחד בצורה ברורה ונוחה.
-</p>
-<ul>
-<li>מיקוד במה שמייצר תוצאה עסקית – לא רק “עוד אתר יפה”.</li>
-<li>שילוב אוטומציות, צ׳אטים וסוכנים חכמים בצורה פשוטה לניהול.</li>
-<li>ניסיון בבניית מערכות מבוססות ענן וסביבות דמו חיות.</li>
-<li>תכנון קודם כל למובייל – כי שם הלקוחות שלך נמצאים.</li>
-</ul>
+</div>
+
+<div class="hero-matrix">
+<div class="hero-matrix-orbit"></div>
+<div class="hero-matrix-orbit"></div>
+<div class="hero-matrix-node"></div>
+<div class="hero-matrix-node"></div>
+<div class="hero-matrix-node"></div>
+<div class="hero-matrix-node"></div>
+<div class="hero-matrix-label">מחברים חלקים מפוזרים למערכת אחת שעובדת.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="reveal">
-<h2>מה אני יכול לבנות עבורך?</h2>
-<p class="section-subtitle">
-שלושה סוגי פתרונות שאפשר לשלב למערכת אחת חכמה, בקצב שמתאים לעסק שלך.
-</p>
-
-<div class="cards-grid">
-<div class="card">
-<h3>אתרים ודפי נחיתה שמכוונים להמרה</h3>
-<p>
-עיצוב מודרני, מהיר ומותאם למובייל, עם התאמה למותג שלך. אפשר להתחיל מדף אחד שמביא לידים ולהתרחב בהמשך,
-בלי לזרוק עבודה לפח.
-</p>
-</div>
-
-<div class="card">
-<h3>אוטומציות שחותכות בזבוז זמן</h3>
-<p>
-חיבור טפסים ל-Google Sheets, זאפייר, והתראות ב-WhatsApp ובמייל. כל ליד שנכנס מקבל טיפול, ואתה רואה הכל במקום אחד.
-</p>
-</div>
-
-<div class="card">
-<h3>צ׳אטים חכמים וסוכנים (AutoAgent)</h3>
-<p>
-צ׳אט ווב כמו AutoRoy Chat, עם סוכן אוטומטי שמקבל לקוחות, שואל שאלות מקדימות, מסביר על השירות
-ומעביר אליך את הפרטים בצורה מסודרת.
-</p>
-</div>
-</div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects" class="reveal">
-<h2>דוגמה למערכת שבניתי</h2>
-<p class="section-subtitle">
-פרויקט דמו שמציג את הגישה שלי – לקחת משהו שנראה מסובך, ולהפוך אותו למוצר ברור, מסודר ומוכן לפעולה.
-</p>
-
-<div class="project-card">
+<section class="section" id="services">
+<div class="section-inner">
+<div class="section-header">
 <div>
-<div class="project-title">AutoRoy Chat – מערכת צ׳אט דמו</div>
-<div class="project-tech">
-צ׳אט ווב • מסך התחברות • בחירת שם תצוגה • AutoAgent
-</div>
-<p>
-מערכת צ׳אט חכמה מבוססת ווב, עם מסך התחברות, בחירת שם תצוגה וסוכן אוטומטי (AutoAgent).
-המערכת מדגימה איך אפשר לחבר בין ממשק משתמש מודרני, לוגיקת צ׳אט וגישה מוכנה לחיבור ל-AI
-או לשירותי backend שונים.
+<h2 class="section-title">מה AutoRoy Cloud יודע לעשות בפועל?</h2>
+<p class="section-subtitle">
+לא ״קסמים״ – פתרונות אמיתיים שעובדים על לקוחות:
+צ'אטים, טפסים, אוטומציות ומערכות ניהול פשוטות.
 </p>
-<div class="project-actions">
-<button class="project-btn" onclick="alert('בהמשך נחבר כאן קישור לדמו החי של AutoRoy Chat.');">
-פתיחת הדמו
-</button>
+</div>
+<div class="pill-outline">
+DevOps • אוטומציות • Web
 </div>
 </div>
 
-<div class="project-highlight">
-<strong>מה מיוחד בפרויקט?</strong><br />
-• מבנה שמוכן לסקייל – הפרדה בין ממשק לצ׳אט ולוגיקת בוט.<br />
-• חוויית משתמש שמרגישה כמו מוצר SaaS אמיתי.<br />
-• אפשרות עתידית לחיבור ל-AI, CRM ואוטומציות נוספות.
+<div class="features-grid">
+<article class="card">
+<div class="card-header">
+<span>אוטומציות לידים &amp; וואטסאפ</span>
+<span>✅</span>
+</div>
+<div class="feature-label">מתי זה רלוונטי?</div>
+<p class="feature-body">
+כשכל ליד מגיע למקום אחר: טופס באתר, הודעה בוואטסאפ, שיחת טלפון.
+בונים תהליך אחד שמרכז הכל לטבלה, לשליחת מיילים ולוואטסאפ.
+</p>
+<div class="chip-row">
+<span class="chip">Tally → Google Sheets</span>
+<span class="chip">Zapier / Make</span>
+<span class="chip">WhatsApp Business</span>
+</div>
+</article>
+
+<article class="card">
+<div class="card-header">
+<span>אתרי נחיתה ותדמית</span>
+<span>🌐</span>
+</div>
+<div class="feature-label">מה מקבלים?</div>
+<p class="feature-body">
+אתר מהיר, רספונסיבי ויפה – עם מסר ברור, טופס השארת פרטים
+וקישורים ישירים לווטאסאפ / רשתות החברתיות.
+</p>
+<div class="chip-row">
+<span class="chip">HTML • CSS • JS</span>
+<span class="chip">התאמה למובייל</span>
+<span class="chip">חיבור לטפסי לידים</span>
+</div>
+</article>
+
+<article class="card">
+<div class="card-header">
+<span>DevOps &amp; Cloud דמו</span>
+<span>🧩</span>
+</div>
+<div class="feature-label">למה זה מעניין?</div>
+<p class="feature-body">
+פרויקטים שמראים איך קוד עולה לענן, איך מחברים שירותים שונים,
+ואיך בונים תהליכי CI/CD – כדי שמגייסים יבינו שאתה לא רק ״מדבר קוד״.
+</p>
+<div class="chip-row">
+<span class="chip">GitHub + Render</span>
+<span class="chip">Microservices דמו</span>
+<span class="chip">Monitoring בסיסי</span>
+</div>
+</article>
 </div>
 </div>
 </section>
 
-<!-- REVIEWS (FORM) -->
-<section id="reviews" class="reveal">
-<h2>ביקורות מלקוחות</h2>
+<!-- PROCESS -->
+<section class="section" id="process">
+<div class="section-inner">
+<div class="section-header">
+<div>
+<h2 class="section-title">איך נראה פרויקט טיפוסי?</h2>
 <p class="section-subtitle">
-אחרי שכל פרויקט מסתיים, אפשר לשלוח ללקוח קישור לעמוד הזה ולבקש ממנו להשאיר ביקורת קצרה על התהליך והתוצאה.
+תהליך קצר, ברור, בלי חפירות. מבינים את הצורך, מציעים פתרון,
+בונים, מחברים – ומעלים לאוויר.
 </p>
-
-<div class="reviews-layout">
-<div class="review-info">
-<p>
-המטרה היא לא רק לבנות מערכת, אלא גם למדוד איך היא משפיעה על העסק: כמה זמן היא חוסכת, כמה פניות חדשות הגיעו,
-ואיך הלקוחות מרגישים עם החוויה הדיגיטלית החדשה.
-</p>
-<p>
-כל ביקורת יכולה להישמר אצלך בגיליון Google Sheets, במייל או ב-CRM – בהתאם לאוטומציה שנגדיר מאחורי הקלעים.
-</p>
-<p class="small-hint">
-הטופס כאן כבר מוכן. צריך רק להדביק כתובת Webhook של Zapier / Make / n8n כדי שהכל יישמר אצלך בצורה מסודרת.
-</p>
+</div>
+<div class="pill-outline">
+3–5 פגישות • פתרון עובד
+</div>
 </div>
 
-<div class="review-form-card">
-<form id="reviewForm">
-<div class="form-row">
-<label for="reviewName">שם הלקוח</label>
-<input type="text" id="reviewName" name="reviewName" placeholder="איך קוראים לך?" required />
+<div class="steps">
+<div class="step-row">
+<div class="step-num">1</div>
+<p>
+שיחת היכרות: מה העסק עושה, אילו לידים / תהליכים חשובים לך,
+ואיזה מערכות כבר קיימות (אתר, CRM, טפסים, וואטסאפ).
+</p>
 </div>
-<div class="form-row">
-<label for="reviewBusiness">שם העסק / תחום</label>
-<input type="text" id="reviewBusiness" name="reviewBusiness" placeholder="לדוגמה: סטודיו כושר, קליניקה, מסעדה..." />
+<div class="step-row">
+<div class="step-num">2</div>
+<p>
+משרטטים Flow פשוט: מאיפה מגיע הלקוח, מה הוא רואה, מה הוא ממלא,
+איך המידע נשמר ואיזו הודעה הוא מקבל בחזרה.
+</p>
 </div>
-<div class="form-row">
-<label for="reviewRating">דירוג</label>
-<select id="reviewRating" name="reviewRating" required>
-<option value="">בחר דירוג</option>
-<option value="5">★★★★★ – מצוין</option>
-<option value="4">★★★★☆ – טוב מאוד</option>
-<option value="3">★★★☆☆ – סביר</option>
-<option value="2">★★☆☆☆ – צריך שיפור</option>
-<option value="1">★☆☆☆☆ – חוויה לא טובה</option>
+<div class="step-row">
+<div class="step-num">3</div>
+<p>
+בנייה וחיבור: אתר / עמוד נחיתה, טפסים, אוטומציות,
+צ'אטים וסטטוס לידים – סביבת דמו עד לאישור ואז מעבר ל־Production.
+</p>
+</div>
+<div class="step-row">
+<div class="step-num">4</div>
+<p>
+Fine-tuning: התאמת טקסטים, הודעות, תזמונים – וכתיבת מדריך קצר
+כדי שתוכל להמשיך לתפעל גם בלי מתכנת צמוד.
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT / LEADS -->
+<section class="section" id="contact">
+<div class="section-inner">
+<div class="section-header">
+<div>
+<h2 class="section-title">בוא נדבר על העסק שלך</h2>
+<p class="section-subtitle">
+השאר פרטים וקבל חזרה הצעה מסודרת: מה אפשר לבנות, כמה זמן זה ייקח,
+ומה ההשפעה על העסק.
+</p>
+</div>
+<div class="pill-outline">
+טופס דמו – החיבור למערכת אמיתית מגיע בשלב הבא
+</div>
+</div>
+
+<form class="form-grid" onsubmit="handleLeadSubmit(event)">
+<div>
+<label class="field-label" for="lead-name">שם מלא</label>
+<input class="input" id="lead-name" type="text" placeholder="איך לפנות אליך?" required />
+</div>
+<div>
+<label class="field-label" for="lead-business">שם העסק / תחום</label>
+<input class="input" id="lead-business" type="text" placeholder="מסעדה, סטודיו, אימון עסקי..." />
+</div>
+<div>
+<label class="field-label" for="lead-contact">טלפון או מייל</label>
+<input class="input" id="lead-contact" type="text" placeholder="פרט אחד שאפשר לחזור אליך איתו" required />
+</div>
+<div>
+<label class="field-label" for="lead-type">מה מעניין אותך?</label>
+<select class="input" id="lead-type">
+<option value="">בחר...</option>
+<option>אוטומציות לידים ווואטסאפ</option>
+<option>אתר נחיתה / אתר תדמית</option>
+<option>DevOps / פרויקט דמו לגיוס</option>
+<option>משהו אחר – נבדוק ביחד</option>
 </select>
 </div>
-<div class="form-row">
-<label for="reviewText">איך הייתה החוויה?</label>
-<textarea id="reviewText" name="reviewText" placeholder="כתוב/י כמה מילים על החוויה, התהליך והתוצאה..."></textarea>
+<div style="grid-column: 1 / -1;">
+<label class="field-label" for="lead-message">מה הכי חשוב לך שנפתור?</label>
+<textarea id="lead-message" placeholder="כמה משפטים על המצב היום ומה היית רוצה שיקרה במקום."></textarea>
 </div>
-<button class="review-submit-btn" type="submit">שליחת ביקורת</button>
-<div id="reviewStatus" class="status-message"></div>
+
+<div class="form-footer">
+<p class="form-note" id="lead-note">
+כרגע זה דמו צד-לקוח בלבד. אפשר לחבר בהמשך לטופס אמיתי (Tally / CRM / וואטסאפ).
+</p>
+<div style="display:flex; gap:8px; flex-wrap:wrap;">
+<button type="submit" class="btn-primary btn-small">
+שלחו לי הצעה מסודרת
+</button>
+<a href="https://wa.me/XXXXXXXXXX" target="_blank" class="btn-outline btn-small">
+לדבר איתי בוואטסאפ
+</a>
+</div>
+</div>
 </form>
-</div>
 </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="reveal">
-<h2>בוא נדבר על העסק שלך</h2>
-<p class="section-subtitle">
-אם יש לך עסק ואתה רוצה אתר, אוטומציה או צ׳אט שיחסכו לך זמן ויביאו לך לקוחות – אפשר להתחיל משיחה קצרה ולראות מה מתאים.
-</p>
-
-<div class="contact-layout">
+<!-- REVIEWS / FEEDBACK -->
+<section class="section" id="reviews">
+<div class="section-inner">
+<div class="section-header">
 <div>
-<form id="contactForm">
-<div class="form-row">
-<label for="name">שם מלא</label>
-<input type="text" id="name" name="name" placeholder="איך קוראים לך?" required />
+<h2 class="section-title">ביקורת, פידבק ושיתופי פעולה</h2>
+<p class="section-subtitle">
+כרגע זה אתר תדמית בתהליך בנייה. אפשר להשאיר כאן פידבק או ביקורת,
+ואפשר גם לכתוב אם ישך רעיון לפרויקט משותף.
+</p>
 </div>
-<div class="form-row">
-<label for="email">אימייל / טלפון</label>
-<input type="text" id="email" name="email" placeholder="לאן חוזרים אליך?" required />
+<div class="pill-outline">
+Demo – חוויות משתמש &amp; רעיונות
 </div>
-<div class="form-row">
-<label for="business">שם העסק / תחום</label>
-<input type="text" id="business" name="business" placeholder="מה סוג העסק שלך?" />
-</div>
-<div class="form-row">
-<label for="message">מה היית רוצה שהמערכת תעשה עבורך?</label>
-<textarea id="message" name="message" placeholder="למשל: אתר, צ׳אט חכם, אוטומציות לידים, הכל ביחד..." required></textarea>
-</div>
-<button class="contact-btn" type="submit">שליחת פרטים</button>
-<div id="contactStatus" class="status-message"></div>
-</form>
 </div>
 
-<div class="contact-info">
-<p>
-אפשר להתחיל מדמו פשוט ולהרחיב לפי הצורך. המטרה היא לבנות משהו שמרגיש לך טבעי,
-שקל לך לתפעל, ושבאמת עובד בשבילך.
-</p>
-<p>
-אפשר ליצור קשר גם ישירות:
-</p>
-<div class="whatsapp-link">
-<span>💬</span>
-<span>כאן נוסיף קישור קבוע ל-WhatsApp שלך כשהמספר ייקבע.</span>
+<div class="reviews-layout">
+<div class="reviews-list" id="reviewsList">
+<div class="review-card">
+<div class="review-name">
+דוגמה: בעל סטודיו לפילאטיס
+<span class="review-badge">• אוטומציות לידים</span>
 </div>
+<p>
+"היה לי בלגן מוחלט בלידים. אחרי החיבור בין טופס, וואטסאפ וגיליון
+– כל ליד מסודר במקום אחד ואני רואה איפה תקועים."
+</p>
+</div>
+<div class="review-card">
+<div class="review-name">
+דוגמה: יועץ עסקי
+<span class="review-badge">• אתר תדמית + צ'אט</span>
+</div>
+<p>
+"רציתי אתר אחד שמסביר מי אני, מה אני עושה ואיך פונים.
+עכשיו כששולחים לי הודעה אני רואה ישר מאיזה עמוד היא הגיעה."
+</p>
+</div>
+</div>
+
+<form class="form-grid" onsubmit="handleReviewSubmit(event)">
+<div style="grid-column: 1 / -1;">
+<label class="field-label" for="review-name">שם / שם עסק (לא חובה)</label>
+<input class="input" id="review-name" type="text" placeholder="אפשר להשאיר גם אנונימי" />
+</div>
+<div style="grid-column: 1 / -1;">
+<label class="field-label" for="review-text">מה אתה חושב על האתר / הרעיון?</label>
+<textarea id="review-text" placeholder="פידבק קצר, מה אהבת ומה היית משפר."></textarea>
+</div>
+<div class="form-footer">
+<p class="form-note" id="review-note">
+גם זה דמו: הביקורת נשמרת כרגע רק בדפדפן שלך. אפשר לחבר בהמשך למסד נתונים אמיתי.
+</p>
+<button type="submit" class="btn-outline btn-small">
+שמירת ביקורת בדמו
+</button>
+</div>
+</form>
 </div>
 </div>
 </section>
-</div>
 
-<!-- BACK TO TOP -->
-<button class="back-to-top hidden-start" id="backToTop">↑</button>
+<footer>
+<span>© AutoRoy Cloud – פרויקט תדמית DevOps &amp; Automations.</span>
+<span>נבנה כפרונט אנד סטטי, מוכן לחיבור ל־Tally, Zapier, WhatsApp ו־Cloud אמיתי.</span>
+</footer>
+</main>
 
 <script>
-// ----- Webhook אמיתי (Zapier / Make / n8n) -----
-// כשתהיה לך כתובת Webhook, תדביק אותה כאן:
-const CONTACT_WEBHOOK_URL = ""; // למשל: "https://hooks.zapier.com/hooks/catch/XXXX/YYYY"
-
-// Reveal on scroll
-const revealEls = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(
-(entries) => {
-entries.forEach((entry) => {
-if (entry.isIntersecting) {
-entry.target.classList.add('visible');
-observer.unobserve(entry.target);
-}
-});
-},
-{ threshold: 0.08 }
-);
-revealEls.forEach((el) => observer.observe(el));
-
-// Back to top button
-const backBtn = document.getElementById('backToTop');
-window.addEventListener('scroll', () => {
-if (window.scrollY > 260) {
-backBtn.classList.add('visible');
-} else {
-backBtn.classList.remove('visible');
-}
-});
-backBtn.addEventListener('click', () => {
-window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
 // Theme toggle
-const themeToggle = document.getElementById("themeToggle");
-function applyThemeFromStorage() {
-const saved = localStorage.getItem("autoroy-theme");
-if (saved === "light") {
-document.body.classList.add("light-mode");
-themeToggle.textContent = "☀️";
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+
+function setTheme(isLight) {
+if (isLight) {
+body.classList.add('light');
+themeToggle.innerHTML = '<span>☀️</span>';
+localStorage.setItem('autoroy-theme', 'light');
 } else {
-document.body.classList.remove("light-mode");
-themeToggle.textContent = "🌙";
+body.classList.remove('light');
+themeToggle.innerHTML = '<span>🌙</span>';
+localStorage.setItem('autoroy-theme', 'dark');
 }
 }
-applyThemeFromStorage();
 
-themeToggle.addEventListener("click", () => {
-document.body.classList.toggle("light-mode");
-const isLight = document.body.classList.contains("light-mode");
-themeToggle.textContent = isLight ? "☀️" : "🌙";
-localStorage.setItem("autoroy-theme", isLight ? "light" : "dark");
+const savedTheme = localStorage.getItem('autoroy-theme');
+if (savedTheme === 'light') {
+setTheme(true);
+}
+
+themeToggle.addEventListener('click', () => {
+setTheme(!body.classList.contains('light'));
 });
 
-// Helper – שליחת טופס ל-Webhook (אם הוגדר)
-async function sendToWebhook(type, payload, statusElement) {
-if (!CONTACT_WEBHOOK_URL) {
-statusElement.textContent = "הטופס התקבל בדף, אבל עדיין לא מחובר ל-Google Sheets / Zapier. נוסיף חיבור כשנקבע Webhook.";
-statusElement.className = "status-message status-error";
-return;
-}
+// Mobile nav
+const hamburger = document.getElementById('hamburger');
+const navMobile = document.getElementById('navMobile');
 
-statusElement.textContent = "שולח...";
-statusElement.className = "status-message";
-
-try {
-const res = await fetch(CONTACT_WEBHOOK_URL, {
-method: "POST",
-headers: { "Content-Type": "application/json" },
-body: JSON.stringify({
-type,
-timestamp: new Date().toISOString(),
-...payload,
-}),
+hamburger.addEventListener('click', () => {
+navMobile.classList.toggle('show');
 });
 
-if (!res.ok) throw new Error("Response not OK");
-
-statusElement.textContent = "נשלח בהצלחה ✅";
-statusElement.className = "status-message status-success";
-} catch (err) {
-console.error(err);
-statusElement.textContent = "הייתה בעיה בשליחה. אפשר לנסות שוב או ליצור קשר ישיר.";
-statusElement.className = "status-message status-error";
+function closeMobile() {
+navMobile.classList.remove('show');
 }
-}
+window.closeMobile = closeMobile;
 
-// Contact form submit
-const contactForm = document.getElementById("contactForm");
-const contactStatus = document.getElementById("contactStatus");
-
-contactForm.addEventListener("submit", (e) => {
+// Lead form demo
+function handleLeadSubmit(e) {
 e.preventDefault();
-const data = {
-name: contactForm.name.value.trim(),
-email: contactForm.email.value.trim(),
-business: contactForm.business.value.trim(),
-message: contactForm.message.value.trim(),
-};
-
-if (!data.name || !data.email || !data.message) {
-contactStatus.textContent = "נא למלא שם, אימייל/טלפון ותיאור קצר.";
-contactStatus.className = "status-message status-error";
-return;
+const name = document.getElementById('lead-name').value.trim() || 'לקוח';
+const note = document.getElementById('lead-note');
+note.textContent = `${name}, תודה! בטבע אמיתי זה היה נשלח למערכת לידים. כאן זה דמו שמדגים את ה־UI.`;
+note.style.color = '#a5f3fc';
 }
+window.handleLeadSubmit = handleLeadSubmit;
 
-sendToWebhook("lead", data, contactStatus);
-contactForm.reset();
-});
-
-// Review form submit
-const reviewForm = document.getElementById("reviewForm");
-const reviewStatus = document.getElementById("reviewStatus");
-
-reviewForm.addEventListener("submit", (e) => {
+// Reviews demo
+function handleReviewSubmit(e) {
 e.preventDefault();
-const data = {
-reviewName: reviewForm.reviewName.value.trim(),
-reviewBusiness: reviewForm.reviewBusiness.value.trim(),
-reviewRating: reviewForm.reviewRating.value,
-reviewText: reviewForm.reviewText.value.trim(),
-};
-
-if (!data.reviewName || !data.reviewRating) {
-reviewStatus.textContent = "נא למלא שם ודירוג.";
-reviewStatus.className = "status-message status-error";
+const name = document.getElementById('review-name').value.trim() || 'מבקר אנונימי';
+const text = document.getElementById('review-text').value.trim();
+if (!text) {
+const note = document.getElementById('review-note');
+note.textContent = 'כדי לשמור ביקורת דמו צריך לכתוב לפחות משפט אחד 🙂';
+note.style.color = '#fecaca';
 return;
 }
+const list = document.getElementById('reviewsList');
 
-sendToWebhook("review", data, reviewStatus);
-reviewForm.reset();
-});
+const card = document.createElement('div');
+card.className = 'review-card';
+card.innerHTML = `
+<div class="review-name">
+${name}
+<span class="review-badge">• ביקורת דמו</span>
+</div>
+<p>${text}</p>
+`;
+list.prepend(card);
+
+document.getElementById('review-text').value = '';
+const note = document.getElementById('review-note');
+note.textContent = 'הביקורת נוספה בדפדפן שלך. אפשר לחבר בהמשך למסד נתונים אמיתי.';
+note.style.color = '#a5f3fc';
+}
+window.handleReviewSubmit = handleReviewSubmit;
 </script>
 </body>
 </html>
-
