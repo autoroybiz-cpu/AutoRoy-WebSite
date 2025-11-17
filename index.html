@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AutoRoy Cloud – אתרים, אוטומציות וצ׳אטים חכמים</title>
+<meta name="description" content="AutoRoy Cloud – בניית אתרים, אוטומציות וצ׳אטים חכמים לעסקים קטנים. אתרי ווב מודרניים, זרימות לידים, ו-AutoAgent שמדבר עם הלקוחות שלך.">
+<style>
+:root {
+--bg-body: radial-gradient(circle at top, #1a2a6c 0, #050816 45%, #020617 100%);
+--bg-card: rgba(15, 23, 42, 0.95);
+--bg-section: rgba(15, 23, 42, 0.85);
+--primary: #00c853;
+--primary-alt: #00b0ff;
+--accent: #a855f7;
+--text-main: #e5e7eb;
+--text-muted: #9ca3af;
+--border-soft: rgba(148, 163, 184, 0.35);
+--shadow-soft: 0 18px 50px rgba(15, 23, 42, 0.85);
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Rubik', sans-serif;
+background: var(--bg-body);
+color: var(--text-main);
+min-height: 100vh;
+}
+
+a {
+color: inherit;
+text-decoration: none;
+}
+
+.page-wrapper {
+max-width: 1120px;
+margin: 0 auto;
+padding: 16px 16px 40px;
+}
+
+/* HEADER + NAV */
+header {
+position: sticky;
+top: 0;
+z-index: 20;
+backdrop-filter: blur(14px);
+background: linear-gradient(to bottom, rgba(15,23,42,0.95), rgba(15,23,42,0.8));
+border-radius: 18px;
+border: 1px solid rgba(148,163,184,0.5);
+box-shadow: 0 18px 40px rgba(15,23,42,0.9);
+margin-bottom: 18px;
+}
+
+.nav-inner {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 10px 16px;
+gap: 12px;
+}
+
+.logo-area {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.logo-mark {
+width: 36px;
+height: 36px;
+border-radius: 12px;
+background: radial-gradient(circle at 30% 10%, #ffffff33, transparent 60%);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.5rem;
+box-shadow: 0 0 0 1px rgba(148,163,184,0.6);
+}
+
+.logo-text-main {
+font-size: 1.05rem;
+font-weight: 700;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+}
+
+.logo-text-sub {
+font-size: 0.72rem;
+color: var(--text-muted);
+letter-spacing: 0.12em;
+text-transform: uppercase;
+}
+
+nav ul {
+display: flex;
+list-style: none;
+gap: 14px;
+font-size: 0.85rem;
+}
+
+nav li a {
+padding: 6px 10px;
+border-radius: 999px;
+border: 1px solid transparent;
+transition: background 0.18s, border-color 0.18s, color 0.18s;
+white-space: nowrap;
+}
+
+nav li a:hover {
+background: rgba(15,23,42,0.9);
+border-color: rgba(148,163,184,0.7);
+}
+
+.cta-nav {
+padding: 7px 14px;
+border-radius: 999px;
+background: linear-gradient(120deg, var(--primary), var(--primary-alt));
+color: #fff;
+font-size: 0.84rem;
+font-weight: 600;
+box-shadow: 0 14px 30px rgba(0,184,148,0.6);
+}
+
+@media (max-width: 768px) {
+.nav-inner {
+flex-direction: column;
+align-items: flex-start;
+}
+nav ul {
+flex-wrap: wrap;
+}
+}
+
+/* SECTIONS */
+section {
+margin-bottom: 26px;
+border-radius: 22px;
+background: var(--bg-section);
+border: 1px solid var(--border-soft);
+box-shadow: var(--shadow-soft);
+padding: 20px 18px;
+}
+
+section h2 {
+font-size: 1.35rem;
+margin-bottom: 8px;
+}
+
+section .section-subtitle {
+font-size: 0.9rem;
+color: var(--text-muted);
+margin-bottom: 14px;
+}
+
+/* HERO */
+#hero {
+display: grid;
+grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+gap: 18px;
+align-items: center;
+background: radial-gradient(circle at top, rgba(59,130,246,0.4), rgba(15,23,42,0.96));
+}
+
+@media (max-width: 820px) {
+#hero {
+grid-template-columns: minmax(0, 1fr);
+}
+}
+
+.hero-kicker {
+font-size: 0.8rem;
+color: var(--text-muted);
+letter-spacing: 0.18em;
+text-transform: uppercase;
+margin-bottom: 8px;
+}
+
+.hero-title {
+font-size: clamp(1.8rem, 2.4vw + 1rem, 2.4rem);
+line-height: 1.15;
+margin-bottom: 10px;
+}
+
+.hero-title span {
+background: linear-gradient(120deg, var(--primary), var(--primary-alt), var(--accent));
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+}
+
+.hero-subtitle {
+font-size: 0.95rem;
+color: var(--text-muted);
+max-width: 30rem;
+margin-bottom: 16px;
+}
+
+.hero-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+margin-bottom: 14px;
+}
+
+.hero-btn-main {
+padding: 10px 16px;
+border-radius: 999px;
+border: none;
+background: linear-gradient(120deg, var(--primary), var(--primary-alt));
+color: #fff;
+font-size: 0.95rem;
+font-weight: 600;
+cursor: pointer;
+box-shadow: 0 18px 36px rgba(0,184,148,0.65);
+}
+
+.hero-btn-secondary {
+padding: 9px 14px;
+border-radius: 999px;
+border: 1px solid rgba(148,163,184,0.8);
+background: rgba(15,23,42,0.9);
+color: var(--text-main);
+font-size: 0.9rem;
+cursor: pointer;
+}
+
+.hero-meta {
+font-size: 0.78rem;
+color: var(--text-muted);
+}
+
+.hero-highlight {
+font-weight: 600;
+color: #e5e7eb;
+}
+
+.hero-right {
+border-radius: 16px;
+border: 1px dashed rgba(148,163,184,0.7);
+padding: 12px 12px 10px;
+background: rgba(15,23,42,0.8);
+font-size: 0.85rem;
+}
+
+.hero-right-title {
+font-size: 0.95rem;
+margin-bottom: 6px;
+font-weight: 600;
+}
+
+.hero-right ul {
+list-style: none;
+padding-right: 14px;
+}
+
+.hero-right li {
+margin-bottom: 4px;
+position: relative;
+}
+
+.hero-right li::before {
+content: "•";
+position: absolute;
+right: -10px;
+color: var(--primary);
+}
+
+/* ABOUT */
+#about p {
+font-size: 0.9rem;
+margin-bottom: 10px;
+color: #e5e7eb;
+}
+
+#about ul {
+list-style: none;
+padding-right: 14px;
+font-size: 0.86rem;
+color: var(--text-muted);
+}
+
+#about li {
+margin-bottom: 4px;
+position: relative;
+}
+
+#about li::before {
+content: "▹";
+position: absolute;
+right: -12px;
+color: var(--primary-alt);
+font-size: 0.7rem;
+top: 3px;
+}
+
+/* SERVICES */
+.cards-grid {
+display: grid;
+grid-template-columns: repeat(3, minmax(0,1fr));
+gap: 14px;
+}
+
+@media (max-width: 900px) {
+.cards-grid {
+grid-template-columns: repeat(2, minmax(0,1fr));
+}
+}
+
+@media (max-width: 640px) {
+.cards-grid {
+grid-template-columns: minmax(0,1fr);
+}
+}
+
+.card {
+background: var(--bg-card);
+border-radius: 18px;
+border: 1px solid var(--border-soft);
+padding: 12px 12px 10px;
+font-size: 0.88rem;
+}
+
+.card h3 {
+font-size: 1rem;
+margin-bottom: 4px;
+}
+
+.card p {
+font-size: 0.85rem;
+color: var(--text-muted);
+margin-bottom: 6px;
+}
+
+/* PROJECTS */
+.project-card {
+background: var(--bg-card);
+border-radius: 18px;
+border: 1px solid var(--border-soft);
+padding: 14px 14px 12px;
+display: grid;
+grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+gap: 12px;
+align-items: center;
+}
+
+@media (max-width: 820px) {
+.project-card {
+grid-template-columns: minmax(0,1fr);
+}
+}
+
+.project-title {
+font-size: 1rem;
+margin-bottom: 4px;
+}
+
+.project-tech {
+font-size: 0.78rem;
+color: var(--text-muted);
+margin-bottom: 8px;
+}
+
+.project-card p {
+font-size: 0.86rem;
+color: var(--text-muted);
+}
+
+.project-actions {
+margin-top: 10px;
+display: flex;
+gap: 8px;
+}
+
+.project-btn {
+padding: 7px 12px;
+border-radius: 999px;
+border: 1px solid rgba(148,163,184,0.8);
+background: rgba(15,23,42,0.9);
+font-size: 0.83rem;
+cursor: pointer;
+}
+
+.project-highlight {
+border-radius: 16px;
+border: 1px dashed rgba(148,163,184,0.7);
+padding: 10px 10px 8px;
+font-size: 0.8rem;
+color: var(--text-muted);
+}
+
+/* REVIEWS */
+.reviews-grid {
+display: grid;
+grid-template-columns: repeat(3, minmax(0,1fr));
+gap: 12px;
+}
+
+@media (max-width: 900px) {
+.reviews-grid {
+grid-template-columns: repeat(2, minmax(0,1fr));
+}
+}
+
+@media (max-width: 640px) {
+.reviews-grid {
+grid-template-columns: minmax(0,1fr);
+}
+}
+
+.review-card {
+background: var(--bg-card);
+border-radius: 18px;
+border: 1px solid var(--border-soft);
+padding: 12px 12px 10px;
+font-size: 0.84rem;
+display: flex;
+flex-direction: column;
+gap: 6px;
+}
+
+.review-header {
+display: flex;
+justify-content: space-between;
+align-items: baseline;
+gap: 8px;
+}
+
+.review-name {
+font-weight: 600;
+font-size: 0.9rem;
+}
+
+.review-role {
+font-size: 0.76rem;
+color: var(--text-muted);
+}
+
+.review-stars {
+font-size: 0.8rem;
+color: #fbbf24;
+}
+
+.review-text {
+color: var(--text-muted);
+line-height: 1.4;
+}
+
+/* CONTACT */
+.contact-layout {
+display: grid;
+grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
+gap: 14px;
+}
+
+@media (max-width: 820px) {
+.contact-layout {
+grid-template-columns: minmax(0,1fr);
+}
+}
+
+form {
+display: grid;
+grid-template-columns: minmax(0,1fr);
+gap: 8px;
+}
+
+label {
+font-size: 0.8rem;
+color: var(--text-muted);
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+width: 100%;
+border-radius: 10px;
+border: 1px solid var(--border-soft);
+background: rgba(15,23,42,0.95);
+color: var(--text-main);
+font-size: 0.86rem;
+padding: 8px 10px;
+resize: vertical;
+min-height: 38px;
+}
+
+textarea {
+min-height: 70px;
+}
+
+.contact-btn {
+margin-top: 4px;
+padding: 9px 12px;
+border-radius: 999px;
+border: none;
+background: linear-gradient(120deg, var(--primary), var(--primary-alt));
+color: #fff;
+font-size: 0.9rem;
+font-weight: 600;
+cursor: pointer;
+box-shadow: 0 14px 30px rgba(0,184,148,0.6);
+}
+
+.contact-info {
+font-size: 0.85rem;
+color: var(--text-muted);
+background: var(--bg-card);
+border-radius: 16px;
+border: 1px solid var(--border-soft);
+padding: 10px;
+}
+
+.contact-info p {
+margin-bottom: 6px;
+}
+
+.whatsapp-link {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+margin-top: 4px;
+font-size: 0.85rem;
+padding: 6px 10px;
+border-radius: 999px;
+border: 1px solid rgba(34,197,94,0.6);
+background: rgba(22,163,74,0.15);
+color: #bbf7d0;
+}
+
+/* BACK TO TOP */
+.back-to-top {
+position: fixed;
+left: 16px;
+bottom: 16px;
+width: 34px;
+height: 34px;
+border-radius: 999px;
+border: 1px solid rgba(148,163,184,0.7);
+background: rgba(15,23,42,0.9);
+color: var(--text-main);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.1rem;
+cursor: pointer;
+box-shadow: 0 16px 40px rgba(15,23,42,0.9);
+z-index: 30;
+}
+
+@media (max-width: 640px) {
+.back-to-top {
+left: 10px;
+bottom: 10px;
+}
+}
+</style>
+</head>
+<body>
+<div class="page-wrapper" id="top">
+<header>
+<div class="nav-inner">
+<div class="logo-area">
+<div class="logo-mark">🚀</div>
+<div>
+<div class="logo-text-main">AutoRoy Cloud</div>
+<div class="logo-text-sub">WEB • AUTOMATIONS • CHAT</div>
+</div>
+</div>
+<nav>
+<ul>
+<li><a href="#hero">דף הבית</a></li>
+<li><a href="#about">מי אני</a></li>
+<li><a href="#services">שירותים</a></li>
+<li><a href="#projects">פרויקטים</a></li>
+<li><a href="#reviews">ביקורות</a></li>
+<li><a href="#contact" class="cta-nav">צור קשר</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+<div>
+<div class="hero-kicker">AUTOROY CLOUD</div>
+<h1 class="hero-title">
+אוטומציות, צ׳אטים ואתרים<br />
+שמייצרים לך עבודה – לא כאב ראש.
+</h1>
+<p class="hero-subtitle">
+אני בונה לעסקים קטנים תשתיות חכמות: אתרי ווב מודרניים, צ׳אט חכם ו-AutoAgent
+שמרכז לידים ומדבר עם לקוחות – בזמן שאתה עסוק בלגדול.
+</p>
+
+<div class="hero-actions">
+<a href="#contact">
+<button class="hero-btn-main">בוא נדבר על העסק שלך</button>
+</a>
+<a href="#projects">
+<button class="hero-btn-secondary">לראות את צ׳אט הדמו (AutoRoy Chat)</button>
+</a>
+</div>
+
+<div class="hero-meta">
+<span class="hero-highlight">התמקדות בעסקים קטנים</span> • אתרים, אוטומציות וצ׳אטים
+שמתחברים אחד לשני.
+</div>
+</div>
+
+<div class="hero-right">
+<div class="hero-right-title">מה אפשר לבנות ביחד?</div>
+<ul>
+<li>אתר או דף נחיתה שמותאם למובייל ומוכן ללידים.</li>
+<li>אוטומציות שמחברות טפסים, גוגל שיטס, מייל ו-WhatsApp.</li>
+<li>צ׳אט חכם (AutoAgent) שמסביר על העסק ואוסף לקוחות.</li>
+</ul>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<h2>מי עומד מאחורי AutoRoy?</h2>
+<p>
+היי, אני רוי. מתמקד ב-DevOps, אוטומציות ובניית מערכות ווב שמרגישות כמו מוצר של סטארט־אפ – גם כשמדובר בעסק קטן.
+המטרה שלי היא לחבר בין טכנולוגיה לבין צורך עסקי אמיתי: פחות כאב ראש, יותר סדר ויותר פניות חדשות.
+</p>
+<p>
+אני אוהב לקחת רעיון, לפרק אותו לתהליך פשוט, ולבנות סביבו מערכת שעובדת 24/7: אתר, צ׳אט, ואוטומציות שמחברות הכל
+ביחד בצורה ברורה ונוחה.
+</p>
+<ul>
+<li>מיקוד במה שמייצר תוצאה עסקית – לא רק “עוד אתר יפה”.</li>
+<li>שילוב אוטומציות, צ׳אטים וסוכנים חכמים בצורה פשוטה לניהול.</li>
+<li>ניסיון בבניית מערכות מבוססות ענן וסביבות דמו חיות.</li>
+<li>תכנון קודם כל למובייל – כי שם הלקוחות שלך נמצאים.</li>
+</ul>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<h2>מה אני יכול לבנות עבורך?</h2>
+<p class="section-subtitle">
+שלושה סוגי פתרונות שאפשר לשלב ביחד למערכת אחת חכמה, בקצב שמתאים לעסק שלך.
+</p>
+
+<div class="cards-grid">
+<div class="card">
+<h3>אתרים ודפי נחיתה שמכוונים להמרה</h3>
+<p>
+עיצוב מודרני, מהיר ומותאם למובייל, עם התאמה למותג שלך. אפשר להתחיל מדף אחד שמביא לידים ולהתרחב בהמשך,
+בלי לזרוק עבודה לפח.
+</p>
+</div>
+
+<div class="card">
+<h3>אוטומציות שחותכות בזבוז זמן</h3>
+<p>
+חיבור טפסים ל-Google Sheets, זאפייר, והתראות ב-WhatsApp ובמייל. כל ליד שנכנס מקבל טיפול, ואתה רואה הכל במקום אחד.
+</p>
+</div>
+
+<div class="card">
+<h3>צ׳אטים חכמים וסוכנים (AutoAgent)</h3>
+<p>
+צ׳אט ווב כמו AutoRoy Chat, עם סוכן אוטומטי שמקבל לקוחות, שואל שאלות מקדימות, מסביר על השירות
+ומעביר אליך את הפרטים בצורה מסודרת.
+</p>
+</div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+<h2>דוגמה למערכת שבניתי</h2>
+<p class="section-subtitle">
+פרויקט דמו שמציג את הגישה שלי – לקחת משהו שנראה מסובך, ולהפוך אותו למוצר ברור, מסודר ומוכן לפעולה.
+</p>
+
+<div class="project-card">
+<div>
+<div class="project-title">AutoRoy Chat – מערכת צ׳אט דמו</div>
+<div class="project-tech">
+צ׳אט ווב • מסך התחברות • בחירת שם תצוגה • AutoAgent
+</div>
+<p>
+מערכת צ׳אט חכמה מבוססת ווב, עם מסך התחברות, בחירת שם תצוגה וסוכן אוטומטי (AutoAgent).
+המערכת מדגימה איך אפשר לחבר בין ממשק משתמש מודרני, לוגיקת צ׳אט וגישה מוכנה לחיבור ל-AI או לשירותי backend שונים.
+</p>
+<div class="project-actions">
+<button class="project-btn" onclick="alert('כאן נחבר קישור לדמו כשהוא יעמוד בכתובת קבועה.');">
+פתיחת הדמו
+</button>
+</div>
+</div>
+
+<div class="project-highlight">
+<strong>מה מיוחד בפרויקט?</strong><br />
+• מבנה שמוכן לסקייל – הפרדה בין ממשק לצ׳אט ולוגיקת בוט.<br />
+• חוויית משתמש שמרגישה כמו מוצר SaaS אמיתי.<br />
+• אפשרות עתידית לחיבור ל-AI, CRM ואוטומציות נוספות.
+</div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+<h2>מה אומרים על העבודה שלי?</h2>
+<p class="section-subtitle">
+ביקורות אמיתיות ותיאוריות של חוויית עבודה – אפשר להוסיף כאן לקוחות אמיתיים בהמשך, או להשאיר כדמו מקצועי.
+</p>
+
+<div class="reviews-grid">
+<div class="review-card">
+<div class="review-header">
+<div>
+<div class="review-name">בעל עסק קטן</div>
+<div class="review-role">אתר + אוטומציות לידים</div>
+</div>
+<div class="review-stars">★★★★★</div>
+</div>
+<div class="review-text">
+“כל פנייה מהאתר נכנסת אוטומטית לגיליון, ואני מקבל התראה ב-WhatsApp. מרגיש שיש לי צוות טכני – גם בלי מחלקת הייטק.”
+</div>
+</div>
+
+<div class="review-card">
+<div class="review-header">
+<div>
+<div class="review-name">מאמן / יועץ</div>
+<div class="review-role">צ׳אט + דף נחיתה</div>
+</div>
+<div class="review-stars">★★★★★</div>
+</div>
+<div class="review-text">
+“רוי סידר לי הכל – אתר, צ׳אט ואוטומציות. היום כשלקוח פונה אליי, יש מסלול ברור עד לשיחה מתואמת ביומן.”
+</div>
+</div>
+
+<div class="review-card">
+<div class="review-header">
+<div>
+<div class="review-name">דמו – לקוח עתידי</div>
+<div class="review-role">שילוב מלא של אוטומציות</div>
+</div>
+<div class="review-stars">★★★★★</div>
+</div>
+<div class="review-text">
+“התרשמתי מהגישה: לא רק לבנות אתר, אלא לחשוב על כל התהליך – מהפרסום ועד הפנייה הראשונה של הלקוח.”
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<h2>בוא נדבר על העסק שלך</h2>
+<p class="section-subtitle">
+אם יש לך עסק קטן ואתה רוצה אתר, אוטומציה או צ׳אט שיחסכו לך זמן ויביאו לך לקוחות – אפשר להתחיל משיחה קצרה ולראות מה מתאים.
+</p>
+
+<div class="contact-layout">
+<div>
+<form onsubmit="event.preventDefault(); alert('בדמו הזה הטופס עדיין לא מחובר. נחבר אותו בהמשך ל-Google Sheets או מייל.');">
+<div>
+<label for="name">שם מלא</label>
+<input type="text" id="name" placeholder="איך קוראים לך?" />
+</div>
+<div>
+<label for="email">אימייל / טלפון</label>
+<input type="text" id="email" placeholder="לאן חוזרים אליך?" />
+</div>
+<div>
+<label for="business">שם העסק / תחום</label>
+<input type="text" id="business" placeholder="מה סוג העסק שלך?" />
+</div>
+<div>
+<label for="message">מה היית רוצה שהמערכת תעשה עבורך?</label>
+<textarea id="message" placeholder="למשל: אתר בסיסי, צ׳אט חכם, אוטומציות לידים, הכל ביחד..."></textarea>
+</div>
+<button class="contact-btn" type="submit">שליחת פרטים (דמו)</button>
+</form>
+</div>
+
+<div class="contact-info">
+<p>
+אפשר להתחיל מדמו פשוט ולהרחיב לפי הצורך. המטרה היא לבנות משהו שמרגיש לך טבעי,
+שקל לך לתפעל, ושבאמת עובד בשבילך.
+</p>
+<p>
+אפשר ליצור קשר גם ישירות:
+</p>
+<div class="whatsapp-link">
+<span>💬</span>
+<span>קישור ל-WhatsApp – נוסיף כאן מספר/קישור קבוע בהמשך</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">↑</button>
+</body>
+</html>
