@@ -1255,3 +1255,16 @@ body.dark .page-hero {
   font-size: 1.05rem;
   opacity: 0.95;
 }
+/* FIX — prevent hero from blocking navbar on mobile */
+.page-hero {
+    position: relative;
+    z-index: 1;
+}
+
+.nav,
+.nav-mobile,
+.nav-actions,
+.theme-toggle {
+    position: relative;
+    z-index: 9999;
+}
