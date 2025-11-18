@@ -260,4 +260,30 @@ document.querySelectorAll('.services-item')?.forEach(item => {
         item.classList.add('active');
     });
 });
+// SERVICES BUTTONS — ACTIVE + SCROLL INTO VIEW + GOTO SECTION
+document.querySelectorAll('.services-btn')?.forEach(btn => {
+    btn.addEventListener('click', () => {
+
+        // Remove old actives
+        document.querySelectorAll('.services-btn')
+            .forEach(b => b.classList.remove('active'));
+
+        // Activate current
+        btn.classList.add('active');
+
+        // Scroll to center
+        btn.scrollIntoView({
+            behavior: "smooth",
+            inline: "center",
+            block: "nearest"
+        });
+
+        // Jump to section
+        const target = btn.dataset.target;
+        if (target) {
+            const el = document.querySelector(target);
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+        }
+    });
+});
 
