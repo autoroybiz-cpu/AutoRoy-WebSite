@@ -1268,3 +1268,10 @@ body.dark .page-hero {
     position: relative;
     z-index: 9999;
 }
+.page-content {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
