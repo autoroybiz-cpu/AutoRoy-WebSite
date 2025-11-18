@@ -1187,3 +1187,71 @@ body.dark .services-btn {
   box-shadow: 0 0 15px var(--glow);
   transform: translateY(-3px) scale(1.06);
 }
+/* ===========================
+   PAGE TEMPLATE (UNIVERSAL)
+   =========================== */
+
+.page-hero {
+  padding: 120px 0 60px;
+  background: radial-gradient(
+      circle at 50% 0%,
+      rgba(13,110,253,0.15),
+      transparent 65%
+    ),
+    linear-gradient(180deg, #f8fafc, #eef1f6);
+  text-align: center;
+}
+
+body.dark .page-hero {
+  background: radial-gradient(
+      circle at 50% 0%,
+      rgba(102,179,255,0.17),
+      transparent 65%
+    ),
+    linear-gradient(180deg, #0c0e12, #0a0c0f);
+}
+
+.page-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+
+.page-sub {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--text);
+}
+
+.page-content {
+  padding: 40px 0 120px;
+  max-width: 1000px;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.page-content img {
+  width: 100%;
+  border-radius: 18px;
+  margin: 28px 0;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.page-section {
+  margin: 60px 0;
+}
+
+.page-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--text);
+}
+
+.page-section p {
+  font-size: 1.05rem;
+  opacity: 0.95;
+}
