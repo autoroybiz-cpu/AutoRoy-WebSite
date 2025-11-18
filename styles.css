@@ -1,1091 +1,1213 @@
-/* ============================================================
-AutoRoy Cloud – Global Styles
-============================================================ */
+/* styles.css — ייבנה בשלבים. חלק 1: בסיס, Reset, טיפוגרפיה, RTL, Theme */
 
-:root {
---bg: #020617;
---bg-alt: #050816;
---bg-elevated: rgba(15, 23, 42, 0.96);
---bg-elevated-light: #ffffff;
-
---primary: #6366f1; /* indigo */
---primary-strong: #4f46e5;
---accent: #22d3ee; /* cyan */
---accent-soft: rgba(34, 211, 238, 0.18);
---danger: #f97373;
-
---text-main: #e5e7eb;
---text-muted: #9ca3af;
-
---border-subtle: rgba(148, 163, 184, 0.45);
-
---radius-lg: 24px;
---radius-md: 18px;
---radius-sm: 12px;
---radius-pill: 999px;
-
---shadow-soft: 0 24px 80px rgba(15, 23, 42, 0.9);
---shadow-card: 0 18px 50px rgba(15, 23, 42, 0.85);
-
---nav-height: 70px;
---transition: 0.22s ease;
-}
-
-/* ========= RESET ========= */
+/* --- Reset בסיסי --- */
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
-font-family: "Rubik", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-background:
-radial-gradient(circle at top, #172554 0, transparent 55%),
-radial-gradient(circle at bottom, #111827 0, transparent 55%),
-var(--bg);
-color: var(--text-main);
-min-height: 100vh;
--webkit-font-smoothing: antialiased;
-transition: background 0.35s ease, color 0.35s ease;
+  font-family: "Assistant", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  direction: rtl;
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-a {
-text-decoration: none;
-color: inherit;
+/* --- משתנים למצב לילה/יום --- */
+:root {
+  --bg: #ffffff;
+  --text: #111;
+  --primary: #0d6efd;
+  --card-bg: #f0f0f0;
+  --card-text: #222;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --glow: rgba(13, 110, 253, 0.35);
+}
+ody.dark-mode {
+  --bg: #0b0b0b;
+  --text: #e8e8e8;
+  --primary: #66b3ff;
+  --card-bg: #141414;
+  --card-text: #eee;
+  --shadow: rgba(255, 255, 255, 0.05);
+  --glow: rgba(102, 179, 255, 0.4);
 }
 
-body.light {
-background: #f3f4f6;
-color: #111827;
+/* --- קונטיינר בסיסי --- */
+.container {
+  width: min(1200px, 90%);
+  margin: auto;
 }
 
-/* ========= NAVBAR ========= */
+/* --- כותרות --- */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
 
+/* --- Fade In Animations --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Cards בסיס --- */
+.card {
+  background: var(--card-bg);
+  color: var(--card-text);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px var(--glow);
+}
+
+/* --- כפתורים --- */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: var(--primary);
+  color: white;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.btn:hover {
+  filter: brightness(1.15);
+}
+
+/* כפתור outline */
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+.btn-outline:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* --- Navbar (שלב 1) --- */
 .nav {
-position: sticky;
-top: 0;
-z-index: 40;
-height: var(--nav-height);
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 0 20px;
-background: rgba(2, 6, 23, 0.94);
-backdrop-filter: blur(20px);
-border-bottom: 1px solid rgba(148, 163, 184, 0.5);
+  width: 100%;
+  padding: 18px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #ddd;
+  transition: background 0.3s ease;
+}
+body.dark-mode .nav {
+  background: rgba(0,0,0,0.65);
+  border-bottom: 1px solid #222;
 }
 
-body.light .nav {
-background: rgba(249, 250, 251, 0.98);
-border-bottom-color: rgba(209, 213, 219, 0.9);
-box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+.nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.nav-left {
-display: flex;
-align-items: center;
-gap: 10px;
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
 }
 
-.nav-logo {
-width: 36px;
-height: 36px;
-border-radius: 16px;
-background:
-radial-gradient(circle at 30% 0, #facc15, transparent 55%),
-linear-gradient(135deg, #4f46e5, #22d3ee);
-display: flex;
-align-items: center;
-justify-content: center;
-box-shadow: 0 14px 30px rgba(79, 70, 229, 0.7);
+.nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  transition: 0.2s;
 }
 
-.nav-logo span {
-font-size: 20px;
+.nav a:hover {
+  color: var(--primary);
 }
 
-.nav-brand {
-font-weight: 700;
-font-size: 1rem;
-letter-spacing: 0.02em;
-}
+/* המשך יגיע לאחר אישורך — כולל Hero, אנימציות Glow, Stack טכנולוגי משופר, רספונסיביות, ועוד */
 
-.nav-sub {
-font-size: 0.72rem;
-color: var(--text-muted);
-}
 
-body.light .nav-sub {
-color: #4b5563;
-}
+/* =============================
+   חלק 2 — אזור ההירו המלא
+   כולל: Glow, גרדיאנט חי, טקסט חד,
+   כפתורים משופרים ורספונסיביות מלאה
+   ============================= */
 
-.nav-links {
-display: flex;
-align-items: center;
-gap: 18px;
-font-size: 0.9rem;
-}
-
-.nav-link {
-position: relative;
-padding-bottom: 2px;
-cursor: pointer;
-color: var(--text-main);
-}
-
-body.light .nav-link {
-color: #111827;
-}
-
-.nav-link::after {
-content: "";
-position: absolute;
-right: 0;
-bottom: -3px;
-width: 0;
-height: 2px;
-border-radius: 999px;
-background: linear-gradient(90deg, var(--accent), var(--primary));
-transition: width 0.16s ease;
-}
-
-.nav-link:hover::after {
-width: 100%;
-}
-
-.nav-actions {
-display: flex;
-align-items: center;
-gap: 10px;
-}
-
-.theme-toggle {
-width: 34px;
-height: 34px;
-border-radius: 50%;
-border: 1px solid rgba(148, 163, 184, 0.7);
-background: radial-gradient(circle at 30% 0, #fde68a 0, #1f2937 55%);
-display: flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-box-shadow: 0 14px 40px rgba(15, 23, 42, 0.9);
-font-size: 1.1rem;
-transition: transform 0.16s ease, box-shadow 0.16s ease;
-}
-
-.theme-toggle:hover {
-transform: translateY(-1px);
-box-shadow: 0 18px 50px rgba(15, 23, 42, 1);
-}
-
-.nav-cta {
-padding: 8px 16px;
-border-radius: 999px;
-border: 1px solid rgba(129, 140, 248, 0.9);
-background:
-radial-gradient(circle at top left, rgba(129, 140, 248, 0.3), transparent 55%),
-rgba(15, 23, 42, 0.98);
-color: #e5e7eb;
-font-size: 0.86rem;
-cursor: pointer;
-transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
-}
-
-.nav-cta:hover {
-transform: translateY(-1px);
-box-shadow: 0 14px 40px rgba(129, 140, 248, 0.6);
-}
-
-body.light .nav-cta {
-background: linear-gradient(135deg, #4f46e5, #22d3ee);
-color: #f9fafb;
-}
-
-/* Hamburger (mobile) */
-.hamburger {
-display: none;
-width: 34px;
-height: 34px;
-border-radius: 999px;
-border: 1px solid rgba(148, 163, 184, 0.7);
-background: rgba(15, 23, 42, 0.96);
-align-items: center;
-justify-content: center;
-cursor: pointer;
-}
-
-.hamburger-line {
-width: 16px;
-height: 2px;
-background: #e5e7eb;
-position: relative;
-}
-
-.hamburger-line::before,
-.hamburger-line::after {
-content: "";
-position: absolute;
-width: 16px;
-height: 2px;
-background: #e5e7eb;
-left: 0;
-}
-
-.hamburger-line::before {
-top: -5px;
-}
-.hamburger-line::after {
-top: 5px;
-}
-
-/* Mobile nav */
-.nav-mobile {
-position: fixed;
-top: var(--nav-height);
-right: 0;
-left: 0;
-background: rgba(2, 6, 23, 0.98);
-backdrop-filter: blur(16px);
-border-bottom: 1px solid rgba(148, 163, 184, 0.5);
-display: none;
-flex-direction: column;
-padding: 10px 18px 14px;
-gap: 8px;
-z-index: 30;
-}
-
-.nav-mobile a {
-padding: 6px 0;
-font-size: 0.9rem;
-color: var(--text-main);
-}
-
-.nav-mobile.show {
-display: flex;
-}
-
-body.light .nav-mobile {
-background: rgba(249, 250, 251, 0.98);
-border-bottom-color: rgba(209, 213, 219, 0.9);
-}
-
-/* ========= PAGE LAYOUT ========= */
-
-.page {
-max-width: 1120px;
-margin: 0 auto;
-padding: 16px 20px 40px;
-}
-
-/* ========= HERO ========= */
-
-.section {
-margin-bottom: 40px;
-}
-
+/* --- HERO Wrapper --- */
 .hero {
-margin-top: 18px;
+  padding: 140px 0 120px;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
 }
 
-.hero-inner {
-border-radius: 28px;
-padding: 26px 24px 30px;
-background:
-radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), transparent 60%),
-radial-gradient(circle at top right, rgba(129, 140, 248, 0.26), transparent 65%),
-radial-gradient(circle at bottom, rgba(51, 65, 85, 0.9), transparent 70%),
-linear-gradient(145deg, #020617, #020617 32%, #050816 100%);
-border: 1px solid rgba(148, 163, 184, 0.6);
-box-shadow: var(--shadow-soft);
-display: grid;
-grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-gap: 26px;
-align-items: center;
+/* Glow רקע דינמי */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, var(--glow), transparent 65%);
+  filter: blur(65px);
+  opacity: 0.6;
+  animation: heroGlow 6s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
-.hero-kicker {
-font-size: 0.78rem;
-letter-spacing: 0.26em;
-text-transform: uppercase;
-color: var(--accent);
-margin-bottom: 8px;
+/* Glow נוסף מצד שמאל */
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -15%;
+  left: -10%;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, var(--primary), transparent 65%);
+  filter: blur(80px);
+  opacity: 0.25;
+  animation: heroGlow2 7s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
-.hero-title {
-font-size: clamp(2.1rem, 3.6vw, 3.2rem);
-font-weight: 800;
-line-height: 1.15;
-margin-bottom: 10px;
+@keyframes heroGlow {
+  from { transform: scale(1); opacity: 0.45; }
+  to   { transform: scale(1.12); opacity: 0.65; }
 }
 
-.hero-title span {
-background: linear-gradient(90deg, #4f46e5, #22d3ee, #a855f7);
--webkit-background-clip: text;
-background-clip: text;
-color: transparent;
+@keyframes heroGlow2 {
+  from { transform: scale(0.9); opacity: 0.18; }
+  to   { transform: scale(1.08); opacity: 0.32; }
 }
 
-.hero-sub {
-font-size: 0.95rem;
-color: var(--text-muted);
-max-width: 34rem;
+/* --- HERO Content --- */
+.hero h1 {
+  font-size: 3.2rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--text), var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.hero-sub strong {
-color: var(--accent);
-font-weight: 600;
+.hero p {
+  font-size: 1.25rem;
+  max-width: 720px;
+  margin: auto;
+  opacity: 0.9;
+  line-height: 1.6;
+  margin-bottom: 35px;
 }
 
-.hero-ctas {
-margin-top: 18px;
-display: flex;
-flex-wrap: wrap;
-gap: 12px;
+/* --- HERO Buttons --- */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
 }
 
-.btn-primary,
-.btn-ghost {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 8px;
-border-radius: var(--radius-pill);
-border: none;
-cursor: pointer;
-font-size: 0.92rem;
-font-weight: 600;
-padding: 10px 20px;
-transition:
-transform 0.16s ease,
-box-shadow 0.16s ease,
-opacity 0.16s ease,
-background 0.16s ease,
-border-color 0.16s ease;
+.hero .btn {
+  padding: 14px 34px;
+  font-size: 1.15rem;
+  border-radius: 50px;
+  font-weight: 700;
+  transition: 0.25s ease;
+  box-shadow: 0 0 18px rgba(0,0,0,0.15);
 }
 
-.btn-primary {
-background: linear-gradient(130deg, #6366f1, #22d3ee);
-color: #f9fafb;
-box-shadow: 0 18px 50px rgba(56, 189, 248, 0.6);
+.hero .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px var(--glow);
 }
 
-.btn-primary:hover {
-transform: translateY(-1px) scale(1.01);
-box-shadow: 0 22px 60px rgba(56, 189, 248, 0.75);
+/* כפתור outline בהיר במיוחד */
+.hero .btn-outline {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: transparent;
+}
+.hero .btn-outline:hover {
+  background: var(--primary);
+  color: #fff;
 }
 
-.btn-ghost {
-border: 1px solid rgba(148, 163, 184, 0.7);
-background: rgba(15, 23, 42, 0.9);
-color: var(--text-main);
+/* --- Hero Responsiveness --- */
+@media (max-width: 850px) {
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+  .her
+  /* styles.css — ייבנה בשלבים. חלק 1: בסיס, Reset, טיפוגרפיה, RTL, Theme */
+
+/* --- Reset בסיסי --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Assistant", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  direction: rtl;
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-.btn-ghost:hover {
-background: rgba(15, 23, 42, 1);
-border-color: rgba(148, 163, 184, 1);
+/* --- משתנים למצב לילה/יום --- */
+:root {
+  --bg: #ffffff;
+  --text: #111;
+  --primary: #0d6efd;
+  --card-bg: #f0f0f0;
+  --card-text: #222;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --glow: rgba(13, 110, 253, 0.35);
+}
+ody.dark-mode {
+  --bg: #0b0b0b;
+  --text: #e8e8e8;
+  --primary: #66b3ff;
+  --card-bg: #141414;
+  --card-text: #eee;
+  --shadow: rgba(255, 255, 255, 0.05);
+  --glow: rgba(102, 179, 255, 0.4);
 }
 
-/* ייעודי לוואטסאפ/מייל אם תרצה להשתמש */
-.btn-whatsapp {
-background: linear-gradient(135deg, #16a34a, #22c55e);
-color: #ecfdf5;
-border: none;
-box-shadow: 0 18px 40px rgba(34, 197, 94, 0.6);
+/* --- קונטיינר בסיסי --- */
+.container {
+  width: min(1200px, 90%);
+  margin: auto;
 }
 
-.btn-whatsapp:hover {
-box-shadow: 0 22px 50px rgba(34, 197, 94, 0.8);
+/* --- כותרות --- */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
-.btn-email {
-background: linear-gradient(135deg, #0ea5e9, #22d3ee);
-color: #e0f2fe;
-border: none;
-box-shadow: 0 18px 40px rgba(14, 165, 233, 0.6);
+/* --- Fade In Animations --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.btn-email:hover {
-box-shadow: 0 22px 50px rgba(14, 165, 233, 0.8);
+/* --- Cards בסיס --- */
+.card {
+  background: var(--card-bg);
+  color: var(--card-text);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px var(--glow);
 }
 
-.hero-tags {
-margin-top: 16px;
-display: flex;
-flex-wrap: wrap;
-gap: 8px;
+/* --- כפתורים --- */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: var(--primary);
+  color: white;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.btn:hover {
+  filter: brightness(1.15);
 }
 
-.hero-tag {
-font-size: 0.78rem;
-padding: 4px 10px;
-border-radius: 999px;
-border: 1px solid rgba(148, 163, 184, 0.7);
-background: rgba(15, 23, 42, 0.88);
-display: inline-flex;
-align-items: center;
-gap: 6px;
+/* כפתור outline */
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+.btn-outline:hover {
+  background: var(--primary);
+  color: white;
 }
 
-.dot {
-width: 8px;
-height: 8px;
-border-radius: 999px;
+/* --- Navbar (שלב 1) --- */
+.nav {
+  width: 100%;
+  padding: 18px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #ddd;
+  transition: background 0.3s ease;
+}
+body.dark-mode .nav {
+  background: rgba(0,0,0,0.65);
+  border-bottom: 1px solid #222;
 }
 
-.dot-green {
-background: #22c55e;
-box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.35);
+.nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.dot-cyan {
-background: #22d3ee;
-box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.35);
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
 }
 
-.dot-purple {
-background: #a855f7;
-box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.35);
+.nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  transition: 0.2s;
 }
 
-/* Hero visual / orbits */
-
-.hero-visual {
-position: relative;
+.nav a:hover {
+  color: var(--primary);
 }
 
-.hero-orbit {
-position: relative;
-width: 100%;
-max-width: 360px;
-aspect-ratio: 1 / 1;
-margin: 0 auto;
-border-radius: 999px;
-background:
-radial-gradient(circle at center, rgba(15, 23, 42, 0.9), #020617 70%);
-box-shadow:
-0 0 120px rgba(79, 70, 229, 0.7),
-0 0 180px rgba(34, 211, 238, 0.65);
-overflow: hidden;
+/* המשך יגיע לאחר אישורך — כולל Hero, אנימציות Glow, Stack טכנולוגי משופר, רספונסיביות, ועוד */
+
+
+/* =============================
+   חלק 2 — אזור ההירו המלא
+   כולל: Glow, גרדיאנט חי, טקסט חד,
+   כפתורים משופרים ורספונסיביות מלאה
+   ============================= */
+
+/* --- HERO Wrapper --- */
+.hero {
+  padding: 140px 0 120px;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
 }
 
-.orbit {
-position: absolute;
-inset: 34px;
-border-radius: 999px;
-border: 1px dashed rgba(129, 140, 248, 0.7);
-animation: orbit 16s linear infinite;
+/* Glow רקע דינמי */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, var(--glow), transparent 65%);
+  filter: blur(65px);
+  opacity: 0.6;
+  animation: heroGlow 6s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
-.orbit-2 {
-inset: 50px;
-border-style: solid;
-border-color: rgba(34, 211, 238, 0.7);
-animation-duration: 22s;
-animation-direction: reverse;
+/* Glow נוסף מצד שמאל */
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -15%;
+  left: -10%;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, var(--primary), transparent 65%);
+  filter: blur(80px);
+  opacity: 0.25;
+  animation: heroGlow2 7s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
-.orbit-3 {
-inset: 66px;
-border-color: rgba(168, 85, 247, 0.8);
-animation-duration: 28s;
+@keyframes heroGlow {
+  from { transform: scale(1); opacity: 0.45; }
+  to   { transform: scale(1.12); opacity: 0.65; }
 }
 
-.hero-node {
-position: absolute;
-padding: 6px 12px;
-border-radius: 999px;
-background: radial-gradient(circle at top, #f9fafb, #6366f1);
-color: #020617;
-font-size: 0.72rem;
-font-weight: 600;
-box-shadow:
-0 0 0 3px rgba(15, 23, 42, 0.9),
-0 0 30px rgba(129, 140, 248, 0.9);
+@keyframes heroGlow2 {
+  from { transform: scale(0.9); opacity: 0.18; }
+  to   { transform: scale(1.08); opacity: 0.32; }
 }
 
-.hero-node-main {
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
+/* --- HERO Content --- */
+.hero h1 {
+  font-size: 3.2rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--text), var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.hero-node-devops {
-top: 16%;
-right: 18%;
+.hero p {
+  font-size: 1.25rem;
+  max-width: 720px;
+  margin: auto;
+  opacity: 0.9;
+  line-height: 1.6;
+  margin-bottom: 35px;
 }
 
-.hero-node-auto {
-bottom: 20%;
-right: 10%;
+/* --- HERO Buttons --- */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
 }
 
-.hero-node-web {
-bottom: 18%;
-left: 14%;
+.hero .btn {
+  padding: 14px 34px;
+  font-size: 1.15rem;
+  border-radius: 50px;
+  font-weight: 700;
+  transition: 0.25s ease;
+  box-shadow: 0 0 18px rgba(0,0,0,0.15);
 }
 
-.hero-node-chat {
-top: 24%;
-left: 10%;
+.hero .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px var(--glow);
 }
 
-.hero-visual-caption {
-margin-top: 10px;
-text-align: center;
-font-size: 0.8rem;
-color: var(--text-muted);
+/* כפתור outline בהיר במיוחד */
+.hero .btn-outline {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: transparent;
+}
+.hero .btn-outline:hover {
+  background: var(--primary);
+  color: #fff;
 }
 
-/* Hero strip */
-
-.hero-strip {
-margin-top: 16px;
-padding: 10px 14px;
-border-radius: 999px;
-border: 1px solid rgba(148, 163, 184, 0.6);
-background:
-radial-gradient(circle at left, rgba(56, 189, 248, 0.15), transparent 60%),
-rgba(15, 23, 42, 0.95);
-display: flex;
-align-items: center;
-gap: 14px;
-overflow: hidden;
+/* --- Hero Responsiveness --- */
+@media (max-width: 850px) {
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+  .hero p {
+    font-size: 1.1rem;
+  }
 }
 
-.strip-label {
-font-size: 0.75rem;
-font-weight: 600;
-text-transform: uppercase;
-letter-spacing: 0.16em;
-color: var(--text-muted);
+@media (max-width: 480px) {
+  .hero {
+    padding: 110px 0 90px;
+  }
+  .hero h1 {
+    font-size: 2.05rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+}
+  /* styles.css — ייבנה בשלבים. חלק 1: בסיס, Reset, טיפוגרפיה, RTL, Theme */
+
+/* --- Reset בסיסי --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Assistant", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  direction: rtl;
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-.strip-items {
-display: flex;
-flex-wrap: wrap;
-gap: 10px;
-font-size: 0.8rem;
-color: var(--text-muted);
+/* --- משתנים למצב לילה/יום --- */
+:root {
+  --bg: #ffffff;
+  --text: #111;
+  --primary: #0d6efd;
+  --card-bg: #f0f0f0;
+  --card-text: #222;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --glow: rgba(13, 110, 253, 0.35);
+}
+ody.dark-mode {
+  --bg: #0b0b0b;
+  --text: #e8e8e8;
+  --primary: #66b3ff;
+  --card-bg: #141414;
+  --card-text: #eee;
+  --shadow: rgba(255, 255, 255, 0.05);
+  --glow: rgba(102, 179, 255, 0.4);
 }
 
-.strip-items span {
-padding: 3px 9px;
-border-radius: 999px;
-border: 1px solid rgba(148, 163, 184, 0.6);
-background: rgba(15, 23, 42, 0.8);
+/* --- קונטיינר בסיסי --- */
+.container {
+  width: min(1200px, 90%);
+  margin: auto;
 }
 
-/* ========= SECTIONS GENERIC ========= */
-
-.section-header {
-margin-bottom: 16px;
+/* --- כותרות --- */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
-.section-title {
-font-size: 1.4rem;
-font-weight: 700;
+/* --- Fade In Animations --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.section-subtitle {
-font-size: 0.9rem;
-color: var(--text-muted);
-max-width: 34rem;
+/* --- Cards בסיס --- */
+.card {
+  background: var(--card-bg);
+  color: var(--card-text);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px var(--glow);
 }
 
+/* --- כפתורים --- */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: var(--primary);
+  color: white;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.btn:hover {
+  filter: brightness(1.15);
+}
+
+/* כפתור outline */
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+.btn-outline:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* --- Navbar (שלב 1) --- */
+.nav {
+  width: 100%;
+  padding: 18px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #ddd;
+  transition: background 0.3s ease;
+}
+body.dark-mode .nav {
+  background: rgba(0,0,0,0.65);
+  border-bottom: 1px solid #222;
+}
+
+.nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.nav a:hover {
+  color: var(--primary);
+}
+
+/* המשך יגיע לאחר אישורך — כולל Hero, אנימציות Glow, Stack טכנולוגי משופר, רספונסיביות, ועוד */
+
+/* =============================
+   חלק 2 — אזור ההירו המלא
+   כולל: Glow, גרדיאנט חי, טקסט חד,
+   כפתורים משופרים ורספונסיביות מלאה
+   ============================= */
+
+/* --- HERO Wrapper --- */
+.hero {
+  padding: 140px 0 120px;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Glow רקע דינמי */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, var(--glow), transparent 65%);
+  filter: blur(65px);
+  opacity: 0.6;
+  animation: heroGlow 6s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+/* Glow נוסף מצד שמאל */
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -15%;
+  left: -10%;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, var(--primary), transparent 65%);
+  filter: blur(80px);
+  opacity: 0.25;
+  animation: heroGlow2 7s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes heroGlow {
+  from { transform: scale(1); opacity: 0.45; }
+  to   { transform: scale(1.12); opacity: 0.65; }
+}
+
+@keyframes heroGlow2 {
+  from { transform: scale(0.9); opacity: 0.18; }
+  to   { transform: scale(1.08); opacity: 0.32; }
+}
+
+/* --- HERO Content --- */
+.hero h1 {
+  font-size: 3.2rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--text), var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  max-width: 720px;
+  margin: auto;
+  opacity: 0.9;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+/* --- HERO Buttons --- */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.hero .btn {
+  padding: 14px 34px;
+  font-size: 1.15rem;
+  border-radius: 50px;
+  font-weight: 700;
+  transition: 0.25s ease;
+  box-shadow: 0 0 18px rgba(0,0,0,0.15);
+}
+
+.hero .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px var(--glow);
+}
+
+/* כפתור outline בהיר במיוחד */
+.hero .btn-outline {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: transparent;
+}
+.hero .btn-outline:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* --- Hero Responsiveness --- */
+@media (max-width: 850px) {
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+  .hero p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 110px 0 90px;
+  }
+  .hero h1 {
+    font-size: 2.05rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
+/* =============================
+   חלק 3 — כרטיסיות שירותים, סטאק, פרויקטים, טופס ו־reviews
+   כולל ניגודיות בלייט־מוד, אנימציות, תיקוני מובייל
+   ============================= */
+
+/* --- SERVICES CARDS GRID --- */
 .cards-grid {
-display: grid;
-gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 18px;
 }
 
 .card {
-border-radius: var(--radius-md);
-border: 1px solid var(--border-subtle);
-background:
-radial-gradient(circle at top left, rgba(129, 140, 248, 0.24), transparent 60%),
-rgba(15, 23, 42, 0.98);
-padding: 14px 14px 16px;
-box-shadow: var(--shadow-card);
-transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.03);
+  transition: transform 0.36s cubic-bezier(.2,.9,.3,1), box-shadow 0.36s;
 }
 
 .card:hover {
-transform: translateY(-4px);
-border-color: var(--accent);
-box-shadow: 0 20px 60px rgba(34, 211, 238, 0.5);
+  transform: translateY(-10px) scale(1.01);
+  box-shadow: 0 22px 70px rgba(34, 211, 238, 0.06);
 }
 
-.card-header {
-display: flex;
-align-items: center;
-justify-content: space-between;
-margin-bottom: 6px;
+.card-header { display:flex;justify-content:space-between;align-items:center }
+.card-title { font-weight:700; font-size:1.02rem }
+.card-text { color: var(--text-muted, rgba(255,255,255,0.7)); margin-top:10px; font-size:0.95rem }
+.card-chips { display:flex;gap:8px;flex-wrap:wrap;margin-top:12px }
+.chip { font-size:0.78rem;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03) }
+
+/* --- HIGH CONTRAST FOR LIGHT MODE (fix colors disappearing) --- */
+body.light .card, body.light .project-card, body.light .form-grid, body.light .reviews-form {
+  background: #ffffff;
+  color: #111827;
+  border-color: rgba(209,213,219,0.9);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.06);
+}
+body.light .card-text, body.light .project-text { color: #4b5563 }
+body.light .chip { background: #f3f4f6; border-color: rgba(203,213,225,0.6); }
+
+/* --- STACK ITEMS (fix cut on mobile) --- */
+.strip-items { display:flex;gap:10px;overflow-x:auto;padding-bottom:6px }
+.strip-items::-webkit-scrollbar{ height:8px }
+.strip-items::-webkit-scrollbar-thumb{ background: linear-gradient(90deg,var(--primary),var(--glow)); border-radius:999px }
+
+/* Ensure items are not wrapping and are visible */
+.strip-items span { white-space:nowrap;flex:0 0 auto }
+
+/* --- PROJECTS GRID --- */
+.projects-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:16px; margin-top:14px }
+.project-card { padding:16px; border-radius:14px; transition:transform .28s, box-shadow .28s }
+.project-card:hover { transform:translateY(-8px); box-shadow: 0 24px 80px rgba(79,70,229,0.12) }
+
+/* --- TIMELINE / PROCESS --- */
+.timeline { padding:16px; border-radius:14px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.03) }
+.timeline-item { display:flex; gap:12px; align-items:flex-start; padding:8px 0 }
+.timeline-dot { width:14px;height:14px;border-radius:999px;background:linear-gradient(90deg,var(--primary),var(--glow)); box-shadow:0 6px 18px rgba(34,211,238,0.14) }
+
+/* --- FORMS / CONTACT --- */
+.form-grid { display:grid; grid-template-columns: repeat(2,1fr); gap:12px; align-items:start }
+.form-field label { font-size:0.82rem; margin-bottom:6px; color:var(--text-muted, #9ca3af) }
+.form-field input, .form-field select, .form-field textarea {
+  width:100%; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.04); background: rgba(255,255,255,0.02); color:inherit; font-size:0.95rem; transition:box-shadow .16s, border-color .16s
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus { outline:none; box-shadow: 0 8px 30px rgba(34,211,238,0.06); border-color: var(--primary) }
+
+.form-field.full { grid-column:1/-1 }
+.form-footer { grid-column:1/-1; display:flex; justify-content:space-between; align-items:center; gap:10px }
+
+/* --- REVIEWS --- */
+.reviews-layout { display:grid; grid-template-columns: 1fr 360px; gap:14px }
+.reviews-list { display:flex; flex-direction:column; gap:10px }
+.review-card { padding:12px; border-radius:12px }
+
+/* --- FINAL CTA --- */
+.final-cta-inner { padding:28px; border-radius:20px; box-shadow:0 24px 80px rgba(79,70,229,0.12) }
+
+/* --- FOOTER --- */
+.footer { margin-top:30px; padding-top:20px; display:flex; justify-content:space-between; gap:12px; align-items:center }
+
+/* --- ACCESSIBILITY & FOCUS STATES --- */
+button:focus, a:focus, input:focus, textarea:focus { outline: 3px solid rgba(124,92,255,0.16); outline-offset:3px }
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 1100px) {
+  .cards-grid { grid-template-columns: repeat(2,1fr) }
+  .projects-grid { grid-template-columns: repeat(2,1fr) }
+  .reviews-layout { grid-template-columns: 1fr }
 }
 
-.card-title {
-font-size: 0.96rem;
-font-weight: 600;
+@media (max-width: 780px) {
+  .cards-grid { grid-template-columns: 1fr }
+  .form-grid { grid-template-columns: 1fr }
+  .hero h1 { font-size: 2.4rem }
+  .hero p { font-size: 1.05rem }
 }
 
-.card-icon {
-font-size: 1.2rem;
+@media (max-width: 480px) {
+  .nav-links { display:none }
+  .hamburger { display:flex }
+  .strip-items { gap:12px }
+  .hero { padding: 100px 0 80px }
 }
 
-.card-text {
-font-size: 0.86rem;
-color: var(--text-muted);
-margin-bottom: 8px;
+/* --- Small helpers for RTL icons spacing --- */
+.icon-left { margin-left:8px }
+.icon-right { margin-right:8px }
+
+/* =============================
+   חלק 3 סיים — כעת יש לך כרטיסיות משודרגות,
+   תיקוני ניגודיות בלייט מוד, סטק גליל אופקי במובייל,
+   וטפסים עם פוקוס חזק.
+
+   כשתהיה מוכן — אמשיך לחלק 4:
+   - אנימציות מטושטשות מתקדמות (parallax קל),
+   - סקריפטים לצניחה ול־tilt קל בכרטיסיות,
+   - אייקונים ואפקטים זוהרים,
+   - והכנת עמודי ה‚Multi-page‘ (services.html, projects.html וכו').
+   ============================= */
+// app.js — Core interactions, animations and lead handling (no external libs)
+// © AutoRoy Cloud — Vanilla JS, RTL-ready
+
+/* -----------------
+   CONFIG (edit these)
+   ----------------- */
+const CONFIG = {
+  EMAILJS: {
+    SERVICE_ID: 'YOUR_SERVICE_ID', // replace when ready
+    TEMPLATE_ID: 'YOUR_TEMPLATE_ID',
+    PUBLIC_KEY: 'YOUR_PUBLIC_KEY'
+  },
+  LEAD_EMAIL: 'autoroybiz@gmail.com', // destination if fallback used
+  WHATSAPP: '972547222023'
+};
+
+/* -----------------
+   THEME TOGGLE
+   ----------------- */
+const body = document.body;
+const themeToggle = document.getElementById('themeToggle');
+(function initTheme(){
+  try{
+    const saved = localStorage.getItem('autoroy-theme');
+    if(saved === 'light') body.classList.add('light');
+    else body.classList.remove('light');
+    updateThemeIcon();
+  }catch(e){ console.warn('theme init', e); }
+})();
+function updateThemeIcon(){ if(!themeToggle) return; themeToggle.textContent = body.classList.contains('light') ? '🌞' : '🌙'; }
+if(themeToggle){ themeToggle.addEventListener('click', ()=>{ body.classList.toggle('light'); localStorage.setItem('autoroy-theme', body.classList.contains('light') ? 'light' : 'dark'); updateThemeIcon(); }); }
+
+/* -----------------
+   MOBILE NAV
+   ----------------- */
+const hamburger = document.getElementById('hamburger');
+const navMobile = document.getElementById('navMobile');
+if(hamburger){ hamburger.addEventListener('click', ()=>{ const showing = navMobile && navMobile.classList.toggle('show'); if(navMobile) navMobile.setAttribute('aria-hidden', showing? 'false' : 'true'); hamburger.setAttribute('aria-expanded', showing? 'true' : 'false'); }); }
+function closeMobile(){ if(navMobile) { navMobile.classList.remove('show'); navMobile.setAttribute('aria-hidden','true'); } if(hamburger) hamburger.setAttribute('aria-expanded','false'); }
+window.closeMobile = closeMobile;
+
+// Close mobile nav when clicking outside
+document.addEventListener('click', (e)=>{
+  if(!navMobile || !hamburger) return;
+  if(navMobile.classList.contains('show') && !navMobile.contains(e.target) && !hamburger.contains(e.target)) closeMobile();
+});
+
+/* -----------------
+   SMOOTH SCROLL helpers
+   ----------------- */
+function scrollToSection(sel){ const el = document.querySelector(sel); if(!el) return; el.scrollIntoView({behavior:'smooth',block:'start'}); }
+['btnContact','ctaTalk','startTalk','btnContactHeader','btnShow','startTalk'].forEach(id=>{ const el=document.getElementById(id); if(el) el.addEventListener('click', ()=>scrollToSection('#contact')); });
+
+/* -----------------
+   REVEAL ON SCROLL (IntersectionObserver)
+   ----------------- */
+const revealObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('visible'); revealObserver.unobserve(en.target); } });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
+/* -----------------
+   HERO PARALLAX & ORBIT NODES
+   ----------------- */
+(function heroParallax(){
+  const hero = document.querySelector('.hero');
+  const nodes = document.querySelectorAll('.hero-node');
+  if(!hero || !nodes.length) return;
+  let rect = hero.getBoundingClientRect();
+  window.addEventListener('resize', ()=>{ rect = hero.getBoundingClientRect(); });
+  hero.addEventListener('pointermove', (ev)=>{
+    const x = (ev.clientX - (rect.left + rect.width/2)) / rect.width; // -0.5 .. 0.5 roughly
+    const y = (ev.clientY - (rect.top + rect.height/2)) / rect.height;
+    nodes.forEach((n, idx)=>{
+      const depth = (idx+1)/nodes.length; // 0..1
+      const tx = x * 18 * depth; // px
+      const ty = y * 12 * depth;
+      n.style.transform = `translate(${tx}px, ${ty}px) scale(${1 - depth*0.02})`;
+    });
+  });
+  // subtle idle motion
+  let t = 0; function idleLoop(){ t+=0.002; nodes.forEach((n, idx)=>{ const d = (idx+1)/nodes.length; const dx = Math.sin(t*(0.5+idx*0.1))*6*d; const dy = Math.cos(t*(0.3+idx*0.08))*4*d; n.style.transform = `translate(${dx}px, ${dy}px)`; }); requestAnimationFrame(idleLoop); }
+  requestAnimationFrame(idleLoop);
+})();
+
+/* -----------------
+   TILT EFFECT FOR CARDS (pointer-based, accessible)
+   ----------------- */
+(function cardTilt(){
+  const cards = document.querySelectorAll('.card');
+  if(!cards.length) return;
+  cards.forEach(card=>{
+    let rect = null;
+    card.addEventListener('pointerenter', ()=>{ rect = card.getBoundingClientRect(); card.style.transition = 'transform 0.18s cubic-bezier(.2,.9,.3,1), box-shadow 0.18s'; });
+    card.addEventListener('pointermove', (ev)=>{
+      if(!rect) rect = card.getBoundingClientRect();
+      const px = (ev.clientX - rect.left) / rect.width; // 0..1
+      const py = (ev.clientY - rect.top) / rect.height;
+      const rx = (py - 0.5) * 6; // rotation X
+      const ry = (0.5 - px) * 10; // rotation Y
+      const tz = 8;
+      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(${tz}px)`;
+      card.style.boxShadow = `0 20px 60px rgba(34,211,238,0.06)`;
+    });
+    card.addEventListener('pointerleave', ()=>{ card.style.transform='none'; card.style.boxShadow=''; card.style.transition='transform 0.6s cubic-bezier(.2,.9,.3,1), box-shadow 0.6s'; });
+  });
+})();
+
+/* -----------------
+   ORBIT LAYERS ROTATION (CSS classes with animation already provided)
+   If you want JS control, you can add small speed variation here.
+   ----------------- */
+(function orbitSpeedAdjust(){
+  const orbits = document.querySelectorAll('.orbit');
+  if(!orbits.length) return;
+  orbits.forEach((o, i)=>{ const dur = 18 + i*6; o.style.animationDuration = `${dur}s`; });
+})();
+
+/* -----------------
+   STACK AUTO-SCROLL (small helper for touch swipes)
+   ----------------- */
+(function enhanceStrip(){ const strip = document.getElementById('stackItems'); if(!strip) return; let isDown=false, startX, scrollLeft; strip.addEventListener('pointerdown',(e)=>{ isDown=true; strip.setPointerCapture(e.pointerId); startX=e.clientX; scrollLeft=strip.scrollLeft; strip.classList.add('dragging'); }); strip.addEventListener('pointermove',(e)=>{ if(!isDown) return; const x = e.clientX; const walk = (startX - x); strip.scrollLeft = scrollLeft + walk; }); ['pointerup','pointercancel','pointerleave'].forEach(ev=>strip.addEventListener(ev, ()=>{ isDown=false; strip.classList.remove('dragging'); })); })();
+
+/* -----------------
+   CONTACT FORM — EmailJS integration (client-side) + fallback mailto
+   Steps: sign up at emailjs.com, create service & template, fill CONFIG.EMAILJS
+   ----------------- */
+const leadForm = document.getElementById('leadForm');
+if(leadForm){ leadForm.addEventListener('submit', handleLeadSubmit); }
+
+async function handleLeadSubmit(e){
+  e.preventDefault();
+  const name = document.getElementById('lead-name')?.value.trim() || 'לקוח חדש';
+  const business = document.getElementById('lead-business')?.value.trim() || '';
+  const contact = document.getElementById('lead-contact')?.value.trim() || '';
+  const type = document.getElementById('lead-type')?.value || '';
+  const message = document.getElementById('lead-message')?.value.trim() || '';
+  const note = document.getElementById('lead-note');
+
+  if(!contact){ alert('אנא מלא טלפון או מייל כדי שנוכל ליצור איתך קשר.'); return; }
+
+  // If developer configured EmailJS values — use EmailJS
+  const {SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY} = CONFIG.EMAILJS;
+  if(SERVICE_ID && SERVICE_ID !== 'YOUR_SERVICE_ID'){
+    try{
+      if(typeof emailjs === 'undefined' && !window._emailjs_loading){
+        window._emailjs_loading = true;
+        const s = document.createElement('script'); s.src='https://cdn.emailjs.com/sdk/3.2.0/email.min.js'; document.head.appendChild(s);
+        await new Promise((res,rej)=>{ s.onload = res; s.onerror = rej; });
+      }
+      emailjs.init(PUBLIC_KEY);
+      const templateParams = { from_name:name, business, contact, type, message, to_email: CONFIG.LEAD_EMAIL };
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams);
+      if(note){ note.textContent = 'תודה! הפנייה נשלחה — נחזור בהקדם.'; note.style.color = '#a5f3fc'; }
+      leadForm.reset();
+      return;
+    }catch(err){ console.warn('EmailJS failed', err); /* fallback below */ }
+  }
+
+  // Fallback: open user's email client (mailto) prefilled
+  const subject = encodeURIComponent(`פנייה מ-AutoRoy Cloud — ${name}`);
+  const body = encodeURIComponent(`שם: ${name}\nעסק: ${business}\nיצירת קשר: ${contact}\nתחום: ${type}\n\nהודעה:\n${message}`);
+  window.location.href = `mailto:${CONFIG.LEAD_EMAIL}?subject=${subject}&body=${body}`;
 }
 
-.card-chips {
-display: flex;
-flex-wrap: wrap;
-gap: 6px;
+// Optional: POST to your own server endpoint (recommended for production)
+async function sendLeadToServer(payload){
+  try{
+    const res = await fetch('/lead', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+    return await res.json();
+  }catch(e){ console.error('sendLeadToServer', e); throw e; }
 }
 
-.chip {
-font-size: 0.72rem;
-padding: 3px 7px;
-border-radius: 999px;
-border: 1px solid rgba(148, 163, 184, 0.7);
-background: rgba(15, 23, 42, 0.88);
-}
+/* -----------------
+   REVIEWS form — local append + localStorage
+   ----------------- */
+const reviewsForm = document.querySelector('.reviews-form');
+if(reviewsForm){ reviewsForm.addEventListener('submit', (e)=>{ e.preventDefault(); const name = (document.getElementById('review-name')?.value || 'אנונימי'); const text = (document.getElementById('review-text')?.value || '').trim(); const note = document.getElementById('review-note'); if(!text){ if(note){ note.textContent='כתבו לפחות משפט אחד כדי לשמור ביקורת.'; note.style.color='#fecaca'; } return; } const list = document.getElementById('reviewsList'); if(list){ const card = document.createElement('article'); card.className='review-card'; card.innerHTML = `<div class="review-head"><span class="review-name">${name}</span><span class="review-tag">ביקורת מאתר AutoRoy</span></div><p class="review-text">${text}</p>`; list.prepend(card); } if(note){ note.textContent='תודה! הביקורת נשמרה.'; note.style.color='#a5f3fc'; } reviewsForm.reset(); }); }
 
-/* ========= PROJECTS ========= */
+/* -----------------
+   ACCESSIBILITY / KEYBOARD HELPERS
+   ----------------- */
+window.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape') closeMobile();
+});
 
-.projects-grid {
-display: grid;
-gap: 16px;
-}
+// focus visible polyfill-ish (adds class when keyboard used)
+(function focusVisibleHelper(){ let keyboard = false; window.addEventListener('keydown', ()=>{ keyboard = true; document.documentElement.classList.add('using-keyboard'); }); window.addEventListener('mousedown', ()=>{ keyboard = false; document.documentElement.classList.remove('using-keyboard'); }); })();
 
-.project-card {
-border-radius: var(--radius-md);
-border: 1px solid var(--border-subtle);
-background:
-radial-gradient(circle at top, rgba(56, 189, 248, 0.16), transparent 60%),
-rgba(15, 23, 42, 0.98);
-padding: 14px 14px 16px;
-box-shadow: var(--shadow-card);
-transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-}
+/* -----------------
+   PERFORMANCE TIPS (runtime):
+   - images should use loading="lazy" where possible
+   - avoid large background images
+   - host scripts/styles via CDN or use HTTP2
+   ----------------- */
 
-.project-card:hover {
-transform: translateY(-4px);
-border-color: var(--primary);
-box-shadow: 0 20px 60px rgba(99, 102, 241, 0.6);
-}
-
-.project-tag {
-font-size: 0.75rem;
-color: var(--accent);
-margin-bottom: 4px;
-}
-
-.project-title {
-font-size: 1rem;
-font-weight: 600;
-margin-bottom: 6px;
-}
-
-.project-text {
-font-size: 0.86rem;
-color: var(--text-muted);
-margin-bottom: 6px;
-}
-
-.project-list {
-list-style: none;
-padding-right: 0;
-margin-bottom: 8px;
-font-size: 0.82rem;
-color: var(--text-muted);
-}
-
-.project-list li::before {
-content: "• ";
-color: var(--accent);
-}
-
-.project-footer {
-font-size: 0.78rem;
-color: var(--text-muted);
-}
-
-/* ========= PROCESS / TIMELINE ========= */
-
-.timeline {
-border-radius: var(--radius-md);
-border: 1px solid var(--border-subtle);
-background:
-radial-gradient(circle at top, rgba(129, 140, 248, 0.18), transparent 65%),
-rgba(15, 23, 42, 0.96);
-padding: 14px 16px 16px;
-box-shadow: var(--shadow-card);
-}
-
-.timeline-item {
-display: grid;
-grid-template-columns: auto 1fr;
-gap: 10px 12px;
-padding: 8px 0;
-position: relative;
-}
-
-.timeline-item:not(:last-child)::after {
-content: "";
-position: absolute;
-top: 20px;
-right: 8px;
-bottom: -8px;
-width: 1px;
-background: linear-gradient(to bottom, rgba(148, 163, 184, 0.8), transparent);
-}
-
-.timeline-dot {
-width: 16px;
-height: 16px;
-border-radius: 999px;
-background: radial-gradient(circle, #f9fafb, #6366f1);
-box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.3);
-margin-top: 4px;
-}
-
-.timeline-content h3 {
-font-size: 0.98rem;
-margin-bottom: 3px;
-}
-
-.timeline-content p {
-font-size: 0.84rem;
-color: var(--text-muted);
-}
-
-/* ========= FORMS / CONTACT ========= */
-
-.form-grid {
-border-radius: var(--radius-md);
-border: 1px solid var(--border-subtle);
-background: rgba(15, 23, 42, 0.96);
-padding: 14px 14px 16px;
-display: grid;
-gap: 10px;
-box-shadow: var(--shadow-card);
-}
-
-.form-field label {
-font-size: 0.78rem;
-margin-bottom: 3px;
-display: block;
-}
-
-.form-field input,
-.form-field select,
-.form-field textarea {
-width: 100%;
-border-radius: 10px;
-border: 1px solid rgba(148, 163, 184, 0.7);
-background: rgba(15, 23, 42, 0.96);
-color: var(--text-main);
-padding: 8px 10px;
-font-size: 0.86rem;
-}
-
-.form-field textarea {
-min-height: 80px;
-resize: vertical;
-}
-
-.form-field input::placeholder,
-.form-field textarea::placeholder {
-color: #6b7280;
-}
-
-.form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus {
-outline: none;
-border-color: var(--accent);
-box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.4);
-}
-
-.form-field.full {
-grid-column: 1 / -1;
-}
-
-.form-footer {
-margin-top: 6px;
-display: flex;
-flex-wrap: wrap;
-gap: 8px;
-align-items: center;
-justify-content: space-between;
-font-size: 0.78rem;
-}
-
-.form-note {
-color: var(--text-muted);
-max-width: 28rem;
-}
-
-.form-actions {
-display: flex;
-flex-wrap: wrap;
-gap: 8px;
-}
-
-.btn-sm {
-padding: 7px 14px;
-font-size: 0.82rem;
-}
-
-/* ========= REVIEWS ========= */
-
-.reviews-layout {
-display: grid;
-gap: 14px;
-}
-
-.reviews-list {
-display: grid;
-gap: 8px;
-}
-
-.review-card {
-border-radius: 14px;
-border: 1px solid var(--border-subtle);
-background: rgba(15, 23, 42, 0.96);
-padding: 10px 11px;
-font-size: 0.82rem;
-color: var(--text-main);
-}
-
-.review-head {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 3px;
-}
-
-.review-name {
-font-weight: 600;
-font-size: 0.8rem;
-}
-
-.review-tag {
-font-size: 0.75rem;
-color: var(--accent);
-}
-
-.review-text {
-font-size: 0.82rem;
-color: var(--text-muted);
-}
-
-.reviews-form {
-border-radius: var(--radius-md);
-border: 1px solid var(--border-subtle);
-background: rgba(15, 23, 42, 0.96);
-padding: 14px 14px 16px;
-box-shadow: var(--shadow-card);
-display: grid;
-gap: 8px;
-}
-
-/* ========= FINAL CTA ========= */
-
-.final-cta {
-margin-top: 10px;
-}
-
-.final-cta-inner {
-border-radius: var(--radius-lg);
-padding: 22px 18px 20px;
-background:
-radial-gradient(circle at top left, rgba(225, 239, 254, 0.16), transparent 55%),
-radial-gradient(circle at bottom right, rgba(254, 249, 195, 0.16), transparent 55%),
-linear-gradient(135deg, #4f46e5, #22c55e);
-color: #f9fafb;
-text-align: center;
-box-shadow: 0 24px 60px rgba(79, 70, 229, 0.8);
-}
-
-.final-cta-inner h2 {
-font-size: 1.5rem;
-margin-bottom: 6px;
-}
-
-.final-cta-inner p {
-font-size: 0.9rem;
-opacity: 0.95;
-margin-bottom: 14px;
-}
-
-.final-cta-actions {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-gap: 10px;
-}
-
-/* ========= FOOTER ========= */
-
-.footer {
-margin-top: 24px;
-padding-top: 14px;
-border-top: 1px solid rgba(51, 65, 85, 0.85);
-display: flex;
-flex-wrap: wrap;
-gap: 10px;
-justify-content: space-between;
-font-size: 0.78rem;
-color: var(--text-muted);
-}
-
-.footer-links {
-display: flex;
-gap: 12px;
-}
-
-/* ========= REVEAL ANIMATION ========= */
-
-.reveal {
-opacity: 0;
-transform: translateY(24px);
-transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.reveal.show {
-opacity: 1;
-transform: translateY(0);
-}
-
-/* ========= ANIMATIONS ========= */
-
-@keyframes orbit {
-from { transform: rotate(0deg); }
-to { transform: rotate(360deg); }
-}
-
-/* ========= RESPONSIVE ========= */
-
-@media (min-width: 768px) {
-.page {
-padding-inline: 26px;
-}
-
-.cards-grid {
-grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.projects-grid {
-grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.reviews-layout {
-grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-}
-}
+/* End of app.js */
+/* =============== MOBILE POLISH / RESPONSIVE ULTRA CLEAN =============== */
 
 @media (max-width: 900px) {
-.hero-inner {
-grid-template-columns: minmax(0, 1fr);
-}
+  .hero {
+    padding: 110px 0 90px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2.35rem;
+    line-height: 1.25;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    opacity: 0.9;
+    margin-bottom: 28px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .timeline {
+    padding: 14px 16px;
+  }
+
+  .reviews-layout {
+    grid-template-columns: 1fr !important;
+  }
 }
 
-@media (max-width: 768px) {
-.nav-links {
-display: none;
-}
+@media (max-width: 480px) {
+  body {
+    font-size: 15px;
+  }
 
-.hamburger {
-display: flex;
-}
+  .nav {
+    padding: 14px 0;
+  }
 
-.page {
-padding-inline: 16px;
-}
+  .nav-logo span {
+    font-size: 18px;
+  }
 
-.hero-inner {
-padding: 20px 16px 24px;
-border-radius: 22px;
-}
+  .hero h1 {
+    font-size: 1.85rem;
+  }
 
-.hero-strip {
-flex-direction: column;
-align-items: flex-start;
-}
+  .hero p {
+    font-size: 0.95rem;
+  }
 
-.timeline {
-padding-inline: 12px;
-}
+  .strip-items {
+    gap: 12px;
+    padding-bottom: 4px;
+    scroll-snap-type: x mandatory;
+  }
+  .strip-items span {
+    scroll-snap-align: start;
+  }
 
-.form-grid,
-.reviews-form {
-padding-inline: 12px;
-}
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
 
-.footer {
-flex-direction: column;
-}
-}
-
-/* ========= LIGHT MODE OVERRIDES ========= */
-
-body.light .card,
-body.light .project-card,
-body.light .timeline,
-body.light .form-grid,
-body.light .review-card,
-body.light .reviews-form {
-background: var(--bg-elevated-light);
-border-color: rgba(209, 213, 219, 0.9);
-box-shadow: 0 18px 42px rgba(15, 23, 42, 0.14);
-}
-
-body.light .hero-inner {
-background:
-radial-gradient(circle at top left, rgba(191, 219, 254, 0.6), transparent 55%),
-radial-gradient(circle at top right, rgba(221, 214, 254, 0.7), transparent 60%),
-#f9fafb;
-border-color: rgba(209, 213, 219, 0.95);
-box-shadow: 0 22px 60px rgba(15, 23, 42, 0.12);
-}
-
-body.light .hero-strip {
-background: rgba(255, 255, 255, 0.96);
-border-color: rgba(209, 213, 219, 0.9);
-}
-
-body.light .hero-tag,
-body.light .strip-items span {
-background: #f9fafb;
-}
-
-body.light .hero-orbit {
-background:
-radial-gradient(circle at center, #e5e7eb, #c7d2fe 70%);
-}
-
-body.light .form-field input,
-body.light .form-field select,
-body.light .form-field textarea {
-background: #f9fafb;
-color: #111827;
-}
-
-body.light .project-card,
-body.light .card {
-background: #f9fafb;
-}
-
-body.light .section-subtitle,
-body.light .card-text,
-body.light .project-text,
-body.light .project-list,
-body.light .timeline-content p,
-body.light .form-note,
-body.light .review-text,
-body.light .footer {
-color: #4b5563;
+  .form-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
