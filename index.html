@@ -1,881 +1,44 @@
+
+roy aharonovich
+7:54 PM (25 minutes ago)
+to me
+
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AutoRoy 🚀 Cloud DevOps & Automations</title>
-<meta name="description" content="AutoRoy Cloud - פתרונות DevOps ואוטומציות לעסקים: תשתיות ענן, צ'אטים, מערכות לידים ואתרי נחיתה מהירים." />
+<title>AutoRoy Cloud — DevOps & Automations</title>
+<meta name="description" content="AutoRoy Cloud - פתרונות DevOps ואוטומציות לעסקים: תשתיות בענן, צ'אטים, לידים, ואתרים מהירים ומקצועיים." />
 
-<!-- Favicon – ודא שהקובץ קיים ברוט של הפרויקט -->
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-<style>
-:root {
---bg: #050816;
---bg-alt: #050816;
---bg-elevated: rgba(15, 23, 42, 0.92);
---bg-elevated-light: #ffffff;
---primary: #6366f1; /* אינדיגו */
---primary-soft: rgba(99, 102, 241, 0.15);
---accent: #22d3ee; /* טורקיז */
---accent-soft: rgba(34, 211, 238, 0.18);
---text-main: #e5e7eb;
---text-muted: #9ca3af;
---border-subtle: rgba(148, 163, 184, 0.4);
---danger: #f97373;
-
---radius-lg: 22px;
---radius-md: 16px;
---radius-pill: 999px;
-
---shadow-soft: 0 24px 60px rgba(15, 23, 42, 0.75);
---shadow-chip: 0 10px 30px rgba(79, 70, 229, 0.45);
---nav-height: 64px;
-}
-
-* {
-box-sizing: border-box;
-margin: 0;
-padding: 0;
-}
-
-body {
-font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Rubik', sans-serif;
-background:
-radial-gradient(circle at top, #1f2937 0, transparent 55%),
-radial-gradient(circle at bottom, #1e1b4b 0, transparent 60%),
-var(--bg);
-color: var(--text-main);
-min-height: 100vh;
-line-height: 1.5;
--webkit-font-smoothing: antialiased;
-transition: background 0.35s ease, color 0.35s ease;
-}
-
-body.light {
-background: #f3f4f6;
-color: #111827;
-}
-
-body.light .card,
-body.light .section-inner {
-background: var(--bg-elevated-light);
-border-color: rgba(148, 163, 184, 0.35);
-box-shadow: 0 18px 40px rgba(15, 23, 42, 0.15);
-}
-
-body.light .hero-gradient {
-background: radial-gradient(circle at top, #eef2ff 0, #eff6ff 40%, #f9fafb 100%);
-}
-
-body.light .nav {
-background: rgba(249, 250, 251, 0.9);
-border-bottom: 1px solid rgba(209, 213, 219, 0.8);
-box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-}
-
-body.light .nav-logo-text {
-color: #111827;
-}
-
-body.light .nav-link {
-color: #111827;
-}
-
-body.light .hero-title span {
-color: #111827;
-}
-
-body.light .pill-soft {
-background: rgba(129, 140, 248, 0.07);
-border-color: rgba(129, 140, 248, 0.35);
-color: #1f2937;
-}
-
-body.light .feature-label {
-color: #4b5563;
-}
-
-body.light .pill-outline {
-border-color: rgba(129, 140, 248, 0.5);
-color: #111827;
-}
-
-body.light .input,
-body.light textarea {
-background: #f9fafb;
-color: #111827;
-border-color: rgba(148, 163, 184, 0.6);
-}
-
-body.light footer {
-border-top-color: rgba(209, 213, 219, 0.9);
-color: #4b5563;
-}
-
-a {
-color: inherit;
-text-decoration: none;
-}
-
-.page {
-max-width: 1120px;
-margin: 0 auto;
-padding: 0 16px 40px;
-}
-
-/* --- NAVBAR --- */
-
-.nav {
-position: sticky;
-top: 0;
-z-index: 40;
-height: var(--nav-height);
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 0 16px;
-background: rgba(5, 8, 22, 0.92);
-backdrop-filter: blur(20px);
-border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-}
-
-.nav-left {
-display: flex;
-align-items: center;
-gap: 8px;
-}
-
-.nav-logo {
-width: 32px;
-height: 32px;
-border-radius: 12px;
-background: radial-gradient(circle at 30% 0, #facc15, transparent 55%),
-linear-gradient(135deg, #4f46e5, #06b6d4);
-display: flex;
-align-items: center;
-justify-content: center;
-box-shadow: 0 12px 30px rgba(79, 70, 229, 0.7);
-transform: translateY(1px);
-}
-
-.nav-logo span {
-font-size: 18px;
-}
-
-.nav-logo-text {
-font-weight: 700;
-font-size: 0.98rem;
-letter-spacing: 0.02em;
-}
-
-.nav-logo-sub {
-display: block;
-font-size: 0.7rem;
-color: var(--text-muted);
-}
-
-.nav-links {
-display: flex;
-align-items: center;
-gap: 18px;
-font-size: 0.9rem;
-}
-
-.nav-link {
-position: relative;
-color: var(--text-main);
-cursor: pointer;
-padding-bottom: 2px;
-}
-
-.nav-link::after {
-content: "";
-position: absolute;
-right: 0;
-bottom: -3px;
-width: 0;
-height: 2px;
-border-radius: 999px;
-background: linear-gradient(90deg, var(--accent), var(--primary));
-transition: width 0.2s ease;
-}
-
-.nav-link:hover::after {
-width: 100%;
-}
-
-.nav-actions {
-display: flex;
-align-items: center;
-gap: 10px;
-}
-
-.theme-toggle {
-width: 34px;
-height: 34px;
-border-radius: 50%;
-border: 1px solid rgba(148, 163, 184, 0.6);
-background: radial-gradient(circle at 30% 0, #fde68a 0, #1f2937 55%);
-display: flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-font-size: 1.05rem;
-box-shadow: 0 14px 28px rgba(15, 23, 42, 0.7);
-transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.theme-toggle:hover {
-transform: translateY(-1px);
-box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
-}
-
-.theme-toggle span {
-pointer-events: none;
-}
-
-.pill-nav {
-display: none;
-padding: 6px 12px;
-border-radius: 999px;
-border: 1px solid rgba(148, 163, 184, 0.7);
-font-size: 0.8rem;
-color: var(--text-main);
-}
-
-.hamburger {
-display: none;
-width: 32px;
-height: 32px;
-border-radius: 999px;
-border: 1px solid rgba(148, 163, 184, 0.7);
-display: none;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-background: rgba(15, 23, 42, 0.9);
-}
-
-.hamburger-line {
-width: 14px;
-height: 1.5px;
-background: #e5e7eb;
-position: relative;
-}
-
-.hamburger-line::before,
-.hamburger-line::after {
-content: "";
-position: absolute;
-width: 14px;
-height: 1.5px;
-background: #e5e7eb;
-left: 0;
-}
-
-.hamburger-line::before {
-top: -4px;
-}
-
-.hamburger-line::after {
-top: 4px;
-}
-
-.nav-mobile {
-display: none;
-}
-
-/* --- HERO --- */
-
-.hero {
-padding-top: 26px;
-padding-bottom: 40px;
-}
-
-.hero-gradient {
-border-radius: 28px;
-padding: 20px 18px 26px;
-background:
-radial-gradient(circle at top left, rgba(56, 189, 248, 0.16) 0, transparent 55%),
-radial-gradient(circle at top right, rgba(129, 140, 248, 0.2) 0, transparent 60%),
-radial-gradient(circle at bottom, rgba(56, 189, 248, 0.16) 0, transparent 55%),
-linear-gradient(145deg, #020617, #020617 32%, #050816 100%);
-box-shadow: var(--shadow-soft);
-border: 1px solid rgba(148, 163, 184, 0.45);
-display: grid;
-gap: 22px;
-}
-
-.hero-kicker {
-font-size: 0.82rem;
-letter-spacing: 0.24em;
-text-transform: uppercase;
-color: var(--accent);
-margin-bottom: 6px;
-}
-
-.hero-title {
-font-size: clamp(2.1rem, 3.1vw + 1.2rem, 3rem);
-font-weight: 800;
-line-height: 1.12;
-margin-bottom: 10px;
-}
-
-.hero-title span {
-background: linear-gradient(90deg, #4f46e5, #22d3ee, #a855f7);
--webkit-background-clip: text;
-background-clip: text;
-color: transparent;
-}
-
-.hero-sub {
-font-size: 0.98rem;
-color: var(--text-muted);
-max-width: 36rem;
-}
-
-.hero-sub strong {
-color: var(--accent);
-font-weight: 600;
-}
-
-.hero-ctas {
-margin-top: 16px;
-display: flex;
-flex-wrap: wrap;
-gap: 10px;
-}
-
-.btn-primary {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 8px;
-padding: 10px 18px;
-border-radius: var(--radius-pill);
-background: linear-gradient(120deg, #6366f1, #22d3ee);
-color: #fff;
-font-weight: 600;
-font-size: 0.95rem;
-border: none;
-cursor: pointer;
-box-shadow: var(--shadow-chip);
-transition: transform 0.16s ease, box-shadow 0.16s ease, opacity 0.16s ease;
-}
-
-.btn-primary:hover {
-transform: translateY(-1px) scale(1.01);
-box-shadow: 0 16px 40px rgba(56, 189, 248, 0.6);
-}
-
-.btn-outline {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 6px;
-padding: 9px 16px;
-border-radius: var(--radius-pill);
-border: 1px solid rgba(129, 140, 248, 0.75);
-color: #e5e7eb;
-font-size: 0.9rem;
-background: transparent;
-cursor: pointer;
-transition: background 0.16s ease, transform 0.16s ease;
-}
-
-.btn-outline:hover {
-background: rgba(15, 23, 42, 0.8);
-transform: translateY(-1px);
-}
-
-.hero-right {
-border-radius: 22px;
-border: 1px solid rgba(148, 163, 184, 0.45);
-background:
-radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 58%),
-radial-gradient(circle at bottom, rgba(129, 140, 248, 0.2), transparent 62%),
-rgba(15, 23, 42, 0.9);
-padding: 18px 16px 16px;
-position: relative;
-overflow: hidden;
-}
-
-.hero-right-header {
-display: flex;
-align-items: center;
-justify-content: space-between;
-margin-bottom: 8px;
-font-size: 0.78rem;
-color: var(--text-muted);
-}
-
-.pill-soft {
-display: inline-flex;
-align-items: center;
-gap: 6px;
-padding: 4px 10px;
-border-radius: 999px;
-border: 1px solid rgba(148, 163, 184, 0.7);
-background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.2), transparent 60%);
-font-size: 0.75rem;
-}
-
-.pill-soft-dot {
-width: 7px;
-height: 7px;
-border-radius: 999px;
-background: #22c55e;
-box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.3);
-}
-
-.hero-console {
-border-radius: 18px;
-border: 1px solid rgba(148, 163, 184, 0.45);
-padding: 14px 14px 16px;
-background:
-radial-gradient(circle at top, rgba(15, 23, 42, 0.2), transparent 60%),
-rgba(2, 6, 23, 0.95);
-position: relative;
-overflow: hidden;
-}
-
-.hero-console-grid {
-display: grid;
-grid-template-columns: 1.2fr 1fr;
-gap: 10px;
-}
-
-.console-heading {
-font-size: 0.85rem;
-margin-bottom: 4px;
-color: #e5e7eb;
-font-weight: 600;
-}
-
-.console-sub {
-font-size: 0.78rem;
-color: var(--text-muted);
-margin-bottom: 8px;
-}
-
-.mini-badges {
-display: flex;
-flex-wrap: wrap;
-gap: 6px;
-margin-bottom: 10px;
-}
-
-.mini-badge {
-font-size: 0.7rem;
-padding: 3px 8px;
-border-radius: 999px;
-border: 1px solid rgba(148, 163, 184, 0.6);
-color: var(--text-muted);
-}
-
-.hero-matrix {
-border-radius: 18px;
-border: 1px solid rgba(148, 163, 184, 0.5);
-background:
-radial-gradient(circle at center, rgba(56, 189, 248, 0.08), transparent 55%),
-radial-gradient(circle at bottom, rgba(129, 140, 248, 0.12), transparent 68%),
-#020617;
-height: 160px;
-position: relative;
-overflow: hidden;
-}
-
-.hero-matrix-orbit {
-position: absolute;
-inset: 22px;
-border-radius: 999px;
-border: 1px dashed rgba(129, 140, 248, 0.7);
-opacity: 0.7;
-animation: orbitRotate 16s linear infinite;
-}
-
-.hero-matrix-orbit:nth-child(2) {
-inset: 34px;
-animation-duration: 22s;
-animation-direction: reverse;
-border-style: solid;
-border-color: rgba(56, 189, 248, 0.7);
-}
-
-.hero-matrix-node {
-position: absolute;
-width: 10px;
-height: 10px;
-border-radius: 999px;
-background: radial-gradient(circle, #e5e7eb, #4f46e5);
-box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.4);
-}
-
-.hero-matrix-node:nth-child(3) {
-top: 18px;
-right: 40%;
-}
-
-.hero-matrix-node:nth-child(4) {
-bottom: 22px;
-left: 18%;
-}
-
-.hero-matrix-node:nth-child(5) {
-bottom: 26px;
-right: 14%;
-}
-
-.hero-matrix-node:nth-child(6) {
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-width: 16px;
-height: 16px;
-background: radial-gradient(circle, #f97316, #4f46e5);
-box-shadow:
-0 0 0 4px rgba(248, 250, 252, 0.08),
-0 0 40px rgba(129, 140, 248, 0.85);
-}
-
-.hero-matrix-label {
-position: absolute;
-bottom: 10px;
-left: 12px;
-font-size: 0.75rem;
-color: var(--text-muted);
-}
-
-@keyframes orbitRotate {
-from { transform: rotate(0deg); }
-to { transform: rotate(360deg); }
-}
-
-/* --- SECTIONS --- */
-
-.section {
-margin-bottom: 32px;
-}
-
-.section-inner {
-border-radius: var(--radius-lg);
-border: 1px solid rgba(148, 163, 184, 0.45);
-background: rgba(15, 23, 42, 0.9);
-padding: 20px 18px 22px;
-box-shadow: 0 20px 50px rgba(15, 23, 42, 0.7);
-}
-
-.section-header {
-display: flex;
-justify-content: space-between;
-align-items: flex-end;
-gap: 12px;
-margin-bottom: 14px;
-}
-
-.section-title {
-font-size: 1.1rem;
-font-weight: 600;
-}
-
-.section-subtitle {
-font-size: 0.82rem;
-color: var(--text-muted);
-max-width: 22rem;
-}
-
-.pill-outline {
-padding: 4px 10px;
-border-radius: 999px;
-border: 1px solid rgba(148, 163, 184, 0.7);
-font-size: 0.75rem;
-color: var(--text-muted);
-}
-
-.features-grid {
-display: grid;
-gap: 10px;
-}
-
-.card {
-border-radius: var(--radius-md);
-border: 1px solid rgba(148, 163, 184, 0.4);
-background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.12), transparent 65%),
-rgba(15, 23, 42, 0.96);
-padding: 12px 14px 14px;
-}
-
-.card-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 6px;
-font-size: 0.92rem;
-font-weight: 600;
-}
-
-.feature-label {
-font-size: 0.75rem;
-color: var(--text-muted);
-margin-bottom: 3px;
-}
-
-.feature-body {
-font-size: 0.82rem;
-color: var(--text-muted);
-}
-
-.chip-row {
-margin-top: 8px;
-display: flex;
-flex-wrap: wrap;
-gap: 6px;
-}
-
-.chip {
-font-size: 0.72rem;
-padding: 3px 8px;
-border-radius: 999px;
-background: rgba(15, 23, 42, 0.85);
-border: 1px solid rgba(148, 163, 184, 0.55);
-color: #e5e7eb;
-}
-
-/* --- HOW IT WORKS --- */
-
-.steps {
-display: grid;
-gap: 8px;
-font-size: 0.85rem;
-color: var(--text-muted);
-}
-
-.step-row {
-display: flex;
-gap: 8px;
-align-items: flex-start;
-}
-
-.step-num {
-width: 22px;
-height: 22px;
-border-radius: 999px;
-background: rgba(79, 70, 229, 0.2);
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 0.78rem;
-color: var(--accent);
-}
-
-/* --- CONTACT / LEADS --- */
-
-.form-grid {
-display: grid;
-gap: 10px;
-}
-
-.field-label {
-font-size: 0.8rem;
-margin-bottom: 3px;
-}
-
-.input,
-textarea {
-width: 100%;
-border-radius: 10px;
-border: 1px solid rgba(148, 163, 184, 0.6);
-background: rgba(15, 23, 42, 0.9);
-padding: 9px 10px;
-font-size: 0.86rem;
-color: var(--text-main);
-resize: vertical;
-min-height: 38px;
-}
-
-textarea {
-min-height: 76px;
-}
-
-.input::placeholder,
-textarea::placeholder {
-color: #6b7280;
-}
-
-.input:focus,
-textarea:focus {
-outline: none;
-border-color: var(--accent);
-box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.4);
-}
-
-.form-footer {
-margin-top: 8px;
-display: flex;
-flex-wrap: wrap;
-gap: 8px;
-align-items: center;
-justify-content: space-between;
-}
-
-.form-note {
-font-size: 0.75rem;
-color: var(--text-muted);
-max-width: 18rem;
-}
-
-.btn-small {
-padding: 7px 14px;
-font-size: 0.84rem;
-}
-
-/* --- REVIEWS --- */
-
-.reviews-layout {
-display: grid;
-gap: 12px;
-}
-
-.reviews-list {
-display: grid;
-gap: 8px;
-font-size: 0.8rem;
-color: var(--text-muted);
-}
-
-.review-card {
-border-radius: 12px;
-padding: 8px 9px;
-background: rgba(15, 23, 42, 0.9);
-border: 1px solid rgba(148, 163, 184, 0.55);
-}
-
-.review-name {
-font-weight: 600;
-font-size: 0.8rem;
-margin-bottom: 3px;
-}
-
-.review-badge {
-font-size: 0.72rem;
-color: var(--accent);
-}
-
-footer {
-margin-top: 24px;
-padding-top: 14px;
-border-top: 1px solid rgba(51, 65, 85, 0.8);
-font-size: 0.78rem;
-color: var(--text-muted);
-display: flex;
-justify-content: space-between;
-gap: 10px;
-flex-wrap: wrap;
-}
-
-/* --- RESPONSIVE --- */
-
-@media (min-width: 768px) {
-.page {
-padding: 0 20px 56px;
-}
-
-.hero {
-padding-top: 32px;
-padding-bottom: 48px;
-}
-
-.hero-gradient {
-padding: 28px 26px 30px;
-grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
-align-items: center;
-}
-
-.features-grid {
-grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.form-grid {
-grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.reviews-layout {
-grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-}
-
-.nav {
-padding-inline: 20px;
-}
-
-.pill-nav {
-display: inline-flex;
-}
-}
-
-@media (max-width: 767px) {
-.nav-links {
-display: none;
-}
-
-.hamburger {
-display: flex;
-}
-
-.nav-mobile {
-position: fixed;
-inset: var(--nav-height) 0 auto 0;
-background: rgba(5, 8, 22, 0.97);
-backdrop-filter: blur(18px);
-border-bottom: 1px solid rgba(148, 163, 184, 0.4);
-display: none;
-flex-direction: column;
-padding: 10px 16px 14px;
-gap: 8px;
-z-index: 30;
-}
-
-.nav-mobile a {
-padding: 6px 0;
-font-size: 0.9rem;
-}
-
-.nav-mobile.show {
-display: flex;
-}
-
-.hero-gradient {
-border-radius: 22px;
-}
-
-.hero-console-grid {
-grid-template-columns: minmax(0, 1fr);
-}
-
-.hero-matrix {
-margin-top: 6px;
-}
-
-.section-inner {
-border-radius: 18px;
-}
-}
-</style>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<!-- Styles -->
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<!-- NAV -->
+<!-- ===== NAVBAR ===== -->
 <header class="nav">
 <div class="nav-left">
-<div class="nav-logo"><span>🚀</span></div>
+<div class="nav-logo">
+<span>🚀</span>
+</div>
 <div>
-<div class="nav-logo-text">AutoRoy Cloud</div>
-<span class="nav-logo-sub">DevOps &amp; Automations</span>
+<div class="nav-brand">AutoRoy Cloud</div>
+<div class="nav-sub">DevOps &amp; Automations</div>
 </div>
 </div>
 
 <nav class="nav-links">
+<a href="#hero" class="nav-link">ראשי</a>
 <a href="#services" class="nav-link">שירותים</a>
-<a href="#process" class="nav-link">איך זה עובד</a>
+<a href="#projects" class="nav-link">פרויקטים</a>
+<a href="#process" class="nav-link">תהליך עבודה</a>
 <a href="#contact" class="nav-link">יצירת קשר</a>
 <a href="#reviews" class="nav-link">ביקורות</a>
 </nav>
@@ -884,419 +47,432 @@ border-radius: 18px;
 <button class="theme-toggle" id="themeToggle" aria-label="Theme toggle">
 <span>🌙</span>
 </button>
-<button class="pill-nav">פתרונות ענן &amp; AI</button>
+<button class="nav-cta" onclick="scrollToSection('#contact')">
+בוא נדבר
+</button>
 <button class="hamburger" id="hamburger" aria-label="תפריט">
-<div class="hamburger-line"></div>
+<span class="hamburger-line"></span>
 </button>
 </div>
 </header>
 
+<!-- מובייל תפריט -->
 <nav class="nav-mobile" id="navMobile">
-<a href="#services" class="nav-link" onclick="closeMobile()">שירותים</a>
-<a href="#process" class="nav-link" onclick="closeMobile()">איך זה עובד</a>
-<a href="#contact" class="nav-link" onclick="closeMobile()">יצירת קשר</a>
-<a href="#reviews" class="nav-link" onclick="closeMobile()">ביקורות</a>
+<a href="#hero" onclick="closeMobile()">ראשי</a>
+<a href="#services" onclick="closeMobile()">שירותים</a>
+<a href="#projects" onclick="closeMobile()">פרויקטים</a>
+<a href="#process" onclick="closeMobile()">תהליך עבודה</a>
+<a href="#contact" onclick="closeMobile()">יצירת קשר</a>
+<a href="#reviews" onclick="closeMobile()">ביקורות</a>
 </nav>
 
 <main class="page">
-<!-- HERO -->
-<section class="hero">
-<div class="hero-gradient">
-<div class="hero-left">
-<div class="hero-kicker">CLOUD • DEVOPS • AUTOMATIONS</div>
+<!-- ===== HERO ===== -->
+<section id="hero" class="hero section">
+<div class="hero-inner">
+<div class="hero-content reveal">
+<p class="hero-kicker">CLOUD • DEVOPS • BUSINESS AUTOMATIONS</p>
 <h1 class="hero-title">
-פיתוח מערכות<br />
-<span>DevOps &amp; Automations</span><br />
-לעסקים שרוצים לעבוד חכם.
+בונים לעסק שלך
+<span>מערכת שעובדת בשבילך</span>
+– לא הפוך.
 </h1>
 <p class="hero-sub">
-AutoRoy Cloud מחבר בין <strong>תשתיות ענן יציבות</strong>,
-<strong>אוטומציות חכמות</strong> וצ'אטים שמטפלים בלידים
-– כדי שלקוחות יקבלו תשובה, גם כשאתה באמצע החיים.
+AutoRoy Cloud מחבר בין <strong>תשתיות DevOps</strong>, <strong>אוטומציות חכמות</strong>
+ואתרים מהירים – כדי שלקוחות יקבלו חוויה מודרנית, ואתה תקבל
+לידים ותהליכים מסודרים.
 </p>
 
 <div class="hero-ctas">
-<a href="#contact" class="btn-primary">
-רוצה שגם העסק יעוף קדימה? 🚀
-</a>
-<a href="#services" class="btn-outline">
-לראות יכולות בפועל
-</a>
+<button class="btn-primary" onclick="scrollToSection('#contact')">
+רוצה לדבר על פרויקט? 🚀
+</button>
+<button class="btn-ghost" onclick="scrollToSection('#projects')">
+לראות דוגמאות ויכולות
+</button>
+</div>
+
+<div class="hero-tags">
+<div class="hero-tag">
+<span class="dot dot-green"></span>
+תשתיות בענן + CI/CD
+</div>
+<div class="hero-tag">
+<span class="dot dot-cyan"></span>
+אוטומציות לידים ווואטסאפ
+</div>
+<div class="hero-tag">
+<span class="dot dot-purple"></span>
+אתרי תדמית ונחיתה פרימיום
+</div>
 </div>
 </div>
 
-<div class="hero-right">
-<div class="hero-right-header">
-<span>תמונת מצב • AutoRoy Cloud</span>
-<span class="pill-soft">
-<span class="pill-soft-dot"></span> סביבת דמו לסקייל
-</span>
+<div class="hero-visual reveal">
+<div class="hero-orbit">
+<div class="orbit orbit-1"></div>
+<div class="orbit orbit-2"></div>
+<div class="orbit orbit-3"></div>
+<div class="hero-node hero-node-main">
+<span>AutoRoy</span>
 </div>
-
-<div class="hero-console">
-<div class="hero-console-grid">
-<div>
-<div class="console-heading">מה האתר הזה מדגים?</div>
-<div class="console-sub">
-איך אפשר לחבר בין תשתיות, אוטומציות וצ'אט – בצורה נקייה ומודרנית.
+<div class="hero-node hero-node-devops">
+<span>DevOps</span>
 </div>
-
-<div class="mini-badges">
-<div class="mini-badge">⚙️ DevOps Pipeline דמו</div>
-<div class="mini-badge">🤖 אוטומציות לידים</div>
-<div class="mini-badge">💬 צ'אט ומסרים</div>
+<div class="hero-node hero-node-auto">
+<span>Automations</span>
 </div>
-
-<p class="feature-body">
-זהו אתר תדמית שמציג את הסטייל, החשיבה והיכולות.
-מאחורה אפשר לחבר בקלות: Tally, Zapier, WhatsApp Business,
-מערכות CRM ועוד.
+<div class="hero-node hero-node-web">
+<span>Web</span>
+</div>
+<div class="hero-node hero-node-chat">
+<span>Chat</span>
+</div>
+</div>
+<p class="hero-visual-caption">
+חיבור בין שירותים מפוזרים למערכת אחת: אתר, צ'אטים, טפסים ואוטומציות.
 </p>
 </div>
+</div>
 
-<div class="hero-matrix">
-<div class="hero-matrix-orbit"></div>
-<div class="hero-matrix-orbit"></div>
-<div class="hero-matrix-node"></div>
-<div class="hero-matrix-node"></div>
-<div class="hero-matrix-node"></div>
-<div class="hero-matrix-node"></div>
-<div class="hero-matrix-label">מחברים חלקים מפוזרים למערכת אחת שעובדת.</div>
-</div>
-</div>
-</div>
+<div class="hero-strip reveal">
+<span class="strip-label">Stack טכנולוגי</span>
+<div class="strip-items">
+<span>GitHub</span>
+<span>Render</span>
+<span>Node.js</span>
+<span>HTML/CSS/JS</span>
+<span>Zapier / Make</span>
+<span>Google Sheets</span>
+<span>WhatsApp Business</span>
 </div>
 </div>
 </section>
 
-<!-- SERVICES -->
-<section class="section" id="services">
-<div class="section-inner">
-<div class="section-header">
-<div>
-<h2 class="section-title">מה AutoRoy Cloud יודע לעשות בפועל?</h2>
+<!-- ===== SERVICES ===== -->
+<section id="services" class="section">
+<div class="section-header reveal">
+<h2 class="section-title">מה AutoRoy Cloud עושה בפועל?</h2>
 <p class="section-subtitle">
-לא ״קסמים״ – פתרונות אמיתיים שעובדים על לקוחות:
-צ'אטים, טפסים, אוטומציות ומערכות ניהול פשוטות.
+שילוב בין DevOps, אוטומציות ואתרים – כדי שהעסק שלך ירגיש כמו מוצר טכנולוגי מודרני.
 </p>
-</div>
-<div class="pill-outline">
-DevOps • אוטומציות • Web
-</div>
 </div>
 
-<div class="features-grid">
-<article class="card">
+<div class="cards-grid">
+<article class="card reveal">
 <div class="card-header">
-<span>אוטומציות לידים &amp; וואטסאפ</span>
-<span>✅</span>
+<span class="card-title">אוטומציות לידים &amp; וואטסאפ</span>
+<span class="card-icon">🤝</span>
 </div>
-<div class="feature-label">מתי זה רלוונטי?</div>
-<p class="feature-body">
-כשכל ליד מגיע למקום אחר: טופס באתר, הודעה בוואטסאפ, שיחת טלפון.
-בונים תהליך אחד שמרכז הכל לטבלה, לשליחת מיילים ולוואטסאפ.
+<p class="card-text">
+חיבור טפסים, וואטסאפ וגיליונות – כדי שכל ליד מגיע למקום אחד מסודר, עם סטטוס ומעקב.
 </p>
-<div class="chip-row">
-<span class="chip">Tally → Google Sheets</span>
+<div class="card-chips">
+<span class="chip">Tally → Sheets</span>
 <span class="chip">Zapier / Make</span>
-<span class="chip">WhatsApp Business</span>
+<span class="chip">וואטסאפ עסקי</span>
 </div>
 </article>
 
-<article class="card">
+<article class="card reveal">
 <div class="card-header">
-<span>אתרי נחיתה ותדמית</span>
-<span>🌐</span>
+<span class="card-title">אתרי נחיתה ותדמית</span>
+<span class="card-icon">🌐</span>
 </div>
-<div class="feature-label">מה מקבלים?</div>
-<p class="feature-body">
-אתר מהיר, רספונסיבי ויפה – עם מסר ברור, טופס השארת פרטים
-וקישורים ישירים לווטאסאפ / רשתות החברתיות.
+<p class="card-text">
+אתרים מהירים, רספונסיביים, עם מסר חד וטופס פשוט – כדי שלקוח יבין תוך שניות מה אתה נותן.
 </p>
-<div class="chip-row">
-<span class="chip">HTML • CSS • JS</span>
-<span class="chip">התאמה למובייל</span>
-<span class="chip">חיבור לטפסי לידים</span>
+<div class="card-chips">
+<span class="chip">Responsive Design</span>
+<span class="chip">UI מודרני</span>
+<span class="chip">טפסי לידים</span>
 </div>
 </article>
 
-<article class="card">
+<article class="card reveal">
 <div class="card-header">
-<span>DevOps &amp; Cloud דמו</span>
-<span>🧩</span>
+<span class="card-title">פרויקטי DevOps חכמים</span>
+<span class="card-icon">⚙️</span>
 </div>
-<div class="feature-label">למה זה מעניין?</div>
-<p class="feature-body">
-פרויקטים שמראים איך קוד עולה לענן, איך מחברים שירותים שונים,
-ואיך בונים תהליכי CI/CD – כדי שמגייסים יבינו שאתה לא רק ״מדבר קוד״.
+<p class="card-text">
+פרויקטים שמראים איך קוד עולה לענן, איך שירותים מדברים ביניהם, ואיך נראה CI/CD בסיסי בעולם אמיתי.
 </p>
-<div class="chip-row">
-<span class="chip">GitHub + Render</span>
-<span class="chip">Microservices דמו</span>
-<span class="chip">Monitoring בסיסי</span>
+<div class="card-chips">
+<span class="chip">Microservices</span>
+<span class="chip">Render Deploy</span>
+<span class="chip">Socket.IO / APIs</span>
 </div>
 </article>
+
+<article class="card reveal">
+<div class="card-header">
+<span class="card-title">צ'אטים חכמים ודשבורדים</span>
+<span class="card-icon">💬</span>
+</div>
+<p class="card-text">
+צ'אטים מבוססי WebSocket, מסכים לניהול, ותהליכים שמדגימים טכנולוגיה חיה – לא רק שקופיות.
+</p>
+<div class="card-chips">
+<span class="chip">Socket.IO</span>
+<span class="chip">Realtime</span>
+<span class="chip">חיבור לעסק</span>
+</div>
+</article>
+</div>
+</section>
+
+<!-- ===== PROJECTS / SHOWCASE ===== -->
+<section id="projects" class="section">
+<div class="section-header reveal">
+<h2 class="section-title">הדגמות ופרויקטים</h2>
+<p class="section-subtitle">
+כמה דוגמאות שמראות איך אפשר להשתמש בטכנולוגיה בשביל העסק – וגם לבנות תיק עבודות טכני חזק.
+</p>
+</div>
+
+<div class="projects-grid">
+<article class="project-card reveal">
+<div class="project-tag">DevOps / Cloud / Chat</div>
+<h3 class="project-title">מערכת צ'אט סקיילבילית</h3>
+<p class="project-text">
+פרויקט שמדגים צ'אט קבוצתי עם שירות Authentication נפרד, שירות Chat נפרד ו־UI שמחובר אליהם – כולל דיפלוי לענן.
+</p>
+<ul class="project-list">
+<li>שירות Auth על פורט 3000</li>
+<li>שירות Chat על פורט 3001</li>
+<li>UI שמדבר עם שניהם בענן</li>
+</ul>
+<div class="project-footer">
+<span class="project-tech">Node.js • Socket.IO • Render</span>
+</div>
+</article>
+
+<article class="project-card reveal">
+<div class="project-tag">Automations / Leads</div>
+<h3 class="project-title">Flow לידים לעסק קטן</h3>
+<p class="project-text">
+תהליך שמתחיל בטופס פשוט וממשיך לטבלה מסודרת, הודעות וואטסאפ ללקוח, ומייל לבעל העסק עם כל הפרטים.
+</p>
+<ul class="project-list">
+<li>טופס Tally / אתר</li>
+<li>שורה חדשה ב־Google Sheets</li>
+<li>שליחת וואטסאפ אוטומטית</li>
+</ul>
+<div class="project-footer">
+<span class="project-tech">Tally • Google Sheets • Zapier</span>
+</div>
+</article>
+
+<article class="project-card reveal">
+<div class="project-tag">Web / Brand</div>
+<h3 class="project-title">אתר תדמית פרימיום ל-AutoRoy</h3>
+<p class="project-text">
+האתר שאתה צופה בו עכשיו – בנוי כ-One Page מודרני עם סקשנים מסודרים, רספונסיביות, תאורה, אנימציות וטפסים.
+</p>
+<ul class="project-list">
+<li>Hero מתקדם עם אנימציות</li>
+<li>שירותים, תהליך, פרויקטים</li>
+<li>טופס לידים + אזור ביקורות</li>
+</ul>
+<div class="project-footer">
+<span class="project-tech">HTML • CSS • JS • GitHub • Render</span>
+</div>
+</article>
+</div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section id="process" class="section">
+<div class="section-header reveal">
+<h2 class="section-title">איך נראה תהליך עבודה איתי?</h2>
+<p class="section-subtitle">
+תהליך פשוט וברור – בלי בלגן ובלי “נראה כבר בדרך”.
+</p>
+</div>
+
+<div class="timeline reveal">
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<h3>1. שיחת הבנה</h3>
+<p>
+מבינים מה העסק עושה, מאיפה מגיעים הלקוחות היום, מה הכי כואב, ואיפה אפשר להכניס אוטומציה / אתר / מערכת חכמה.
+</p>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<h3>2. מפת זרימה</h3>
+<p>
+משרטטים Flow פשוט: מאיפה הלקוח נכנס, מה הוא רואה, מה הוא ממלא, ואיפה הנתונים שלו נשמרים.
+</p>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<h3>3. בנייה וחיבור</h3>
+<p>
+בונים את החלקים – אתר, צ'אט, טפסים, אוטומציות – ומחברים אותם יחד לסביבה אחת יציבה עד לאישור.
+</p>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<h3>4. מעבר ל־Production</h3>
+<p>
+מעלים את המערכת לאוויר, מסבירים איך להשתמש בה, ומשאירים מקום לשדרוגים בהמשך.
+</p>
+</div>
 </div>
 </div>
 </section>
 
-<!-- PROCESS -->
-<section class="section" id="process">
-<div class="section-inner">
-<div class="section-header">
-<div>
-<h2 class="section-title">איך נראה פרויקט טיפוסי?</h2>
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section">
+<div class="section-header reveal">
+<h2 class="section-title">בוא נדבר על מה שהכי חשוב לך</h2>
 <p class="section-subtitle">
-תהליך קצר, ברור, בלי חפירות. מבינים את הצורך, מציעים פתרון,
-בונים, מחברים – ומעלים לאוויר.
+כמה פרטים בסיסיים, ונחזור אליך עם כיוון ברור: מה אפשר לבנות, כמה זמן זה ייקח, ואיך זה יעזור לעסק שלך.
 </p>
-</div>
-<div class="pill-outline">
-3–5 פגישות • פתרון עובד
-</div>
 </div>
 
-<div class="steps">
-<div class="step-row">
-<div class="step-num">1</div>
-<p>
-שיחת היכרות: מה העסק עושה, אילו לידים / תהליכים חשובים לך,
-ואיזה מערכות כבר קיימות (אתר, CRM, טפסים, וואטסאפ).
-</p>
+<form class="form-grid reveal" onsubmit="handleLeadSubmit(event)">
+<div class="form-field">
+<label for="lead-name">שם מלא</label>
+<input id="lead-name" type="text" placeholder="איך לפנות אליך?" required />
 </div>
-<div class="step-row">
-<div class="step-num">2</div>
-<p>
-משרטטים Flow פשוט: מאיפה מגיע הלקוח, מה הוא רואה, מה הוא ממלא,
-איך המידע נשמר ואיזו הודעה הוא מקבל בחזרה.
-</p>
+<div class="form-field">
+<label for="lead-business">שם העסק / תחום</label>
+<input id="lead-business" type="text" placeholder="מסעדה, סטודיו, אימון, ייעוץ..." />
 </div>
-<div class="step-row">
-<div class="step-num">3</div>
-<p>
-בנייה וחיבור: אתר / עמוד נחיתה, טפסים, אוטומציות,
-צ'אטים וסטטוס לידים – סביבת דמו עד לאישור ואז מעבר ל־Production.
-</p>
+<div class="form-field">
+<label for="lead-contact">טלפון או מייל</label>
+<input id="lead-contact" type="text" placeholder="פרט אחד שחובה כדי לחזור אליך" required />
 </div>
-<div class="step-row">
-<div class="step-num">4</div>
-<p>
-Fine-tuning: התאמת טקסטים, הודעות, תזמונים – וכתיבת מדריך קצר
-כדי שתוכל להמשיך לתפעל גם בלי מתכנת צמוד.
-</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- CONTACT / LEADS -->
-<section class="section" id="contact">
-<div class="section-inner">
-<div class="section-header">
-<div>
-<h2 class="section-title">בוא נדבר על העסק שלך</h2>
-<p class="section-subtitle">
-השאר פרטים וקבל חזרה הצעה מסודרת: מה אפשר לבנות, כמה זמן זה ייקח,
-ומה ההשפעה על העסק.
-</p>
-</div>
-<div class="pill-outline">
-טופס דמו – החיבור למערכת אמיתית מגיע בשלב הבא
-</div>
-</div>
-
-<form class="form-grid" onsubmit="handleLeadSubmit(event)">
-<div>
-<label class="field-label" for="lead-name">שם מלא</label>
-<input class="input" id="lead-name" type="text" placeholder="איך לפנות אליך?" required />
-</div>
-<div>
-<label class="field-label" for="lead-business">שם העסק / תחום</label>
-<input class="input" id="lead-business" type="text" placeholder="מסעדה, סטודיו, אימון עסקי..." />
-</div>
-<div>
-<label class="field-label" for="lead-contact">טלפון או מייל</label>
-<input class="input" id="lead-contact" type="text" placeholder="פרט אחד שאפשר לחזור אליך איתו" required />
-</div>
-<div>
-<label class="field-label" for="lead-type">מה מעניין אותך?</label>
-<select class="input" id="lead-type">
+<div class="form-field">
+<label for="lead-type">מה מעניין אותך?</label>
+<select id="lead-type">
 <option value="">בחר...</option>
 <option>אוטומציות לידים ווואטסאפ</option>
 <option>אתר נחיתה / אתר תדמית</option>
-<option>DevOps / פרויקט דמו לגיוס</option>
-<option>משהו אחר – נבדוק ביחד</option>
+<option>פרויקט DevOps / תהליך טכני</option>
+<option>משהו אחר – נחשוב ביחד</option>
 </select>
 </div>
-<div style="grid-column: 1 / -1;">
-<label class="field-label" for="lead-message">מה הכי חשוב לך שנפתור?</label>
-<textarea id="lead-message" placeholder="כמה משפטים על המצב היום ומה היית רוצה שיקרה במקום."></textarea>
+<div class="form-field full">
+<label for="lead-message">איך המצב נראה היום, ואיך היית רוצה שייראה?</label>
+<textarea id="lead-message" placeholder="כמה משפטים חופשיים."></textarea>
 </div>
 
 <div class="form-footer">
-<p class="form-note" id="lead-note">
-כרגע זה דמו צד-לקוח בלבד. אפשר לחבר בהמשך לטופס אמיתי (Tally / CRM / וואטסאפ).
-</p>
-<div style="display:flex; gap:8px; flex-wrap:wrap;">
-<button type="submit" class="btn-primary btn-small">
+<div class="form-note" id="lead-note">
+הפרטים שאתה ממלא כאן נשלחים אליי בצורה מסודרת, ואני חוזר אליך אישית עם תשובות והצעה מפורטת.
+</div>
+<div class="form-actions">
+<button type="submit" class="btn-primary btn-sm">
 שלחו לי הצעה מסודרת
 </button>
-<a href="https://wa.me/XXXXXXXXXX" target="_blank" class="btn-outline btn-small">
-לדבר איתי בוואטסאפ
+<a
+href="https://wa.me/972547222023?text=%D7%94%D7%99%D7%99%20%D7%A8%D7%95%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%90%D7%AA%D7%A8%20AutoRoy%20Cloud%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98."
+target="_blank"
+class="btn-ghost btn-sm"
+>
+לדבר בוואטסאפ
 </a>
 </div>
 </div>
 </form>
-</div>
 </section>
 
-<!-- REVIEWS / FEEDBACK -->
-<section class="section" id="reviews">
-<div class="section-inner">
-<div class="section-header">
-<div>
-<h2 class="section-title">ביקורת, פידבק ושיתופי פעולה</h2>
+<!-- ===== REVIEWS ===== -->
+<section id="reviews" class="section">
+<div class="section-header reveal">
+<h2 class="section-title">ביקורות, פידבק ורעיונות</h2>
 <p class="section-subtitle">
-כרגע זה אתר תדמית בתהליך בנייה. אפשר להשאיר כאן פידבק או ביקורת,
-ואפשר גם לכתוב אם ישך רעיון לפרויקט משותף.
+אזור מסודר לאיסוף חוות דעת מלקוחות – וגם מקום לשמוע מה עוד היית רוצה לראות במערכת שלך.
 </p>
 </div>
-<div class="pill-outline">
-Demo – חוויות משתמש &amp; רעיונות
-</div>
-</div>
 
-<div class="reviews-layout">
+<div class="reviews-layout reveal">
 <div class="reviews-list" id="reviewsList">
-<div class="review-card">
-<div class="review-name">
-דוגמה: בעל סטודיו לפילאטיס
-<span class="review-badge">• אוטומציות לידים</span>
+<article class="review-card">
+<div class="review-head">
+<span class="review-name">בעל סטודיו</span>
+<span class="review-tag">אוטומציות + לידים</span>
 </div>
-<p>
-"היה לי בלגן מוחלט בלידים. אחרי החיבור בין טופס, וואטסאפ וגיליון
-– כל ליד מסודר במקום אחד ואני רואה איפה תקועים."
+<p class="review-text">
+"לפני זה כל ליד היה נתקע במקום אחר. עכשיו הכל נכנס לטבלה אחת, ואני יודע עם מי דיברתי ומה נשאר פתוח."
 </p>
+</article>
+
+<article class="review-card">
+<div class="review-head">
+<span class="review-name">יועץ עסקי</span>
+<span class="review-tag">אתר תדמית</span>
 </div>
-<div class="review-card">
-<div class="review-name">
-דוגמה: יועץ עסקי
-<span class="review-badge">• אתר תדמית + צ'אט</span>
-</div>
-<p>
-"רציתי אתר אחד שמסביר מי אני, מה אני עושה ואיך פונים.
-עכשיו כששולחים לי הודעה אני רואה ישר מאיזה עמוד היא הגיעה."
+<p class="review-text">
+"הייתי צריך מקום אחד מסודר לשלוח אליו לקוחות. אחרי האתר – הרבה יותר קל להסביר מי אני ומה אני עושה."
 </p>
-</div>
+</article>
 </div>
 
-<form class="form-grid" onsubmit="handleReviewSubmit(event)">
-<div style="grid-column: 1 / -1;">
-<label class="field-label" for="review-name">שם / שם עסק (לא חובה)</label>
-<input class="input" id="review-name" type="text" placeholder="אפשר להשאיר גם אנונימי" />
+<form class="reviews-form" onsubmit="handleReviewSubmit(event)">
+<div class="form-field">
+<label for="review-name">שם / שם עסק (לא חובה)</label>
+<input id="review-name" type="text" placeholder="אפשר גם אנונימי" />
 </div>
-<div style="grid-column: 1 / -1;">
-<label class="field-label" for="review-text">מה אתה חושב על האתר / הרעיון?</label>
-<textarea id="review-text" placeholder="פידבק קצר, מה אהבת ומה היית משפר."></textarea>
+<div class="form-field">
+<label for="review-text">מה אתה חושב על האתר / הכיוון?</label>
+<textarea id="review-text" placeholder="פידבק קצר – מה אהבת, מה היית משפר, או רעיון לפרויקט."></textarea>
 </div>
 <div class="form-footer">
-<p class="form-note" id="review-note">
-גם זה דמו: הביקורת נשמרת כרגע רק בדפדפן שלך. אפשר לחבר בהמשך למסד נתונים אמיתי.
-</p>
-<button type="submit" class="btn-outline btn-small">
-שמירת ביקורת בדמו
+<div class="form-note" id="review-note">
+הביקורת שלך נשמרת בדפדפן המקומי. אפשר בהמשך לחבר את זה גם למסד נתונים מלא עבור לקוחות.
+</div>
+<button type="submit" class="btn-ghost btn-sm">
+שמירת ביקורת
 </button>
 </div>
 </form>
 </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="section final-cta">
+<div class="final-cta-inner reveal">
+<h2>רוצה שהמערכת שלך תרגיש כמו 2025 – לא 2012?</h2>
+<p>
+אתר, אוטומציות ו־DevOps שלא מרגישים כמו טלאי על טלאי – אלא כמו מוצר אחד חכם שעובד בשבילך.
+</p>
+<div class="final-cta-actions">
+<button class="btn-primary" onclick="scrollToSection('#contact')">
+בוא נתחיל לדבר
+</button>
+<button class="btn-ghost" onclick="scrollToSection('#projects')">
+לראות שוב את הדוגמאות
+</button>
+</div>
 </div>
 </section>
 
-<footer>
-<span>© AutoRoy Cloud – פרויקט תדמית DevOps &amp; Automations.</span>
-<span>נבנה כפרונט אנד סטטי, מוכן לחיבור ל־Tally, Zapier, WhatsApp ו־Cloud אמיתי.</span>
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+<div class="footer-main">
+<span>© 2025 AutoRoy Cloud.</span>
+<span>DevOps &amp; Automations • פתרונות אוטומציה ואתרים לעסקים.</span>
+</div>
+<div class="footer-links">
+<a href="#hero">למעלה</a>
+<a href="#services">שירותים</a>
+<a href="#contact">יצירת קשר</a>
+</div>
 </footer>
 </main>
 
-<script>
-// Theme toggle
-const themeToggle = document.getElementById('themeToggle');
-const body = document.body;
-
-function setTheme(isLight) {
-if (isLight) {
-body.classList.add('light');
-themeToggle.innerHTML = '<span>☀️</span>';
-localStorage.setItem('autoroy-theme', 'light');
-} else {
-body.classList.remove('light');
-themeToggle.innerHTML = '<span>🌙</span>';
-localStorage.setItem('autoroy-theme', 'dark');
-}
-}
-
-const savedTheme = localStorage.getItem('autoroy-theme');
-if (savedTheme === 'light') {
-setTheme(true);
-}
-
-themeToggle.addEventListener('click', () => {
-setTheme(!body.classList.contains('light'));
-});
-
-// Mobile nav
-const hamburger = document.getElementById('hamburger');
-const navMobile = document.getElementById('navMobile');
-
-hamburger.addEventListener('click', () => {
-navMobile.classList.toggle('show');
-});
-
-function closeMobile() {
-navMobile.classList.remove('show');
-}
-window.closeMobile = closeMobile;
-
-// Lead form demo
-function handleLeadSubmit(e) {
-e.preventDefault();
-const name = document.getElementById('lead-name').value.trim() || 'לקוח';
-const note = document.getElementById('lead-note');
-note.textContent = `${name}, תודה! בטבע אמיתי זה היה נשלח למערכת לידים. כאן זה דמו שמדגים את ה־UI.`;
-note.style.color = '#a5f3fc';
-}
-window.handleLeadSubmit = handleLeadSubmit;
-
-// Reviews demo
-function handleReviewSubmit(e) {
-e.preventDefault();
-const name = document.getElementById('review-name').value.trim() || 'מבקר אנונימי';
-const text = document.getElementById('review-text').value.trim();
-if (!text) {
-const note = document.getElementById('review-note');
-note.textContent = 'כדי לשמור ביקורת דמו צריך לכתוב לפחות משפט אחד 🙂';
-note.style.color = '#fecaca';
-return;
-}
-const list = document.getElementById('reviewsList');
-
-const card = document.createElement('div');
-card.className = 'review-card';
-card.innerHTML = `
-<div class="review-name">
-${name}
-<span class="review-badge">• ביקורת דמו</span>
-</div>
-<p>${text}</p>
-`;
-list.prepend(card);
-
-document.getElementById('review-text').value = '';
-const note = document.getElementById('review-note');
-note.textContent = 'הביקורת נוספה בדפדפן שלך. אפשר לחבר בהמשך למסד נתונים אמיתי.';
-note.style.color = '#a5f3fc';
-}
-window.handleReviewSubmit = handleReviewSubmit;
-</script>
+<!-- Scripts -->
+<script src="app.js"></script>
 </body>
 </html>
