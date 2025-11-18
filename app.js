@@ -252,4 +252,12 @@ window.addEventListener("keydown", (e) => {
     hamburger.setAttribute("aria-expanded", "false");
   }
 });
+// Highlight active category in services strip
+document.querySelectorAll('.services-item')?.forEach(item => {
+    item.addEventListener('click', () => {
+        document.querySelectorAll('.services-item')
+            .forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+    });
+});
 
