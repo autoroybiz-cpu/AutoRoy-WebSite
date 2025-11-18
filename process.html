@@ -3,78 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoRoy Cloud</title>
+    <title>תהליך העבודה • AutoRoy Cloud</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <!-- ================= NAVBAR ================ -->
-    <nav class="nav">
-        <div class="nav-left">
-            <div class="nav-logo"></div>
-            <div>
-                <div class="nav-brand">AutoRoy Cloud</div>
-                <div class="nav-sub">DevOps • Web • Automations</div>
+<!-- ========== NAVBAR (אותו דבר כמו בית) ========== -->
+<header class="nav">
+    <div class="nav-left">
+        <div class="nav-logo"></div>
+        <div>
+            <div class="nav-brand">AutoRoy Cloud</div>
+            <div class="nav-sub">DevOps • Web • Automations</div>
+        </div>
+    </div>
+
+    <nav class="nav-links">
+        <a href="index.html" class="nav-link">דף הבית</a>
+        <a href="services.html" class="nav-link">שירותים</a>
+        <a href="projects.html" class="nav-link">פרויקטים</a>
+        <a href="process.html" class="nav-link">תהליך עבודה</a>
+        <a href="about.html" class="nav-link">אודות</a>
+        <a href="blog.html" class="nav-link">בלוג</a>
+        <a href="contact.html" class="nav-link">יצירת קשר</a>
+    </nav>
+
+    <div class="nav-actions">
+        <button class="nav-cta" onclick="window.location.href='https://wa.me/972542334614'">בוא נדבר</button>
+        <button class="theme-toggle" id="themeToggle">☀️</button>
+        <div class="hamburger" id="hamburger">
+            <div class="hamburger-line"></div>
+        </div>
+    </div>
+</header>
+
+<div class="nav-mobile" id="mobileMenu">
+    <a href="index.html">דף הבית</a>
+    <a href="services.html">שירותים</a>
+    <a href="projects.html">פרויקטים</a>
+    <a href="process.html">תהליך עבודה</a>
+    <a href="about.html">אודות</a>
+    <a href="blog.html">בלוג</a>
+    <a href="contact.html">יצירת קשר</a>
+</div>
+
+<!-- ===========================
+     HERO
+=========================== -->
+<section class="page-hero reveal">
+    <h1 class="page-title">תהליך העבודה החכם של AutoRoy Cloud</h1>
+    <p class="page-sub">
+        שיטה מודרנית, אוטומטית, מהירה ונקייה — שמחברת בין DevOps, Web ו־AI,  
+        כדי להפוך את העסק שלך למאוקלקל, יעיל ועתידני.
+    </p>
+</section>
+
+<!-- ===========================
+     TIMELINE — 2035 EDITION
+=========================== -->
+<section class="page-content">
+
+    <div class="timeline reveal">
+        <!-- שלב 1 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>01 — אפיון + מפת דרכים</h3>
+                <p>
+                    נבין את המטרות שלך, ננתח את העסק שלך ונבנה מפת עבודה עם יעדים, טכנולוגיות וכלי אוטומציה.
+                </p>
             </div>
         </div>
 
-        <div class="nav-links">
-            <a class="nav-link" href="index.html">דף הבית</a>
-            <a class="nav-link" href="services.html">שירותים</a>
-            <a class="nav-link" href="projects.html">פרויקטים</a>
-            <a class="nav-link" href="process.html">תהליך עבודה</a>
-            <a class="nav-link" href="blog.html">בלוג</a>
-            <a class="nav-link" href="reviews.html">ביקורות</a>
-            <a class="nav-link" href="about.html">אודות</a>
-            <a class="nav-link" href="contact.html">יצירת קשר</a>
+        <!-- שלב 2 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>02 — בניית תשתית ו־DevOps</h3>
+                <p>
+                    הטמעת CI/CD, בניית סביבות, שרתים, ניהול קונטיינרים, אופטימיזציות והכנת בסיס יציב ומאובטח.
+                </p>
+            </div>
         </div>
 
-        <div class="nav-actions">
-            <div class="theme-toggle">☀️</div>
-            <a href="https://wa.me/972545799332" class="nav-cta">בוא נדבר</a>
+        <!-- שלב 3 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>03 — עיצוב וחוויית משתמש</h3>
+                <p>
+                    יצירת ממשקים מודרניים, רספונסיביים, מהירים וממירים — מותאמים לעסק שלך ועם אנימציות קלות.
+                </p>
+            </div>
         </div>
 
-        <div class="hamburger">
-            <div class="hamburger-line"></div>
+        <!-- שלב 4 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>04 — פיתוח + אוטומציות</h3>
+                <p>
+                    פיתוח מלא של המערכת + חיבור אוטומציות AI, וואטסאפ, CRM, תהליכי עבודה וחיבורים חכמים.
+                </p>
+            </div>
         </div>
-    </nav>
 
-    <!-- MOBILE MENU -->
-    <div class="nav-mobile">
-        <a href="index.html">דף הבית</a>
-        <a href="services.html">שירותים</a>
-        <a href="projects.html">פרויקטים</a>
-        <a href="process.html">תהליך עבודה</a>
-        <a href="blog.html">בלוג</a>
-        <a href="reviews.html">ביקורות</a>
-        <a href="about.html">אודות</a>
-        <a href="contact.html">יצירת קשר</a>
+        <!-- שלב 5 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>05 — בדיקות עומק והשקה</h3>
+                <p>
+                    ביצוע QA מקצועי, בדיקות עומסים, בדיקות אבטחה, תיקונים — והשקה מלאה לאוויר.
+                </p>
+            </div>
+        </div>
+
+        <!-- שלב 6 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>06 — תמיכה + שדרוגים</h3>
+                <p>
+                    תמיכה, ניטור, תחזוקה שוטפת, ועוד שדרוגים שמאפשרים לעסק להתפתח ולהישאר לפני כולם.
+                </p>
+            </div>
+        </div>
     </div>
 
-    <!-- ================= PAGE HEADER ================ -->
-    <header class="page-hero">
-        <h1 class="page-title">שם הדף</h1>
-        <p class="page-sub">תיאור קצר לדף הזה</p>
-    </header>
+</section>
 
-    <!-- ================= CONTENT ================= -->
-    <main class="page page-content">
-        <!-- כאן נכנס התוכן של כל דף -->
-    </main>
+<!-- ===========================
+     FINAL CTA
+=========================== -->
+<section class="final-cta reveal">
+    <div class="final-cta-inner">
+        <h2>רוצה להתחיל תהליך חכם ומדויק?</h2>
+        <p>בוא נבנה לך מערכת אחת שמשלבת: DevOps • Web • Automations • AI</p>
+        <div class="final-cta-actions">
+            <a class="btn-primary" href="https://wa.me/972542334614">דבר איתי בוואטסאפ 🚀</a>
+            <a class="btn-ghost" href="contact.html">צור קשר</a>
+        </div>
+    </div>
+</section>
 
-    <script>
-    const burger = document.querySelector('.hamburger');
-    const mobileMenu = document.querySelector('.nav-mobile');
-    const themeBtn = document.querySelector('.theme-toggle');
+<footer class="footer">
+    <span>© כל הזכויות שמורות • AutoRoy Cloud</span>
+    <div class="footer-links">
+        <a href="privacy.html">מדיניות פרטיות</a>
+        <a href="terms.html">תנאי שימוש</a>
+    </div>
+</footer>
 
-    if (burger) {
-        burger.onclick = () => mobileMenu.classList.toggle('show');
-    }
-    if (themeBtn) {
-        themeBtn.onclick = () => document.body.classList.toggle('dark');
-    }
-    </script>
+<!-- JavaScript של התפריט והמצב כהה -->
+<script>
+document.getElementById("hamburger").onclick = () => {
+    document.getElementById("mobileMenu").classList.toggle("show");
+};
+
+document.getElementById("themeToggle").onclick = () => {
+    document.body.classList.toggle("dark");
+};
+</script>
 
 </body>
 </html>
