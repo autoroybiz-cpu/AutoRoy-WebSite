@@ -1,368 +1,485 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AutoRoy Cloud — DevOps & Automations</title>
-  <meta name="description" content="AutoRoy Cloud — בניית אתרים פרימיום, אוטומציות לידים, DevOps ותשתיות ענן." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoRoy Cloud — DevOps, אתרים ואוטומציות</title>
+  <meta name="description" content="AutoRoy Cloud — בניית אתרים פרימיום, דפי נחיתה ואוטומציות מתקדמות לעסקים." />
+
   <link rel="icon" href="favicon.ico" />
-
-  <!-- Fonts (Rubik) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Styles (external file) -->
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- SEO / OpenGraph (מקומי, תוכל לשפר לפי תוכן) -->
-  <meta property="og:title" content="AutoRoy Cloud — DevOps & Automations" />
-  <meta property="og:description" content="פתרונות DevOps, אוטומציות לידים ואתרי נחיתה פרימיום לעסקים." />
-  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- ===== Skip link (נגישות) ===== -->
+  <a href="#main" class="skip-link">דלג לתוכן</a>
+
   <!-- ===== NAVBAR ===== -->
-  <header class="nav page" role="banner">
-    <div class="nav-left" aria-hidden="false">
-      <a href="index.html" class="nav-logo" aria-label="AutoRoy Cloud — דף ראשי">
-        <!-- החלף את ה-favicon שלך כאן אם תרצה -->
-        <img src="favicon.ico" alt="AutoRoy" style="width:26px;height:26px;border-radius:6px;display:block" />
-      </a>
+  <header class="nav">
+    <div class="nav-left">
+      <div class="nav-logo">
+        <span>🚀</span>
+      </div>
       <div>
         <div class="nav-brand">AutoRoy Cloud</div>
-        <div class="nav-sub">DevOps &amp; Automations</div>
+        <div class="nav-sub">DevOps • Web • Automations</div>
       </div>
     </div>
 
-    <nav class="nav-links" role="navigation" aria-label="קישורי ניווט ראשיים">
-      <a class="nav-link" href="index.html#hero">ראשי</a>
-      <a class="nav-link" href="services.html">שירותים</a>
-      <a class="nav-link" href="projects.html">פרויקטים</a>
-      <a class="nav-link" href="process.html">תהליך עבודה</a>
-      <a class="nav-link" href="contact.html">יצירת קשר</a>
-      <a class="nav-link" href="reviews.html">ביקורות</a>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link">דף הבית</a>
+      <a href="services.html" class="nav-link">שירותים</a>
+      <a href="projects.html" class="nav-link">פרויקטים</a>
+      <a href="process.html" class="nav-link">תהליך עבודה</a>
+      <a href="blog.html" class="nav-link">בלוג</a>
+      <a href="reviews.html" class="nav-link">ביקורות</a>
+      <a href="about.html" class="nav-link">אודות</a>
+      <a href="contact.html" class="nav-link">יצירת קשר</a>
     </nav>
 
     <div class="nav-actions">
-      <button id="themeToggle" class="theme-toggle" aria-pressed="false" aria-label="החלפת נושא">🌙</button>
-      <button id="ctaTalk" class="nav-cta">בוא נדבר</button>
-      <button id="hamburger" class="hamburger" aria-expanded="false" aria-controls="navMobile" aria-label="תפריט מובייל">
-        <span class="hamburger-line" aria-hidden="true"></span>
+      <button class="theme-toggle" id="themeToggle" aria-label="שינוי תאורה">☀️</button>
+      <button class="nav-cta" id="btnContactHeader">
+        בוא נדבר
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="תפריט" aria-expanded="false">
+        <span class="hamburger-line"></span>
       </button>
     </div>
   </header>
 
-  <!-- ===== MOBILE NAV ===== -->
-  <nav id="navMobile" class="nav-mobile" aria-hidden="true">
-    <a href="index.html#hero" onclick="closeMobile()">ראשי</a>
+  <!-- תפריט מובייל -->
+  <nav class="nav-mobile" id="navMobile" aria-hidden="true">
+    <a href="index.html" onclick="closeMobile()">דף הבית</a>
     <a href="services.html" onclick="closeMobile()">שירותים</a>
     <a href="projects.html" onclick="closeMobile()">פרויקטים</a>
     <a href="process.html" onclick="closeMobile()">תהליך עבודה</a>
-    <a href="contact.html" onclick="closeMobile()">יצירת קשר</a>
+    <a href="blog.html" onclick="closeMobile()">בלוג</a>
     <a href="reviews.html" onclick="closeMobile()">ביקורות</a>
+    <a href="about.html" onclick="closeMobile()">אודות</a>
+    <a href="contact.html" onclick="closeMobile()">יצירת קשר</a>
   </nav>
 
-  <!-- ===== MAIN PAGE ===== -->
-  <main class="page" role="main">
+  <main class="page" id="main">
     <!-- ===== HERO ===== -->
-    <section id="hero" class="hero section" aria-labelledby="hero-title">
+    <section id="hero" class="hero section">
       <div class="hero-inner">
         <div class="hero-content reveal">
-          <p class="hero-kicker">CLOUD • DEVOPS • BUSINESS AUTOMATIONS</p>
-          <h1 id="hero-title" class="hero-title">
-            AutoRoy — <span>מערכת שעובדת בשבילך</span>
+          <p class="hero-kicker">CLOUD • DEVOPS • AUTOMATIONS • WEB</p>
+          <h1 class="hero-title">
+            בונים לעסק שלך מערכת
+            <span>חכמה, מהירה ומעוצבת ל־2030</span>
+            – לא עוד אתר רגיל.
           </h1>
           <p class="hero-sub">
-            בניית אתרי תדמית ונחיתה פרימיום, חיבור ל־CI/CD, אוטומציות לידים ושילוב וואטסאפ לעסקים. אנחנו יוצרים
-            חוויית משתמש שמרגישה כמו מוצר — לא תיקון.
+            AutoRoy Cloud מחבר בין <strong>אתרי פרימיום</strong>, <strong>אוטומציות</strong> ו<strong>תשתיות ענן</strong>.
+            פחות התעסקות טכנית, יותר לקוחות שמבינים בדיוק מה אתה עושה.
           </p>
 
           <div class="hero-ctas">
-            <button id="btnContact" class="btn-primary">רוצה לדבר על פרויקט? 🚀</button>
-            <a id="btnShow" class="btn-ghost" href="projects.html">לראות דוגמאות ויכולות</a>
+            <button class="btn-primary" id="heroCTA">
+              רוצה לדבר על פרויקט? 🚀
+            </button>
+            <a href="projects.html" class="btn-ghost" id="startNow">
+              לראות דוגמאות ויכולות
+            </a>
           </div>
 
           <div class="hero-tags">
-            <div class="hero-tag"><span class="dot dot-green" aria-hidden="true"></span>תשתיות בענן</div>
-            <div class="hero-tag"><span class="dot dot-cyan" aria-hidden="true"></span>אוטומציות לידים</div>
-            <div class="hero-tag"><span class="dot dot-purple" aria-hidden="true"></span>אתרי נחיתה פרימיום</div>
+            <div class="hero-tag">
+              <span class="dot dot-green"></span>
+              אתרים, דפי נחיתה ומיתוג
+            </div>
+            <div class="hero-tag">
+              <span class="dot dot-cyan"></span>
+              אוטומציות לידים ווואטסאפ
+            </div>
+            <div class="hero-tag">
+              <span class="dot dot-purple"></span>
+              DevOps ותשתיות ענן
+            </div>
           </div>
         </div>
 
-        <div class="hero-visual reveal" aria-hidden="false">
-          <div class="hero-orbit" aria-hidden="true">
+        <div class="hero-visual reveal">
+          <div class="hero-orbit">
             <div class="orbit orbit-1"></div>
             <div class="orbit orbit-2"></div>
             <div class="orbit orbit-3"></div>
 
-            <div class="hero-node hero-node-main">AutoRoy</div>
-            <div class="hero-node hero-node-devops">DevOps</div>
-            <div class="hero-node hero-node-auto">Automations</div>
-            <div class="hero-node hero-node-web">Web</div>
-            <div class="hero-node hero-node-chat">Chat</div>
+            <div class="hero-node hero-node-main">
+              <span>AutoRoy Cloud</span>
+            </div>
+            <div class="hero-node hero-node-devops">
+              <span>DevOps</span>
+            </div>
+            <div class="hero-node hero-node-auto">
+              <span>Automations</span>
+            </div>
+            <div class="hero-node hero-node-web">
+              <span>Web</span>
+            </div>
+            <div class="hero-node hero-node-chat">
+              <span>Chat &amp; Leads</span>
+            </div>
           </div>
-          <p class="hero-visual-caption">חיבור בין שירותים מפוזרים למערכת אחת: אתר, צ'אטים, טפסים ואוטומציות.</p>
+          <p class="hero-visual-caption">
+            מערכת אחת שמחברת: אתר, טפסים, צ’אט, וואטסאפ ואוטומציות – לקו אחד מסודר של לידים.
+          </p>
         </div>
       </div>
 
-      <div class="hero-strip reveal" aria-hidden="true">
+      <div class="hero-strip reveal">
         <span class="strip-label">Stack טכנולוגי</span>
-        <div class="strip-items" id="stackItems" role="list">
-          <span role="listitem">GitHub</span>
-          <span role="listitem">Render</span>
-          <span role="listitem">Node.js</span>
-          <span role="listitem">HTML / CSS / JS</span>
-          <span role="listitem">Zapier / Make</span>
-          <span role="listitem">Google Sheets</span>
-          <span role="listitem">WhatsApp Business</span>
+        <div class="strip-items">
+          <span>HTML • CSS • JS</span>
+          <span>Node.js</span>
+          <span>Render / Vercel</span>
+          <span>GitHub Actions</span>
+          <span>Zapier / Make</span>
+          <span>Google Sheets</span>
+          <span>WhatsApp Business API</span>
         </div>
       </div>
     </section>
 
     <!-- ===== SERVICES PREVIEW ===== -->
-    <section id="servicesPreview" class="section">
+    <section id="services-preview" class="section">
       <div class="section-header reveal">
         <h2 class="section-title">מה AutoRoy Cloud עושה בפועל?</h2>
-        <p class="section-subtitle">שילוב בין DevOps, אוטומציות ואתרים — כדי שהעסק שלך ירגיש כמו מוצר מודרני.</p>
+        <p class="section-subtitle">
+          שילוב של עיצוב פרימיום, קוד נקי ואוטומציות שמורידות ממך עומס. כל פרויקט נבנה כאילו הוא מוצר לסטארטאפ.
+        </p>
       </div>
 
       <div class="cards-grid">
-        <article class="card reveal" aria-labelledby="card1-title">
+        <article class="card reveal">
           <div class="card-header">
-            <span id="card1-title" class="card-title">אוטומציות לידים &amp; וואטסאפ</span>
-            <span class="card-icon" aria-hidden="true">🤝</span>
+            <span class="card-title">אתרי תדמית ודפי נחיתה</span>
+            <span class="card-icon">🌐</span>
           </div>
-          <p class="card-text">חיבור טפסים, וואטסאפ וגיליונות — שכל ליד מגיע למקום אחד מסודר, עם סטטוס ומעקב.</p>
-          <div class="card-chips"><span class="chip">Tally → Sheets</span><span class="chip">Zapier / Make</span><span class="chip">WhatsApp</span></div>
+          <p class="card-text">
+            דפי נחיתה שמתמקדים בתוצאה: הבנה מהירה של הערך שלך וטופס יצירת קשר חד וברור.
+          </p>
+          <div class="card-chips">
+            <span class="chip">UX חד</span>
+            <span class="chip">מהירות גבוה</span>
+            <span class="chip">רספונסיבי מלא</span>
+          </div>
         </article>
 
-        <article class="card reveal" aria-labelledby="card2-title">
+        <article class="card reveal">
           <div class="card-header">
-            <span id="card2-title" class="card-title">אתרי נחיתה ותדמית</span>
-            <span class="card-icon" aria-hidden="true">🌐</span>
+            <span class="card-title">אוטומציות לידים ווואטסאפ</span>
+            <span class="card-icon">🤖</span>
           </div>
-          <p class="card-text">אתרים מהירים, רספונסיביים, עם מסר חד וטופס פשוט — שהלקוח מבין תוך שניות מה אתה נותן.</p>
-          <div class="card-chips"><span class="chip">Responsive</span><span class="chip">UI</span><span class="chip">טפסי לידים</span></div>
+          <p class="card-text">
+            חיבור אתר, טפסים, גוגל שיטס ווואטסאפ – כדי ששום ליד לא יתפספס בדרך.
+          </p>
+          <div class="card-chips">
+            <span class="chip">Tally / Typeform</span>
+            <span class="chip">Google Sheets</span>
+            <span class="chip">WhatsApp Business</span>
+          </div>
         </article>
 
-        <article class="card reveal" aria-labelledby="card3-title">
+        <article class="card reveal">
           <div class="card-header">
-            <span id="card3-title" class="card-title">פרויקטי DevOps חכמים</span>
-            <span class="card-icon" aria-hidden="true">⚙️</span>
+            <span class="card-title">פרויקטי DevOps ותהליכים טכניים</span>
+            <span class="card-icon">⚙️</span>
           </div>
-          <p class="card-text">תהליכים שמראים איך קוד עולה לענן, איך שירותים מדברים, ואיך להפעיל CI/CD אמיתי לעסקים.</p>
-          <div class="card-chips"><span class="chip">Microservices</span><span class="chip">Render Deploy</span><span class="chip">Socket.IO</span></div>
+          <p class="card-text">
+            דוגמאות אמיתיות של שירותים, דיפלוי לענן, CI/CD ותשתיות – כהוכחת יכולת טכנית.
+          </p>
+          <div class="card-chips">
+            <span class="chip">Microservices</span>
+            <span class="chip">CI/CD</span>
+            <span class="chip">Monitoring</span>
+          </div>
         </article>
 
-        <article class="card reveal" aria-labelledby="card4-title">
+        <article class="card reveal">
           <div class="card-header">
-            <span id="card4-title" class="card-title">צ'אטים חכמים ודשבורדים</span>
-            <span class="card-icon" aria-hidden="true">💬</span>
+            <span class="card-title">צ'אטים, דשבורדים ומערכות חיות</span>
+            <span class="card-icon">💬</span>
           </div>
-          <p class="card-text">צ'אטים מבוססי WebSocket, מסכים לניהול ותהליכים שמדגימים טכנולוגיה חיה — לא רק שקופיות.</p>
-          <div class="card-chips"><span class="chip">Realtime</span><span class="chip">APIs</span><span class="chip">חיבור לעסק</span></div>
+          <p class="card-text">
+            יצירת צ'אטים בזמן אמת, דשבורדים וניהול לידים – כדי שתראה מערכת שחיה באמת, לא רק שקופיות.
+          </p>
+          <div class="card-chips">
+            <span class="chip">Realtime</span>
+            <span class="chip">Socket / APIs</span>
+            <span class="chip">Admin Views</span>
+          </div>
         </article>
       </div>
 
-      <div style="margin-top:16px;text-align:center">
-        <a class="btn-ghost" href="services.html">לכל השירותים</a>
+      <div class="hero-ctas" style="margin-top:18px">
+        <a href="services.html" class="btn-ghost">
+          להעמיק לשירותים המלאים
+        </a>
       </div>
     </section>
 
     <!-- ===== PROJECTS PREVIEW ===== -->
-    <section id="projectsPreview" class="section">
+    <section id="projects" class="section">
       <div class="section-header reveal">
-        <h2 class="section-title">הדגמות ופרויקטים</h2>
-        <p class="section-subtitle">כמה דוגמאות שמראות איך ניתן להשתמש בטכנולוגיה בשביל העסק — וגם לבנות תיק עבודות חזק.</p>
+        <h2 class="section-title">דוגמאות ופרויקטים</h2>
+        <p class="section-subtitle">
+          כמה תרחישים שמראים איך הופכים טפסים, לידים ואתרים – למערכת אחת מסודרת.
+        </p>
       </div>
 
       <div class="projects-grid">
         <article class="project-card reveal">
-          <div class="project-tag">DevOps / Cloud / Chat</div>
-          <h3 class="project-title">מערכת צ'אט סקיילבילית</h3>
-          <p class="project-text">צ'אט קבוצתי עם שירות Authentication נפרד ושירות Chat שמדגים דיפלוי לענן.</p>
-          <div class="project-footer"><span class="project-tech">Node.js • Socket.IO • Render</span></div>
+          <div class="project-tag">Web • Brand</div>
+          <h3 class="project-title">אתר תדמית פרימיום ל-AutoRoy</h3>
+          <p class="project-text">
+            האתר שאתה רואה עכשיו – One Page מודרני, תנועה חלקה, תאורה חכמה, רספונסיביות מלאה וטופס פנייה.
+          </p>
+          <ul class="project-list">
+            <li>Hero אנימטיבי עם Orbit</li>
+            <li>סקשנים מסודרים וברורים</li>
+            <li>חיבור לטופס יצירת קשר</li>
+          </ul>
+          <div class="project-footer">
+            HTML • CSS • Vanilla JS • GitHub • Render
+          </div>
         </article>
 
         <article class="project-card reveal">
-          <div class="project-tag">Automations / Leads</div>
+          <div class="project-tag">Automations • Leads</div>
           <h3 class="project-title">Flow לידים לעסק קטן</h3>
-          <p class="project-text">טופס פשוט שממשיך לטבלה מסודרת, הודעות וואטסאפ ללקוח, ומייל לבעל העסק עם כל הפרטים.</p>
-          <div class="project-footer"><span class="project-tech">Tally • Google Sheets • Zapier</span></div>
+          <p class="project-text">
+            טופס באתר ⇒ שורה ב-Sheets ⇒ הודעת וואטסאפ אוטומטית ללקוח ⇒ מייל אליך עם כל הפרטים.
+          </p>
+          <ul class="project-list">
+            <li>טופס חכם באתר</li>
+            <li>Google Sheets מאורגן</li>
+            <li>התראות מיידיות</li>
+          </ul>
+          <div class="project-footer">
+            Tally • Google Sheets • Zapier / Make
+          </div>
         </article>
 
         <article class="project-card reveal">
-          <div class="project-tag">Web / Brand</div>
-          <h3 class="project-title">אתר תדמית פרימיום</h3>
-          <p class="project-text">One Page מודרני עם אנימציות, תאורה, וטפסים שממירים.</p>
-          <div class="project-footer"><span class="project-tech">HTML • CSS • JS • GitHub</span></div>
+          <div class="project-tag">Cloud • DevOps</div>
+          <h3 class="project-title">מערכת צ'אט סקיילבילית</h3>
+          <p class="project-text">
+            מערכת צ'אט עם שירות Auth נפרד, שירות Chat נפרד ו-UI שמדבר איתם בענן – כהדגמת יכולת DevOps.
+          </p>
+          <ul class="project-list">
+            <li>שירותי backend נפרדים</li>
+            <li>דיפלוי ל-Render / Vercel</li>
+            <li>מוניטורינג בסיסי</li>
+          </ul>
+          <div class="project-footer">
+            Node.js • Socket • Render
+          </div>
         </article>
       </div>
 
-      <div style="margin-top:14px;text-align:center">
-        <a class="btn-ghost" href="projects.html">לכל הדוגמאות</a>
+      <div class="hero-ctas" style="margin-top:18px">
+        <a href="projects.html" class="btn-ghost">
+          לראות עוד פרויקטים
+        </a>
       </div>
     </section>
 
-    <!-- ===== PROCESS / TIMELINE PREVIEW ===== -->
-    <section id="processPreview" class="section">
+    <!-- ===== PROCESS PREVIEW ===== -->
+    <section id="process" class="section">
       <div class="section-header reveal">
         <h2 class="section-title">איך נראה תהליך עבודה איתי?</h2>
-        <p class="section-subtitle">תהליך פשוט וברור — שיחה, מפת זרימה, בנייה וחיבור, ומעבר ל־Production.</p>
+        <p class="section-subtitle">
+          תהליך קצר, ברור ושקוף – בלי כאבי ראש טכניים. אתה מתעסק בעסק, אני בתשתיות ובחוויית המשתמש.
+        </p>
       </div>
 
-      <div class="timeline reveal" aria-hidden="false">
+      <div class="timeline reveal">
         <div class="timeline-item">
-          <div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3>1. שיחת הבנה</h3>
-            <p>מבינים את הבעיה, הלקוחות, והיכן האוטומציה תייצר ערך.</p>
+            <h3>1. שיחת התאמה</h3>
+            <p>מבינים מה העסק עושה, מי הקהל, ומה חשוב שיקרה באתר או במערכת.</p>
           </div>
         </div>
-
         <div class="timeline-item">
-          <div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3>2. מפת זרימה</h3>
-            <p>משרטטים Flow פשוט ומדידים — לשלבי המרת לידים וניקוי נתונים.</p>
+            <h3>2. אפיון ושרטוט הפLow</h3>
+            <p>משרטטים יחד את המסלול של הלקוח: מאיפה הוא מגיע, מה הוא רואה, ומה הוא ממלא.</p>
           </div>
         </div>
-
         <div class="timeline-item">
-          <div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3>3. בנייה וחיבור</h3>
-            <p>בונים את האתר, החיבורים ל־API, ואוטומציות שמביאות תוצאות.</p>
+            <h3>3. בנייה, אוטומציות וחיבורים</h3>
+            <p>בנייה של האתר, האוטומציות והחיבורים לוואטסאפ / מייל / Sheets עד לגרסה עובדת.</p>
           </div>
         </div>
-
         <div class="timeline-item">
-          <div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3>4. מעבר ל־Production</h3>
-            <p>העלאה לענן, תיעוד ושימור — ותוכנית לשיפורים עתידיים.</p>
+            <h3>4. עלייה לאוויר וליווי</h3>
+            <p>עלייה ל-Production, מדידה בסיסית ושדרוגים לפי מה שקורה בשטח.</p>
           </div>
         </div>
       </div>
 
-      <div style="margin-top:12px;text-align:center">
-        <a class="btn-ghost" href="process.html">לפרטים מלאים</a>
+      <div class="hero-ctas" style="margin-top:18px">
+        <a href="process.html" class="btn-ghost">
+          להבין את התהליך המלא
+        </a>
       </div>
     </section>
 
-    <!-- ===== CONTACT PREVIEW ===== -->
+    <!-- ===== CONTACT (טופס) ===== -->
     <section id="contact" class="section">
       <div class="section-header reveal">
         <h2 class="section-title">בוא נדבר על מה שהכי חשוב לך</h2>
-        <p class="section-subtitle">כמה פרטים בסיסיים – ונחזור אליך עם כיוון ברור והצעה מותאמת.</p>
+        <p class="section-subtitle">
+          השאר כמה פרטים בסיסיים, ואחזור אליך אישית עם כיוון ברור: מה אפשר לבנות, כמה זמן זה ייקח, ואיך זה יעזור לעסק שלך.
+        </p>
       </div>
 
-      <form id="leadForm" class="form-grid reveal" onsubmit="handleLeadSubmit(event)" novalidate>
+      <form id="leadForm" class="form-grid reveal">
         <div class="form-field">
           <label for="lead-name">שם מלא</label>
-          <input id="lead-name" name="from_name" type="text" placeholder="איך לפנות אליך?" required />
+          <input id="lead-name" type="text" placeholder="איך לפנות אליך?" required />
         </div>
-
         <div class="form-field">
           <label for="lead-business">שם העסק / תחום</label>
-          <input id="lead-business" name="business" type="text" placeholder="מסעדה, סטודיו..." />
+          <input id="lead-business" type="text" placeholder="מסעדה, סטודיו, אימון, ייעוץ..." />
         </div>
-
         <div class="form-field">
           <label for="lead-contact">טלפון או מייל</label>
-          <input id="lead-contact" name="contact" type="text" placeholder="פרט אחד שחובה כדי לחזור אליך" required />
+          <input id="lead-contact" type="text" placeholder="פרט אחד שחובה כדי לחזור אליך" required />
         </div>
-
         <div class="form-field">
           <label for="lead-type">מה מעניין אותך?</label>
-          <select id="lead-type" name="type">
+          <select id="lead-type">
             <option value="">בחר...</option>
+            <option>אתר / דף נחיתה</option>
             <option>אוטומציות לידים ווואטסאפ</option>
-            <option>אתר נחיתה / אתר תדמית</option>
             <option>פרויקט DevOps / תהליך טכני</option>
             <option>משהו אחר – נחשוב ביחד</option>
           </select>
         </div>
-
         <div class="form-field full">
           <label for="lead-message">איך המצב נראה היום, ואיך היית רוצה שייראה?</label>
-          <textarea id="lead-message" name="message" placeholder="כמה משפטים חופשיים."></textarea>
+          <textarea id="lead-message" placeholder="כמה משפטים חופשיים."></textarea>
         </div>
 
         <div class="form-footer">
-          <div class="form-note" id="lead-note">הפרטים שלך ישלחו אליי בצורה מסודרת. ניתן גם לשלוח דרך וואטסאפ.</div>
+          <div class="form-note">
+            הפרטים שאתה ממלא כאן נשלחים ישירות למייל העסקי שלי
+            <strong>autoroybiz@gmail.com</strong>.
+          </div>
           <div class="form-actions">
-            <button type="submit" class="btn-primary btn-sm">שלחו לי הצעה מסודרת</button>
-            <a class="btn-ghost btn-sm" href="https://wa.me/972547222023" target="_blank" rel="noopener">לדבר בוואטסאפ</a>
+            <button type="submit" class="btn-primary btn-sm">
+              שלחו לי הצעה מסודרת
+            </button>
+            <a href="https://wa.me/972547222023?text=%D7%94%D7%99%D7%99%20%D7%A8%D7%95%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%90%D7%AA%D7%A8%20AutoRoy%20Cloud%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98."
+               class="btn-ghost btn-sm" target="_blank">
+              לדבר בוואטסאפ
+            </a>
           </div>
         </div>
       </form>
     </section>
 
     <!-- ===== REVIEWS PREVIEW ===== -->
-    <section id="reviewsPreview" class="section">
+    <section id="reviews" class="section">
       <div class="section-header reveal">
-        <h2 class="section-title">ביקורות, פידבק ורעיונות</h2>
-        <p class="section-subtitle">אזור לאיסוף חוות דעת — וגם לחשוב יחד על מה לשפר.</p>
+        <h2 class="section-title">ביקורות ותגובות</h2>
+        <p class="section-subtitle">
+          קצת פידבק מלקוחות ומאנשים שראו את המערכות שבניתי.
+        </p>
       </div>
 
       <div class="reviews-layout reveal">
         <div class="reviews-list" id="reviewsList">
-          <!-- דוגמאות סטטיות — ניתן להוסיף דינמית דרך JS -->
           <article class="review-card">
-            <div class="review-head"><span class="review-name">בעל סטודיו</span><span class="review-tag">אוטומציות + לידים</span></div>
-            <p class="review-text">"לפני זה כל ליד היה נתקע. עכשיו הכל נכנס לטבלה אחת, ויש מעקב ברור."</p>
+            <div class="review-head">
+              <span class="review-name">בעל סטודיו</span>
+              <span class="review-tag">אוטומציות + לידים</span>
+            </div>
+            <p class="review-text">
+              "לפני זה כל ליד היה נתקע במקום אחר. עכשיו הכל נכנס לטבלה אחת, ואני יודע בדיוק מי בטיפול ומי נסגר."
+            </p>
           </article>
 
           <article class="review-card">
-            <div class="review-head"><span class="review-name">יועץ עסקי</span><span class="review-tag">אתר תדמית</span></div>
-            <p class="review-text">"האתר עזר לי להסביר את השירות ללקוחות חדשים — המרה עלתה מיד."</p>
+            <div class="review-head">
+              <span class="review-name">יועץ עסקי</span>
+              <span class="review-tag">אתר תדמית</span>
+            </div>
+            <p class="review-text">
+              "הייתי צריך מקום אחד מסודר לשלוח אליו לקוחות. אחרי האתר – הרבה יותר קל להסביר מי אני ומה אני עושה."
+            </p>
           </article>
         </div>
 
-        <form class="reviews-form" onsubmit="handleReviewSubmit(event)">
+        <form class="reviews-form">
           <div class="form-field">
             <label for="review-name">שם / שם עסק (לא חובה)</label>
             <input id="review-name" type="text" placeholder="אפשר גם אנונימי" />
           </div>
-
           <div class="form-field">
-            <label for="review-text">מה אתה חושב על האתר / הכיוון?</label>
-            <textarea id="review-text" placeholder="פידבק קצר – מה אהבת, מה היית משפר"></textarea>
+            <label for="review-text">מה אתה חושב על הכיוון?</label>
+            <textarea id="review-text" placeholder="כמה מילים חופשיות על מה אהבת או מה היית משפר."></textarea>
           </div>
-
           <div class="form-footer">
-            <div class="form-note" id="review-note">הביקורת שלך נשמרת בדפדפן (ניתן לחבר למסד נתונים בעתיד).</div>
-            <button type="submit" class="btn-ghost btn-sm">שמירת ביקורת</button>
+            <div class="form-note" id="review-note">
+              הביקורת נשמרת עכשיו רק בדפדפן שלך – אפשר בעתיד לחבר למסד נתונים אמיתי.
+            </div>
+            <button type="submit" class="btn-ghost btn-sm">
+              שמירת ביקורת
+            </button>
           </div>
         </form>
+      </div>
+
+      <div class="hero-ctas" style="margin-top:18px">
+        <a href="reviews.html" class="btn-ghost">
+          לעוד ביקורות ודוגמאות
+        </a>
       </div>
     </section>
 
     <!-- ===== FINAL CTA ===== -->
     <section class="section final-cta">
       <div class="final-cta-inner reveal">
-        <h2>רוצה שהמערכת שלך תרגיש כמו 2025 — לא 2012?</h2>
-        <p>אתר, אוטומציות ו־DevOps שלא מרגישים כמו טלאי על טלאי — אלא מוצר אחד חכם שעובד בשבילך.</p>
+        <h2>רוצה שהמערכת שלך תרגיש כמו 2030 – לא 2012?</h2>
+        <p>
+          אתר, אוטומציות ו־DevOps שלא מרגישים כמו טלאי על טלאי, אלא כמו מוצר אחד חכם שפועל בשבילך.
+        </p>
         <div class="final-cta-actions">
-          <button id="startTalk" class="btn-primary">בוא נתחיל לדבר</button>
-          <a class="btn-ghost" href="projects.html">לראות שוב את הדוגמאות</a>
+          <button class="btn-primary" id="ctaTalk">
+            בוא נתחיל לדבר
+          </button>
+          <a href="projects.html" class="btn-ghost">
+            לראות שוב את הדוגמאות
+          </a>
         </div>
       </div>
     </section>
   </main>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="footer page" role="contentinfo">
+  <footer class="footer">
     <div class="footer-main">
       <span>© 2025 AutoRoy Cloud.</span>
-      <span>DevOps &amp; Automations • פתרונות לאוטומציה ואתרים לעסקים.</span>
+      <span>DevOps &amp; Automations • אתרים, דפי נחיתה ואוטומציות לעסקים.</span>
     </div>
-    <div class="footer-links"><a href="index.html#hero">למעלה</a><a href="services.html">שירותים</a><a href="contact.html">יצירת קשר</a></div>
+    <div class="footer-links">
+      <a href="#hero">למעלה</a>
+      <a href="services.html">שירותים</a>
+      <a href="contact.html">יצירת קשר</a>
+    </div>
   </footer>
 
   <!-- Scripts -->
-  <!-- app.js יכיל את כל ההתנהגות: theme toggle, mobile nav, reveal, form submit וכו' -->
   <script src="app.js"></script>
 </body>
 </html>
