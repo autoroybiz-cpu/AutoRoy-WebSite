@@ -1,35 +1,80 @@
-<body>
-<!-- ===== NAVBAR ===== -->
-  <header class="nav">
-    <div class="nav-left">
-      <div class="nav-logo">
-        <span>🚀</span>
-      </div>
-      <div>
-        <div class="nav-brand">AutoRoy Cloud</div>
-        <div class="nav-sub">DevOps • Web • Automations</div>
-      </div>
-    </div>
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoRoy Cloud</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-    <nav class="nav-links">
-      <a href="index.html" class="nav-link">דף הבית</a>
-      <a href="services.html" class="nav-link">שירותים</a>
-      <a href="projects.html" class="nav-link">פרויקטים</a>
-      <a href="process.html" class="nav-link">תהליך עבודה</a>
-      <a href="blog.html" class="nav-link">בלוג</a>
-      <a href="reviews.html" class="nav-link">ביקורות</a>
-      <a href="about.html" class="nav-link">אודות</a>
-      <a href="contact.html" class="nav-link">יצירת קשר</a>
+<body>
+
+    <!-- ================= NAVBAR ================ -->
+    <nav class="nav">
+        <div class="nav-left">
+            <div class="nav-logo"></div>
+            <div>
+                <div class="nav-brand">AutoRoy Cloud</div>
+                <div class="nav-sub">DevOps • Web • Automations</div>
+            </div>
+        </div>
+
+        <div class="nav-links">
+            <a class="nav-link" href="index.html">דף הבית</a>
+            <a class="nav-link" href="services.html">שירותים</a>
+            <a class="nav-link" href="projects.html">פרויקטים</a>
+            <a class="nav-link" href="process.html">תהליך עבודה</a>
+            <a class="nav-link" href="blog.html">בלוג</a>
+            <a class="nav-link" href="reviews.html">ביקורות</a>
+            <a class="nav-link" href="about.html">אודות</a>
+            <a class="nav-link" href="contact.html">יצירת קשר</a>
+        </div>
+
+        <div class="nav-actions">
+            <div class="theme-toggle">☀️</div>
+            <a href="https://wa.me/972545799332" class="nav-cta">בוא נדבר</a>
+        </div>
+
+        <div class="hamburger">
+            <div class="hamburger-line"></div>
+        </div>
     </nav>
 
-    <div class="nav-actions">
-      <button class="theme-toggle" id="themeToggle" aria-label="שינוי תאורה">☀️</button>
-      <button class="nav-cta" id="btnContactHeader">
-        בוא נדבר
-      </button>
-      <button class="hamburger" id="hamburger" aria-label="תפריט" aria-expanded="false">
-        <span class="hamburger-line"></span>
-      </button>
+    <!-- MOBILE MENU -->
+    <div class="nav-mobile">
+        <a href="index.html">דף הבית</a>
+        <a href="services.html">שירותים</a>
+        <a href="projects.html">פרויקטים</a>
+        <a href="process.html">תהליך עבודה</a>
+        <a href="blog.html">בלוג</a>
+        <a href="reviews.html">ביקורות</a>
+        <a href="about.html">אודות</a>
+        <a href="contact.html">יצירת קשר</a>
     </div>
-  </header>
-<body>
+
+    <!-- ================= PAGE HEADER ================ -->
+    <header class="page-hero">
+        <h1 class="page-title">שם הדף</h1>
+        <p class="page-sub">תיאור קצר לדף הזה</p>
+    </header>
+
+    <!-- ================= CONTENT ================= -->
+    <main class="page page-content">
+        <!-- כאן נכנס התוכן של כל דף -->
+    </main>
+
+    <script>
+    const burger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.nav-mobile');
+    const themeBtn = document.querySelector('.theme-toggle');
+
+    if (burger) {
+        burger.onclick = () => mobileMenu.classList.toggle('show');
+    }
+    if (themeBtn) {
+        themeBtn.onclick = () => document.body.classList.toggle('dark');
+    }
+    </script>
+
+</body>
+</html>
