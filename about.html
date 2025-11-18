@@ -1,80 +1,117 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>אודות • AutoRoy Cloud</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="styles.css" />
     <script defer src="app.js"></script>
 </head>
+
 <body>
-<!-- ================= NAVBAR ================ -->
+
+<!-- ========== NAVBAR כמו בדף הבית ========== -->
 <header class="nav">
-    <div class="container">
-        
-        <div class="nav-left">
-            <a href="index.html" class="nav-logo">AutoRoy Cloud 🚀</a>
-            <div class="nav-subtitle">DevOps • Web • Automations</div>
+    <div class="nav-left">
+        <a href="index.html" class="nav-logo"></a>
+        <div>
+            <div class="nav-brand">AutoRoy Cloud</div>
+            <div class="nav-sub">DevOps • Web • Automations</div>
         </div>
-
-        <nav class="nav-links">
-            <a href="index.html">דף הבית</a>
-            <a href="services.html">שירותים</a>
-            <a href="projects.html">פרויקטים</a>
-            <a href="process.html">תהליך</a>
-            <a href="blog.html">בלוג</a>
-            <a href="reviews.html">ביקורות</a>
-            <a href="about.html">אודות</a>
-            <a href="contact.html">יצירת קשר</a>
-        </nav>
-
-        <div class="nav-right">
-            <a href="contact.html" class="cta-btn">בוא נדבר</a>
-            <button id="themeToggle" class="theme-btn">☀️</button>
-        </div>
-
-        <div class="nav-mobile-btn" id="hamburger">☰</div>
     </div>
 
-    <div class="nav-mobile" id="navMobile">
-        <a href="index.html">דף הבית</a>
-        <a href="services.html">שירותים</a>
-        <a href="projects.html">פרויקטים</a>
-        <a href="process.
+    <nav class="nav-links">
+        <a href="index.html" class="nav-link">דף הבית</a>
+        <a href="services.html" class="nav-link">שירותים</a>
+        <a href="projects.html" class="nav-link">פרויקטים</a>
+        <a href="process.html" class="nav-link">תהליך עבודה</a>
+        <a href="blog.html" class="nav-link">בלוג</a>
+        <a href="reviews.html" class="nav-link">ביקורות</a>
+        <a href="about.html" class="nav-link active">אודות</a>
+        <a href="contact.html" class="nav-link">יצירת קשר</a>
+    </nav>
 
-<!-- NAVBAR שלכם נשאר אותו דבר -->
-
-<div class="page-hero">
-    <div class="container">
-        <h1 class="page-title reveal">מי אני?</h1>
-        <p class="page-sub reveal">
-            AutoRoy Cloud הוא מותג שנבנה מתוך אהבה לטכנולוגיה, אוטומציה ופישוט של תהליכים מסובכים — כדי להפוך עסקים לחכמים יותר, יפים יותר ומהירים יותר.
-        </p>
+    <div class="nav-actions">
+        <a href="https://wa.me/972526607740" target="_blank" class="nav-cta">בוא נדבר</a>
+        <div class="theme-toggle">☀️</div>
+        <div class="hamburger"><div class="hamburger-line"></div></div>
     </div>
+</header>
+
+<div class="nav-mobile" id="mobileNav">
+    <a href="index.html">דף הבית</a>
+    <a href="services.html">שירותים</a>
+    <a href="projects.html">פרויקטים</a>
+    <a href="process.html">תהליך עבודה</a>
+    <a href="blog.html">בלוג</a>
+    <a href="reviews.html">ביקורות</a>
+    <a href="about.html">אודות</a>
+    <a href="contact.html">יצירת קשר</a>
 </div>
 
-<div class="page-content container reveal">
+<!-- ========== HERO PAGE HEADER ========== -->
 
-    <div class="page-section">
+<section class="page-hero reveal">
+    <h1 class="page-title">מי אני?</h1>
+    <p class="page-sub">
+        AutoRoy Cloud הוא מותג שמחבר טכנולוגיה, אוטומציה, DevOps וחוויית משתמש –
+        לכדי מערכת אחת חכמה שמפשטת את כל הבלאגן ומפעילה את העסק שלך כמו חברות ענק.
+    </p>
+</section>
+
+<!-- ========== CONTENT ========== -->
+
+<section class="page-content container">
+
+    <div class="page-section reveal">
         <h2>הסיפור שלי</h2>
         <p>
-            אחרי שנים בתחום הטכנולוגיה, שמתי לב שמשהו חסר: עסקים קטנים ובינוניים טובעים בכלים, מערכות, טפסים ופלפטפורמות — וכל דבר קטן דורש חמש אפליקציות ושני כאבי ראש.
+            במשך שנים עבדתי עם טכנולוגיות, תהליכים, מערכות וצוותים שונים. ראיתי מקרוב
+            איך עסקים קטנים ובינוניים טובעים בתוכנות, טפסים, התראות, אפליקציות ומידע —
+            עד שכל פעולה פשוטה הופכת למשימה ענקית.
         </p>
         <p>
-            אז החלטתי לקחת את הידע שלי ב־DevOps, אוטומציות, בניית אתרים ומערכות AI — וליצור פתרון אחד, ברור, מקצועי ונקי: מערכת חכמה שמחברת את כל העסק שלך למקום אחד.
+            מהמקום הזה נולד AutoRoy Cloud: רצון לתת לעסקים פתרון אחד ברור,
+            נוח, מקצועי ומרשים — במקום עשרות כלים מפוזרים.
         </p>
     </div>
 
-    <img src="https://images.unsplash.com/photo-1551836022-79b98a1736f4?auto=format&fit=crop&w=1350&q=80" alt="עבודה והשראה">
+    <img
+        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80"
+        alt="עבודה דיגיטלית"
+        class="reveal"
+    />
 
-    <div class="page-section">
+    <div class="page-section reveal">
         <h2>היום AutoRoy Cloud</h2>
         <p>
-            מאפשרת לעסקים לקבל אתר, אוטומציה ומערכות בעיצוב ונראות כמו של חברות ענק — אבל במחיר ובמהירות של עסק קטן.  
+            הפלטפורמה כוללת את כל מה שהעסק צריך: אתר, אוטומציות, ניהול לידים,
+            מערכות פנימיות, דפי נחיתה, DevOps, חיבורים ל-API, ניהול תהליכים,
+            אינטגרציות, עיצוב מודרני, ואפילו סביבה מנוהלת ומאובטחת.
+        </p>
+        <p>
+            הכל במקום אחד. הכל עובד יחד. הכל פשוט — ואתה מרוויח זמן, כסף ושקט.
         </p>
     </div>
 
-</div>
+    <div class="final-cta reveal">
+        <div class="final-cta-inner">
+            <h2>רוצה לקחת את העסק שלך קדימה?</h2>
+            <p>אני כאן כדי להרים לך מערכת חכמה, מעוצבת ומקצועית — שתעבוד בשבילך.</p>
+            <div class="final-cta-actions">
+                <a
+                    class="btn-primary"
+                    href="https://wa.me/972526607740"
+                    target="_blank"
+                >
+                    בוא נדבר בוואטסאפ 🚀
+                </a>
+            </div>
+        </div>
+    </div>
+
+</section>
 
 </body>
 </html>
