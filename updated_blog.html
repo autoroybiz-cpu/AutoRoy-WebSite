@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="he">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>בלוג AutoRoy Cloud – רעיונות, השראה וטילים דיגיטליים</title>
+<link href="styles.css" rel="stylesheet"/>
+<link href="favicon.png" rel="icon" type="image/png"/>
+</head>
+<body>
+<a class="skip-link" href="#main">דלג לתוכן הראשי</a>
+<!-- =========== NAVBAR (אותו מבנה כמו בשאר האתר) =========== -->
+<header class="nav">
+<div class="nav-left">
+<div class="nav-logo">
+<span>🚀</span>
+</div>
+<div>
+<div class="nav-brand">AutoRoy Cloud</div>
+<div class="nav-sub">DevOps • Web • Automations</div>
+</div>
+</div>
+<nav class="nav-links">
+<a class="nav-link" href="index.html">דף הבית</a>
+<a class="nav-link" href="services.html">שירותים</a>
+<a class="nav-link" href="projects.html">פרויקטים</a>
+<a class="nav-link" href="process.html">תהליך עבודה</a>
+<a class="nav-link" href="blog.html">בלוג</a>
+<a class="nav-link" href="reviews.html">ביקורות</a>
+<a class="nav-link" href="about.html">אודות</a>
+<a class="nav-link" href="contact.html">יצירת קשר</a>
+</nav>
+<div class="nav-actions">
+<button aria-label="שינוי תאורה" class="theme-toggle" id="themeToggle">☀️</button>
+<button class="nav-cta" id="btnContactHeader">
+        בוא נדבר
+      </button>
+<button aria-expanded="false" aria-label="תפריט" class="hamburger" id="hamburger">
+<span class="hamburger-line"></span>
+</button>
+</div>
+</header>
+<!-- NAV מובייל -->
+<nav aria-hidden="true" class="nav-mobile" id="navMobile">
+<a href="index.html" onclick="closeMobile()">דף הבית</a>
+<a href="services.html" onclick="closeMobile()">שירותים</a>
+<a href="projects.html" onclick="closeMobile()">פרויקטים</a>
+<a href="process.html" onclick="closeMobile()">תהליך עבודה</a>
+<a href="blog.html" onclick="closeMobile()">בלוג</a>
+<a href="reviews.html" onclick="closeMobile()">ביקורות</a>
+<a href="about.html" onclick="closeMobile()">אודות</a>
+<a href="contact.html" onclick="closeMobile()">יצירת קשר</a>
+</nav>
+<!-- =========== MAIN =========== -->
+<main class="page blog-page" id="main">
+<!-- ========== HERO – מגזין מרחף ========== -->
+<section class="page-hero blog-hero reveal">
+<div class="blog-hero-inner">
+<div class="blog-hero-text">
+<p class="hero-kicker">בלוג AutoRoy Cloud</p>
+<h1 class="blog-title">
+            לא עוד “בלוג”.<br/>
+<span>מגזין דיגיטלי לעסקים שחושבים קדימה.</span>
+</h1>
+<p class="blog-subtitle">
+            כאן אני חושף איך עסקים קטנים ובינוניים יכולים לעבוד כמו סטארטאפ:
+            אתרים שמייצרים כסף, אוטומציות שחוסכות שעות ביום, ותהליכים שיווקיים
+            שעובדים עבורך גם כשאתה ישן.
+          </p>
+<div class="blog-meta-row">
+<span class="blog-pill">✦ תוכן פרקטי בלי חפירות</span>
+<span class="blog-pill">✦ דוגמאות מעולם אמיתי</span>
+<span class="blog-pill">✦ טכנולוגיה בשפה פשוטה</span>
+</div>
+</div>
+<div class="blog-hero-visual">
+<div class="blog-mag-orbit">
+<div class="blog-mag-layer layer-cover"></div>
+<div class="blog-mag-layer layer-line-1"></div>
+<div class="blog-mag-layer layer-line-2"></div>
+<div class="blog-mag-layer layer-glow"></div>
+<div class="blog-mag-float-card">
+<div class="blog-mag-tag">FEATURED</div>
+<h3>איך אתר אחד החליף 3 עובדים במשרד</h3>
+<p>
+                פירוק אמיתי של אוטומציה, טפסים חכמים ומעקב לקוחות
+                שהכניסו סדר חדש לעסק.
+              </p>
+<button class="btn-sm blog-mag-btn" onclick="document.getElementById('post-automation').scrollIntoView({behavior:'smooth'})" type="button">
+                קפיצה למאמר בפירוט
+              </button>
+</div>
+</div>
+<p class="blog-hero-caption">
+            כל מאמר כאן נכתב כדי שתוכל לקחת משהו אחד וליישם אותו מחר בבוקר.
+          </p>
+</div>
+</div>
+</section>
+<!-- ========== FILTRES + SEARCH ========== -->
+<section class="section blog-filters reveal">
+<header class="section-header">
+<h2 class="section-title">במה בא לך להתעמק היום?</h2>
+<p class="section-subtitle">
+          תבחר תחום שמעניין אותך – אתרים, אוטומציות, שיווק, או אסטרטגיה.
+          כל מאמר כתוב בשפה פשוטה ועם מספיק דוגמאות, כדי שתוכל באמת ליישם.
+        </p>
+</header>
+<div class="blog-filters-row">
+<div class="blog-chips">
+<button class="blog-chip active" type="button">הכל</button>
+<button class="blog-chip" type="button">בניית אתרים ודפי נחיתה</button>
+<button class="blog-chip" type="button">אוטומציות ותהליכים</button>
+<button class="blog-chip" type="button">שיווק חכם</button>
+<button class="blog-chip" type="button">AI לעסקים</button>
+<button class="blog-chip" type="button">אסטרטגיה לניהול עסק</button>
+</div>
+<div class="blog-search">
+<input aria-label="חיפוש במאמרים" placeholder="מחפש משהו ספציפי? לדוגמה: וואטסאפ אוטומטי, פגישה, טופס לידים..." type="search"/>
+</div>
+</div>
+</section>
+<!-- ========== FEATURED ARTICLE ========== -->
+<section class="section blog-feature reveal" id="post-automation">
+<div class="blog-feature-grid">
+<article class="blog-feature-card">
+<div class="blog-feature-badge-row">
+<span class="blog-feature-badge">מאמר מוביל</span>
+<span class="blog-feature-badge soft">זמן קריאה: 7 דקות</span>
+</div>
+<h2>איך בנינו מערכת אחת שחסכה לעסק 40+ שעות בחודש</h2>
+<p>
+            לידים נכנסים, מיילים אוטומטיים, תזכורות וואטסאפ, משימות לצוות
+            ותיעוד בקרמ – הכל פועל בלי שאף אחד “יזכור” לעשות. במאמר הזה אני
+            מפרק את התהליך לחלקים שתוכל לקחת גם לעסק שלך.
+          </p>
+<ul class="blog-feature-list">
+<li>איך לזהות שלב בעסק שאפשר להפוך לאוטומטי</li>
+<li>באילו כלים השתמשתי (בלי מילים מפוצצות, רק מה שעובד)</li>
+<li>איפה רוב בעלי העסקים נופלים בדרך (ואיך להימנע)</li>
+</ul>
+<div class="blog-feature-footer">
+<div class="blog-author">
+<span class="author-avatar">R</span>
+<div>
+<div class="author-name">רוי אהרונוביץ׳</div>
+<div class="author-meta">מקים AutoRoy Cloud – בונה מערכות שעובדות לבד</div>
+</div>
+</div>
+<div class="blog-feature-cta">
+<button class="btn-sm btn-primary" onclick="window.location.href='https://wa.me/972547222023?text=' + encodeURIComponent('קראתי את המאמר על האוטומציה ורוצה משהו דומה לעסק שלי')" type="button">
+                בוא נחשוב יחד מה אפשר לעשות אצלך
+              </button>
+</div>
+</div>
+</article>
+<aside class="blog-side-panel">
+<h3>רעיונות שאפשר ליישם השבוע</h3>
+<ul>
+<li>טופס באתר שמוסיף לקוח ישירות ל־Google Sheets + וואטסאפ.</li>
+<li>מענה ראשוני אוטומטי לליד, כדי לא לאבד אותו לליד הבא.</li>
+<li>סיכום יומי בוואטסאפ: כמה לידים נכנסו, מי מחכה לטלפון.</li>
+</ul>
+<p class="blog-side-note">
+            המטרה של כל מאמר כאן היא לא “ללמד תיאוריה” – אלא לתת לך
+            רעיונות שאתה יכול לבקש ממני לבנות עבורך, או להטמיע לבד אם יש לך
+            את הידע.
+          </p>
+</aside>
+</div>
+</section>
+<!-- ========== BLOG GRID – מגזין מרחף ========== -->
+<section class="section blog-grid-section reveal">
+<header class="section-header">
+<h2 class="section-title">כתבות ומדריכים מומלצים</h2>
+<p class="section-subtitle">
+          אוסף מאמרים שמסבירים איך טכנולוגיה, עיצוב נכון ותכנון חכם
+          הופכים אתר לעובד מסודר בצוות שלך – לא לכרטיס ביקור יפה בלבד.
+        </p>
+</header>
+<div class="blog-grid">
+<!-- פוסט 1 -->
+<article class="blog-card">
+<div class="blog-card-tag">דפי נחיתה</div>
+<h3>מה ההבדל בין דף נחיתה שמוכר – לדף שנראה יפה ולא עושה כלום?</h3>
+<p>
+            אותה כותרת, אותו שירות, אבל תוצאה אחרת לגמרי. נצלול
+            למבנה של דף נחיתה מנצח, עם דוגמאות שכל עסק יכול להשתמש בהן.
+          </p>
+<div class="blog-card-meta">
+<span>5 דקות קריאה</span>
+<span>מתאים לבעלי עסקים בתחילת הדרך</span>
+</div>
+<button class="btn-sm blog-card-btn" onclick="window.location.href='contact.html'" type="button">
+            רוצה שאבנה לך כזה? בוא נדבר
+          </button>
+</article>
+<!-- פוסט 2 -->
+<article class="blog-card">
+<div class="blog-card-tag">אוטומציות</div>
+<h3>רצף וואטסאפ חכם – איך לשמור על הלקוח בלי להציק לו</h3>
+<p>
+            כלים פשוטים לבניית רצף הודעות שעוזר ללקוח לזכור אותך,
+            בלי שהוא ירגיש שאתה “ספאם”. כולל דוגמאות לנוסחי הודעות.
+          </p>
+<div class="blog-card-meta">
+<span>6 דקות קריאה</span>
+<span>כולל צ׳קליסט להורדה</span>
+</div>
+<button class="btn-sm blog-card-btn" onclick="window.location.href='https://wa.me/972547222023?text=' + encodeURIComponent('רוצה רצף וואטסאפ חכם לעסק שלי')" type="button">
+            בנה לי רצף מותאם אישית
+          </button>
+</article>
+<!-- פוסט 3 -->
+<article class="blog-card">
+<div class="blog-card-tag">שיווק חכם</div>
+<h3>איך לחבר בין קמפיינים, אתר ואקסל אחד – בלי להשתגע</h3>
+<p>
+            תכנון מערכת אחת שמקשרת בין פייסבוק, גוגל, האתר שלך
+            וגיליון אחד מסודר. תמונה מלאה במקום בלגן של טבלאות.
+          </p>
+<div class="blog-card-meta">
+<span>7 דקות קריאה</span>
+<span>למי שכבר מריץ קמפיינים</span>
+</div>
+<button class="btn-sm blog-card-btn" onclick="window.location.href='projects.html'" type="button">
+            לראות דוגמאות חיות מהשטח
+          </button>
+</article>
+<!-- פוסט 4 -->
+<article class="blog-card">
+<div class="blog-card-tag">AI לעסקים</div>
+<h3>איך להשתמש בבינה מלאכותית בלי לאבד את ה”אתה” של העסק</h3>
+<p>
+            מאמר על המקום הנכון של AI – איפה הוא חוסך זמן, ואיפה
+            אסור לו להחליף אותך. שילוב בין אוטומציה לאותנטיות.
+          </p>
+<div class="blog-card-meta">
+<span>8 דקות קריאה</span>
+<span>למי שמרגיש מוצף מכל ה־AI</span>
+</div>
+<button class="btn-sm blog-card-btn" onclick="window.location.href='about.html'" type="button">
+            להבין איך אני עובד עם AI בפרויקטים
+          </button>
+</article>
+<!-- פוסט 5 -->
+<article class="blog-card">
+<div class="blog-card-tag">אסטרטגיה</div>
+<h3>הפורמולה: מה חייב להיות ברור לפני שבונים אתר בכלל</h3>
+<p>
+            לפני לוגו, צבעים ופונטים – צריך כיוון. 5 שאלות פשוטות
+            שמונעות בזבוז כסף על אתר שלא מחובר למטרה עסקית.
+          </p>
+<div class="blog-card-meta">
+<span>4 דקות קריאה</span>
+<span>בדיוק לפני ריענון אתר</span>
+</div>
+<button class="btn-sm blog-card-btn" onclick="window.location.href='services.html'" type="button">
+            לראות איך זה בא לידי ביטוי בשירותים שלי
+          </button>
+</article>
+<!-- פוסט 6 -->
+<article class="blog-card">
+<div class="blog-card-tag">מאחורי הקלעים</div>
+<h3>מה באמת קורה ביום עבודה שלי כשאני בונה מערכת לעסק</h3>
+<p>
+            הצצה אמיתית: משיחה ראשונית, דרך אפיון, סקיצות ועד
+            השקה. בלי פילטרים, עם דוגמאות אמיתיות.
+          </p>
+<div class="blog-card-meta">
+<span>6 דקות קריאה</span>
+<span>למי שמתלבט אם זה “בשבילו”</span>
+</div>
+<button class="btn-sm blog-card-btn" onclick="window.location.href='process.html'" type="button">
+            להבין צעד–אחר–צעד איך זה עובד
+          </button>
+</article>
+</div>
+</section>
+<!-- ========== FINAL CTA – לסגור מעגל ========== -->
+<section class="final-cta blog-final-cta reveal">
+<div class="final-cta-inner">
+<h2>אם הגעת עד כאן – כבר יש לך ראש של 2030.</h2>
+<p>
+          עכשיו אפשר להמשיך לקרוא עוד מאמרים, או לעשות את הצעד הבא:
+          לשבת יחד, להבין את העסק שלך, ולבנות לו מערכת דיגיטלית
+          שעובדת באמת.
+        </p>
+<div class="final-cta-actions">
+<button class="btn-primary" onclick="window.location.href='https://wa.me/972547222023?text=' + encodeURIComponent('קראתי כמה מאמרים בבלוג ומוכן לעשות צעד קדימה')" type="button">
+            שלח לי וואטסאפ – נתחיל בשיחה קצרה
+          </button>
+<button class="btn-ghost" onclick="window.location.href='services.html'" type="button">
+            לראות שוב את כל מה שאני יכול לבנות עבורך
+          </button>
+</div>
+</div>
+</section>
+</main>
+<!-- =========== FOOTER =========== -->
+<footer class="footer">
+<span>© AutoRoy Cloud · נבנה באהבה, טכנולוגיה וראש יצירתי.</span>
+<div class="footer-links">
+<a href="privacy.html">מדיניות פרטיות</a>
+<a href="terms.html">תנאי שימוש</a>
+<a href="mailto:autoroybiz@gmail.com">autoroybiz@gmail.com</a>
+</div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
