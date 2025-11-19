@@ -1,80 +1,155 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoRoy Cloud</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoRoy Cloud — פרויקטים לדוגמה</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- ================= NAVBAR ================ -->
-    <nav class="nav">
-        <div class="nav-left">
-            <div class="nav-logo"></div>
-            <div>
-                <div class="nav-brand">AutoRoy Cloud</div>
-                <div class="nav-sub">DevOps • Web • Automations</div>
-            </div>
-        </div>
-
-        <div class="nav-links">
-            <a class="nav-link" href="index.html">דף הבית</a>
-            <a class="nav-link" href="services.html">שירותים</a>
-            <a class="nav-link" href="projects.html">פרויקטים</a>
-            <a class="nav-link" href="process.html">תהליך עבודה</a>
-            <a class="nav-link" href="blog.html">בלוג</a>
-            <a class="nav-link" href="reviews.html">ביקורות</a>
-            <a class="nav-link" href="about.html">אודות</a>
-            <a class="nav-link" href="contact.html">יצירת קשר</a>
-        </div>
-
-        <div class="nav-actions">
-            <div class="theme-toggle">☀️</div>
-            <a href="https://wa.me/972545799332" class="nav-cta">בוא נדבר</a>
-        </div>
-
-        <div class="hamburger">
-            <div class="hamburger-line"></div>
-        </div>
-    </nav>
-
-    <!-- MOBILE MENU -->
-    <div class="nav-mobile">
-        <a href="index.html">דף הבית</a>
-        <a href="services.html">שירותים</a>
-        <a href="projects.html">פרויקטים</a>
-        <a href="process.html">תהליך עבודה</a>
-        <a href="blog.html">בלוג</a>
-        <a href="reviews.html">ביקורות</a>
-        <a href="about.html">אודות</a>
-        <a href="contact.html">יצירת קשר</a>
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-left">
+    <a href="index.html" class="nav-logo"><span>🚀</span></a>
+    <div>
+      <div class="nav-brand">AutoRoy Cloud</div>
+      <div class="nav-sub">Web • Automations • DevOps</div>
     </div>
+  </div>
 
-    <!-- ================= PAGE HEADER ================ -->
-    <header class="page-hero">
-        <h1 class="page-title">שם הדף</h1>
-        <p class="page-sub">תיאור קצר לדף הזה</p>
-    </header>
+  <nav class="nav-links">
+    <a href="index.html">ראשי</a>
+    <a href="services.html">שירותים</a>
+    <a href="about.html">אודות</a>
+    <a href="process.html">תהליך עבודה</a>
+    <a href="blog.html">בלוג</a>
+    <a href="projects.html" aria-current="page">פרויקטים</a>
+    <a href="reviews.html">ביקורות</a>
+    <a href="contact.html">יצירת קשר</a>
+  </nav>
 
-    <!-- ================= CONTENT ================= -->
-    <main class="page page-content">
-        <!-- כאן נכנס התוכן של כל דף -->
-    </main>
+  <div class="nav-actions">
+    <button id="themeToggle" class="theme-toggle">☀️</button>
+    <button class="nav-cta" onclick="window.location.href='https://wa.me/972547222023'">
+      וואטסאפ
+    </button>
+    <button class="hamburger" id="hamburger"><span class="hamburger-line"></span></button>
+  </div>
+</header>
 
-    <script>
-    const burger = document.querySelector('.hamburger');
-    const mobileMenu = document.querySelector('.nav-mobile');
-    const themeBtn = document.querySelector('.theme-toggle');
+<nav class="nav-mobile" id="navMobile">
+  <a href="index.html">ראשי</a>
+  <a href="services.html">שירותים</a>
+  <a href="about.html">אודות</a>
+  <a href="process.html">תהליך עבודה</a>
+  <a href="blog.html">בלוג</a>
+  <a href="projects.html">פרויקטים</a>
+  <a href="reviews.html">ביקורות</a>
+  <a href="contact.html">יצירת קשר</a>
+</nav>
 
-    if (burger) {
-        burger.onclick = () => mobileMenu.classList.toggle('show');
-    }
-    if (themeBtn) {
-        themeBtn.onclick = () => document.body.classList.toggle('dark');
-    }
-    </script>
+<!-- HERO -->
+<section class="page-hero reveal" style="padding-bottom:40px;">
+  <h1 class="page-title">פרויקטים לדוגמה</h1>
+  <p class="page-sub" style="max-width:650px;margin:auto;">
+    אוסף פרויקטים אמיתיים שבוצעו ללקוחות — אתרים, אוטומציות, מערכות AI ופתרונות DevOps.
+    כל כרטיס בנוי כמו מוצר בפני עצמו ומציג את ערך העבודה.
+  </p>
+</section>
+
+<!-- GRID FUTURISTIC -->
+<section class="page section reveal">
+  <div class="projects-grid-c">
+
+    <!-- פרויקט 1 -->
+    <article class="project-card-c">
+      <div class="project-glow"></div>
+      <div class="project-c-header">
+        <h3>אתר יועץ עסקי + חיבור למערכות</h3>
+        <span class="project-c-tag">WEB + AUTOMATION</span>
+      </div>
+      <p class="project-c-text">
+        אתר תדמית פרימיום עם אזור שירותים, קריאות הנעה חכמות ומערכת איסוף לידים שמחברת לוואטסאפ ולדוא״ל.
+      </p>
+      <ul class="project-c-list">
+        <li>עיצוב פרימיום מודרני</li>
+        <li>שילוב טפסים חכמים</li>
+        <li>אוטומציה לשליחת מיילים</li>
+      </ul>
+      <button class="btn-primary btn-sm project-btn"
+        onclick="window.location.href='https://wa.me/972547222023?text=אני רוצה פרויקט כמו היועץ העסקי'">
+        רוצה משהו דומה
+      </button>
+    </article>
+
+    <!-- פרויקט 2 -->
+    <article class="project-card-c">
+      <div class="project-glow"></div>
+      <div class="project-c-header">
+        <h3>מערכת Chat AI בענן</h3>
+        <span class="project-c-tag">DEVOPS + AI</span>
+      </div>
+      <p class="project-c-text">
+        מערכת צ׳אט חכמה הכוללת העלאה לשרתי ענן, ריבוי שירותים ו־CI/CD בסיסי לשחרורים מהירים.
+      </p>
+      <ul class="project-c-list">
+        <li>Socket.IO + Node.js</li>
+        <li>תשתית Render</li>
+        <li>אימות משתמש בסיסי</li>
+      </ul>
+      <button class="btn-primary btn-sm project-btn"
+        onclick="window.location.href='https://wa.me/972547222023?text=אני רוצה מערכת AI בענן'">
+        רוצה משהו דומה
+      </button>
+    </article>
+
+    <!-- פרויקט 3 -->
+    <article class="project-card-c">
+      <div class="project-glow"></div>
+      <div class="project-c-header">
+        <h3>דף נחיתה לקלינאית תקשורת</h3>
+        <span class="project-c-tag">LANDING PAGE</span>
+      </div>
+      <p class="project-c-text">
+        דף נחיתה חד־משימתי שמכוון להשארת פרטים בלבד, עם ויזואל עדין ואלמנטים אמינים.
+      </p>
+      <ul class="project-c-list">
+        <li>עיצוב נקי, רגוע וממיר</li>
+        <li>אופטימיזציה למובייל</li>
+        <li>מעבר ישיר לוואטסאפ</li>
+      </ul>
+      <button class="btn-primary btn-sm project-btn"
+        onclick="window.location.href='https://wa.me/972547222023?text=אני רוצה דף נחיתה ממיר'">
+        רוצה משהו דומה
+      </button>
+    </article>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="final-cta-inner reveal" style="max-width:850px;margin:40px auto;">
+  <h2>רוצה פרויקט שמרגיש של 2030?</h2>
+  <p>בוא נבנה משהו שיגרום לעסק שלך להרגיש כמו חברה גדולה — גם אם אתה עובד לבד.</p>
+  <button class="btn-primary" onclick="window.location.href='https://wa.me/972547222023'">
+    בוא נתחיל
+  </button>
+</section>
+
+<footer class="footer">
+  <span>© AutoRoy Cloud</span>
+  <div class="footer-links">
+    <a href="index.html">ראשי</a>
+    <a href="contact.html">צור קשר</a>
+  </div>
+</footer>
 
 </body>
 </html>
+
