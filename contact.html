@@ -1,80 +1,310 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoRoy Cloud</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>יצירת קשר עם AutoRoy Cloud</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.ico" />
 </head>
-
 <body>
+  <a href="#main" class="skip-link">דלג לתוכן הראשי</a>
 
-    <!-- ================= NAVBAR ================ -->
-    <nav class="nav">
-        <div class="nav-left">
-            <div class="nav-logo"></div>
-            <div>
-                <div class="nav-brand">AutoRoy Cloud</div>
-                <div class="nav-sub">DevOps • Web • Automations</div>
-            </div>
-        </div>
-
-        <div class="nav-links">
-            <a class="nav-link" href="index.html">דף הבית</a>
-            <a class="nav-link" href="services.html">שירותים</a>
-            <a class="nav-link" href="projects.html">פרויקטים</a>
-            <a class="nav-link" href="process.html">תהליך עבודה</a>
-            <a class="nav-link" href="blog.html">בלוג</a>
-            <a class="nav-link" href="reviews.html">ביקורות</a>
-            <a class="nav-link" href="about.html">אודות</a>
-            <a class="nav-link" href="contact.html">יצירת קשר</a>
-        </div>
-
-        <div class="nav-actions">
-            <div class="theme-toggle">☀️</div>
-            <a href="https://wa.me/972545799332" class="nav-cta">בוא נדבר</a>
-        </div>
-
-        <div class="hamburger">
-            <div class="hamburger-line"></div>
-        </div>
-    </nav>
-
-    <!-- MOBILE MENU -->
-    <div class="nav-mobile">
-        <a href="index.html">דף הבית</a>
-        <a href="services.html">שירותים</a>
-        <a href="projects.html">פרויקטים</a>
-        <a href="process.html">תהליך עבודה</a>
-        <a href="blog.html">בלוג</a>
-        <a href="reviews.html">ביקורות</a>
-        <a href="about.html">אודות</a>
-        <a href="contact.html">יצירת קשר</a>
+  <!-- NAVBAR כמו בשאר הדפים -->
+  <header class="nav">
+    <div class="nav-left">
+      <div class="nav-logo" aria-hidden="true">🚀</div>
+      <div>
+        <div class="nav-brand">AutoRoy Cloud</div>
+        <div class="nav-sub">DevOps • Web • Automations</div>
+      </div>
     </div>
 
-    <!-- ================= PAGE HEADER ================ -->
-    <header class="page-hero">
-        <h1 class="page-title">שם הדף</h1>
-        <p class="page-sub">תיאור קצר לדף הזה</p>
-    </header>
+    <nav class="nav-links" aria-label="ניווט ראשי">
+      <a href="index.html" class="nav-link">דף הבית</a>
+      <a href="services.html" class="nav-link">שירותים</a>
+      <a href="projects.html" class="nav-link">פרויקטים</a>
+      <a href="process.html" class="nav-link">תהליך עבודה</a>
+      <a href="blog.html" class="nav-link">בלוג</a>
+      <a href="reviews.html" class="nav-link">ביקורות</a>
+      <a href="about.html" class="nav-link">אודות</a>
+      <a href="contact.html" class="nav-link">יצירת קשר</a>
+    </nav>
 
-    <!-- ================= CONTENT ================= -->
-    <main class="page page-content">
-        <!-- כאן נכנס התוכן של כל דף -->
-    </main>
+    <div class="nav-actions">
+      <button class="nav-cta" type="button" id="contactTopCTA">
+        בוא נדבר
+      </button>
 
-    <script>
-    const burger = document.querySelector('.hamburger');
-    const mobileMenu = document.querySelector('.nav-mobile');
-    const themeBtn = document.querySelector('.theme-toggle');
+      <button
+        id="themeToggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="החלפת מצב תאורה"
+      >
+        ☀️
+      </button>
 
-    if (burger) {
-        burger.onclick = () => mobileMenu.classList.toggle('show');
-    }
-    if (themeBtn) {
-        themeBtn.onclick = () => document.body.classList.toggle('dark');
-    }
-    </script>
+      <button
+        id="hamburger"
+        class="hamburger"
+        type="button"
+        aria-label="פתיחת תפריט"
+        aria-expanded="false"
+      >
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
 
+  <nav id="navMobile" class="nav-mobile" aria-label="תפריט נייד">
+    <a href="index.html">דף הבית</a>
+    <a href="services.html">שירותים</a>
+    <a href="projects.html">פרויקטים</a>
+    <a href="process.html">תהליך עבודה</a>
+    <a href="blog.html">בלוג</a>
+    <a href="reviews.html">ביקורות</a>
+    <a href="about.html">אודות</a>
+    <a href="contact.html">יצירת קשר</a>
+  </nav>
+
+  <main id="main" class="page contact-page">
+    <!-- HERO יצירת קשר -->
+    <section class="page-hero contact-hero reveal">
+      <div class="contact-hero-inner">
+        <div class="contact-hero-copy">
+          <p class="hero-kicker">LET'S TALK SYSTEMS • NOT JUST A WEBSITE</p>
+          <h1 class="page-title contact-title">
+            בוא נדבר על<br />
+            המערכת הבאה של העסק שלך.
+          </h1>
+          <p class="page-sub">
+            אפשר לכתוב לי בוואטסאפ, להשאיר פרטים בטופס, או לתאם שיחה קצרה.
+            המטרה: להבין איך העסק שלך עובד היום, ואיך מערכת אחת חכמה יכולה
+            לקחת אותו קדימה.
+          </p>
+
+          <div class="hero-ctas">
+            <button class="btn-primary btn-lg" type="button" id="contactWhatsAppHero">
+              כתיבה מהירה בוואטסאפ
+            </button>
+            <button class="btn-ghost btn-lg" type="button" data-scroll-to="#deepContact">
+              להשאיר פרטים לדבר רגוע
+            </button>
+          </div>
+
+          <div class="contact-badges">
+            <span>⏱️ בדרך כלל חוזר תוך כמה שעות</span>
+            <span>🧠 שיחה בגובה העיניים, בלי מילים מפוצצות</span>
+            <span>🚀 התאמה אישית לעסק – לא תבנית מוכנה</span>
+          </div>
+        </div>
+
+        <!-- “חללית קרב” אנימטיבית -->
+        <div class="contact-hero-visual" aria-hidden="true">
+          <div class="contact-orbit-layer contact-orbit-back"></div>
+          <div class="contact-orbit-layer contact-orbit-mid"></div>
+          <div class="contact-orbit-layer contact-orbit-front"></div>
+
+          <div class="contact-ship">
+            <div class="ship-core"></div>
+            <div class="ship-flame ship-flame-a"></div>
+            <div class="ship-flame ship-flame-b"></div>
+          </div>
+
+          <div class="contact-flares">
+            <span class="contact-flare flare-a"></span>
+            <span class="contact-flare flare-b"></span>
+            <span class="contact-flare flare-c"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ערוצי תקשורת -->
+    <section class="section reveal">
+      <header class="section-header">
+        <h2 class="section-title">איך הכי נוח לך לדבר?</h2>
+        <p class="section-subtitle">
+          לא כולם אוהבים לדבר באותו פורמט. תבחר את הערוץ שנוח לך – ומשם נזרום.
+        </p>
+      </header>
+
+      <div class="cards-grid contact-channels">
+        <button class="card contact-channel" type="button" data-channel="whatsapp">
+          <header class="card-header">
+            <h3 class="card-title">וואטסאפ</h3>
+            <span class="card-icon">💬</span>
+          </header>
+          <p class="card-text">
+            הודעה קצרה בוואטסאפ – כמו לכתוב לחבר. תספר מה העסק עושה ומה פחות
+            עובד היום, ומשם נתחיל לחשוב ביחד.
+          </p>
+          <footer class="project-footer">
+            לוחץ – נפתח לך וואטסאפ עם הודעה מוכנה לשליחה.
+          </footer>
+        </button>
+
+        <button class="card contact-channel" type="button" data-channel="call">
+          <header class="card-header">
+            <h3 class="card-title">שיחת טלפון</h3>
+            <span class="card-icon">📞</span>
+          </header>
+          <p class="card-text">
+            לפעמים הכי פשוט זה לדבר. נשוחח 15–20 דקות, נבין מה הכיוון, ואם יש
+            התאמה – נבנה ביחד תכנית.
+          </p>
+          <footer class="project-footer">
+            לוחץ – תיפתח חיוג ישיר (או תתקבל הודעה עם מספר).
+          </footer>
+        </button>
+
+        <button class="card contact-channel" type="button" data-channel="zoom">
+          <header class="card-header">
+            <h3 class="card-title">שיחת זום ממוקדת</h3>
+            <span class="card-icon">🎥</span>
+          </header>
+          <p class="card-text">
+            לשיחות עומק עם מערכות קיימות, צוותים או שותפים. מתאים כשכבר ברור
+            שצריך מערכת רצינית ורוצים לראות אפשרויות.
+          </p>
+          <footer class="project-footer">
+            לוחץ – נשלח קישור לקביעת זום קצר.
+          </footer>
+        </button>
+
+        <button class="card contact-channel" type="button" data-channel="email">
+          <header class="card-header">
+            <h3 class="card-title">מייל מסודר</h3>
+            <span class="card-icon">✉️</span>
+          </header>
+          <p class="card-text">
+            אם אתה אוהב לסדר את המחשבות במייל – אפשר לכתוב הכל בנחת, כולל קישורים
+            למערכות וקבצים רלוונטיים.
+          </p>
+          <footer class="project-footer">
+            לוחץ – ייפתח מייל חדש עם טקסט פתיחה.
+          </footer>
+        </button>
+      </div>
+    </section>
+
+    <!-- טופס לידים ראשי -->
+    <section id="deepContact" class="section reveal">
+      <header class="section-header">
+        <h2 class="section-title">ספר לי קצת עליך – ואחזור אליך עם כיוון.</h2>
+        <p class="section-subtitle">
+          כמה שדות פשוטים. בלי שאלות מעיקות, רק מה שבאמת חשוב כדי להבין אם יש
+          חיבור ומה הדרך הנכונה עבור העסק שלך.
+        </p>
+      </header>
+
+      <form id="leadForm" class="form-grid contact-form">
+        <div class="form-field">
+          <label for="lead-name">שם מלא</label>
+          <input id="lead-name" type="text" name="name" placeholder="לדוגמה: רועי, רופא שיניים בחיפה" />
+        </div>
+
+        <div class="form-field">
+          <label for="lead-business">שם העסק או תחום</label>
+          <input id="lead-business" type="text" name="business" placeholder="איפה אתה פועל? מה העסק עושה?" />
+        </div>
+
+        <div class="form-field">
+          <label for="lead-contact">איך הכי נוח לחזור אליך? (טלפון / וואטסאפ / מייל)</label>
+          <input id="lead-contact" type="text" name="contact" placeholder="טלפון או מייל – כדי שאוכל לחזור אליך" required />
+        </div>
+
+        <div class="form-field">
+          <label for="lead-type">על מה בא לך שנתמקד בשיחה?</label>
+          <select id="lead-type" name="type">
+            <option value="general">לא סגור, רוצה לשמוע מה אפשרי</option>
+            <option value="website">אתר / בלוג / דפי נחיתה</option>
+            <option value="automations">אוטומציות, צ׳אטבוטים ו-AI</option>
+            <option value="ops">DevOps, ענן ותשתיות</option>
+            <option value="systems">מערכת חכמה מותאמת אישית</option>
+          </select>
+        </div>
+
+        <div class="form-field full">
+          <label>מה הכי חשוב לך שהמערכת תעשה?</label>
+          <div class="wizard-questions contact-goals">
+            <button type="button" class="wizard-chip" data-goal-chip>
+              לייצר יותר לידים איכותיים
+            </button>
+            <button type="button" class="wizard-chip" data-goal-chip>
+              לחסוך זמן ולהפסיק לרדוף אחרי משימות
+            </button>
+            <button type="button" class="wizard-chip" data-goal-chip>
+              לחבר מערכות קיימות לכדי משהו מסודר
+            </button>
+            <button type="button" class="wizard-chip" data-goal-chip>
+              להכין את העסק לסקייל רציני
+            </button>
+          </div>
+        </div>
+
+        <div class="form-field full">
+          <label for="lead-message">כמה מילים חופשיות:</label>
+          <textarea
+            id="lead-message"
+            name="message"
+            placeholder="תוכל לכתוב כאן איך העסק עובד היום, איזה כלים אתה כבר משתמש, ומה היית רוצה שיקרה אחרת."
+          ></textarea>
+        </div>
+
+        <div class="form-footer">
+          <p class="form-note">
+            הפרטים מגיעים ישירות אליי ל-Inbox / וואטסאפ. אין שום רשימות תפוצה
+            אוטומטיות – רק שיחה בגובה העיניים להבין אם יש חיבור.
+          </p>
+
+          <div class="form-actions">
+            <button class="btn-primary btn-sm" type="submit">
+              שלח אליי את הפרטים
+            </button>
+            <button
+              class="btn-ghost btn-sm"
+              type="button"
+              id="contactWhatsAppBottom"
+            >
+              לשלוח את זה בוואטסאפ במקום
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- CTA סופי -->
+    <section class="final-cta reveal">
+      <div class="final-cta-inner">
+        <h2>אם הגעת עד לכאן – יש מצב גדול שהגיע הזמן למערכת טובה יותר.</h2>
+        <p>
+          תשלח הודעה קצרה, אפילו “היי, צריך לסדר את העסק שלי” – ומשם נתחיל.
+          בלי התחייבויות, בלי אותיות קטנות.
+        </p>
+
+        <div class="final-cta-actions">
+          <button id="ctaContactWA" class="btn-primary" type="button">
+            לכתוב לך בוואטסאפ עכשיו
+          </button>
+          <button id="ctaContactMail" class="btn-ghost" type="button">
+            לפתוח מייל מסודר
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© AutoRoy Cloud – DevOps, Web & Automations</span>
+      <div class="footer-links">
+        <a href="privacy.html">פרטיות</a>
+        <a href="terms.html">תנאים</a>
+      </div>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
