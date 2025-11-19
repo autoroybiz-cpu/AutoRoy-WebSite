@@ -1256,22 +1256,24 @@ body.dark .page-hero {
   opacity: 0.95;
 }
 /* FIX — prevent hero from blocking navbar on mobile */
-.page-hero {
-    position: relative;
-    z-index: 1;
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+.nav-mobile {
+    z-index: 998;
 }
 
-.nav,
-.nav-mobile,
-.nav-actions,
-.theme-toggle {
-    position: relative;
-    z-index: 9999;
-}
 .page-content {
   display: block;
   width: 100%;
   margin: 0 auto;
   position: relative;
   z-index: 2;
+}
+.page-hero,
+.page-content {
+    position: relative;
+    z-index: 1;
 }
