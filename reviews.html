@@ -1,80 +1,378 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoRoy Cloud</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoRoy Cloud — ביקורות וחוות דעת</title>
+  <meta name="description" content="ביקורות וחוות דעת על AutoRoy Cloud: אתרים, אוטומציות, DevOps ותהליכים חכמים לעסקים." />
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <script src="app.js" defer></script>
 </head>
-
 <body>
+  <!-- קישור נגישות לדילוג לתוכן -->
+  <a href="#main" class="skip-link">דילוג לתוכן הראשי</a>
 
-    <!-- ================= NAVBAR ================ -->
-    <nav class="nav">
-        <div class="nav-left">
-            <div class="nav-logo"></div>
-            <div>
-                <div class="nav-brand">AutoRoy Cloud</div>
-                <div class="nav-sub">DevOps • Web • Automations</div>
-            </div>
-        </div>
-
-        <div class="nav-links">
-            <a class="nav-link" href="index.html">דף הבית</a>
-            <a class="nav-link" href="services.html">שירותים</a>
-            <a class="nav-link" href="projects.html">פרויקטים</a>
-            <a class="nav-link" href="process.html">תהליך עבודה</a>
-            <a class="nav-link" href="blog.html">בלוג</a>
-            <a class="nav-link" href="reviews.html">ביקורות</a>
-            <a class="nav-link" href="about.html">אודות</a>
-            <a class="nav-link" href="contact.html">יצירת קשר</a>
-        </div>
-
-        <div class="nav-actions">
-            <div class="theme-toggle">☀️</div>
-            <a href="https://wa.me/972545799332" class="nav-cta">בוא נדבר</a>
-        </div>
-
-        <div class="hamburger">
-            <div class="hamburger-line"></div>
-        </div>
-    </nav>
-
-    <!-- MOBILE MENU -->
-    <div class="nav-mobile">
-        <a href="index.html">דף הבית</a>
-        <a href="services.html">שירותים</a>
-        <a href="projects.html">פרויקטים</a>
-        <a href="process.html">תהליך עבודה</a>
-        <a href="blog.html">בלוג</a>
-        <a href="reviews.html">ביקורות</a>
-        <a href="about.html">אודות</a>
-        <a href="contact.html">יצירת קשר</a>
+  <!-- ===== NAVBAR (אותו דבר כמו בשאר הדפים) ===== -->
+  <header class="nav">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo" aria-label="חזרה לדף הבית">
+        <span>🚀</span>
+      </a>
+      <div>
+        <div class="nav-brand">AutoRoy Cloud</div>
+        <div class="nav-sub">DevOps • Automations • Web</div>
+      </div>
     </div>
 
-    <!-- ================= PAGE HEADER ================ -->
-    <header class="page-hero">
-        <h1 class="page-title">שם הדף</h1>
-        <p class="page-sub">תיאור קצר לדף הזה</p>
-    </header>
+    <nav class="nav-links" aria-label="תפריט ראשי">
+      <a href="index.html" class="nav-link">ראשי</a>
+      <a href="services.html" class="nav-link">שירותים</a>
+      <a href="about.html" class="nav-link">אודות</a>
+      <a href="process.html" class="nav-link">תהליך עבודה</a>
+      <a href="blog.html" class="nav-link">בלוג</a>
+      <a href="projects.html" class="nav-link">פרויקטים</a>
+      <a href="reviews.html" class="nav-link" aria-current="page">ביקורות</a>
+      <a href="contact.html" class="nav-link">יצירת קשר</a>
+    </nav>
 
-    <!-- ================= CONTENT ================= -->
-    <main class="page page-content">
-        <!-- כאן נכנס התוכן של כל דף -->
-    </main>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="החלפת מצב תאורה">
+        ☀️
+      </button>
+      <button class="nav-cta" onclick="window.location.href='https://wa.me/972547222023?text=%D7%94%D7%99%D7%99%20%D7%A8%D7%95%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%93%D7%A3%20%D7%94%D7%91%D7%99%D7%A7%D7%95%D7%A8%D7%95%D7%AA%20%D7%91%D7%90%D7%AA%D7%A8%20AutoRoy%20Cloud%2C%20%D7%91%D7%95%D7%90%20%D7%A0%D7%93%D7%91%D7%A8.'">
+        לדבר בוואטסאפ
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="פתיחת תפריט">
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
 
-    <script>
-    const burger = document.querySelector('.hamburger');
-    const mobileMenu = document.querySelector('.nav-mobile');
-    const themeBtn = document.querySelector('.theme-toggle');
+  <!-- תפריט מובייל -->
+  <nav class="nav-mobile" id="navMobile" aria-label="תפריט נייד">
+    <a href="index.html" onclick="closeMobile()">ראשי</a>
+    <a href="services.html" onclick="closeMobile()">שירותים</a>
+    <a href="about.html" onclick="closeMobile()">אודות</a>
+    <a href="process.html" onclick="closeMobile()">תהליך עבודה</a>
+    <a href="blog.html" onclick="closeMobile()">בלוג</a>
+    <a href="projects.html" onclick="closeMobile()">פרויקטים</a>
+    <a href="reviews.html" onclick="closeMobile()">ביקורות</a>
+    <a href="contact.html" onclick="closeMobile()">יצירת קשר</a>
+  </nav>
 
-    if (burger) {
-        burger.onclick = () => mobileMenu.classList.toggle('show');
-    }
-    if (themeBtn) {
-        themeBtn.onclick = () => document.body.classList.toggle('dark');
-    }
-    </script>
+  <main id="main" class="page reviews-page">
 
+    <!-- ========= HERO — חללית ביקורות / מצב D ========= -->
+    <section class="page-hero reviews-hero reveal">
+      <div class="reviews-hero-inner">
+        <div class="reviews-hero-copy">
+          <h1 class="page-title">
+            מה לקוחות אומרים על
+            <span>AutoRoy Cloud</span>?
+          </h1>
+          <p class="page-sub">
+            ביקורות אמיתיות מבעלי עסקים ששדרגו אתר, אוטומציות ותהליכי עבודה —
+            בלי בלאגן, בלי מילים מסובכות. תכלס תוצאות.
+          </p>
+
+          <div class="reviews-hero-stats">
+            <div class="reviews-stat">
+              <div class="reviews-stat-number">4.9</div>
+              <div class="reviews-stat-label">דירוג ממוצע</div>
+              <div class="reviews-stat-stars">★★★★★</div>
+            </div>
+            <div class="reviews-stat">
+              <div class="reviews-stat-number">+120</div>
+              <div class="reviews-stat-label">שיפורי תהליך</div>
+              <div class="reviews-stat-tag">אתרים • אוטומציות • DevOps</div>
+            </div>
+          </div>
+
+          <div class="reviews-hero-ctas">
+            <button class="btn-primary" onclick="document.getElementById('reviewsFormBlock').scrollIntoView({behavior:'smooth'})">
+              להשאיר ביקורת על AutoRoy
+            </button>
+            <button class="btn-ghost" onclick="window.location.href='https://wa.me/972547222023?text=%D7%A8%D7%95%D7%99%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%93%D7%A3%20%D7%94%D7%91%D7%99%D7%A7%D7%95%D7%A8%D7%95%D7%AA%20%D7%95%D7%94%D7%99%D7%9D%20%D7%A9%D7%9B%D7%A0%D7%A2%D7%95%20%D7%90%D7%95%D7%AA%D7%99%20%E2%80%93%20%D7%91%D7%95%D7%90%20%D7%A0%D7%93%D7%91%D7%A8%20%E2%9A%A1'">
+              לדבר איתי עכשיו
+            </button>
+          </div>
+
+          <div class="reviews-hero-tags">
+            <span class="hero-tag">
+              <span class="dot dot-green"></span>
+              בעלי עסקים קטנים ובינוניים
+            </span>
+            <span class="hero-tag">
+              <span class="dot dot-cyan"></span>
+              אתרי תדמית ודפי נחיתה
+            </span>
+            <span class="hero-tag">
+              <span class="dot dot-purple"></span>
+              אוטומציות שמביאות לידים
+            </span>
+          </div>
+        </div>
+
+        <!-- צד ויזואלי — חללית/AI/גלים -->
+        <div class="reviews-hero-visual">
+          <div class="reviews-galaxy-layer"></div>
+          <div class="reviews-galaxy-layer reviews-galaxy-layer-2"></div>
+
+          <div class="reviews-ai-core">
+            <div class="reviews-ai-face">
+              <span class="eye eye-right"></span>
+              <span class="eye eye-left"></span>
+              <span class="ai-mouth"></span>
+            </div>
+            <div class="reviews-ai-glow"></div>
+          </div>
+
+          <div class="reviews-orbit-chip reviews-orbit-chip-top">
+            <span class="chip-label">"יש לנו סוף סוף סדר בלידים"</span>
+          </div>
+
+          <div class="reviews-orbit-chip reviews-orbit-chip-bottom">
+            <span class="chip-label">"האתר נראה כמו חברה ענקית"</span>
+          </div>
+
+          <div class="reviews-floating-card">
+            <div class="floating-title">Review Feed</div>
+            <div class="floating-row">
+              <span class="badge badge-green">חדש</span>
+              <span class="floating-text">סטודיו יוגה — "וואטסאפ נהיה אוטומטי"</span>
+            </div>
+            <div class="floating-row">
+              <span class="badge badge-blue">אתר</span>
+              <span class="floating-text">יועץ עסקי — "פעם ראשונה שמסבירים אותי נכון"</span>
+            </div>
+            <div class="floating-row">
+              <span class="badge badge-purple">DevOps</span>
+              <span class="floating-text">פרויקט צ'אט — "אפשר להראות קוד חי"</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========= LAYOUT ראשי — סיכום + כרטיסי ביקורות ========= -->
+    <section class="section reviews-main reveal">
+      <div class="reviews-layout-pro">
+
+        <!-- טור שמאלי — סיכום, פילטרים -->
+        <aside class="reviews-aside">
+          <div class="reviews-summary-card">
+            <h2>איך נראה שיתוף פעולה עם AutoRoy?</h2>
+            <p>
+              רוב הלקוחות שמגיעים לפה אומרים אותו דבר:  
+              "היה בלאגן, לא היה אתר מסודר, והטפסים לא דיברו עם שום דבר".
+              אחרי העבודה — יש אתר שנראה טוב, אוטומציות חכמות ולידים שלא נעלמים.
+            </p>
+
+            <ul class="reviews-points">
+              <li>שקיפות מלאה בתהליך — יודעים מה קורה בכל שלב.</li>
+              <li>שפה פשוטה — בלי מונחים שמרגישים כמו קורס מדעי המחשב.</li>
+              <li>התאמה אישית — לכל עסק זורם אחרת, גם המערכות שלו.</li>
+            </ul>
+          </div>
+
+          <div class="reviews-filter-card">
+            <h3>על מה אנשים מדברים?</h3>
+            <div class="reviews-filter-chips">
+              <button class="filter-chip active" data-filter="all">הכול</button>
+              <button class="filter-chip" data-filter="web">אתרים ודפי נחיתה</button>
+              <button class="filter-chip" data-filter="auto">אוטומציות ולידים</button>
+              <button class="filter-chip" data-filter="devops">DevOps & Cloud</button>
+            </div>
+            <p class="filter-note">
+              לחיצה על קטגוריה מסננת את הביקורות כדי שתוכל לראות רק מה שמעניין אותך.
+            </p>
+          </div>
+
+          <div class="reviews-cta-card">
+            <h3>רוצה שגם העסק שלך יהיה פה?</h3>
+            <p>
+              אם אתה רוצה אתר שנראה טופ עולמי, או אוטומציה שמסדרת לך את היום —
+              אפשר להתחיל משיחה קצרה בוואטסאפ.
+            </p>
+            <button class="btn-primary btn-sm" onclick="window.location.href='https://wa.me/972547222023?text=%D7%94%D7%99%D7%99%20%D7%A8%D7%95%D7%99%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%93%D7%A3%20%D7%94%D7%91%D7%99%D7%A7%D7%95%D7%A8%D7%95%D7%AA%20%D7%95%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9E%D7%A9%D7%94%D7%95%20%D7%93%D7%95%D7%9E%D7%94%20%D7%9C%D7%A2%D7%A1%D7%A7%20%D7%A9%D7%9C%D7%99.'">
+              לשיחת וואטסאפ עם רוי
+            </button>
+          </div>
+        </aside>
+
+        <!-- טור ימני — כרטיסי ביקורות -->
+        <section class="reviews-list-shell" aria-label="ביקורות לקוחות">
+          <div class="reviews-list-header">
+            <h2>ביקורות נבחרות</h2>
+            <p>כל ביקורת מייצגת שיתוף פעולה אמיתי מול עסק שצריך דברים פשוטים שעובדים.</p>
+          </div>
+
+          <div id="reviewsList" class="reviews-list-pro">
+            <!-- ביקורת 1 -->
+            <article class="review-card-pro" data-type="auto">
+              <header class="review-head-pro">
+                <div>
+                  <div class="review-name-pro">סטודיו לפילאטיס</div>
+                  <div class="review-tag-pro">אוטומציות + וואטסאפ</div>
+                </div>
+                <div class="review-score-pro">5.0</div>
+              </header>
+              <p class="review-text-pro">
+                "לפני זה כל לקוח היה כותב בוואטסאפ, חלק דרך פייסבוק, חלק מטופס גוגל ישן.
+                היום כל ליד נכנס לטבלה אחת, עם תזכורת אוטומטית, והודעות וואטסאפ יוצאות לבד."
+              </p>
+              <footer class="review-foot-pro">
+                <span class="review-meta-pro">ממשק: טופס באתר + וואטסאפ</span>
+                <span class="review-meta-pro">תוצאה: פחות פספוסי לידים</span>
+              </footer>
+            </article>
+
+            <!-- ביקורת 2 -->
+            <article class="review-card-pro" data-type="web">
+              <header class="review-head-pro">
+                <div>
+                  <div class="review-name-pro">יועץ עסקי</div>
+                  <div class="review-tag-pro">אתר תדמית פרימיום</div>
+                </div>
+                <div class="review-score-pro">4.9</div>
+              </header>
+              <p class="review-text-pro">
+                "הייתי צריך מקום אחד לשלוח אליו לקוחות. האתר שבנינו פה מרגיש כמו
+                מוצר של חברה גדולה, למרות שאני עסק של אדם אחד. לקוחות מבינים תוך שניות מה אני נותן."
+              </p>
+              <footer class="review-foot-pro">
+                <span class="review-meta-pro">ממשק: אתר חד־עמודי</span>
+                <span class="review-meta-pro">תוצאה: יותר פניות איכותיות</span>
+              </footer>
+            </article>
+
+            <!-- ביקורת 3 -->
+            <article class="review-card-pro" data-type="devops">
+              <header class="review-head-pro">
+                <div>
+                  <div class="review-name-pro">מפתח צעיר</div>
+                  <div class="review-tag-pro">פרויקט DevOps ו־Cloud</div>
+                </div>
+                <div class="review-score-pro">5.0</div>
+              </header>
+              <p class="review-text-pro">
+                "היינו צריכים להראות למראיינים שיש לנו הבנה בתשתיות,
+                לא רק קוד על הלפטופ. בנינו צ'אט חכם שעלה לענן, עם שירותים נפרדים
+                ו־CI/CD בסיסי. זה הפך לשורה הכי חזקה בקורות חיים."
+              </p>
+              <footer class="review-foot-pro">
+                <span class="review-meta-pro">Stack: Node.js, Render, Socket.IO</span>
+                <span class="review-meta-pro">תוצאה: פרויקט שמוכיח יכולות</span>
+              </footer>
+            </article>
+
+            <!-- ביקורת 4 -->
+            <article class="review-card-pro" data-type="web">
+              <header class="review-head-pro">
+                <div>
+                  <div class="review-name-pro">קלינאית תקשורת</div>
+                  <div class="review-tag-pro">דף נחיתה לאבחונים</div>
+                </div>
+                <div class="review-score-pro">4.8</div>
+              </header>
+              <p class="review-text-pro">
+                "הלקוחות שלי לא באים מעולם הטכנולוגיה. היה חשוב שהדף יהיה פשוט,
+                ברור, ומכוון לפעולה אחת: השארת פרטים. זה בדיוק מה שיצא."
+              </p>
+              <footer class="review-foot-pro">
+                <span class="review-meta-pro">ממשק: דף נחיתה ממוקד</span>
+                <span class="review-meta-pro">תוצאה: יותר פניות רלוונטיות</span>
+              </footer>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- ========= טופס להשארת ביקורת ========= -->
+    <section id="reviewsFormBlock" class="section reviews-form-section reveal">
+      <div class="section-header">
+        <h2 class="section-title">רוצה להשאיר ביקורת על AutoRoy Cloud?</h2>
+        <p class="section-subtitle">
+          אם עבדנו יחד על אתר, אוטומציה, פרויקט DevOps או כל דבר אחר —
+          כמה משפטים ממך יכולים לעזור לעסקים דומים להבין מה אפשר לקבל.
+        </p>
+      </div>
+
+      <!-- שימי לב: אנחנו משתמשים באותם קלאסים כמו בדף הבית
+           כדי ש־app.js הקיים ימשיך לעבוד (שמירת ביקורת מקומית וכו'). -->
+      <div class="reviews-layout">
+        <div class="reviews-list">
+          <article class="review-card">
+            <div class="review-head">
+              <span class="review-name">דוגמה לביקורת</span>
+              <span class="review-tag">אתר + אוטומציות</span>
+            </div>
+            <p class="review-text">
+              "היה חשוב לי שמישהו גם יבנה אתר יפה וגם יחבר אותו לטפסים, לוואטסאפ ולמייל.
+              קיבלתי גם וגם, בלי להרגיש שאני צריך להיות מתכנת."
+            </p>
+          </article>
+        </div>
+
+        <form class="reviews-form">
+          <div class="form-field">
+            <label for="review-name">שם / שם עסק (לא חובה)</label>
+            <input id="review-name" type="text" placeholder="אפשר גם אנונימי" />
+          </div>
+          <div class="form-field">
+            <label for="review-text">מה תרצה לספר על העבודה המשותפת?</label>
+            <textarea id="review-text" placeholder="איך הגעת, מה קיבלת, ומה השתנה מאז?"></textarea>
+          </div>
+          <div class="form-footer">
+            <div class="form-note" id="review-note">
+              הביקורת שלך נשמרת בצד הלקוח (בדפדפן). בהמשך אפשר להפוך את זה למסך ביקורות מלא לכל עסק.
+            </div>
+            <button type="submit" class="btn-ghost btn-sm">
+              שמירת ביקורת
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ========= CTA סופי ========= -->
+    <section class="section final-cta reviews-final-cta reveal">
+      <div class="final-cta-inner">
+        <h2>רוצה שגם עליך יכתבו כאן?</h2>
+        <p>
+          אתר שמרגיש כמו 2030, אוטומציות שלא מפספסות לידים,
+          ותהליך עבודה שמרגיש אנושי ופשוט — גם אם מאחורה רצה טכנולוגיה מתקדמת.
+        </p>
+        <div class="final-cta-actions">
+          <button class="btn-primary" onclick="window.location.href='https://wa.me/972547222023?text=%D7%A8%D7%95%D7%99%2C%20%D7%91%D7%95%D7%90%20%D7%A0%D7%AA%D7%97%D7%99%D7%9C%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%20%E2%80%93%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%93%D7%A3%20%D7%94%D7%91%D7%99%D7%A7%D7%95%D7%A8%D7%95%D7%AA%20%D7%95%D7%90%D7%A0%D7%99%20%D7%91%D7%A2%D7%A0%D7%99%D7%99%D7%9F.'">
+            להתחיל שיחה בוואטסאפ
+          </button>
+          <button class="btn-ghost" onclick="window.location.href='contact.html'">
+            לראות אופציות נוספות ליצירת קשר
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-main">
+        <span>© 2025 AutoRoy Cloud.</span>
+        <span>אתרים, אוטומציות ו־DevOps לעסקים שרוצים להרגיש גדולים.</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">ראשי</a>
+        <a href="services.html">שירותים</a>
+        <a href="contact.html">יצירת קשר</a>
+      </div>
+    </footer>
+  </main>
 </body>
 </html>
