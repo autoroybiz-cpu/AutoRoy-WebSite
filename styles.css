@@ -1277,3 +1277,536 @@ body.dark .page-hero {
     position: relative;
     z-index: 1;
 }
+/* =====================================
+   BLOG PAGE – מגזין אינטראקטיבי מרחף
+   ===================================== */
+
+.blog-page {
+  position: relative;
+}
+
+/* הדגשת קישור פעיל בתפריט */
+.nav-link.active {
+  color: var(--primary);
+}
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* HERO מיוחד לבלוג */
+.blog-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.blog-hero-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 90px 0 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.blog-hero::before,
+.blog-hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(70px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.blog-hero::before {
+  inset-inline-start: -160px;
+  inset-block-start: -180px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.25), transparent 70%);
+}
+
+.blog-hero::after {
+  inset-inline-end: -120px;
+  inset-block-end: -200px;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.21), transparent 70%);
+}
+
+.blog-title {
+  font-size: clamp(2.3rem, 3.4vw, 3.1rem);
+  margin-bottom: 12px;
+}
+
+.blog-title span {
+  background: linear-gradient(90deg, #2563eb, #22c55e, #0ea5e9);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.blog-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.blog-meta-row {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.blog-pill {
+  font-size: 0.8rem;
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: var(--bg-soft);
+}
+
+/* צד ויזואלי – מגזין בחלל */
+.blog-hero-visual {
+  position: relative;
+}
+
+.blog-mag-orbit {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 3 / 4;
+  margin-inline: auto;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(248, 250, 252, 0.9), transparent 55%),
+    radial-gradient(circle at 80% 100%, rgba(239, 246, 255, 0.9), transparent 55%),
+    linear-gradient(145deg, #020617, #020617);
+  box-shadow:
+    0 26px 70px rgba(15, 23, 42, 0.55),
+    0 0 0 1px rgba(148, 163, 184, 0.3);
+  overflow: hidden;
+}
+
+body.dark .blog-mag-orbit {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(37, 99, 235, 0.4), transparent 55%),
+    radial-gradient(circle at 90% 100%, rgba(34, 197, 94, 0.45), transparent 55%),
+    #020617;
+}
+
+/* שכבות מגזין מרחפות */
+.blog-mag-layer {
+  position: absolute;
+  inset: 12%;
+  border-radius: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  mix-blend-mode: screen;
+}
+
+.layer-cover {
+  inset: 8% 14%;
+  background:
+    linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.98)),
+    radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.4), transparent 60%);
+  border: none;
+}
+
+.layer-line-1 {
+  border-style: dashed;
+  animation: blogOrbitSlow 18s linear infinite;
+}
+
+.layer-line-2 {
+  inset: 20% 10%;
+  border-style: solid;
+  opacity: 0.5;
+  animation: blogOrbitSlow 26s linear infinite reverse;
+}
+
+.layer-glow {
+  inset: 40% 22%;
+  border-radius: 999px;
+  border: none;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.6), transparent 70%);
+  filter: blur(20px);
+}
+
+/* כרטיס צף על המגזין */
+.blog-mag-float-card {
+  position: absolute;
+  inset-inline: 14%;
+  inset-block-end: 10%;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  box-shadow:
+    0 14px 36px rgba(15, 23, 42, 0.9),
+    0 0 0 1px rgba(148, 163, 184, 0.4);
+  transform: translateY(0);
+  animation: blogFloat 5.4s ease-in-out infinite alternate;
+}
+
+.blog-mag-float-card h3 {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.blog-mag-float-card p {
+  font-size: 0.8rem;
+  color: #cbd5f5;
+  margin-bottom: 8px;
+}
+
+.blog-mag-tag {
+  display: inline-flex;
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(96, 165, 250, 0.8);
+  color: #bfdbfe;
+  margin-bottom: 4px;
+}
+
+.blog-mag-btn {
+  background: linear-gradient(130deg, #2563eb, #22c55e);
+  color: #f9fafb;
+  border: none;
+}
+
+/* כיתוב מתחת לויז'ואל */
+.blog-hero-caption {
+  margin-top: 10px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* FILTRES + SEARCH */
+.blog-filters {
+  margin-top: 10px;
+}
+
+.blog-filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blog-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.blog-chip {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: var(--bg-elevated);
+  font-size: 0.84rem;
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+
+.blog-chip:hover {
+  border-color: var(--primary);
+}
+
+.blog-chip.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #f9fafb;
+  box-shadow: 0 0 18px rgba(37, 99, 235, 0.4);
+}
+
+.blog-search {
+  min-width: min(340px, 100%);
+}
+
+.blog-search input {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: var(--bg-elevated);
+  font-size: 0.9rem;
+}
+
+/* FEATURED GRID */
+.blog-feature-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+}
+
+.blog-feature-card {
+  border-radius: 20px;
+  padding: 18px 18px 16px;
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-card);
+}
+
+.blog-feature-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.blog-feature-badge {
+  font-size: 0.78rem;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.blog-feature-badge.soft {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--text-muted);
+}
+
+.blog-feature-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.blog-feature-card p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.blog-feature-list {
+  list-style: none;
+  padding-right: 0;
+  margin: 0 0 12px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.blog-feature-list li::before {
+  content: "• ";
+  color: var(--accent);
+}
+
+.blog-feature-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.blog-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.author-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2563eb, #22c55e);
+  color: #f9fafb;
+}
+
+.author-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.author-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.blog-side-panel {
+  border-radius: 18px;
+  padding: 14px 14px 16px;
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-card);
+  font-size: 0.9rem;
+}
+
+.blog-side-panel h3 {
+  margin-bottom: 8px;
+}
+
+.blog-side-panel ul {
+  list-style: none;
+  padding-right: 0;
+  margin-bottom: 10px;
+}
+
+.blog-side-panel li::before {
+  content: "➜ ";
+  color: var(--primary);
+}
+
+.blog-side-note {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+/* BLOG GRID – מגזין */
+.blog-grid-section {
+  margin-top: 10px;
+}
+
+.blog-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.blog-card {
+  position: relative;
+  border-radius: 20px;
+  padding: 16px 16px 18px;
+  background:
+    radial-gradient(circle at 0 0, rgba(37, 99, 235, 0.18), transparent 60%),
+    var(--bg-elevated);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transform-origin: center;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.blog-card::before {
+  content: "";
+  position: absolute;
+  inset-inline: -40%;
+  inset-block-start: -60%;
+  height: 80%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.7), transparent 70%);
+  opacity: 0;
+  transform: translateY(40px) rotate(-8deg);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.blog-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 26px 70px rgba(15, 23, 42, 0.16);
+  border-color: var(--primary);
+}
+
+.blog-card:hover::before {
+  opacity: 1;
+  transform: translateY(0) rotate(-8deg);
+}
+
+.blog-card-tag {
+  display: inline-flex;
+  font-size: 0.78rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.04);
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.blog-card h3 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.blog-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.blog-card-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.blog-card-btn {
+  border-radius: 999px;
+  border: 1px solid rgba(37, 99, 235, 0.7);
+  background: #ffffff;
+  color: #1f2937;
+}
+
+body.dark .blog-card-btn {
+  background: rgba(15, 23, 42, 0.96);
+  color: var(--text-main);
+}
+
+/* FINAL CTA התאמה קטנה */
+.blog-final-cta .final-cta-inner {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+/* אנימציות */
+@keyframes blogFloat {
+  from {
+    transform: translateY(6px);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes blogOrbitSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* RESPONSIVE לבלוג */
+@media (max-width: 900px) {
+  .blog-hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 70px;
+  }
+  .blog-hero-text {
+    text-align: right;
+  }
+  .blog-feature-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 780px) {
+  .blog-filters-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .blog-search {
+    min-width: 100%;
+  }
+  .blog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .blog-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .blog-hero-inner {
+    padding-top: 60px;
+  }
+}
