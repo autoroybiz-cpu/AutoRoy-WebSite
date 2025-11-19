@@ -1,117 +1,297 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>אודות • AutoRoy Cloud</title>
-
-    <link rel="stylesheet" href="styles.css" />
-    <script defer src="app.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>אודות — AutoRoy Cloud</title>
+  <meta name="description" content="אודות AutoRoy Cloud – חיבור בין DevOps, אוטומציות ואתרים מהירים לעסקים שרוצים לעבוד חכם. מי עומד מאחורי המערכת ומה הגישה." />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
+  <!-- קישור נגישות -->
+  <a href="#main" class="skip-link">דלג לתוכן</a>
 
-<!-- ========== NAVBAR כמו בדף הבית ========== -->
-<header class="nav">
+  <!-- ===== NAVBAR ===== -->
+  <header class="nav">
     <div class="nav-left">
-        <a href="index.html" class="nav-logo"></a>
-        <div>
-            <div class="nav-brand">AutoRoy Cloud</div>
-            <div class="nav-sub">DevOps • Web • Automations</div>
-        </div>
+      <div class="nav-logo">
+        <span>🚀</span>
+      </div>
+      <div>
+        <div class="nav-brand">AutoRoy Cloud</div>
+        <div class="nav-sub">DevOps &amp; Automations</div>
+      </div>
     </div>
 
     <nav class="nav-links">
-        <a href="index.html" class="nav-link">דף הבית</a>
-        <a href="services.html" class="nav-link">שירותים</a>
-        <a href="projects.html" class="nav-link">פרויקטים</a>
-        <a href="process.html" class="nav-link">תהליך עבודה</a>
-        <a href="blog.html" class="nav-link">בלוג</a>
-        <a href="reviews.html" class="nav-link">ביקורות</a>
-        <a href="about.html" class="nav-link active">אודות</a>
-        <a href="contact.html" class="nav-link">יצירת קשר</a>
+      <a href="index.html" class="nav-link">דף הבית</a>
+      <a href="services.html" class="nav-link">שירותים</a>
+      <a href="process.html" class="nav-link">איך זה עובד</a>
+      <a href="projects.html" class="nav-link">פרויקטים</a>
+      <a href="blog.html" class="nav-link">בלוג</a>
+      <a href="about.html" class="nav-link" style="font-weight:700;">אודות</a>
+      <a href="contact.html" class="nav-link">יצירת קשר</a>
     </nav>
 
     <div class="nav-actions">
-        <a href="https://wa.me/972547222023" target="_blank" class="nav-cta">בוא נדבר</a>
-        <div class="theme-toggle">☀️</div>
-        <div class="hamburger"><div class="hamburger-line"></div></div>
+      <button class="theme-toggle" id="themeToggle" aria-label="החלפת מצב תאורה">
+        ☀️
+      </button>
+      <button class="nav-cta" onclick="window.location.href='https://wa.me/972547222023?text=%D7%94%D7%99%D7%99%20%D7%A8%D7%95%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%93%D7%A3%20%D7%94%D7%90%D7%95%D7%93%D7%95%D7%AA%20%D7%91%D7%90%D7%AA%D7%A8%20AutoRoy%20Cloud'">
+        לדבר בוואטסאפ
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="תפריט">
+        <span class="hamburger-line"></span>
+      </button>
     </div>
-</header>
+  </header>
 
-<div class="nav-mobile" id="mobileNav">
+  <!-- מובייל תפריט -->
+  <nav class="nav-mobile" id="navMobile" aria-hidden="true">
     <a href="index.html">דף הבית</a>
     <a href="services.html">שירותים</a>
+    <a href="process.html">איך זה עובד</a>
     <a href="projects.html">פרויקטים</a>
-    <a href="process.html">תהליך עבודה</a>
     <a href="blog.html">בלוג</a>
-    <a href="reviews.html">ביקורות</a>
     <a href="about.html">אודות</a>
     <a href="contact.html">יצירת קשר</a>
-</div>
+  </nav>
 
-<!-- ========== HERO PAGE HEADER ========== -->
-
-<section class="page-hero reveal">
-    <h1 class="page-title">מי אני?</h1>
-    <p class="page-sub">
-        AutoRoy Cloud הוא מותג שמחבר טכנולוגיה, אוטומציה, DevOps וחוויית משתמש –
-        לכדי מערכת אחת חכמה שמפשטת את כל הבלאגן ומפעילה את העסק שלך כמו חברות ענק.
-    </p>
-</section>
-
-<!-- ========== CONTENT ========== -->
-
-<section class="page-content container">
-
-    <div class="page-section reveal">
-        <h2>הסיפור שלי</h2>
-        <p>
-            במשך שנים עבדתי עם טכנולוגיות, תהליכים, מערכות וצוותים שונים. ראיתי מקרוב
-            איך עסקים קטנים ובינוניים טובעים בתוכנות, טפסים, התראות, אפליקציות ומידע —
-            עד שכל פעולה פשוטה הופכת למשימה ענקית.
+  <main id="main" class="page">
+    <!-- ===== HERO ===== -->
+    <section class="page-hero reveal" style="padding-bottom:40px;">
+      <div class="section-header" style="max-width:740px;margin:0 auto;">
+        <h1 class="section-title" style="font-size:2.6rem;margin-bottom:12px;">
+          מי זה <span style="background:linear-gradient(90deg,#2563eb,#22c55e);-webkit-background-clip:text;color:transparent;">AutoRoy Cloud</span> ומה הוא עושה בשבילך?
+        </h1>
+        <p class="section-subtitle" style="font-size:1.05rem;">
+          מאחורי AutoRoy Cloud יש אדם אחד שחי טכנולוגיה, עסקים ואוטומציות –
+          ומתרגם את זה לעולם שלך: אתר שמרגיש 2025, תהליכים אוטומטיים,
+          וחוויית לקוח שמרגישה כמו סטארט־אפ – גם אם אתה עסק של אדם אחד.
         </p>
-        <p>
-            מהמקום הזה נולד AutoRoy Cloud: רצון לתת לעסקים פתרון אחד ברור,
-            נוח, מקצועי ומרשים — במקום עשרות כלים מפוזרים.
-        </p>
-    </div>
+      </div>
 
-    <img
-        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80"
-        alt="עבודה דיגיטלית"
-        class="reveal"
-    />
-
-    <div class="page-section reveal">
-        <h2>היום AutoRoy Cloud</h2>
-        <p>
-            הפלטפורמה כוללת את כל מה שהעסק צריך: אתר, אוטומציות, ניהול לידים,
-            מערכות פנימיות, דפי נחיתה, DevOps, חיבורים ל-API, ניהול תהליכים,
-            אינטגרציות, עיצוב מודרני, ואפילו סביבה מנוהלת ומאובטחת.
-        </p>
-        <p>
-            הכל במקום אחד. הכל עובד יחד. הכל פשוט — ואתה מרוויח זמן, כסף ושקט.
-        </p>
-    </div>
-
-    <div class="final-cta reveal">
-        <div class="final-cta-inner">
-            <h2>רוצה לקחת את העסק שלך קדימה?</h2>
-            <p>אני כאן כדי להרים לך מערכת חכמה, מעוצבת ומקצועית — שתעבוד בשבילך.</p>
-            <div class="final-cta-actions">
-                <a
-                    class="btn-primary"
-                    href="https://wa.me/972547222023"
-                    target="_blank"
-                >
-                    בוא נדבר בוואטסאפ 🚀
-                </a>
-            </div>
+      <!-- פס קצר של "מי אני" -->
+      <div class="hero-strip" style="margin-top:32px;">
+        <span class="strip-label">קצת עליי במספרים</span>
+        <div class="strip-items">
+          <span>+5 שנים בעולם DevOps &amp; Cloud</span>
+          <span>+40 אוטומציות שהוזנקו לעסקים</span>
+          <span>+20 דפי נחיתה ומהלכים שיווקיים</span>
+          <span>יד אחת שמחזיקה הכל – ופשוט עושה</span>
         </div>
-    </div>
+      </div>
+    </section>
 
-</section>
+    <!-- ===== ABOUT CORE CARD ===== -->
+    <section class="section reveal">
+      <div class="cards-grid">
+        <article class="card" style="grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:22px;align-items:center;">
+          <div>
+            <h2 class="section-title" style="margin-bottom:10px;">אני רוי, ואני מתעסק בעיקר בדבר אחד:</h2>
+            <p class="section-subtitle" style="margin-bottom:14px;">
+              לקחת רעיון, עסק או שירות – ולהלביש עליו מערכת שעובדת.
+              לא שקופיות, לא מצגות, לא “אולי בעתיד” – אלא אתר חי,
+              אוטומציות שרצות, ולידים שמגיעים למקום אחד מסודר.
+            </p>
+            <p style="font-size:0.95rem;color:var(--text-muted);margin-bottom:10px;">
+              התחלתי מעולם הטכנולוגיה וה־DevOps, ומשם גיליתי כמה עסקים
+              טובים נתקעים על שטויות: טופס שלא עובד, וואטסאפ שלא מסודר,
+              קבצים שמתפזרים, אתר איטי, ותהליך מכירה שלא מרגיש מקצועי.
+            </p>
+            <p style="font-size:0.95rem;color:var(--text-muted);">
+              AutoRoy Cloud נולד בדיוק מהמקום הזה: להראות שאפשר גם אחרת –
+              להרגיש כמו מוצר טכנולוגי חכם, גם אם אתה עסק קטן,
+              פרילנסר או מותג בתחילת הדרך.
+            </p>
+          </div>
 
+          <!-- "כרטיס זהות" -->
+          <div class="timeline" style="box-shadow:none;">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>גישה</h3>
+                <p>דבר ראשון – להבין את העסק שלך, לא רק את הטכנולוגיה.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>שפה</h3>
+                <p>בלי מילים מפוצצות מיותרות – אלא הסבר פשוט וברור ללקוח.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>ביצוע</h3>
+                <p>פיתוח, אוטומציה ועיצוב – במקום אחד, בצורה מאוחדת.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>תוצאה</h3>
+                <p>מערכת שמרגישה “וואו” – אבל גם קלה להבנה ולשימוש.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== VALUES / איך אני עובד ===== -->
+    <section class="section reveal">
+      <div class="section-header">
+        <h2 class="section-title">איך אני חושב כשאני בונה לך מערכת?</h2>
+        <p class="section-subtitle">
+          כל פרויקט עובר דרך אותו פילטר: שיהיה ברור, יציב, מהיר –
+          וירגיש ללקוח כמו חוויה, לא כמו טופס מעצבן בדרך.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card">
+          <div class="card-header">
+            <span class="card-title">שפה פשוטה + טכנולוגיה חכמה</span>
+            <span class="card-icon">💡</span>
+          </div>
+          <p class="card-text">
+            ללקוח לא מעניין Docker, Render או CI/CD.
+            מעניין אותו להבין “מה יוצא לי מזה” – בשתי שורות.
+            הכל נבנה סביב המסר הזה.
+          </p>
+          <div class="card-chips">
+            <span class="chip">טקסטים מדויקים</span>
+            <span class="chip">מסר עסקי חד</span>
+            <span class="chip">UI שמוביל לפעולה</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <span class="card-title">מערכת אחת מחוברת</span>
+            <span class="card-icon">🧩</span>
+          </div>
+          <p class="card-text">
+            אתר, טופס, וואטסאפ, גיליון, צ׳אט – הכל מדבר אחד עם השני.
+            בלי “שלחתי, לא קיבלתי”, בלי לידים שנעלמים.
+          </p>
+          <div class="card-chips">
+            <span class="chip">חיבור בין שירותים</span>
+            <span class="chip">תהליכי לידים</span>
+            <span class="chip">תמונת מצב בקליק</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <span class="card-title">ויז׳ואל שמרגיש 2030</span>
+            <span class="card-icon">✨</span>
+          </div>
+          <p class="card-text">
+            אנימציות, תאורה, גלואו ותנועה – אבל תמיד במינון הנכון.
+            כזה שמרגיש יוקרתי, לא עמוס.
+          </p>
+          <div class="card-chips">
+            <span class="chip">Micro-Animations</span>
+            <span class="chip">חוויית משתמש</span>
+            <span class="chip">מותג שנשאר בראש</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== MINI STORYLINE ===== -->
+    <section class="section reveal">
+      <div class="section-header">
+        <h2 class="section-title">מאיפה הגעתי, ולאן אני לוקח את AutoRoy Cloud</h2>
+        <p class="section-subtitle">
+          כדי שתדע עם מי אתה עובד, חשוב שתבין איך אני רואה את הדרך קדימה.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>התחלה – טכנולוגיה קודם</h3>
+            <p>
+              עולם ה־DevOps, ענן, שרתים וקוד. הרבה פרויקטים “טכניים”
+              שלא תמיד התחברו לעולם האמיתי של העסק.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>החיבור לעסקים</h3>
+            <p>
+              אחרי עבודה עם בעלי עסקים ופרילנסרים, הבנתי שהאתגר האמיתי
+              הוא לא עוד כלי – אלא בנייה חכמה של מסלול לקוח.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>AutoRoy Cloud נולד</h3>
+            <p>
+              מותג ששם במרכז את החיבור בין תשתיות, אוטומציה ומיתוג –
+              כדי לתת לעסק שלך גב טכנולוגי אמיתי.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>החזון קדימה</h3>
+            <p>
+              לבנות לעסקים “מערכת אחת חכמה” – עם דפים, תהליכים וצ׳אטים
+              שנראים כאילו יצאו מסטארט־אפ בינלאומי, ולא מעוד תבנית גנרית.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="section final-cta reveal">
+      <div class="final-cta-inner">
+        <h2>רוצה שגם העסק שלך ירגיש כמו מוצר טכנולוגי?</h2>
+        <p>
+          אפשר להתחיל מדף אחד, מאוטומציה אחת או מפרויקט קטן – ולבנות משם מערכת שלמה.
+        </p>
+        <div class="final-cta-actions">
+          <button class="btn-primary" onclick="window.location.href='https://wa.me/972547222023?text=%D7%94%D7%99%D7%99%20%D7%A8%D7%95%D7%99%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%93%D7%A3%20%D7%94%D7%90%D7%95%D7%93%D7%95%D7%AA%20%D7%95%D7%91%D7%90%20%D7%9C%D7%99%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98.'">
+            לדבר איתי בוואטסאפ
+          </button>
+          <button class="btn-ghost" onclick="window.location.href='services.html'">
+            לראות איזה שירותים אני מציע
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="footer-main">
+        <span>© 2025 AutoRoy Cloud.</span>
+        <span> DevOps &amp; Automations • אוטומציות, אתרים ותשתיות חכמות לעסקים. </span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">דף הבית</a>
+        <a href="services.html">שירותים</a>
+        <a href="contact.html">יצירת קשר</a>
+      </div>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
