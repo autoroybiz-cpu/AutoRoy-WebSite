@@ -286,4 +286,154 @@ document.querySelectorAll('.services-btn')?.forEach(btn => {
         }
     });
 });
+// =====================================
+// 10) SERVICES – orbit switcher + wizard
+// =====================================
+(function servicesEnhance() {
+  const pills = document.querySelectorAll(".service-orbit-pill");
+  const panels = document.querySelectorAll(".service-detail-panel");
+
+  if (!pills.length || !panels.length) return;
+
+  pills.forEach((pill) => {
+    pill.addEventListener("click", () => {
+      const target = pill.getAttribute("data-service-target");
+      pills.forEach((p) => p.classList.remove("active"));
+      pill.classList.add("active");
+
+      panels.forEach((panel) => {
+        panel.classList.toggle(
+          "active",
+          panel.getAttribute("data-service-panel") === target
+        );
+      });
+    });
+  });
+
+  // wizard בחירת כאב
+  const wizard = document.getElementById("serviceWizard");
+  if (!wizard) return;
+
+  const chips = wizard.querySelectorAll(".wizard-chip");
+  const wPanels = wizard.querySelectorAll(".wizard-panel");
+
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const choice = chip.getAttribute("data-wizard-choice");
+      chips.forEach((c) => c.classList.remove("active"));
+      chip.classList.add("active");
+
+      wPanels.forEach((panel) => {
+        panel.classList.toggle(
+          "active",
+          panel.getAttribute("data-wizard-panel") === choice
+        );
+      });
+    });
+  });
+
+  const waBtn = document.getElementById("wizardWhatsApp");
+  if (waBtn) {
+    waBtn.addEventListener("click", () => {
+      const activeChip = wizard.querySelector(".wizard-chip.active");
+      const choiceText = activeChip ? activeChip.textContent.trim() : "";
+      const msg = encodeURIComponent(
+        `היי, הסתכלתי על דף השירותים ב-AutoRoy Cloud.\nהכיוון שהכי דיבר אליי הוא:\n"${choiceText}".\nאשמח שנחשוב ביחד מה אפשר לבנות לעסק שלי.`
+      );
+      window.open(`https://wa.me/972000000000?text=${msg}`, "_blank");
+      // שים פה את המספר שלך במקום 972000000000
+    });
+  }
+})();
+
+// =====================================
+// 11) CONTACT – channels + form helpers
+// =====================================
+(function contactEnhance() {
+  const WA_NUMBER = "972000000000"; // TODO: להחליף למספר שלך ללא 0 בתחילת המספר
+
+  function openWhatsApp(text) {
+    const msg = encodeURIComponent(text);
+    window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, "_blank");
+  }
+
+  // כפתורי וואטסאפ
+  const waHero = document.getElementById("contactWhatsAppHero");
+  const waBottom = document.getElementById("contactWhatsAppBottom");
+  const waCTA = document.getElementById("ctaContactWA");
+
+  [waHero, waBottom, waCTA].forEach((btn) => {
+    if (!btn) return;
+    btn.addEventListener("click", () => {
+      openWhatsApp(
+        "היי, ראיתי את האתר של AutoRoy Cloud ורוצה לדבר על מערכת חכמה לעסק שלי."
+      );
+    });
+  });
+
+  // כפתורי ערוצי תקשורת
+  const channels = document.querySelectorAll(".contact-channel");
+  channels.forEach((card) => {
+    card.addEventListener("click", () => {
+      const type = card.getAttribute("data-channel");
+      if (type === "whatsapp") {
+        openWhatsApp(
+          "היי, מעדיף לדבר בוואטסאפ. אפשר שנעשה שם היכרות קצרה?"
+        );
+      } else if (type === "call") {
+        alert("כאן אפשר לשים מספר טלפון לחיוג ישיר או דף קביעת שיחה.");
+      } else if (type === "zoom") {
+        alert("כאן אפשר לשים קישור לקביעת שיחת זום ביומן.");
+      } else if (type === "email") {
+        window.location.href =
+          "mailto:autoroybiz@gmail.com?subject=שיחה על מערכת חכמה לעסק&body=היי רוי, אני רוצה לספר לך על העסק שלי ולראות אם מתאים לבנות מערכת חכמה.";
+      }
+    });
+  });
+
+  // צ'יפים מטרות בטופס
+  const goalChips = document.querySelectorAll("[data-goal-chip]");
+  const message = document.getElementById("lead-message");
+
+  goalChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const text = chip.textContent.trim();
+      const isSelected = chip.classList.toggle("selected");
+      if (!message) return;
+
+      if (isSelected) {
+        message.value += (message.value ? "\n" : "") + `• ${text}`;
+      } else {
+        message.value = message.value
+          .split("\n")
+          .filter((line) => !line.includes(text))
+          .join("\n");
+      }
+    });
+  });
+
+  // כפתור מייל ב-CTA תחתון
+  const mailCTA = document.getElementById("ctaContactMail");
+  if (mailCTA) {
+    mailCTA.addEventListener("click", () => {
+      window.location.href =
+        "mailto:autoroybiz@gmail.com?subject=שיחה על מערכת חכמה לעסק&body=היי, רוצה שנחשוב ביחד על מערכת שתסדר לי את העסק.";
+    });
+  }
+
+  // כפתורי "בוא נדבר" שמגלגלים לטופס
+  const scrollBtns = [
+    document.getElementById("contactTopCTA"),
+    document.querySelector('[data-scroll-to="#deepContact"]'),
+  ].filter(Boolean);
+
+  scrollBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const section = document.querySelector("#deepContact");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
+})();
 
