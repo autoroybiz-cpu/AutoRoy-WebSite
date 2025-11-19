@@ -1,47 +1,66 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>שירותים — AutoRoy Cloud</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="favicon.ico" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>השירותים של AutoRoy Cloud</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.ico" />
 </head>
-
 <body>
+  <!-- קישור נגישות -->
+  <a href="#main" class="skip-link">דלג לתוכן הראשי</a>
 
-<!-- ====================== NAVBAR ====================== -->
-<header class="nav">
+  <!-- ============= NAVBAR זהה לדף הבית ============= -->
+  <header class="nav">
     <div class="nav-left">
-        <div class="nav-logo"></div>
-        <div>
-            <div class="nav-brand">AutoRoy Cloud</div>
-            <div class="nav-sub">DevOps • Automations • Web</div>
-        </div>
+      <div class="nav-logo" aria-hidden="true">🚀</div>
+      <div>
+        <div class="nav-brand">AutoRoy Cloud</div>
+        <div class="nav-sub">DevOps • Web • Automations</div>
+      </div>
     </div>
 
-    <nav class="nav-links">
-        <a href="index.html" class="nav-link">דף הבית</a>
-        <a href="services.html" class="nav-link">שירותים</a>
-        <a href="projects.html" class="nav-link">פרויקטים</a>
-        <a href="process.html" class="nav-link">תהליך עבודה</a>
-        <a href="blog.html" class="nav-link">בלוג</a>
-        <a href="reviews.html" class="nav-link">ביקורות</a>
-        <a href="about.html" class="nav-link">אודות</a>
-        <a href="contact.html" class="nav-link">יצירת קשר</a>
+    <nav class="nav-links" aria-label="ניווט ראשי">
+      <a href="index.html" class="nav-link">דף הבית</a>
+      <a href="services.html" class="nav-link">שירותים</a>
+      <a href="projects.html" class="nav-link">פרויקטים</a>
+      <a href="process.html" class="nav-link">תהליך עבודה</a>
+      <a href="blog.html" class="nav-link">בלוג</a>
+      <a href="reviews.html" class="nav-link">ביקורות</a>
+      <a href="about.html" class="nav-link">אודות</a>
+      <a href="contact.html" class="nav-link">יצירת קשר</a>
     </nav>
 
     <div class="nav-actions">
-        <a href="https://wa.me/972547222023" target="_blank" class="nav-cta">בוא נדבר</a>
-        <div class="theme-toggle">☀️</div>
-    </div>
+      <button id="heroCTA" class="nav-cta" type="button">
+        בוא נדבר
+      </button>
 
-    <div class="hamburger" onclick="document.querySelector('.nav-mobile').classList.toggle('show')">
-        <div class="hamburger-line"></div>
-    </div>
-</header>
+      <button
+        id="themeToggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="החלפת מצב תאורה"
+      >
+        ☀️
+      </button>
 
-<div class="nav-mobile">
+      <button
+        id="hamburger"
+        class="hamburger"
+        type="button"
+        aria-label="פתיחת תפריט"
+        aria-expanded="false"
+      >
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- תפריט מובייל -->
+  <nav id="navMobile" class="nav-mobile" aria-label="תפריט נייד">
     <a href="index.html">דף הבית</a>
     <a href="services.html">שירותים</a>
     <a href="projects.html">פרויקטים</a>
@@ -50,160 +69,369 @@
     <a href="reviews.html">ביקורות</a>
     <a href="about.html">אודות</a>
     <a href="contact.html">יצירת קשר</a>
-</div>
+  </nav>
 
+  <!-- ============= HERO ============= -->
+  <main id="main" class="page">
+    <section class="page-hero services-hero reveal stage-trigger" data-stage="hero">
+      <div class="services-hero-inner">
+        <div class="services-hero-copy">
+          <p class="hero-kicker">STACK • CLOUD • AI • AUTOMATIONS</p>
+          <h1 class="page-title services-title">
+            שירותים חכמים<br />
+            שהופכים עסק רגיל<br />
+            <span>למערכת חכמה מחוברת</span>
+          </h1>
+          <p class="page-sub">
+            במקום לבחור “או אתר או אוטומציה או DevOps” – AutoRoy Cloud מחברת
+            את הכול למערכת אחת: אתר, משפכי לידים, וואטסאפ עסקי, אוטומציות,
+            חיבורים בין מערכות ו-DevOps שיודע לצמוח איתך.
+          </p>
 
-<!-- ====================== HERO ====================== -->
-<section class="page-hero">
-    <h1 class="page-title">השירותים של AutoRoy Cloud 🚀</h1>
-    <p class="page-sub">
-        פתרונות פרימיום שמחוברים לענן, אוטומציה, DevOps ואתרי אינטרנט מתקדמים —  
-        הכול במקום אחד, ברמה הגבוהה ביותר.
-    </p>
-</section>
+          <div class="hero-ctas">
+            <button id="startNow" class="btn-primary btn-lg" type="button" data-wizard-open>
+              בוא נבנה את המערכת שלך
+            </button>
+            <button id="ctaTalk" class="btn-ghost btn-lg" type="button">
+              לראות דוגמאות ויכולות
+            </button>
+          </div>
 
-
-<!-- ====================== CONTENT ====================== -->
-<div class="page page-content">
-
-    <!-- ===== CATEGORY 1: אתרים ומערכות ===== -->
-    <div class="page-section reveal">
-        <h2>פיתוח אתרים ומערכות מותאמות</h2>
-        <p>בניית אתרים מרהיבים, מהירים ומעוצבים ברמה גבוהה — כולל כלים חכמים שיגרמו לעסק שלך להיראות כמו מותג גדול.</p>
-
-        <div class="cards-grid" style="margin-top:24px;">
-            
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">אתרים תדמיתיים</div>
-                    <div class="card-icon">🌐</div>
-                </div>
-                <p class="card-text">אתר אלגנטי, מהיר ויפה שמציג את העסק שלך בצורה הכי מקצועית שיש.</p>
-                <div class="card-chips">
-                    <span class="chip">רספונסיבי</span>
-                    <span class="chip">מותאם SEO</span>
-                    <span class="chip">טעינה מהירה</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">דפי נחיתה חכמים</div>
-                    <div class="card-icon">🚀</div>
-                </div>
-                <p class="card-text">עמודי מכירה שממירים לקוחות — עם נתוני אנליטיקה, A/B וקריאות לפעולה מדויקות.</p>
-                <div class="card-chips">
-                    <span class="chip">UX</span>
-                    <span class="chip">פסיכולוגיה שיווקית</span>
-                    <span class="chip">המרות גבוהות</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">מערכות בהתאמה אישית</div>
-                    <div class="card-icon">⚙️</div>
-                </div>
-                <p class="card-text">מערכות CRM, ניהול לקוחות, תכנון, הזמנות ועוד — לפי מה שהעסק שלך באמת צריך.</p>
-                <div class="card-chips">
-                    <span class="chip">React</span>
-                    <span class="chip">Next.js</span>
-                    <span class="chip">Full-Stack</span>
-                </div>
-            </div>
-
+          <div class="hero-tags services-tags">
+            <span class="hero-tag">
+              <span class="dot dot-green"></span>
+              מערכת אחת לכל העסק
+            </span>
+            <span class="hero-tag">
+              <span class="dot dot-cyan"></span>
+              אינטגרציות • Zapier • API
+            </span>
+            <span class="hero-tag">
+              <span class="dot dot-purple"></span>
+              AI • אוטומציות • DevOps
+            </span>
+          </div>
         </div>
-    </div>
 
-
-    <!-- ===== CATEGORY 2: אוטומציה ===== -->
-    <div class="page-section reveal">
-        <h2>אוטומציות וחיסכון בזמן</h2>
-        <p>מערכות שחוסכות לך זמן, כסף וכוח אדם — וגורמות לעסק לעבוד בשבילך, לא להפך.</p>
-
-        <div class="cards-grid" style="margin-top:24px;">
-
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">אוטומציות וואטסאפ</div>
-                    <div class="card-icon">💬</div>
-                </div>
-                <p class="card-text">מענה אוטומטי, תהליכי מכירה, שליחת הצעות מחיר, איסוף לידים — הכול בלחיצת כפתור.</p>
-                <div class="card-chips">
-                    <span class="chip">WATI</span>
-                    <span class="chip">Webhook</span>
-                    <span class="chip">AI</span>
-                </div>
+        <!-- אזור “שדה שירותים” אנימטיבי -->
+        <div class="services-hero-visual">
+          <div class="service-orbit-grid">
+            <div class="service-orbit-layer" data-parallax-orbit>
+              <button class="service-orbit-pill active" data-service-target="web">
+                Web & Funnels
+              </button>
+              <button class="service-orbit-pill" data-service-target="automations">
+                אוטומציות ו-AI
+              </button>
+              <button class="service-orbit-pill" data-service-target="ops">
+                DevOps & Cloud
+              </button>
+              <button class="service-orbit-pill" data-service-target="systems">
+                מערכות חכמות
+              </button>
             </div>
 
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">אוטומציה לעסק</div>
-                    <div class="card-icon">🤖</div>
-                </div>
-                <p class="card-text">תהליכים שסוגרים פינות לבד: שליחת חשבוניות, סנכרון טפסים, ניהול משימות ועוד.</p>
-                <div class="card-chips">
-                    <span class="chip">Zapier</span>
-                    <span class="chip">Make</span>
-                    <span class="chip">Google Sheets</span>
-                </div>
+            <div class="service-orbit-detail">
+              <div class="service-detail-panel active" data-service-panel="web">
+                <h3>אתרים, דפי נחיתה ומשפכים</h3>
+                <p>
+                  עיצוב ונראות של מותג גדול, ביצועים מהירים, SEO חכם וחיבור
+                  לכל מערכת CRM או וואטסאפ – כדי שכל ליד נכנס ישר למערכת.
+                </p>
+              </div>
+              <div class="service-detail-panel" data-service-panel="automations">
+                <h3>אוטומציות, בוטים ו-AI</h3>
+                <p>
+                  צ׳אטבוטים, אוטומציה לתזכורות, חיבור מערכות, דיוורים חכמים,
+                  הצלבת נתונים – כל מה שחוסך זמן ומתעסק בשגרה במקום הצוות.
+                </p>
+              </div>
+              <div class="service-detail-panel" data-service-panel="ops">
+                <h3>DevOps & Cloud</h3>
+                <p>
+                  תשתיות ענן, אבטחה, ניטור, CI/CD – סטנדרט של סטארטאפ גדול, אבל
+                  מותאם לעסק קטן ובינוני מבחינת עלויות וגמישות.
+                </p>
+              </div>
+              <div class="service-detail-panel" data-service-panel="systems">
+                <h3>מערכות חכמות מותאמות אישית</h3>
+                <p>
+                  פאנלים לניהול, מערכות הזמנות, פורטלים ללקוחות, מערכות
+                  בקרה – הכול בהתאמה אישית לצורת העבודה שלך, לא להפך.
+                </p>
+              </div>
             </div>
 
+            <!-- חלקיקים “גלקסיה” -->
+            <div class="services-constellation" aria-hidden="true">
+              <span class="srv-star star-a"></span>
+              <span class="srv-star star-b"></span>
+              <span class="srv-star star-c"></span>
+              <span class="srv-star star-d"></span>
+              <span class="srv-star star-e"></span>
+            </div>
+          </div>
         </div>
-    </div>
-
-
-    <!-- ===== CATEGORY 3: DevOps ===== -->
-    <div class="page-section reveal">
-        <h2>DevOps ו־Cloud</h2>
-        <p>ניהול שרתים, אבטחה, פריסה, ניטור והפעלה — ברמה של חברות ענק.</p>
-
-        <div class="cards-grid" style="margin-top:24px;">
-
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">ניהול ופריסה בענן</div>
-                    <div class="card-icon">☁️</div>
-                </div>
-                <p class="card-text">שרתים מהירים, מאובטחים ויציבים שמתאימים לגידול של העסק שלך.</p>
-                <div class="card-chips">
-                    <span class="chip">Render</span>
-                    <span class="chip">Vercel</span>
-                    <span class="chip">GitHub Actions</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">CI / CD</div>
-                    <div class="card-icon">🔄</div>
-                </div>
-                <p class="card-text">תהליכי פיתוח חכמים שמאפשרים לך לפרוס גרסאות באפס תקלות.</p>
-                <div class="card-chips">
-                    <span class="chip">Pipeline</span>
-                    <span class="chip">Monitoring</span>
-                    <span class="chip">Zero-Downtime</span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- ====================== FINAL CTA ====================== -->
-    <section class="final-cta reveal">
-        <div class="final-cta-inner">
-            <h2>רוצה מערכת חכמה שמנהלת את העסק שלך?</h2>
-            <p>אתר, אוטומציה, DevOps — הכול במקום אחד, ברמה של מותג גדול.</p>
-
-            <div class="final-cta-actions">
-                <a href="https://wa.me/972547222023" target="_blank" class="btn-primary">דבר איתי בוואטסאפ</a>
-                <a href="contact.html" class="btn-ghost">צור קשר</a>
-            </div>
-        </div>
+      </div>
     </section>
 
-</div>
+    <!-- ============= GRID של שירותים ============= -->
+    <section class="section reveal stage-trigger" data-stage="grid">
+      <header class="section-header">
+        <h2 class="section-title">מה נכנס לתוך המערכת הזאת בפועל?</h2>
+        <p class="section-subtitle">
+          במקום “עוד אתר” או “עוד אוטומציה”, אתה מקבל STACK שלם שמחובר אחד
+          לשני – מהליד הראשון ועד הדוח בסוף החודש.
+        </p>
+      </header>
 
-<script src="app.js"></script>
+      <div class="cards-grid services-grid">
+        <!-- Web -->
+        <article class="card service-card" data-tilt>
+          <header class="card-header">
+            <h3 class="card-title">פיתוח אתרים ודפי נחיתה</h3>
+            <span class="card-icon">🖥️</span>
+          </header>
+          <p class="card-text">
+            אתר, בלוג, דף מכירה או משפך לידים – מהיר, מעוצב, מותאם ל-SEO
+            ומוכן לחיבור לכל מערכת חיצונית (CRM, מייל, וואטסאפ ועוד).
+          </p>
+          <ul class="project-list">
+            <li>אתר מותג מלא + בלוג</li>
+            <li>דפי נחיתה לקמפיינים</li>
+            <li>חיבור לטפסים, CRM וצ׳אט</li>
+          </ul>
+          <footer class="project-footer">
+            הכי מתאים לעסקים שרוצים להראות כמו מותג גדול, אבל לגדול בקצב שלהם.
+          </footer>
+        </article>
+
+        <!-- Automations -->
+        <article class="card service-card" data-tilt>
+          <header class="card-header">
+            <h3 class="card-title">אוטומציות, בוטים ו-AI</h3>
+            <span class="card-icon">🤖</span>
+          </header>
+          <p class="card-text">
+            בניית אוטומציות שחוסכות שעות עבודה ביום: משימות, תזכורות, תיאום
+            פגישות, סגירת מעגל טיפול בלידים וחיבור למערכות קיימות.
+          </p>
+          <ul class="project-list">
+            <li>אוטומציות ל-WhatsApp ולמייל</li>
+            <li>צ׳אטבוטים חכמים לשאלות נפוצות</li>
+            <li>סנכרון בין כלים (Zapier / API)</li>
+          </ul>
+          <footer class="project-footer">
+            הכי מתאים לעסקים שמחסרים זמן – ורוצים מערכת שעובדת איתם, לא נגדם.
+          </footer>
+        </article>
+
+        <!-- DevOps -->
+        <article class="card service-card" data-tilt>
+          <header class="card-header">
+            <h3 class="card-title">DevOps & Cloud</h3>
+            <span class="card-icon">⚙️</span>
+          </header>
+          <p class="card-text">
+            תשתיות ענן מנוהלות, ניטור, גיבויים ואבטחה – בנויים נכון מהיום
+            הראשון, כדי שהמערכת שלך תוכל לגדול בלי להישבר.
+          </p>
+          <ul class="project-list">
+            <li>הקמת סביבות ענן ו-CI/CD</li>
+            <li>ניטור בריאות המערכת</li>
+            <li>אבטחה וגיבויים אוטומטיים</li>
+          </ul>
+          <footer class="project-footer">
+            הכי מתאים לעסקים דיגיטליים, מערכות SaaS ועסקים שרוצים יציבות וראש שקט.
+          </footer>
+        </article>
+
+        <!-- Systems -->
+        <article class="card service-card" data-tilt>
+          <header class="card-header">
+            <h3 class="card-title">מערכות חכמות מותאמות אישית</h3>
+            <span class="card-icon">🧩</span>
+          </header>
+          <p class="card-text">
+            בניית פאנלים, מערכות בקרה, פורטלים ללקוחות, מערכות הזמנות, לוחות
+            נתונים ועוד – מותאם 1:1 לשיטת העבודה שלך.
+          </p>
+          <ul class="project-list">
+            <li>פאנלים לניהול פעילות עסקית</li>
+            <li>מערכות הזמנות ותורים</li>
+            <li>פורטלים ללקוחות או ספקים</li>
+          </ul>
+          <footer class="project-footer">
+            הכי מתאים לעסקים שנמאס להם “להסתדר” עם קבצי אקסל ותלאים.
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============= שלבי פרויקט (TIMELINE) ============= -->
+    <section class="section reveal stage-trigger" data-stage="flow">
+      <header class="section-header">
+        <h2 class="section-title">איך זה נראה כשנכנסים לתהליך?</h2>
+        <p class="section-subtitle">
+          התהליך בנוי כ-4 שלבים ברורים. בשורה התחתונה – אתה יודע בכל רגע איפה
+          הפרויקט עומד ומה אנחנו בונים עכשיו.
+        </p>
+      </header>
+
+      <div class="timeline services-timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>1. מיפוי, אסטרטגיה וארכיטקטורה</h3>
+            <p>
+              מבינים איך העסק עובד היום, מה המטרות שלך, אילו מערכות קיימות
+              ואיפה צווארי הבקבוק. משם בונים “מפת מערכת” – מה צריך להתחבר למה,
+              איזה שירותים מתאימים ומה נבנה קודם.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>2. חוויית משתמש ועיצוב</h3>
+            <p>
+              עיצוב אתר/מערכת/פאנל שמספרים את הסיפור שלך, יוצרים אמון ומובילים
+              את הלקוח לפעולה. הכול מחושב: טקסטים, היררכיה, אנימציות ושפה
+              ויזואלית.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>3. פיתוח, אוטומציות וחיבורים</h3>
+            <p>
+              פיתוח הצד הטכני, חיבורי API, אוטומציות, בוטים, אינטגרציות –
+              ובמקביל הקמה של תשתיות ענן ו-DevOps כדי שהכול יהיה יציב, מהיר
+              ומאובטח.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>4. השקה, ניטור ושיפור מתמשך</h3>
+            <p>
+              עולים לאוויר, מחברים אנליטיקות, בודקים ביצועים, אוספים פידבק
+              מהשטח – ומשפרים. המערכת שלך נשארת חיה ולא “פרויקט חד-פעמי”.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= MINI-WIZARD – איזה שירות מתאים לי? ============= -->
+    <section class="section reveal stage-trigger" data-stage="wizard">
+      <header class="section-header">
+        <h2 class="section-title">לא בטוח מאיפה להתחיל?</h2>
+        <p class="section-subtitle">
+          תבחר מה הכי שורף לך זמן ביום-יום – והמערכת כבר תציע כיוון. זה לא
+          מחליף שיחה, אבל נותן “נקודת פתיחה” לפני שאנחנו מדברים.
+        </p>
+      </header>
+
+      <div class="service-wizard" id="serviceWizard">
+        <div class="wizard-questions">
+          <button class="wizard-chip active" data-wizard-choice="leads">
+            הלידים הולכים לאיבוד בדרך
+          </button>
+          <button class="wizard-chip" data-wizard-choice="time">
+            אני טוב בעסק – אבל טובע בשוטף
+          </button>
+          <button class="wizard-chip" data-wizard-choice="systems">
+            יש לי כמה מערכות שלא מדברות אחת עם השנייה
+          </button>
+          <button class="wizard-chip" data-wizard-choice="scale">
+            העסק גדל – המערכת כבר לא מספיקה
+          </button>
+        </div>
+
+        <div class="wizard-result">
+          <div class="wizard-panel active" data-wizard-panel="leads">
+            <h3>מיקוד: לידים ומכירות</h3>
+            <p>
+              צריך פאנל lead → צ׳אט/וואטסאפ → CRM → משימות מעקב. זה אומר:
+              דפי נחיתה חכמים, אוטומציות וואטסאפ/מייל וחיבור למערכת ניהול
+              לקוחות. המטרה: שום ליד לא הולך לאיבוד.
+            </p>
+          </div>
+
+          <div class="wizard-panel" data-wizard-panel="time">
+            <h3>מיקוד: חיסכון בזמן ובפעולות חוזרות</h3>
+            <p>
+              זה המקום להכניס אוטומציות לתזכורות, הצעות מחיר, חשבוניות, תורים,
+              עדכוני סטטוס ועוד. המטרה: אתה נשאר באיזור הערך שלך – המערכת מטפלת
+              בכל השאר.
+            </p>
+          </div>
+
+          <div class="wizard-panel" data-wizard-panel="systems">
+            <h3>מיקוד: חיבור מערכות</h3>
+            <p>
+              מבצעים מיפוי של כל הכלים שלך (CRM, סליקה, חשבוניות, מערכות
+              ניהול וכו׳), מחברים אותם ב-Zapier / API ובונים לוגיקת עבודה ברורה.
+            </p>
+          </div>
+
+          <div class="wizard-panel" data-wizard-panel="scale">
+            <h3>מיקוד: סקייל ויציבות</h3>
+            <p>
+              פה נכנסים DevOps, תשתיות ענן, ניטור ביצועים ופיצול עומסים. בונים
+              את המערכת כך שתוכל לגדול בלי להתרסק, תוך שמירה על חוויית משתמש
+              מהירה.
+            </p>
+          </div>
+        </div>
+
+        <footer class="wizard-footer">
+          <p>
+            אחרי שבחרת כיוון – נוכל בשיחה קצרה למקד עוד יותר מה נכון לעסק שלך
+            עכשיו.
+          </p>
+          <button id="wizardWhatsApp" class="btn-primary btn-sm" type="button">
+            שלח לי בוואטסאפ מה בחרת
+          </button>
+        </footer>
+      </div>
+    </section>
+
+    <!-- ============= CTA סופי ============= -->
+    <section class="final-cta reveal">
+      <div class="final-cta-inner">
+        <h2>בוא נבנה מערכת אחת שמחברת את כל מה שהעסק שלך עושה.</h2>
+        <p>
+          אתר, לידים, אוטומציות, DevOps ותשתיות – במקום הרבה פתרונות חצי-עובדים,
+          מערכת אחת חכמה שמרגישה כמו 2026 ולא כמו 2014.
+        </p>
+
+        <div class="final-cta-actions">
+          <button id="ctaServicesContact" class="btn-primary" type="button">
+            לדבר על שירותים ויכולות
+          </button>
+          <button id="ctaServicesProjects" class="btn-ghost" type="button" onclick="location.href='projects.html'">
+            לראות דוגמאות של פרויקטים
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© AutoRoy Cloud – DevOps, Web & Automations</span>
+      <div class="footer-links">
+        <a href="privacy.html">פרטיות</a>
+        <a href="terms.html">תנאים</a>
+      </div>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
