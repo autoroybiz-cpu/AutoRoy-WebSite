@@ -25,10 +25,11 @@
 
     <nav class="nav-links">
       <a href="index.html" class="nav-link">דף הבית</a>
-      <a href="services.html" class="nav-link">שירותים</a>
+      <a href="app.html" class="nav-link">בונה אוטומציות</a>
+      <a href="services_final.html" class="nav-link">שירותים</a>
       <a href="process.html" class="nav-link">איך זה עובד</a>
       <a href="projects.html" class="nav-link" style="font-weight:700;">פרויקטים</a>
-      <a href="blog.html" class="nav-link">בלוג</a>
+      <a href="updated_blog.html" class="nav-link">בלוג</a>
       <a href="about.html" class="nav-link">אודות</a>
       <a href="contact.html" class="nav-link">יצירת קשר</a>
     </nav>
@@ -49,10 +50,11 @@
   <!-- מובייל תפריט -->
   <nav class="nav-mobile" id="navMobile" aria-hidden="true">
     <a href="index.html">דף הבית</a>
-    <a href="services.html">שירותים</a>
+    <a href="app.html" onclick="closeMobile()">בונה אוטומציות</a>
+    <a href="services_final.html">שירותים</a>
     <a href="process.html">איך זה עובד</a>
     <a href="projects.html">פרויקטים</a>
-    <a href="blog.html">בלוג</a>
+    <a href="updated_blog.html">בלוג</a>
     <a href="about.html">אודות</a>
     <a href="contact.html">יצירת קשר</a>
   </nav>
@@ -284,7 +286,7 @@
           <button class="btn-primary" onclick="window.location.href='https://wa.me/972547222023?text=%D7%94%D7%99%D7%99%20%D7%A8%D7%95%D7%99%2C%20%D7%91%D7%97%D7%A8%D7%AA%D7%99%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%20%D7%9E%D7%94%D7%93%D7%A3%20%D7%94%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%D7%99%D7%9D%20%D7%95%D7%91%D7%90%20%D7%9C%D7%99%20%D7%9C%D7%A9%D7%97%D7%96%D7%A8%20%D7%9E%D7%A9%D7%94%D7%95%20%D7%93%D7%95%D7%9E%D7%94%20%D7%90%D7%A6%D7%9C%D7%99.'">
             בוא נבנה משהו דומה
           </button>
-          <button class="btn-ghost" onclick="window.location.href='services.html'">
+          <button class="btn-ghost" onclick="window.location.href='services_final.html'">
             לראות את כל סוגי השירותים
           </button>
         </div>
@@ -299,12 +301,23 @@
       </div>
       <div class="footer-links">
         <a href="index.html">דף הבית</a>
-        <a href="services.html">שירותים</a>
+        <a href="services_final.html">שירותים</a>
         <a href="contact.html">יצירת קשר</a>
       </div>
     </footer>
   </main>
 
+    <script>
+    // Fix: closeMobile() used in mobile menu links
+    function closeMobile() {
+      const nav = document.getElementById("navMobile");
+      const burger = document.getElementById("hamburger");
+      if (!nav || !burger) return;
+      nav.classList.remove("show");
+      nav.setAttribute("aria-hidden", "true");
+      burger.setAttribute("aria-expanded", "false");
+    }
+  </script>
   <script src="app.js"></script>
   <!-- =================== AutoRoy Smart Chat Widget =================== -->
 <style>
