@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoRoy Cloud</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>יצירת קשר עם AutoRoy Cloud</title>
@@ -179,14 +174,6 @@
           </footer>
         </button>
 
-    <!-- ================= NAVBAR ================ -->
-    <nav class="nav">
-        <div class="nav-left">
-            <div class="nav-logo"></div>
-            <div>
-                <div class="nav-brand">AutoRoy Cloud</div>
-                <div class="nav-sub">DevOps • Web • Automations</div>
-            </div>
         <button class="card contact-channel" type="button" data-channel="email">
           <header class="card-header">
             <h3 class="card-title">מייל מסודר</h3>
@@ -219,30 +206,16 @@
           <input id="lead-name" type="text" name="name" placeholder="לדוגמה: רועי, רופא שיניים בחיפה" />
         </div>
 
-        <div class="nav-links">
-            <a class="nav-link" href="index.html">דף הבית</a>
-            <a class="nav-link" href="services.html">שירותים</a>
-            <a class="nav-link" href="projects.html">פרויקטים</a>
-            <a class="nav-link" href="process.html">תהליך עבודה</a>
-            <a class="nav-link" href="blog.html">בלוג</a>
-            <a class="nav-link" href="reviews.html">ביקורות</a>
-            <a class="nav-link" href="about.html">אודות</a>
-            <a class="nav-link" href="contact.html">יצירת קשר</a>
         <div class="form-field">
           <label for="lead-business">שם העסק או תחום</label>
           <input id="lead-business" type="text" name="business" placeholder="איפה אתה פועל? מה העסק עושה?" />
         </div>
 
-        <div class="nav-actions">
-            <div class="theme-toggle">☀️</div>
-            <a href="https://wa.me/972545799332" class="nav-cta">בוא נדבר</a>
         <div class="form-field">
           <label for="lead-contact">איך הכי נוח לחזור אליך? (טלפון / וואטסאפ / מייל)</label>
           <input id="lead-contact" type="text" name="contact" placeholder="טלפון או מייל – כדי שאוכל לחזור אליך" required />
         </div>
 
-        <div class="hamburger">
-            <div class="hamburger-line"></div>
         <div class="form-field">
           <label for="lead-type">על מה בא לך שנתמקד בשיחה?</label>
           <select id="lead-type" name="type">
@@ -253,19 +226,7 @@
             <option value="systems">מערכת חכמה מותאמת אישית</option>
           </select>
         </div>
-    </nav>
 
-    <!-- MOBILE MENU -->
-    <div class="nav-mobile">
-        <a href="index.html">דף הבית</a>
-        <a href="services.html">שירותים</a>
-        <a href="projects.html">פרויקטים</a>
-        <a href="process.html">תהליך עבודה</a>
-        <a href="blog.html">בלוג</a>
-        <a href="reviews.html">ביקורות</a>
-        <a href="about.html">אודות</a>
-        <a href="contact.html">יצירת קשר</a>
-    </div>
         <div class="form-field full">
           <label>מה הכי חשוב לך שהמערכת תעשה?</label>
           <div class="wizard-questions contact-goals">
@@ -335,29 +296,6 @@
       </div>
     </section>
 
-    <!-- ================= PAGE HEADER ================ -->
-    <header class="page-hero">
-        <h1 class="page-title">שם הדף</h1>
-        <p class="page-sub">תיאור קצר לדף הזה</p>
-    </header>
-
-    <!-- ================= CONTENT ================= -->
-    <main class="page page-content">
-        <!-- כאן נכנס התוכן של כל דף -->
-    </main>
-
-    <script>
-    const burger = document.querySelector('.hamburger');
-    const mobileMenu = document.querySelector('.nav-mobile');
-    const themeBtn = document.querySelector('.theme-toggle');
-
-    if (burger) {
-        burger.onclick = () => mobileMenu.classList.toggle('show');
-    }
-    if (themeBtn) {
-        themeBtn.onclick = () => document.body.classList.toggle('dark');
-    }
-    </script>
     <footer class="footer">
       <span>© AutoRoy Cloud – DevOps, Web & Automations</span>
       <div class="footer-links">
