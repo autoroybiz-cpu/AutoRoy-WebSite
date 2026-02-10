@@ -1,1 +1,172 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automation Builder — AutoRoy Cloud</title>
+  <meta name="description" content="בחר אוטומציה מוכנה, מלא כמה פרטים ונרים לך מערכת שעובדת." />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="builder.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">דלג לתוכן</a>
 
+  <header class="nav">
+    <div class="nav-left">
+      <a href="index.html" class="brand-link" aria-label="חזרה לדף הבית">
+        <img src="assets/autoroy-logo.png" alt="AutoRoy" class="brand-logo" />
+        <div class="brand-text">
+          <div class="nav-brand">AutoRoy Cloud</div>
+          <div class="nav-sub">STACK • CLOUD • AI • AUTOMATIONS</div>
+        </div>
+      </a>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link">דף הבית</a>
+      <a href="services_final.html" class="nav-link">שירותים</a>
+      <a href="app.html" class="nav-link">בונה אוטומציות</a>
+      <a href="projects.html" class="nav-link">פרויקטים</a>
+      <a href="process.html" class="nav-link">תהליך עבודה</a>
+      <a href="updated_blog.html" class="nav-link">בלוג</a>
+      <a href="reviews.html" class="nav-link">ביקורות</a>
+      <a href="about.html" class="nav-link">אודות</a>
+      <a href="contact.html" class="nav-link">יצירת קשר</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="שינוי תאורה">☀️</button>
+      <button class="nav-cta" id="btnContactHeader">בוא נדבר</button>
+      <button class="hamburger" id="hamburger" aria-label="תפריט" aria-expanded="false">
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="index.html">דף הבית</a>
+    <a href="services_final.html">שירותים</a>
+    <a href="app.html">בונה אוטומציות</a>
+    <a href="projects.html">פרויקטים</a>
+    <a href="process.html">תהליך עבודה</a>
+    <a href="updated_blog.html">בלוג</a>
+    <a href="reviews.html">ביקורות</a>
+    <a href="about.html">אודות</a>
+    <a href="contact.html">יצירת קשר</a>
+  </div>
+
+  <main id="main" class="page">
+    <section class="page-hero reveal" style="padding-bottom:18px;">
+      <div class="section-header" style="max-width:900px;margin:0 auto;">
+        <h1 class="section-title" style="font-size:2.6rem;margin-bottom:10px;">
+          בחר אוטומציה <span style="background:linear-gradient(90deg,#2563eb,#22c55e);-webkit-background-clip:text;color:transparent;">והתחל מהר</span>
+        </h1>
+        <p class="section-subtitle" style="max-width:820px;margin:0 auto;">
+          במקום הסברים אינסופיים – בוחרים תבנית מוכנה, ממלאים כמה פרטים, ואני מרים לך מערכת שעובדת.
+        </p>
+      </div>
+    </section>
+
+    <section class="section reveal" style="padding-top:0;">
+      <div class="container" style="max-width:1080px;">
+        <div class="builder-grid">
+          <button class="builder-card" data-template="chatbot">
+            <div class="builder-emoji">🤖</div>
+            <div class="builder-title">AI צ׳אטבוט לאתר / Shopify</div>
+            <div class="builder-desc">תשובות חכמות, איסוף לידים, והפניה לרכישה.</div>
+          </button>
+
+          <button class="builder-card" data-template="leads_wa">
+            <div class="builder-emoji">📩</div>
+            <div class="builder-title">לידים → WhatsApp</div>
+            <div class="builder-desc">כל ליד נכנס לשיטס + הודעת וואטסאפ אוטומטית.</div>
+          </button>
+
+          <button class="builder-card" data-template="abandoned_cart">
+            <div class="builder-emoji">🛒</div>
+            <div class="builder-title">נטישת עגלה</div>
+            <div class="builder-desc">תזכורת חכמה שמחזירה לקוחות לקופה.</div>
+          </button>
+
+          <button class="builder-card" data-template="invoice_to_sheets">
+            <div class="builder-emoji">📄</div>
+            <div class="builder-title">חשבונית → Sheets</div>
+            <div class="builder-desc">מייל עם חשבונית נכנס, ופרטים נשמרים בטבלה מסודרת.</div>
+          </button>
+        </div>
+
+        <div class="builder-form glass" id="builderFormWrap" style="display:none;margin-top:18px;">
+          <h2 style="margin-top:0;">מילוי פרטים — <span id="builderChosen" style="color:var(--primary)"></span></h2>
+
+          <form id="builderForm" class="contact-form" autocomplete="on">
+            <div class="form-row">
+              <div class="field">
+                <label for="bName">שם מלא</label>
+                <input id="bName" required placeholder="איך קוראים לך?" />
+              </div>
+              <div class="field">
+                <label for="bBusiness">שם העסק</label>
+                <input id="bBusiness" placeholder="אופציונלי" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="bContact">טלפון / מייל</label>
+                <input id="bContact" required placeholder="כדי שאחזור אליך מהר" />
+              </div>
+              <div class="field">
+                <label for="bPlatform">פלטפורמה</label>
+                <select id="bPlatform">
+                  <option value="Shopify">Shopify</option>
+                  <option value="Website">אתר</option>
+                  <option value="Google Sheets">Google Sheets</option>
+                  <option value="CRM">CRM</option>
+                  <option value="Other">אחר</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="bNotes">הערות / מה חשוב לך?</label>
+              <textarea id="bNotes" rows="4" placeholder="לדוגמה: תזמון, שפה, תסריט הודעות, חיבור למערכות..."></textarea>
+            </div>
+
+            <div class="builder-actions">
+              <button class="btn btn-primary" type="submit">שלח לי בוואטסאפ</button>
+              <button class="btn" type="button" id="builderMail">שלח במייל</button>
+              <a class="btn" href="contact.html">מעדיף עמוד יצירת קשר</a>
+            </div>
+          </form>
+
+          <p class="builder-note">טיפ: אחרי שליחה, אני חוזר אליך עם שאלות קצרות ובונים את זה מהר.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">AR</div>
+        <div>
+          <div class="footer-title">AutoRoy Cloud</div>
+          <div class="footer-sub">DevOps, Web & Automations</div>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="services_final.html">שירותים</a>
+        <a href="projects.html">פרויקטים</a>
+        <a href="accessibility.html">נגישות</a>
+      </div>
+
+      <div class="footer-copy">© AutoRoy Cloud — כל הזכויות שמורות</div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="builder.js"></script>
+</body>
+</html>
