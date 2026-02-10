@@ -16,19 +16,19 @@
   <!-- ===== NAVBAR ===== -->
   <header class="nav">
     <div class="nav-left">
-      <div class="nav-logo">
-        <span>🚀</span>
-      </div>
-      <div>
-        <div class="nav-brand">AutoRoy Cloud</div>
-        <div class="nav-sub">DevOps • Web • Automations</div>
-      </div>
+      <a href="index.html" class="brand-link" aria-label="חזרה לדף הבית">
+        <img src="assets/autoroy-logo.png" alt="AutoRoy" class="brand-logo" />
+        <div class="brand-text">
+          <div class="nav-brand">AutoRoy Cloud</div>
+          <div class="nav-sub">STACK • CLOUD • AI • AUTOMATIONS</div>
+        </div>
+      </a>
     </div>
 
     <nav class="nav-links">
       <a href="index.html" class="nav-link">דף הבית</a>
-      <a href="app.html" class="nav-link">בונה אוטומציות</a>
       <a href="services_final.html" class="nav-link">שירותים</a>
+      <a href="app.html" class="nav-link">בונה אוטומציות</a>
       <a href="projects.html" class="nav-link">פרויקטים</a>
       <a href="process.html" class="nav-link">תהליך עבודה</a>
       <a href="updated_blog.html" class="nav-link">בלוג</a>
@@ -39,19 +39,28 @@
 
     <div class="nav-actions">
       <button class="theme-toggle" id="themeToggle" aria-label="שינוי תאורה">☀️</button>
-      <button class="nav-cta" id="btnContactHeader">
-        בוא נדבר
-      </button>
+      <button class="nav-cta" id="btnContactHeader">בוא נדבר</button>
       <button class="hamburger" id="hamburger" aria-label="תפריט" aria-expanded="false">
         <span class="hamburger-line"></span>
       </button>
     </div>
   </header>
 
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="index.html">דף הבית</a>
+    <a href="services_final.html">שירותים</a>
+    <a href="app.html">בונה אוטומציות</a>
+    <a href="projects.html">פרויקטים</a>
+    <a href="process.html">תהליך עבודה</a>
+    <a href="updated_blog.html">בלוג</a>
+    <a href="reviews.html">ביקורות</a>
+    <a href="about.html">אודות</a>
+    <a href="contact.html">יצירת קשר</a>
+  </div>
+
   <!-- תפריט מובייל -->
   <nav class="nav-mobile" id="navMobile" aria-hidden="true">
     <a href="index.html" onclick="closeMobile()">דף הבית</a>
-    <a href="app.html" onclick="closeMobile()">בונה אוטומציות</a>
     <a href="services_final.html" onclick="closeMobile()">שירותים</a>
     <a href="projects.html" onclick="closeMobile()">פרויקטים</a>
     <a href="process.html" onclick="closeMobile()">תהליך עבודה</a>
@@ -485,17 +494,6 @@
   </footer>
 
   <!-- Scripts -->
-    <script>
-    // Fix: closeMobile() used in mobile menu links
-    function closeMobile() {
-      const nav = document.getElementById("navMobile");
-      const burger = document.getElementById("hamburger");
-      if (!nav || !burger) return;
-      nav.classList.remove("show");
-      nav.setAttribute("aria-hidden", "true");
-      burger.setAttribute("aria-expanded", "false");
-    }
-  </script>
   <script src="app.js"></script>
  <!-- =================== AutoRoy Smart Chat Widget =================== -->
 <style>
