@@ -3,6 +3,22 @@
 // Made for the full upgraded version (light mode default)
 // ========================================================
 
+const BUSINESS_WHATSAPP = "972547222023";
+const BUSINESS_EMAIL = "autoroybiz@gmail.com";
+
+
+// -----------------------------
+// 0) GLOBAL CONTACT SHORTCUTS
+// -----------------------------
+(function globalContactShortcuts(){
+  const btn = document.getElementById("btnContactHeader");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    const msg = encodeURIComponent("היי, הגעתי מהאתר של AutoRoy ורוצה לדבר על אוטומציה/מערכת לעסק שלי.");
+    window.open(`https://wa.me/${BUSINESS_WHATSAPP}?text=${msg}`, "_blank");
+  });
+})();
+
 // -----------------------------
 // 1) THEME TOGGLE
 // -----------------------------
@@ -340,8 +356,8 @@ document.querySelectorAll('.services-btn')?.forEach(btn => {
       const msg = encodeURIComponent(
         `היי, הסתכלתי על דף השירותים ב-AutoRoy Cloud.\nהכיוון שהכי דיבר אליי הוא:\n"${choiceText}".\nאשמח שנחשוב ביחד מה אפשר לבנות לעסק שלי.`
       );
-      window.open(`https://wa.me/972000000000?text=${msg}`, "_blank");
-      // שים פה את המספר שלך במקום 972000000000
+      window.open(`https://wa.me/972547222023?text=${msg}`, "_blank");
+      // שים פה את המספר שלך במקום 972547222023
     });
   }
 })();
@@ -350,7 +366,7 @@ document.querySelectorAll('.services-btn')?.forEach(btn => {
 // 11) CONTACT – channels + form helpers
 // =====================================
 (function contactEnhance() {
-  const WA_NUMBER = "972000000000"; // TODO: להחליף למספר שלך ללא 0 בתחילת המספר
+  const WA_NUMBER = BUSINESS_WHATSAPP; // TODO: להחליף למספר שלך ללא 0 בתחילת המספר
 
   function openWhatsApp(text) {
     const msg = encodeURIComponent(text);
@@ -381,9 +397,9 @@ document.querySelectorAll('.services-btn')?.forEach(btn => {
           "היי, מעדיף לדבר בוואטסאפ. אפשר שנעשה שם היכרות קצרה?"
         );
       } else if (type === "call") {
-        alert("כאן אפשר לשים מספר טלפון לחיוג ישיר או דף קביעת שיחה.");
+        openWhatsApp("היי, אשמח לשיחה טלפונית קצרה. מתי נוח לך?");
       } else if (type === "zoom") {
-        alert("כאן אפשר לשים קישור לקביעת שיחת זום ביומן.");
+        openWhatsApp("היי, אשמח לתאם שיחת זום קצרה. מתי נוח לך?");
       } else if (type === "email") {
         window.location.href =
           "mailto:autoroybiz@gmail.com?subject=שיחה על מערכת חכמה לעסק&body=היי רוי, אני רוצה לספר לך על העסק שלי ולראות אם מתאים לבנות מערכת חכמה.";
@@ -437,3 +453,72 @@ document.querySelectorAll('.services-btn')?.forEach(btn => {
   });
 })();
 
+
+
+// =====================================
+// 99) ACCESSIBILITY WIDGET (basic)
+// =====================================
+(function accessibilityWidget(){
+  // Create button
+  const btn = document.createElement("button");
+  btn.className = "a11y-fab";
+  btn.type = "button";
+  btn.setAttribute("aria-label", "נגישות");
+  btn.innerHTML = "♿";
+  document.body.appendChild(btn);
+
+  // Create panel
+  const panel = document.createElement("div");
+  panel.className = "a11y-panel";
+  panel.setAttribute("role","dialog");
+  panel.setAttribute("aria-modal","true");
+  panel.setAttribute("aria-label","אפשרויות נגישות");
+  panel.innerHTML = `
+    <div class="a11y-card">
+      <div class="a11y-head">
+        <div class="a11y-title">נגישות</div>
+        <button class="a11y-close" type="button" aria-label="סגירה">✕</button>
+      </div>
+      <div class="a11y-grid">
+        <button type="button" class="a11y-action" data-a11y="fontPlus">A+</button>
+        <button type="button" class="a11y-action" data-a11y="fontMinus">A-</button>
+        <button type="button" class="a11y-action" data-a11y="contrast">ניגודיות</button>
+        <button type="button" class="a11y-action" data-a11y="reset">איפוס</button>
+      </div>
+      <a class="a11y-link" href="accessibility.html">הצהרת נגישות</a>
+    </div>
+  `;
+  document.body.appendChild(panel);
+
+  const closeBtn = panel.querySelector(".a11y-close");
+  const actions = panel.querySelectorAll("[data-a11y]");
+  let fontScale = Number(localStorage.getItem("a11y_fontScale") || "1");
+  let hiContrast = localStorage.getItem("a11y_hiContrast") === "1";
+
+  function apply(){
+    document.documentElement.style.setProperty("--a11y-font-scale", String(fontScale));
+    document.body.classList.toggle("hi-contrast", hiContrast);
+    localStorage.setItem("a11y_fontScale", String(fontScale));
+    localStorage.setItem("a11y_hiContrast", hiContrast ? "1" : "0");
+  }
+  apply();
+
+  function open(){ panel.classList.add("open"); closeBtn.focus(); }
+  function close(){ panel.classList.remove("open"); btn.focus(); }
+
+  btn.addEventListener("click", () => panel.classList.contains("open") ? close() : open());
+  closeBtn.addEventListener("click", close);
+  panel.addEventListener("click", (e)=>{ if(e.target === panel) close(); });
+  document.addEventListener("keydown",(e)=>{ if(e.key==="Escape" && panel.classList.contains("open")) close(); });
+
+  actions.forEach(a=>{
+    a.addEventListener("click", ()=>{
+      const t = a.getAttribute("data-a11y");
+      if(t==="fontPlus") fontScale = Math.min(1.25, Math.round((fontScale+0.05)*100)/100);
+      if(t==="fontMinus") fontScale = Math.max(0.9, Math.round((fontScale-0.05)*100)/100);
+      if(t==="contrast") hiContrast = !hiContrast;
+      if(t==="reset"){ fontScale = 1; hiContrast = false; }
+      apply();
+    });
+  });
+})();
