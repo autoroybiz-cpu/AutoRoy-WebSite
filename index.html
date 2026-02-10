@@ -27,10 +27,11 @@
 
     <nav class="nav-links">
       <a href="index.html" class="nav-link">דף הבית</a>
-      <a href="services.html" class="nav-link">שירותים</a>
+      <a href="app.html" class="nav-link">בונה אוטומציות</a>
+      <a href="services_final.html" class="nav-link">שירותים</a>
       <a href="projects.html" class="nav-link">פרויקטים</a>
       <a href="process.html" class="nav-link">תהליך עבודה</a>
-      <a href="blog.html" class="nav-link">בלוג</a>
+      <a href="updated_blog.html" class="nav-link">בלוג</a>
       <a href="reviews.html" class="nav-link">ביקורות</a>
       <a href="about.html" class="nav-link">אודות</a>
       <a href="contact.html" class="nav-link">יצירת קשר</a>
@@ -50,10 +51,11 @@
   <!-- תפריט מובייל -->
   <nav class="nav-mobile" id="navMobile" aria-hidden="true">
     <a href="index.html" onclick="closeMobile()">דף הבית</a>
-    <a href="services.html" onclick="closeMobile()">שירותים</a>
+    <a href="app.html" onclick="closeMobile()">בונה אוטומציות</a>
+    <a href="services_final.html" onclick="closeMobile()">שירותים</a>
     <a href="projects.html" onclick="closeMobile()">פרויקטים</a>
     <a href="process.html" onclick="closeMobile()">תהליך עבודה</a>
-    <a href="blog.html" onclick="closeMobile()">בלוג</a>
+    <a href="updated_blog.html" onclick="closeMobile()">בלוג</a>
     <a href="reviews.html" onclick="closeMobile()">ביקורות</a>
     <a href="about.html" onclick="closeMobile()">אודות</a>
     <a href="contact.html" onclick="closeMobile()">יצירת קשר</a>
@@ -217,7 +219,7 @@
       </div>
 
       <div class="hero-ctas" style="margin-top:18px">
-        <a href="services.html" class="btn-ghost">
+        <a href="services_final.html" class="btn-ghost">
           להעמיק לשירותים המלאים
         </a>
       </div>
@@ -477,12 +479,23 @@
     </div>
     <div class="footer-links">
       <a href="#hero">למעלה</a>
-      <a href="services.html">שירותים</a>
+      <a href="services_final.html">שירותים</a>
       <a href="contact.html">יצירת קשר</a>
     </div>
   </footer>
 
   <!-- Scripts -->
+    <script>
+    // Fix: closeMobile() used in mobile menu links
+    function closeMobile() {
+      const nav = document.getElementById("navMobile");
+      const burger = document.getElementById("hamburger");
+      if (!nav || !burger) return;
+      nav.classList.remove("show");
+      nav.setAttribute("aria-hidden", "true");
+      burger.setAttribute("aria-expanded", "false");
+    }
+  </script>
   <script src="app.js"></script>
  <!-- =================== AutoRoy Smart Chat Widget =================== -->
 <style>
