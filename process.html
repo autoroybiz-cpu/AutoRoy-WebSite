@@ -605,10 +605,10 @@
 
     <nav class="nav-links" aria-label="ניווט ראשי">
       <a href="index.html" class="nav-link">דף הבית</a>
-      <a href="services.html" class="nav-link">שירותים</a>
+      <a href="services_final.html" class="nav-link">שירותים</a>
       <a href="projects.html" class="nav-link">פרויקטים</a>
       <a href="process.html" class="nav-link">תהליך עבודה</a>
-      <a href="blog.html" class="nav-link">בלוג</a>
+      <a href="updated_blog.html" class="nav-link">בלוג</a>
       <a href="reviews.html" class="nav-link">ביקורות</a>
       <a href="about.html" class="nav-link">אודות</a>
       <a href="contact.html" class="nav-link">יצירת קשר</a>
@@ -641,10 +641,11 @@
   <!-- תפריט מובייל -->
   <nav class="nav-mobile" id="navMobile" aria-hidden="true">
     <a href="index.html">דף הבית</a>
-    <a href="services.html">שירותים</a>
+    <a href="app.html" onclick="closeMobile()">בונה אוטומציות</a>
+    <a href="services_final.html">שירותים</a>
     <a href="projects.html">פרויקטים</a>
     <a href="process.html">תהליך עבודה</a>
-    <a href="blog.html">בלוג</a>
+    <a href="updated_blog.html">בלוג</a>
     <a href="reviews.html">ביקורות</a>
     <a href="about.html">אודות</a>
     <a href="contact.html">יצירת קשר</a>
@@ -699,7 +700,7 @@
                 <span>בוא נתרגם רעיון למערכת חיה</span>
                 <span>💬</span>
               </a>
-              <a href="services.html" class="btn-cta-ghost">
+              <a href="services_final.html" class="btn-cta-ghost">
                 לראות את סוגי הפרויקטים
               </a>
             </div>
@@ -919,7 +920,7 @@
       <footer class="footer">
         <span>© AutoRoy Cloud — מערכות חכמות לעסקים.</span>
         <div class="footer-links">
-          <a href="services.html">שירותים</a>
+          <a href="services_final.html">שירותים</a>
           <a href="projects.html">פרויקטים</a>
           <a href="contact.html">יצירת קשר</a>
         </div>
@@ -928,6 +929,17 @@
   </main>
 
   <!-- חשוב: אותו app.js כמו בשאר הדפים -->
+    <script>
+    // Fix: closeMobile() used in mobile menu links
+    function closeMobile() {
+      const nav = document.getElementById("navMobile");
+      const burger = document.getElementById("hamburger");
+      if (!nav || !burger) return;
+      nav.classList.remove("show");
+      nav.setAttribute("aria-hidden", "true");
+      burger.setAttribute("aria-expanded", "false");
+    }
+  </script>
   <script src="app.js"></script>
   <!-- =================== AutoRoy Smart Chat Widget =================== -->
 <style>
