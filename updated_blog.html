@@ -23,10 +23,10 @@
 </div>
 <nav class="nav-links">
 <a class="nav-link" href="index.html">דף הבית</a>
-<a class="nav-link" href="services.html">שירותים</a>
+<a class="nav-link" href="services_final.html">שירותים</a>
 <a class="nav-link" href="projects.html">פרויקטים</a>
 <a class="nav-link" href="process.html">תהליך עבודה</a>
-<a class="nav-link" href="blog.html">בלוג</a>
+<a class="nav-link" href="updated_blog.html">בלוג</a>
 <a class="nav-link" href="reviews.html">ביקורות</a>
 <a class="nav-link" href="about.html">אודות</a>
 <a class="nav-link" href="contact.html">יצירת קשר</a>
@@ -44,10 +44,10 @@
 <!-- NAV מובייל -->
 <nav aria-hidden="true" class="nav-mobile" id="navMobile">
 <a href="index.html" onclick="closeMobile()">דף הבית</a>
-<a href="services.html" onclick="closeMobile()">שירותים</a>
+<a href="services_final.html" onclick="closeMobile()">שירותים</a>
 <a href="projects.html" onclick="closeMobile()">פרויקטים</a>
 <a href="process.html" onclick="closeMobile()">תהליך עבודה</a>
-<a href="blog.html" onclick="closeMobile()">בלוג</a>
+<a href="updated_blog.html" onclick="closeMobile()">בלוג</a>
 <a href="reviews.html" onclick="closeMobile()">ביקורות</a>
 <a href="about.html" onclick="closeMobile()">אודות</a>
 <a href="contact.html" onclick="closeMobile()">יצירת קשר</a>
@@ -256,7 +256,7 @@
 <span>4 דקות קריאה</span>
 <span>בדיוק לפני ריענון אתר</span>
 </div>
-<button class="btn-sm blog-card-btn" onclick="window.location.href='services.html'" type="button">
+<button class="btn-sm blog-card-btn" onclick="window.location.href='services_final.html'" type="button">
             לראות איך זה בא לידי ביטוי בשירותים שלי
           </button>
 </article>
@@ -291,7 +291,7 @@
 <button class="btn-primary" onclick="window.location.href='https://wa.me/972547222023?text=' + encodeURIComponent('קראתי כמה מאמרים בבלוג ומוכן לעשות צעד קדימה')" type="button">
             שלח לי וואטסאפ – נתחיל בשיחה קצרה
           </button>
-<button class="btn-ghost" onclick="window.location.href='services.html'" type="button">
+<button class="btn-ghost" onclick="window.location.href='services_final.html'" type="button">
             לראות שוב את כל מה שאני יכול לבנות עבורך
           </button>
 </div>
@@ -307,7 +307,18 @@
 <a href="mailto:autoroybiz@gmail.com">autoroybiz@gmail.com</a>
 </div>
 </footer>
-<script src="app.js"></script>
+  <script>
+    // Fix: closeMobile() used in mobile menu links
+    function closeMobile() {
+      const nav = document.getElementById("navMobile");
+      const burger = document.getElementById("hamburger");
+      if (!nav || !burger) return;
+      nav.classList.remove("show");
+      nav.setAttribute("aria-hidden", "true");
+      burger.setAttribute("aria-expanded", "false");
+    }
+  </script>
+  <script src="app.js"></script>
 </body>
         <!-- =================== AutoRoy Smart Chat Widget =================== -->
 <style>
