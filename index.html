@@ -1,650 +1,728 @@
- <!DOCTYPE html>
-  <html lang="he" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AutoRoy Cloud — תורכומש תוילטיגיד תוכרעמ</title>
-    <meta name="description" content="AutoRoy Cloud ןנע תויתשתו םידיל תויצמוטוא ,םוימירפ ירתא :תורכומש תוילטיגיד תוכרעמ הנוב
-  >/ ".םיקסעל
-    <link rel="icon" href="favicon.ico" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <a href="#main" class="skip-link">ןכותל גלד</a>
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoRoy Cloud — DevOps, אתרים ואוטומציות</title>
+  <meta name="description" content="AutoRoy Cloud — בניית אתרים פרימיום, דפי נחיתה ואוטומציות מתקדמות לעסקים." />
 
-    <!-- ===== NAVBAR ===== -->
-    <header class="nav">
-      <div class="nav-left">
-        <div class="nav-logo">
-          <span>🚀</span>
-        </div>
-        <div>
-          <div class="nav-brand">AutoRoy Cloud</div>
-          <div class="nav-sub">ןנע • תויצמוטוא • םירתא</div>
-        </div>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ===== Skip link (נגישות) ===== -->
+  <a href="#main" class="skip-link">דלג לתוכן</a>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="nav">
+    <div class="nav-left">
+      <div class="nav-logo">
+        <span>🚀</span>
       </div>
-
-      <nav class="nav-links">
-        <a href="services_final.html" class="nav-link">םיתוריש</a>
-        <a href="projects.html" class="nav-link">םיטקיורפ</a>
-        <a href="process.html" class="nav-link">ךילהת</a>
-        <a href="reviews.html" class="nav-link">תורוקיב</a>
-        <a href="about.html" class="nav-link">תודוא</a>
-      </nav>
-
-      <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="הרואת יוניש">☀️</button>
-        <button class="nav-cta" id="btnContactHeader">העצה לבק →</button>
-        <button class="hamburger" id="hamburger" aria-label="טירפת" aria-expanded="false">
-          <span class="hamburger-line"></span>
-        </button>
-      </div>
-    </header>
-
-  >-- לייבומ טירפת --!<
-    <nav class="nav-mobile" id="navMobile" aria-hidden="true">
-      <a href="services_final.html" onclick="closeMobile()">םיתוריש</a>
-      <a href="projects.html" onclick="closeMobile()">םיטקיורפ</a>
-      <a href="process.html" onclick="closeMobile()">ךילהת</a>
-      <a href="reviews.html" onclick="closeMobile()">תורוקיב</a>
-      <a href="about.html" onclick="closeMobile()">תודוא</a>
-      <a href="contact.html" onclick="closeMobile()">רשק תריצי</a>
-    </nav>
-
-    <main class="page" id="main">
-
-      <!-- ===== HERO ===== -->
-      <section id="hero" class="hero section">
-        <div class="hero-inner">
-          <div class="hero-content reveal">
-            <p class="hero-kicker">ןנע תויתשת • םירתא • תויצמוטוא</p>
-            <h1 class="hero-title">
-  תכרעמל יואר ךלש קסעה
-              <span>ךליבשב תדבועש.</span>
-            </h1>
-            <p class="hero-sub">
-              AutoRoy Cloud לכה — דימ תוביגמש תויצמוטואו ,םיריממש םיספט ,תוינש שולשב ריבסמש רתא :תורכומש תוילטיגיד תוכרעמ הנוב
-  .דבוע לכה ,רבוחמ
-            </p>
-
-            <div class="hero-ctas">
-              <button class="btn-primary" id="heroCTA">
-  → ךלש קסעה לע רבדנ אוב
-              </button>
-              <a href="projects.html" class="btn-ghost" id="startNow">
-  תויתימא תואמגוד האר
-              </a>
-            </div>
-
-            <div class="hero-tags">
-              <div class="hero-tag">
-                <span class="dot dot-green"></span>
-  בוט םיארנ קר אל ,םירכומש םירתא
-              </div>
-              <div class="hero-tag">
-                <span class="dot dot-cyan"></span>
-  24/7 תולעופש תויצמוטוא
-              </div>
-              <div class="hero-tag">
-                <span class="dot dot-purple"></span>
-  סמועב הקיזחמש תיתשת
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-visual reveal">
-            <div class="hero-orbit">
-              <div class="orbit orbit-1"></div>
-              <div class="orbit orbit-2"></div>
-              <div class="orbit orbit-3"></div>
-              <div class="hero-node hero-node-main">
-                <span>AutoRoy Cloud</span>
-              </div>
-              <div class="hero-node hero-node-devops">
-                <span>DevOps</span>
-              </div>
-              <div class="hero-node hero-node-auto">
-                <span>Automations</span>
-              </div>
-              <div class="hero-node hero-node-web">
-                <span>Web</span>
-              </div>
-              <div class="hero-node hero-node-chat">
-                <span>Chat &amp; Leads</span>
-              </div>
-            </div>
-            <p class="hero-visual-caption">
-  .רוגס דיל → פאסטאוו → היצמוטוא → ספוט → רתא :תחא תכרעמ
-            </p>
-          </div>
-        </div>
-
-        <div class="hero-strip reveal">
-          <span class="strip-label">ריוואל טפסנוקמ</span>
-          <div class="strip-items">
-            <span>HTML • CSS • JS</span>
-            <span>Node.js</span>
-            <span>Render / Vercel</span>
-            <span>GitHub Actions</span>
-            <span>Zapier / Make</span>
-            <span>Google Sheets</span>
-            <span>WhatsApp Business API</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===== SERVICES PREVIEW ===== -->
-      <section id="services-preview" class="section">
-        <div class="section-header reveal">
-          <h2 class="section-title">לעופב ןאכ םינוב המ?</h2>
-          <p class="section-subtitle">
-  .סמוע ךממ תודירומש תויצמוטואו יקנ דוק ,רכומש בוציע :קסעל םאתהב הנבנ טקיורפ לכ .ירנג דוק אל ,תוינבת אל
-          </p>
-        </div>
-
-        <div class="cards-grid">
-          <article class="card reveal">
-            <div class="card-header">
-              <span class="card-title">התיחנ יפדו תימדת ירתא</span>
-              <span class="card-icon">🌐</span>
-            </div>
-            <p class="card-text">
-  .דבועש רתא ."הפי רתא" אל .הנופו — השוע התא המ תוינש 5 ךות ןיבמ ,עיגמ רקבמ
-            </p>
-            <div class="card-chips">
-              <span class="chip">Copy רכומש</span>
-              <span class="chip">UX ריממ</span>
-              <span class="chip">אלמ יביסנופסר</span>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-header">
-              <span class="card-title">פאסטאווו םידיל תויצמוטוא</span>
-              <span class="card-icon">⚡</span>
-            </div>
-            <p class="card-text">
-  .עגיתש ילב .תוינש 30 ךות — ךילא הארתה + חוקלל Sheets → WhatsApp-ב הרוש → ספוט אלממ דיל
-            </p>
-            <div class="card-chips">
-              <span class="chip">Tally / Typeform</span>
-              <span class="chip">Google Sheets</span>
-              <span class="chip">WhatsApp Business</span>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-header">
-              <span class="card-title">יטקיורפ DevOps ןנע תויתשתו</span>
-              <span class="card-icon">⚙️</span>
-            </div>
-            <p class="card-text">
-              Deploy ןנעל, CI/CD םעפ יא .הב קסעתהל ךרטצתש ילב לעפת תכרעמהש ידכ — גנירוטינומ ,יטמוטוא.
-            </p>
-            <div class="card-chips">
-              <span class="chip">Microservices</span>
-              <span class="chip">CI/CD</span>
-              <span class="chip">Monitoring</span>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-header">
-              <span class="card-title">תויח תוכרעמו םידרובשד ,םיטא'צ</span>
-              <span class="card-icon">💬</span>
-            </div>
-            <p class="card-text">
-  .תויפוקש אל ,תלעופו היחש תכרעמ — םידיל לוהינו םידרובשד ,תמא ןמזב םיטא'צ
-            </p>
-            <div class="card-chips">
-              <span class="chip">Realtime</span>
-              <span class="chip">Socket / APIs</span>
-              <span class="chip">Admin Views</span>
-            </div>
-          </article>
-        </div>
-
-        <div class="hero-ctas" style="margin-top:18px">
-          <a href="services_final.html" class="btn-ghost">םיאלמה םיתורישה לכל</a>
-        </div>
-      </section>
-
-      <!-- ===== PROJECTS PREVIEW ===== -->
-      <section id="projects" class="section">
-        <div class="section-header reveal">
-          <h2 class="section-title">תואצות .תוחטבה אל.</h2>
-          <p class="section-subtitle">
-  .לעופב ושע ןה המו — ונינבש תוכרעמהמ המכ
-          </p>
-        </div>
-
-        <div class="projects-grid">
-          <article class="project-card reveal">
-            <div class="project-tag">Web • Brand</div>
-            <h3 class="project-title">םוימירפ תימדת רתא — AutoRoy Cloud</h3>
-            <p class="project-text">
-  .היינפל ספאמ אלמ הרמה ךילהתו תוקלח תויצמינא ,יקנ RTL ,ינרדומ One Page .ומצע הזה רתאה
-            </p>
-            <ul class="project-list">
-              <li>Hero םע יביטמינא Orbit יביטקרטניא</li>
-              <li>ליימ רוביח + םיספט תכרעמ</li>
-              <li>Dark/Light mode + האלמ תושיגנ</li>
-            </ul>
-            <div class="project-footer">
-              HTML • CSS • Vanilla JS • GitHub • Render
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-tag">Automations • Leads</div>
-            <h3 class="project-title">ןטק קסעל תיטמוטוא םידיל תכרעמ</h3>
-            <p class="project-text">
-  .תועש 48 ךות ריוואל ספאמ .קסעה לעבל ליימ → חוקלל Sheets → WhatsApp-ב הרוש → רתאב ספוט
-            </p>
-            <ul class="project-list">
-              <li>ןושארה עגרהמ םידובא םידיל ספא</li>
-              <li>הקד ךות הבוגת לבקמ חוקלה</li>
-              <li>ב רדוסמ לכה-Sheets תמא ןמזב</li>
-            </ul>
-            <div class="project-footer">
-              Tally • Google Sheets • Zapier / Make
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-tag">Cloud • DevOps</div>
-            <h3 class="project-title">תיליבלייקס טא'צ תכרעמ</h3>
-            <p class="project-text">
-              Auth דרפנ, Chat דרפנ, UI ןנעב םתיא רבדמש — CI/CD תלוכי תמגדה .אלמ DevOps תיתימא.
-            </p>
-            <ul class="project-list">
-              <li>Microservices םע Deploy יטמוטוא</li>
-              <li>תועיגפו סמוע ינפב דימע</li>
-              <li>ו גנירוטינומ-alerting יסיסב</li>
-            </ul>
-            <div class="project-footer">
-              Node.js • Socket.io • Render • GitHub Actions
-            </div>
-          </article>
-        </div>
-
-        <div class="hero-ctas" style="margin-top:18px">
-          <a href="projects.html" class="btn-ghost">םיטקיורפה לכל</a>
-        </div>
-      </section>
-
-      <!-- ===== PROCESS PREVIEW ===== -->
-      <section id="process" class="section">
-        <div class="section-header reveal">
-          <h2 class="section-title">תועתפה ילב ,ריהמ ,רורב — ריוואל היילע דע ןושאר םוימ.</h2>
-          <p class="section-subtitle">
-  .ךלש חוקלה תייווחבו דוקב ,תויתשתב ונחנא .קסעב קסעתמ התא
-          </p>
-        </div>
-
-        <div class="timeline reveal">
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <h3>1. תוקד 30-ה תחיש</h3>
-              <p>לע תועיפשמש תולאש — תוירנג תולאש אל .עיגמ אוהש ירחא תורקל ךירצ המו ,תוארל ךירצ אוה המ ,ךלש חוקלה ימ םיניבמ
-  >p/<.היינבה
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <h3>2. ה + הביתכ + ןויפא-Flow</h3>
-              <p>תחא דוק תרוש ליחתמש ינפל רשאמ התא .תסנכנ היצרגטניא לכ הפיאו ,חוקלה לולסמ ,רסמה תא םירידגמ.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <h3>3. םירוביח + האלמ היינב</h3>
-              <p>תויצמוטוא ,םיספט ,רתא, Sheets, WhatsApp, Deploy — ןכומ טעמכ" אל .תדבועו היח הסרגל דע לכה".</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <h3>4. יוויל + ריוואל היילע</h3>
-              <p>ה ירחא םימלענ אל .םינימז םיראשנו ,דבוע לכהש םיקדוב ,ןשקדורפל םילעמ-delivery.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-ctas" style="margin-top:18px">
-          <a href="#contact" class="btn-ghost">רבדנ אוב ?ליחתהל ןכומ →</a>
-        </div>
-      </section>
-
-      <!-- ===== REVIEWS PREVIEW ===== -->
-      <section id="reviews" class="section">
-        <div class="section-header reveal">
-          <h2 class="section-title">הז תא ורבע רבכ םה.</h2>
-          <p class="section-subtitle">
-  .ונינבש תוכרעמה םע ודבעש םישנאו תוחוקלמ יתימא קבדיפ
-          </p>
-        </div>
-
-        <div class="reviews-layout reveal">
-          <div class="reviews-list" id="reviewsList">
-            <article class="review-card">
-              <div class="review-head">
-                <span class="review-name">ביבא לת ,וידוטס לעב</span>
-                <span class="review-tag">םידיל + תויצמוטוא</span>
-              </div>
-              <p class="review-text">
-  ".רגסנ ימו לופיטב ימ קוידב עדוי ינאו ,תחא הלבטל סנכנ לכה וישכע .רחא םוקמב עקתנ היה דיל לכ הז ינפל"
-              </p>
-            </article>
-
-            <article class="review-card">
-              <div class="review-head">
-                <span class="review-name">הילצרה ,יקסע ץעוי</span>
-                <span class="review-tag">תימדת רתא</span>
-              </div>
-              <p class="review-text">
-  ".השוע ינא המו ינא ימ ריבסהל לק רתוי הברה — רתאה ירחא .תוחוקל וילא חולשל רדוסמ דחא םוקמ ךירצ יתייה"
-              </p>
-            </article>
-          </div>
-
-          <form class="reviews-form">
-            <div class="form-field">
-              <label for="review-name">)הבוח אל( קסע םש / םש</label>
-              <input id="review-name" type="text" placeholder="ימינונא םג רשפא" />
-            </div>
-            <div class="form-field">
-              <label for="review-text">ןוויכה לע תבשח המ?</label>
-              <textarea id="review-text" placeholder="רפשל רשפא המ ,בוט דבע המ לע םילימ המכ."></textarea>
-            </div>
-            <div class="form-footer">
-              <div class="form-note" id="review-note">
-  .םייתניב ךלש ןפדפדב תרמשנ תרוקיבה
-              </div>
-              <button type="submit" class="btn-ghost btn-sm">תרוקיב רומש</button>
-            </div>
-          </form>
-        </div>
-
-        <div class="hero-ctas" style="margin-top:18px">
-          <a href="reviews.html" class="btn-ghost">תורוקיבה לכל</a>
-        </div>
-      </section>
-
-      <!-- ===== FAQ ===== -->
-      <section class="section">
-        <div class="section-header reveal">
-          <h2 class="section-title">תויוטש ילב .תורישי תובושת.</h2>
-          <p class="section-subtitle">
-  .תויתימא תובושת םע — םילאוש םלוכש תולאשה
-          </p>
-        </div>
-
-        <div class="faq-list reveal">
-          <details class="faq-item">
-            <summary class="faq-q">רתא תונבל חקול ןמז המכ?</summary>
-            <p class="faq-a">תובכרומבו םידומעה תומכב יולת .הדובע ימי 10–5 — תויצמוטוא םע אלמ רתא .תועש 72–48 — התיחנ ףד
-  >p/<.תויצרגטניאה
-          </details>
-          <details class="faq-item">
-            <summary class="faq-q">יל םיאתמ הז — ללכב ינכט אל ינא?</summary>
-            <p class="faq-a">עדי םומינימ ןיא .תכרעמל הז תא םימגרתמ ונחנא — השוע ךלש קסעה המ ריבסמ התא .ןאכ ונחנא הז ליבשב קוידב
-  >p/<.שרדנ ינכט
-          </details>
-          <details class="faq-item">
-            <summary class="faq-q">ליגר רסנלירפמ לדבהה המ?</summary>
-            <p class="faq-a">הביתכ רמוא הז .ךירצ ךלש קסעהש המ לע םיבשוח ונחנא .תשקיבש המ הנוב רסנלירפ, UX, אל — תיתשתו היצמוטוא
-  >p/<.דוק קר
-          </details>
-          <details class="faq-item">
-            <summary class="faq-q">ותוא רפשל רשפא — רתא רבכ יל שי?</summary>
-            <p class="faq-a">יוניש םימעפל .שדחמ היינב וא דקוממ רופיש — דחיב טילחנו ,תוינפ דיספמ אוה הפיא ןחבאנ ,ותוא קודבנ .ןכ
-  >p/<.לכה הווש דחא
-          </details>
-          <details class="faq-item">
-            <summary class="faq-q">הלוע הז המכ?</summary>
-            <p class="faq-a">םע האלמ תכרעמ .₪1,500-מ ליחתמ היצמוטוא םע התיחנ ףד DevOps םירידגמ ,החישב םירבדמ .פוקסה יפל תכרעומ
-  >p/<.תועתפה ילב — דחיב
-          </details>
-        </div>
-      </section>
-
-      <!-- ===== CONTACT ===== -->
-      <section id="contact" class="section">
-        <div class="section-header reveal">
-          <h2 class="section-title">תועש 24 ךות רוזחנ — קסעה לע ונל רפס.</h2>
-          <p class="section-subtitle">
-  .ךל הווש הז המלו תונבל רשפא המ קוידב ןיבת הבש הרצק החיש .ץחל אל .הריכמ אל
-          </p>
-        </div>
-
-        <form id="leadForm" class="form-grid reveal">
-          <div class="form-field">
-            <label for="lead-name">אלמ םש</label>
-            <input id="lead-name" type="text" placeholder="ךילא תונפל ךיא?" required />
-          </div>
-          <div class="form-field">
-            <label for="lead-business">ךלש קסעה</label>
-            <input id="lead-business" type="text" placeholder="תונח ,ץועיי ,וידוטס ,הקינילק..." />
-          </div>
-          <div class="form-field">
-            <label for="lead-contact">ליימ וא ןופלט</label>
-            <input id="lead-contact" type="text" placeholder="ךילא רוזחל ךיא?" required />
-          </div>
-          <div class="form-field">
-            <label for="lead-type">ךל ףוחד יכה המ?</label>
-            <select id="lead-type">
-              <option value="">רחב...</option>
-              <option>התיחנ ףד / רתא</option>
-              <option>פאסטאווו םידיל תויצמוטוא</option>
-              <option>טקיורפ DevOps / ןנע תיתשת</option>
-              <option>דחיב בושחל הצור — חוטב אל</option>
-            </select>
-          </div>
-          <div class="form-field full">
-            <label for="lead-message">וישכע ךלצא הרוק המ?</label>
-            <textarea id="lead-message" placeholder="לש קסע יל שי :לשמל X, םיכישממ אל לבא םיעיגמ םידיל..."></textarea>
-          </div>
-
-          <div class="form-footer">
-            <div class="form-note">
-  .םאפס םיחלוש אל ,עדימ םירכומ אל .>strong>autoroybiz@gmail.com</strong<־ל תורישי םיחלשנ םיטרפה
-            </div>
-            <div class="form-actions">
-              <button type="submit" class="btn-primary btn-sm">
-  → תועש 24 ךות רוזחנ — חלש
-              </button>
-              <a href="https://wa.me/972547222023?text=%D7%94%D7%99%D7%99%20%D7%A8%D7%95%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7
-  %99%20%D7%9E%D7%90%D7%AA%D7%A8%20AutoRoy%20Cloud%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%2
-  0%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98."
-                 class="btn-ghost btn-sm" target="_blank">
-  פאסטאווב רבד
-              </a>
-            </div>
-          </div>
-        </form>
-      </section>
-
-      <!-- ===== FINAL CTA ===== -->
-      <section class="section final-cta">
-        <div class="final-cta-inner reveal">
-          <h2>20 ךירצש המ לכ הז .תוקד.</h2>
-          <p>
-  .הברה יכה הנשת הנוכנה היינבה הפיאו ,אל המ ,דבוע המ :ךלש קסעה לע תיפיצפס החיש .תירנג העצה אל
-          </p>
-          <div class="final-cta-actions">
-            <button class="btn-primary" id="ctaTalk">
-  → הרצק החיש עבק
-            </button>
-            <a href="projects.html" class="btn-ghost">
-  םימדוק םיטקיורפ האר
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-      <div class="footer-main">
-        <span>© 2026 AutoRoy Cloud.</span>
-        <span>ןנע תויתשתו תויצמוטוא ,םירתא — תורכומש תוילטיגיד תוכרעמ.</span>
-      </div>
-      <div class="footer-links">
-        <a href="#hero">הלעמל</a>
-        <a href="services_final.html">םיתוריש</a>
-        <a href="contact.html">רשק תריצי</a>
-      </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script>
-      function closeMobile() {
-        const nav = document.getElementById("navMobile");
-        const burger = document.getElementById("hamburger");
-        if (!nav || !burger) return;
-        nav.classList.remove("show");
-        nav.setAttribute("aria-hidden", "true");
-        burger.setAttribute("aria-expanded", "false");
-      }
-    </script>
-    <script src="app.js"></script>
-
-    <!-- =================== AutoRoy Smart Chat Widget =================== -->
-    <style>
-      #ar-chat-root {
-        position: fixed;
-        bottom: 22px;
-        right: 22px;
-        z-index: 999999;
-        font-family: "Segoe UI", sans-serif;
-      }
-      #arChatFab {
-        width: 58px;
-        height: 58px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #4f46e5, #6366f1);
-        box-shadow: 0 6px 22px rgba(0,0,0,0.28);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 26px;
-        color: white;
-        transition: 0.2s;
-      }
-      #arChatFab:hover { transform: scale(1.06) translateY(-3px); }
-      #arChatPanel {
-        position: absolute;
-        bottom: 72px;
-        right: 0;
-        width: 330px;
-        height: 460px;
-        border-radius: 18px;
-        background: #0f0f15;
-        border: 1px solid rgba(255,255,255,0.08);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-        overflow: hidden;
-        transform: translateY(20px) scale(0.94);
-        opacity: 0;
-        pointer-events: none;
-        transition: 0.22s ease;
-        color: white;
-      }
-      .ar-open #arChatPanel { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
-      #arChatPanel .ar-close { position: absolute; top: 10px; left: 12px; font-size: 15px; cursor: pointer; opacity: 0.7;
-  transition: 0.15s; }
-      #arChatPanel .ar-close:hover { opacity: 1; transform: scale(1.1); }
-      #arChatHeader { padding: 16px; background: linear-gradient(135deg, #4f46e5, #6366f1); font-size: 15px; font-weight: 600;
-  }
-      #arChatMessages { height: 305px; overflow-y: auto; padding: 14px; scrollbar-width: thin; }
-      .ar-bubble { max-width: 80%; padding: 8px 12px; border-radius: 12px; margin-bottom: 10px; line-height: 1.35; font-size:
-  13px; }
-      .ar-user { background: #2563eb; margin-left: auto; border-bottom-right-radius: 4px; }
-      .ar-bot { background: #1e1e28; border: 1px solid rgba(255,255,255,0.08); margin-right: auto; border-bottom-left-radius:
-  4px; }
-      #arChatInputWrap { display: flex; gap: 6px; padding: 10px; background: #13131a; border-top: 1px solid
-  rgba(255,255,255,0.08); }
-      #arChatInput { flex: 1; background: #1c1c25; border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; padding: 8px
-   14px; color: white; font-size: 13px; }
-      #arChatInput:focus { outline: none; border-color: #6366f1; }
-      #arChatSend { padding: 8px 14px; border-radius: 999px; background: #6366f1; color: white; cursor: pointer; border: none;
-  font-size: 12px; transition: 0.15s; }
-      #arChatSend:hover { background: #4f46e5; }
-    </style>
-
-    <div id="ar-chat-root">
-      <div id="arChatFab">💬</div>
-      <div id="arChatPanel">
-        <div class="ar-close" id="arChatClose">✖</div>
-        <div id="arChatHeader">AutoRoy — תוחוקל תוריש</div>
-        <div id="arChatMessages"></div>
-        <div id="arChatInputWrap">
-          <input id="arChatInput" type="text" placeholder="העדוה בותכ..." autocomplete="off" />
-          <button id="arChatSend">חלש</button>
-        </div>
+      <div>
+        <div class="nav-brand">AutoRoy Cloud</div>
+        <div class="nav-sub">DevOps • Web • Automations</div>
       </div>
     </div>
 
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link">דף הבית</a>
+      <a href="app.html" class="nav-link">בונה אוטומציות</a>
+      <a href="services_final.html" class="nav-link">שירותים</a>
+      <a href="projects.html" class="nav-link">פרויקטים</a>
+      <a href="process.html" class="nav-link">תהליך עבודה</a>
+      <a href="updated_blog.html" class="nav-link">בלוג</a>
+      <a href="reviews.html" class="nav-link">ביקורות</a>
+      <a href="about.html" class="nav-link">אודות</a>
+      <a href="contact.html" class="nav-link">יצירת קשר</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="שינוי תאורה">☀️</button>
+      <button class="nav-cta" id="btnContactHeader">
+        בוא נדבר
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="תפריט" aria-expanded="false">
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- תפריט מובייל -->
+  <nav class="nav-mobile" id="navMobile" aria-hidden="true">
+    <a href="index.html" onclick="closeMobile()">דף הבית</a>
+    <a href="app.html" onclick="closeMobile()">בונה אוטומציות</a>
+    <a href="services_final.html" onclick="closeMobile()">שירותים</a>
+    <a href="projects.html" onclick="closeMobile()">פרויקטים</a>
+    <a href="process.html" onclick="closeMobile()">תהליך עבודה</a>
+    <a href="updated_blog.html" onclick="closeMobile()">בלוג</a>
+    <a href="reviews.html" onclick="closeMobile()">ביקורות</a>
+    <a href="about.html" onclick="closeMobile()">אודות</a>
+    <a href="contact.html" onclick="closeMobile()">יצירת קשר</a>
+  </nav>
+
+  <main class="page" id="main">
+    <!-- ===== HERO ===== -->
+    <section id="hero" class="hero section">
+      <div class="hero-inner">
+        <div class="hero-content reveal">
+          <p class="hero-kicker">CLOUD • DEVOPS • AUTOMATIONS • WEB</p>
+          <h1 class="hero-title">
+            בונים לעסק שלך מערכת
+            <span>חכמה, מהירה ומעוצבת
+            ל־2026
+            </span>
+           
+            -לא עוד אתר רגיל.
+          </h1>
+          <p class="hero-sub">
+            AutoRoy Cloud מחבר בין <strong>אתרי פרימיום</strong>, <strong>אוטומציות</strong> ו<strong>תשתיות ענן</strong>.
+            פחות התעסקות טכנית, יותר לקוחות שמבינים בדיוק מה אתה עושה.
+          </p>
+
+          <div class="hero-ctas">
+            <button class="btn-primary" id="heroCTA">
+              רוצה לדבר על פרויקט? 🚀
+            </button>
+            <a href="projects.html" class="btn-ghost" id="startNow">
+              לראות דוגמאות ויכולות
+            </a>
+          </div>
+
+          <div class="hero-tags">
+            <div class="hero-tag">
+              <span class="dot dot-green"></span>
+              אתרים, דפי נחיתה ומיתוג
+            </div>
+            <div class="hero-tag">
+              <span class="dot dot-cyan"></span>
+              אוטומציות לידים ווואטסאפ
+            </div>
+            <div class="hero-tag">
+              <span class="dot dot-purple"></span>
+              DevOps ותשתיות ענן
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="hero-orbit">
+            <div class="orbit orbit-1"></div>
+            <div class="orbit orbit-2"></div>
+            <div class="orbit orbit-3"></div>
+
+            <div class="hero-node hero-node-main">
+              <span>AutoRoy Cloud</span>
+            </div>
+            <div class="hero-node hero-node-devops">
+              <span>DevOps</span>
+            </div>
+            <div class="hero-node hero-node-auto">
+              <span>Automations</span>
+            </div>
+            <div class="hero-node hero-node-web">
+              <span>Web</span>
+            </div>
+            <div class="hero-node hero-node-chat">
+              <span>Chat &amp; Leads</span>
+            </div>
+          </div>
+          <p class="hero-visual-caption">
+            מערכת אחת שמחברת: אתר, טפסים, צ’אט, וואטסאפ ואוטומציות – לקו אחד מסודר של לידים.
+          </p>
+        </div>
+      </div>
+
+      <div class="hero-strip reveal">
+        <span class="strip-label">Stack טכנולוגי</span>
+        <div class="strip-items">
+          <span>HTML • CSS • JS</span>
+          <span>Node.js</span>
+          <span>Render / Vercel</span>
+          <span>GitHub Actions</span>
+          <span>Zapier / Make</span>
+          <span>Google Sheets</span>
+          <span>WhatsApp Business API</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES PREVIEW ===== -->
+    <section id="services-preview" class="section">
+      <div class="section-header reveal">
+        <h2 class="section-title">מה AutoRoy Cloud עושה בפועל?</h2>
+        <p class="section-subtitle">
+          שילוב של עיצוב פרימיום, קוד נקי ואוטומציות שמורידות ממך עומס. כל פרויקט נבנה כאילו הוא מוצר לסטארטאפ.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card reveal">
+          <div class="card-header">
+            <span class="card-title">אתרי תדמית ודפי נחיתה</span>
+            <span class="card-icon">🌐</span>
+          </div>
+          <p class="card-text">
+            דפי נחיתה שמתמקדים בתוצאה: הבנה מהירה של הערך שלך וטופס יצירת קשר חד וברור.
+          </p>
+          <div class="card-chips">
+            <span class="chip">UX חד</span>
+            <span class="chip">מהירות גבוה</span>
+            <span class="chip">רספונסיבי מלא</span>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-header">
+            <span class="card-title">אוטומציות לידים ווואטסאפ</span>
+            <span class="card-icon">🤖</span>
+          </div>
+          <p class="card-text">
+            חיבור אתר, טפסים, גוגל שיטס ווואטסאפ – כדי ששום ליד לא יתפספס בדרך.
+          </p>
+          <div class="card-chips">
+            <span class="chip">Tally / Typeform</span>
+            <span class="chip">Google Sheets</span>
+            <span class="chip">WhatsApp Business</span>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-header">
+            <span class="card-title">פרויקטי DevOps ותהליכים טכניים</span>
+            <span class="card-icon">⚙️</span>
+          </div>
+          <p class="card-text">
+            דוגמאות אמיתיות של שירותים, דיפלוי לענן, CI/CD ותשתיות – כהוכחת יכולת טכנית.
+          </p>
+          <div class="card-chips">
+            <span class="chip">Microservices</span>
+            <span class="chip">CI/CD</span>
+            <span class="chip">Monitoring</span>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-header">
+            <span class="card-title">צ'אטים, דשבורדים ומערכות חיות</span>
+            <span class="card-icon">💬</span>
+          </div>
+          <p class="card-text">
+            יצירת צ'אטים בזמן אמת, דשבורדים וניהול לידים – כדי שתראה מערכת שחיה באמת, לא רק שקופיות.
+          </p>
+          <div class="card-chips">
+            <span class="chip">Realtime</span>
+            <span class="chip">Socket / APIs</span>
+            <span class="chip">Admin Views</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="hero-ctas" style="margin-top:18px">
+        <a href="services_final.html" class="btn-ghost">
+          להעמיק לשירותים המלאים
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS PREVIEW ===== -->
+    <section id="projects" class="section">
+      <div class="section-header reveal">
+        <h2 class="section-title">דוגמאות ופרויקטים</h2>
+        <p class="section-subtitle">
+          כמה תרחישים שמראים איך הופכים טפסים, לידים ואתרים – למערכת אחת מסודרת.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card reveal">
+          <div class="project-tag">Web • Brand</div>
+          <h3 class="project-title">אתר תדמית פרימיום ל-AutoRoy</h3>
+          <p class="project-text">
+            האתר שאתה רואה עכשיו – One Page מודרני, תנועה חלקה, תאורה חכמה, רספונסיביות מלאה וטופס פנייה.
+          </p>
+          <ul class="project-list">
+            <li>Hero אנימטיבי עם Orbit</li>
+            <li>סקשנים מסודרים וברורים</li>
+            <li>חיבור לטופס יצירת קשר</li>
+          </ul>
+          <div class="project-footer">
+            HTML • CSS • Vanilla JS • GitHub • Render
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-tag">Automations • Leads</div>
+          <h3 class="project-title">Flow לידים לעסק קטן</h3>
+          <p class="project-text">
+            טופס באתר ⇒ שורה ב-Sheets ⇒ הודעת וואטסאפ אוטומטית ללקוח ⇒ מייל אליך עם כל הפרטים.
+          </p>
+          <ul class="project-list">
+            <li>טופס חכם באתר</li>
+            <li>Google Sheets מאורגן</li>
+            <li>התראות מיידיות</li>
+          </ul>
+          <div class="project-footer">
+            Tally • Google Sheets • Zapier / Make
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-tag">Cloud • DevOps</div>
+          <h3 class="project-title">מערכת צ'אט סקיילבילית</h3>
+          <p class="project-text">
+            מערכת צ'אט עם שירות Auth נפרד, שירות Chat נפרד ו-UI שמדבר איתם בענן – כהדגמת יכולת DevOps.
+          </p>
+          <ul class="project-list">
+            <li>שירותי backend נפרדים</li>
+            <li>דיפלוי ל-Render / Vercel</li>
+            <li>מוניטורינג בסיסי</li>
+          </ul>
+          <div class="project-footer">
+            Node.js • Socket • Render
+          </div>
+        </article>
+      </div>
+
+      <div class="hero-ctas" style="margin-top:18px">
+        <a href="projects.html" class="btn-ghost">
+          לראות עוד פרויקטים
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== PROCESS PREVIEW ===== -->
+    <section id="process" class="section">
+      <div class="section-header reveal">
+        <h2 class="section-title">איך נראה תהליך עבודה איתי?</h2>
+        <p class="section-subtitle">
+          תהליך קצר, ברור ושקוף – בלי כאבי ראש טכניים. אתה מתעסק בעסק, אני בתשתיות ובחוויית המשתמש.
+        </p>
+      </div>
+
+      <div class="timeline reveal">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>1. שיחת התאמה</h3>
+            <p>מבינים מה העסק עושה, מי הקהל, ומה חשוב שיקרה באתר או במערכת.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>2. אפיון ושרטוט הפLow</h3>
+            <p>משרטטים יחד את המסלול של הלקוח: מאיפה הוא מגיע, מה הוא רואה, ומה הוא ממלא.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>3. בנייה, אוטומציות וחיבורים</h3>
+            <p>בנייה של האתר, האוטומציות והחיבורים לוואטסאפ / מייל / Sheets עד לגרסה עובדת.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>4. עלייה לאוויר וליווי</h3>
+            <p>עלייה ל-Production, מדידה בסיסית ושדרוגים לפי מה שקורה בשטח.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ctas" style="margin-top:18px">
+        <a href="process.html" class="btn-ghost">
+          להבין את התהליך המלא
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT (טופס) ===== -->
+    <section id="contact" class="section">
+      <div class="section-header reveal">
+        <h2 class="section-title">בוא נדבר על מה שהכי חשוב לך</h2>
+        <p class="section-subtitle">
+          השאר כמה פרטים בסיסיים, ואחזור אליך אישית עם כיוון ברור: מה אפשר לבנות, כמה זמן זה ייקח, ואיך זה יעזור לעסק שלך.
+        </p>
+      </div>
+
+      <form id="leadForm" class="form-grid reveal">
+        <div class="form-field">
+          <label for="lead-name">שם מלא</label>
+          <input id="lead-name" type="text" placeholder="איך לפנות אליך?" required />
+        </div>
+        <div class="form-field">
+          <label for="lead-business">שם העסק / תחום</label>
+          <input id="lead-business" type="text" placeholder="מסעדה, סטודיו, אימון, ייעוץ..." />
+        </div>
+        <div class="form-field">
+          <label for="lead-contact">טלפון או מייל</label>
+          <input id="lead-contact" type="text" placeholder="פרט אחד שחובה כדי לחזור אליך" required />
+        </div>
+        <div class="form-field">
+          <label for="lead-type">מה מעניין אותך?</label>
+          <select id="lead-type">
+            <option value="">בחר...</option>
+            <option>אתר / דף נחיתה</option>
+            <option>אוטומציות לידים ווואטסאפ</option>
+            <option>פרויקט DevOps / תהליך טכני</option>
+            <option>משהו אחר – נחשוב ביחד</option>
+          </select>
+        </div>
+        <div class="form-field full">
+          <label for="lead-message">איך המצב נראה היום, ואיך היית רוצה שייראה?</label>
+          <textarea id="lead-message" placeholder="כמה משפטים חופשיים."></textarea>
+        </div>
+
+        <div class="form-footer">
+          <div class="form-note">
+            הפרטים שאתה ממלא כאן נשלחים ישירות למייל העסקי שלי
+            <strong>autoroybiz@gmail.com</strong>.
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-primary btn-sm">
+              שלחו לי הצעה מסודרת
+            </button>
+            <a href="https://wa.me/972547222023?text=%D7%94%D7%99%D7%99%20%D7%A8%D7%95%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%90%D7%AA%D7%A8%20AutoRoy%20Cloud%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98."
+               class="btn-ghost btn-sm" target="_blank">
+              לדבר בוואטסאפ
+            </a>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- ===== REVIEWS PREVIEW ===== -->
+    <section id="reviews" class="section">
+      <div class="section-header reveal">
+        <h2 class="section-title">ביקורות ותגובות</h2>
+        <p class="section-subtitle">
+          קצת פידבק מלקוחות ומאנשים שראו את המערכות שבניתי.
+        </p>
+      </div>
+
+      <div class="reviews-layout reveal">
+        <div class="reviews-list" id="reviewsList">
+          <article class="review-card">
+            <div class="review-head">
+              <span class="review-name">בעל סטודיו</span>
+              <span class="review-tag">אוטומציות + לידים</span>
+            </div>
+            <p class="review-text">
+              "לפני זה כל ליד היה נתקע במקום אחר. עכשיו הכל נכנס לטבלה אחת, ואני יודע בדיוק מי בטיפול ומי נסגר."
+            </p>
+          </article>
+
+          <article class="review-card">
+            <div class="review-head">
+              <span class="review-name">יועץ עסקי</span>
+              <span class="review-tag">אתר תדמית</span>
+            </div>
+            <p class="review-text">
+              "הייתי צריך מקום אחד מסודר לשלוח אליו לקוחות. אחרי האתר – הרבה יותר קל להסביר מי אני ומה אני עושה."
+            </p>
+          </article>
+        </div>
+
+        <form class="reviews-form">
+          <div class="form-field">
+            <label for="review-name">שם / שם עסק (לא חובה)</label>
+            <input id="review-name" type="text" placeholder="אפשר גם אנונימי" />
+          </div>
+          <div class="form-field">
+            <label for="review-text">מה אתה חושב על הכיוון?</label>
+            <textarea id="review-text" placeholder="כמה מילים חופשיות על מה אהבת או מה היית משפר."></textarea>
+          </div>
+          <div class="form-footer">
+            <div class="form-note" id="review-note">
+              הביקורת נשמרת עכשיו רק בדפדפן שלך – אפשר בעתיד לחבר למסד נתונים אמיתי.
+            </div>
+            <button type="submit" class="btn-ghost btn-sm">
+              שמירת ביקורת
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="hero-ctas" style="margin-top:18px">
+        <a href="reviews.html" class="btn-ghost">
+          לעוד ביקורות ודוגמאות
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== FINAL CTA ===== -->
+    <section class="section final-cta">
+      <div class="final-cta-inner reveal">
+        <h2>רוצה שהמערכת שלך תרגיש כמו 2026 – לא 2013?</h2>
+        <p>
+          אתר, אוטומציות ו־DevOps שלא מרגישים כמו טלאי על טלאי, אלא כמו מוצר אחד חכם שפועל בשבילך.
+        </p>
+        <div class="final-cta-actions">
+          <button class="btn-primary" id="ctaTalk">
+            בוא נתחיל לדבר
+          </button>
+          <a href="projects.html" class="btn-ghost">
+            לראות שוב את הדוגמאות
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-main">
+      <span>© 2025 AutoRoy Cloud.</span>
+      <span>DevOps &amp; Automations • אתרים, דפי נחיתה ואוטומציות לעסקים.</span>
+    </div>
+    <div class="footer-links">
+      <a href="#hero">למעלה</a>
+      <a href="services_final.html">שירותים</a>
+      <a href="contact.html">יצירת קשר</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
     <script>
-    (function(){
-      const WEBHOOK = "https://hook.eu1.make.com/wdcaoe8jb463hbqv1mit2wp1mn2xqqt7";
-      const root     = document.getElementById("ar-chat-root");
-      const fab      = document.getElementById("arChatFab");
-      const panel    = document.getElementById("arChatPanel");
-      const closeBtn = document.getElementById("arChatClose");
-      const messages = document.getElementById("arChatMessages");
-      const input    = document.getElementById("arChatInput");
-      const sendBtn  = document.getElementById("arChatSend");
-      let opened = false;
+    // Fix: closeMobile() used in mobile menu links
+    function closeMobile() {
+      const nav = document.getElementById("navMobile");
+      const burger = document.getElementById("hamburger");
+      if (!nav || !burger) return;
+      nav.classList.remove("show");
+      nav.setAttribute("aria-hidden", "true");
+      burger.setAttribute("aria-expanded", "false");
+    }
+  </script>
+  <script src="app.js"></script>
+ <!-- =================== AutoRoy Smart Chat Widget =================== -->
+<style>
+  #ar-chat-root {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    z-index: 999999;
+    font-family: "Segoe UI", sans-serif;
+  }
 
-      fab.onclick = toggleChat;
-      closeBtn.onclick = toggleChat;
+  /* FAB */
+  #arChatFab {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 26px;
+    color: white;
+    transition: 0.2s;
+  }
+  #arChatFab:hover {
+    transform: scale(1.06) translateY(-3px);
+  }
 
-      function toggleChat(){
-        opened = !opened;
-        if(opened){
-          root.classList.add("ar-open");
-          if(!messages.dataset.init){
-            setTimeout(()=>{ addBubble("לש ילטיגידה ןכוסה ינא !ייה AutoRoy 😊 רוזעל רשפא ךיא?"); }, 300);
-            messages.dataset.init = "yes";
-          }
-        } else {
-          root.classList.remove("ar-open");
-        }
-      }
+  /* PANEL */
+  #arChatPanel {
+    position: absolute;
+    bottom: 72px;
+    right: 0;
+    width: 330px;
+    height: 460px;
+    border-radius: 18px;
+    background: #0f0f15;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    overflow: hidden;
+    transform: translateY(20px) scale(0.94);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.22s ease;
+    color: white;
+  }
 
-      function addBubble(text, who="bot"){
-        const bubble = document.createElement("div");
-        bubble.className = "ar-bubble " + (who==="user" ? "ar-user" : "ar-bot");
-        bubble.textContent = text;
-        messages.appendChild(bubble);
-        messages.scrollTop = messages.scrollHeight;
-      }
+  .ar-open #arChatPanel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
 
-      sendBtn.onclick = sendMsg;
-      input.onkeydown = e => { if(e.key==="Enter") sendMsg(); };
+  /* CLOSE BUTTON */
+  #arChatPanel .ar-close {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    font-size: 15px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.15s;
+  }
+  #arChatPanel .ar-close:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
 
-      function sendMsg(){
-        const text = input.value.trim();
-        if(!text) return;
-        addBubble(text, "user");
-        input.value = "";
-        fetch(WEBHOOK,{
-          method:"POST",
-          headers:{ "Content-Type":"application/json" },
-          body: JSON.stringify({ message: text })
-        })
-        .then(r=>r.text())
-        .then(res => addBubble(res || "בוש הסנ ,תינמז הלקת 🙏"))
-        .catch(() => addBubble("תרשל רבחתהל יתחלצה אל 🙏"));
-      }
-    })();
-    </script>
-    <!-- =================== /AutoRoy Smart Chat Widget =================== -->
+  /* HEADER */
+  #arChatHeader {
+    padding: 16px;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    font-size: 15px;
+    font-weight: 600;
+  }
 
-  </body>
-  </html>
+  /* MESSAGES AREA */
+  #arChatMessages {
+    height: 305px;
+    overflow-y: auto;
+    padding: 14px;
+    scrollbar-width: thin;
+  }
+
+  .ar-bubble {
+    max-width: 80%;
+    padding: 8px 12px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    line-height: 1.35;
+    font-size: 13px;
+  }
+
+  .ar-user {
+    background: #2563eb;
+    margin-left: auto;
+    border-bottom-right-radius: 4px;
+  }
+
+  .ar-bot {
+    background: #1e1e28;
+    border: 1px solid rgba(255,255,255,0.08);
+    margin-right: auto;
+    border-bottom-left-radius: 4px;
+  }
+
+  /* INPUT AREA */
+  #arChatInputWrap {
+    display: flex;
+    gap: 6px;
+    padding: 10px;
+    background: #13131a;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  #arChatInput {
+    flex: 1;
+    background: #1c1c25;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 999px;
+    padding: 8px 14px;
+    color: white;
+    font-size: 13px;
+  }
+
+  #arChatInput:focus {
+    outline: none;
+    border-color: #6366f1;
+  }
+
+  #arChatSend {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #6366f1;
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-size: 12px;
+    transition: 0.15s;
+  }
+  #arChatSend:hover {
+    background: #4f46e5;
+  }
+</style>
+
+<div id="ar-chat-root">
+  <div id="arChatFab">💬</div>
+
+  <div id="arChatPanel">
+    <div class="ar-close" id="arChatClose">✖</div>
+    <div id="arChatHeader">AutoRoy – שירות לקוחות</div>
+    <div id="arChatMessages"></div>
+
+    <div id="arChatInputWrap">
+      <input id="arChatInput" type="text" placeholder="כתוב הודעה..." autocomplete="off" />
+      <button id="arChatSend">שלח</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+
+const WEBHOOK = "https://hook.eu1.make.com/wdcaoe8jb463hbqv1mit2wp1mn2xqqt7";
+
+const root     = document.getElementById("ar-chat-root");
+const fab      = document.getElementById("arChatFab");
+const panel    = document.getElementById("arChatPanel");
+const closeBtn = document.getElementById("arChatClose");
+const messages = document.getElementById("arChatMessages");
+const input    = document.getElementById("arChatInput");
+const sendBtn  = document.getElementById("arChatSend");
+
+let opened = false;
+
+fab.onclick = toggleChat;
+closeBtn.onclick = toggleChat;
+
+function toggleChat(){
+  opened = !opened;
+
+  if(opened){
+    root.classList.add("ar-open");
+    if(!messages.dataset.init){
+      setTimeout(()=>{
+        addBubble("היי! אני הסוכן הדיגיטלי של AutoRoy 😊 איך אפשר לעזור?");
+      },300);
+      messages.dataset.init = "yes";
+    }
+  } else {
+    root.classList.remove("ar-open");
+  }
+}
+
+function addBubble(text, who="bot"){
+  const bubble = document.createElement("div");
+  bubble.className = "ar-bubble " + (who==="user" ? "ar-user" : "ar-bot");
+  bubble.textContent = text;
+  messages.appendChild(bubble);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+sendBtn.onclick = sendMsg;
+input.onkeydown = e => { if(e.key==="Enter") sendMsg(); };
+
+function sendMsg(){
+  const text = input.value.trim();
+  if(!text) return;
+
+  addBubble(text, "user");
+  input.value = "";
+
+  fetch(WEBHOOK,{
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({ message: text })
+  })
+  .then(r=>r.text())
+  .then(res => addBubble(res || "תקלה זמנית, נסה שוב 🙏"))
+  .catch(() => addBubble("לא הצלחתי להתחבר לשרת 🙏"));
+}
+
+})();
+</script>
+<!-- =================== /AutoRoy Smart Chat Widget =================== -->
+
+</body>
+</html>
