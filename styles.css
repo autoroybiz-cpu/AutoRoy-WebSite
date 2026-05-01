@@ -1,2236 +1,1326 @@
-/* =========================================================
-   AutoRoy Cloud — styles.css
-   Light mode ברירת מחדל + Dark mode, RTL מלא, מובייל, אנימציות
-   ========================================================= */
-
-/* ========== RESET בסיסי ========== */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  direction: rtl;
-  font-family: "Rubik", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg);
-  color: var(--text-main);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-/* ========== משתני עיצוב — Light כברירת מחדל ========== */
-:root {
-  --bg: #f5f5f7;
-  --bg-elevated: #ffffff;
-  --bg-soft: #f9fafb;
-
-  --text-main: #0b1120;
-  --text-muted: #6b7280;
-
-  --primary: #2563eb;
-  --primary-soft: rgba(37, 99, 235, 0.08);
-  --accent: #22c55e;
-  --accent-soft: rgba(34, 197, 94, 0.12);
-  --danger: #ef4444;
-
-  --border-subtle: #e5e7eb;
-
-  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
-  --shadow-card: 0 12px 35px rgba(15, 23, 42, 0.08);
-
-  --radius-lg: 24px;
-  --radius-md: 18px;
-  --radius-sm: 12px;
-  --radius-pill: 999px;
-
-  --nav-height: 70px;
-}
-
-/* ========== DARK MODE (אם רוצים להפעיל דרך JS: להוסיף body.dark) ========== */
-body.dark {
-  --bg: #020617;
-  --bg-elevated: rgba(15, 23, 42, 0.96);
-  --bg-soft: #020617;
-
-  --text-main: #e5e7eb;
-  --text-muted: #9ca3af;
-
-  --primary: #4f46e5;
-  --primary-soft: rgba(79, 70, 229, 0.18);
-  --accent: #22d3ee;
-  --accent-soft: rgba(34, 211, 238, 0.18);
-
-  --border-subtle: rgba(148, 163, 184, 0.5);
-
-  --shadow-soft: 0 24px 80px rgba(15, 23, 42, 0.9);
-  --shadow-card: 0 18px 50px rgba(15, 23, 42, 0.85);
-}
-
-/* ========== קונטיינר כללי ========== */
-
-.page {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 16px 20px 40px;
-}
-
-/* ========== טיפוגרפיה בסיסית ========== */
-
-h1, h2, h3, h4 {
-  font-weight: 700;
-  letter-spacing: -0.03em;
-}
-
-.section {
-  margin-bottom: 40px;
-}
-
-.section-header {
-  margin-bottom: 16px;
-}
-
-.section-title {
-  font-size: 1.5rem;
-  margin-bottom: 4px;
-}
-
-.section-subtitle {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  max-width: 34rem;
-}
-
-/* ========== NAVBAR ========== */
-
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  height: var(--nav-height);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  background: rgba(249, 250, 251, 0.96);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(209, 213, 219, 0.9);
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-}
-
-body.dark .nav {
-  background: rgba(2, 6, 23, 0.96);
-  border-bottom-color: rgba(30, 64, 175, 0.6);
-  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.9);
-}
-
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.nav-logo {
-  width: 36px;
-  height: 36px;
-  border-radius: 16px;
-  background:
-    radial-gradient(circle at 30% 0, #facc15, transparent 55%),
-    linear-gradient(135deg, var(--primary), #22c55e);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 14px 30px rgba(37, 99, 235, 0.4);
-  overflow: hidden;
-}
-
-.nav-brand {
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 0.02em;
-}
-
-.nav-sub {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  font-size: 0.9rem;
-}
-
-.nav-link {
-  position: relative;
-  padding-bottom: 2px;
-  cursor: pointer;
-  color: var(--text-main);
-}
-
-.nav-link::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: -3px;
-  width: 0;
-  height: 2px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  transition: width 0.16s ease;
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* כפתור תאורה */
-.theme-toggle {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  background: radial-gradient(circle at 30% 0, #fde68a 0, #1f2937 55%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.2);
-  font-size: 1.1rem;
-  transition: transform 0.16s ease, box-shadow 0.16s ease;
-}
-
-.theme-toggle:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.25);
-}
-
-/* CTA Navbar */
-.nav-cta {
-  padding: 8px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(37, 99, 235, 0.8);
-  background:
-    radial-gradient(circle at top left, rgba(37, 99, 235, 0.24), transparent 55%),
-    #0f172a;
-  color: #f9fafb;
-  font-size: 0.86rem;
-  cursor: pointer;
-  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
-}
-
-.nav-cta:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 14px 40px rgba(37, 99, 235, 0.5);
-}
-
-body.dark .nav-cta {
-  background:
-    radial-gradient(circle at top left, rgba(129, 140, 248, 0.3), transparent 55%),
-    rgba(15, 23, 42, 0.98);
-}
-
-/* Hamburger (mobile) */
-
-.hamburger {
-  display: none;
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  background: rgba(15, 23, 42, 0.96);
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.hamburger-line {
-  width: 16px;
-  height: 2px;
-  background: #e5e7eb;
-  position: relative;
-}
-
-.hamburger-line::before,
-.hamburger-line::after {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 2px;
-  background: #e5e7eb;
-  left: 0;
-}
-
-.hamburger-line::before {
-  top: -5px;
-}
-.hamburger-line::after {
-  top: 5px;
-}
-
-/* Mobile nav */
-
-.nav-mobile {
-  position: fixed;
-  top: var(--nav-height);
-  right: 0;
-  left: 0;
-  background: rgba(249, 250, 251, 0.98);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(209, 213, 219, 0.9);
-  display: none;
-  flex-direction: column;
-  padding: 10px 18px 14px;
-  gap: 8px;
-  z-index: 30;
-}
-
-body.dark .nav-mobile {
-  background: rgba(2, 6, 23, 0.98);
-  border-bottom-color: rgba(30, 64, 175, 0.8);
-}
-
-.nav-mobile a {
-  padding: 6px 0;
-  font-size: 0.9rem;
-  color: var(--text-main);
-}
-
-.nav-mobile.show {
-  display: flex;
-}
-
-/* ========== HERO ========== */
-
-.hero {
-  margin-top: 18px;
-}
-
-.hero-inner {
-  border-radius: 28px;
-  padding: 26px 24px 30px;
-  background:
-    radial-gradient(circle at top left, rgba(219, 234, 254, 0.7), transparent 55%),
-    radial-gradient(circle at top right, rgba(221, 214, 254, 0.7), transparent 60%),
-    #f9fafb;
-  border: 1px solid rgba(209, 213, 219, 0.95);
-  box-shadow: 0 22px 60px rgba(15, 23, 42, 0.12);
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-  gap: 26px;
-  align-items: center;
-}
-
-body.dark .hero-inner {
-  background:
-    radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), transparent 60%),
-    radial-gradient(circle at top right, rgba(129, 140, 248, 0.26), transparent 65%),
-    radial-gradient(circle at bottom, rgba(51, 65, 85, 0.9), transparent 70%),
-    linear-gradient(145deg, #020617, #050816);
-  border-color: rgba(148, 163, 184, 0.6);
-}
-
-.hero-kicker {
-  font-size: 0.78rem;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 8px;
-}
-
-.hero-title {
-  font-size: clamp(2.1rem, 3.6vw, 3.2rem);
-  font-weight: 800;
-  line-height: 1.15;
-  margin-bottom: 12px;
-}
-
-.hero-title span {
-  background: linear-gradient(90deg, #4f46e5, #22c55e, #0ea5e9);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.hero-sub {
-  font-size: 0.98rem;
-  color: var(--text-muted);
-  max-width: 34rem;
-}
-
-/* CTA Buttons */
-
-.hero-ctas {
-  margin-top: 18px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.btn-primary,
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border-radius: var(--radius-pill);
-  border: none;
-  cursor: pointer;
-  font-size: 0.95rem;
-  font-weight: 600;
-  padding: 10px 20px;
-  transition:
-    transform 0.16s ease,
-    box-shadow 0.16s ease,
-    opacity 0.16s ease,
-    background 0.16s ease,
-    border-color 0.16s ease;
-}
-
-.btn-primary {
-  background: linear-gradient(130deg, #2563eb, #22c55e);
-  color: #f9fafb;
-  box-shadow: 0 18px 50px rgba(37, 99, 235, 0.5);
-}
-
-.btn-primary:hover {
-  transform: translateY(-1px) scale(1.01);
-  box-shadow: 0 22px 60px rgba(37, 99, 235, 0.7);
-}
-
-.btn-ghost {
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  background: #ffffff;
-  color: #111827;
-}
-
-body.dark .btn-ghost {
-  background: rgba(15, 23, 42, 0.9);
-  color: var(--text-main);
-}
-
-.btn-ghost:hover {
-  background: #f9fafb;
-  border-color: rgba(148, 163, 184, 1);
-}
-
-/* Hero tags */
-
-.hero-tags {
-  margin-top: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.hero-tag {
-  font-size: 0.78rem;
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  background: #f9fafb;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-body.dark .hero-tag {
-  background: rgba(15, 23, 42, 0.88);
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-}
-.dot-green {
-  background: #22c55e;
-  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.35);
-}
-.dot-cyan {
-  background: #22cce5;
-  box-shadow: 0 0 0 3px rgba(34, 204, 229, 0.35);
-}
-.dot-purple {
-  background: #8b5cf6;
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.35);
-}
-
-/* Hero visual */
-
-.hero-visual {
-  position: relative;
-}
-
-.hero-orbit {
-  position: relative;
-  width: 100%;
-  max-width: 360px;
-  aspect-ratio: 1 / 1;
-  margin: 0 auto;
-  border-radius: 999px;
-  background:
-    radial-gradient(circle at center, #e5e7eb, #c7d2fe 70%);
-  box-shadow:
-    0 0 120px rgba(79, 70, 229, 0.4),
-    0 0 180px rgba(34, 197, 94, 0.3);
-  overflow: hidden;
-}
-
-body.dark .hero-orbit {
-  background:
-    radial-gradient(circle at center, rgba(15, 23, 42, 0.9), #020617 70%);
-}
-
-.orbit {
-  position: absolute;
-  inset: 34px;
-  border-radius: 999px;
-  border: 1px dashed rgba(129, 140, 248, 0.7);
-  animation: orbit 16s linear infinite;
-}
-
-.orbit-2 {
-  inset: 50px;
-  border-style: solid;
-  border-color: rgba(34, 197, 94, 0.7);
-  animation-duration: 22s;
-  animation-direction: reverse;
-}
-
-.orbit-3 {
-  inset: 66px;
-  border-color: rgba(14, 165, 233, 0.8);
-  animation-duration: 28s;
-}
-
-.hero-node {
-  position: absolute;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: radial-gradient(circle at top, #f9fafb, #6366f1);
-  color: #020617;
-  font-size: 0.72rem;
-  font-weight: 600;
-  box-shadow:
-    0 0 0 3px rgba(15, 23, 42, 0.1),
-    0 0 30px rgba(129, 140, 248, 0.6);
-}
-
-.hero-node-main {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.hero-node-devops { top: 16%; right: 18%; }
-.hero-node-auto   { bottom: 20%; right: 10%; }
-.hero-node-web    { bottom: 18%; left: 14%; }
-.hero-node-chat   { top: 24%; left: 10%; }
-
-.hero-visual-caption {
-  margin-top: 10px;
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-/* Hero strip */
-
-.hero-strip {
-  margin-top: 16px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.6);
-  background:
-    radial-gradient(circle at left, rgba(37, 99, 235, 0.08), transparent 60%),
-    #ffffff;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  overflow: hidden;
-}
-
-body.dark .hero-strip {
-  background:
-    radial-gradient(circle at left, rgba(56, 189, 248, 0.15), transparent 60%),
-    rgba(15, 23, 42, 0.95);
-}
-
-.strip-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--text-muted);
-}
-
-.strip-items {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 10px;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  overflow-x: auto;
-  padding-bottom: 4px;
-}
-
-.strip-items span {
-  padding: 3px 9px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.6);
-  background: #f9fafb;
-  flex: 0 0 auto;
-  white-space: nowrap;
-}
-
-body.dark .strip-items span {
-  background: rgba(15, 23, 42, 0.8);
-}
-
-/* Scrollbar משופר לסטאק */
-.strip-items::-webkit-scrollbar {
-  height: 6px;
-}
-.strip-items::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  border-radius: 999px;
-}
-
-/* ========== CARDS / SERVICES ========== */
-
-.cards-grid {
-  display: grid;
-  gap: 16px;
-  margin-top: 18px;
-}
-
-.card {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-elevated);
-  padding: 16px 16px 18px;
-  box-shadow: var(--shadow-card);
-  transition: transform 0.26s cubic-bezier(.2,.9,.3,1), box-shadow 0.26s, border-color 0.26s;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 22px 70px rgba(37, 99, 235, 0.16);
-  border-color: var(--primary);
-}
-
-body.dark .card {
-  background:
-    radial-gradient(circle at top left, rgba(129, 140, 248, 0.24), transparent 60%),
-    rgba(15, 23, 42, 0.98);
-  border-color: rgba(148, 163, 184, 0.6);
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 6px;
-}
-
-.card-title {
-  font-size: 0.98rem;
-  font-weight: 600;
-}
-
-.card-icon {
-  font-size: 1.2rem;
-}
-
-.card-text {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-top: 6px;
-  margin-bottom: 8px;
-}
-
-.card-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.chip {
-  font-size: 0.78rem;
-  padding: 4px 9px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.6);
-  background: var(--bg-soft);
-}
-
-/* ========== PROJECTS ========== */
-
-.projects-grid {
-  display: grid;
-  gap: 16px;
-  margin-top: 14px;
-}
-
-.project-card {
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-elevated);
-  padding: 14px 14px 16px;
-  box-shadow: var(--shadow-card);
-  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--primary);
-  box-shadow: 0 24px 70px rgba(37, 99, 235, 0.16);
-}
-
-body.dark .project-card {
-  background:
-    radial-gradient(circle at top, rgba(56, 189, 248, 0.16), transparent 60%),
-    rgba(15, 23, 42, 0.98);
-  border-color: rgba(148, 163, 184, 0.6);
-}
-
-.project-tag {
-  font-size: 0.75rem;
-  color: var(--accent);
-  margin-bottom: 4px;
-}
-
-.project-title {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-.project-text {
-  font-size: 0.88rem;
-  color: var(--text-muted);
-  margin-bottom: 6px;
-}
-
-.project-list {
-  list-style: none;
-  padding-right: 0;
-  margin-bottom: 8px;
-  font-size: 0.84rem;
-  color: var(--text-muted);
-}
-
-.project-list li::before {
-  content: "• ";
-  color: var(--accent);
-}
-
-.project-footer {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-}
-
-/* ========== PROCESS / TIMELINE ========== */
-
-.timeline {
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-elevated);
-  padding: 14px 16px 16px;
-  box-shadow: var(--shadow-card);
-}
-
-body.dark .timeline {
-  background:
-    radial-gradient(circle at top, rgba(129, 140, 248, 0.18), transparent 65%),
-    rgba(15, 23, 42, 0.96);
-}
-
-.timeline-item {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 10px 12px;
-  padding: 8px 0;
-  position: relative;
-}
-
-.timeline-item:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 20px;
-  right: 8px;
-  bottom: -8px;
-  width: 1px;
-  background: linear-gradient(to bottom, rgba(148, 163, 184, 0.8), transparent);
-}
-
-.timeline-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  box-shadow: 0 0 0 4px var(--primary-soft);
-  margin-top: 4px;
-}
-
-.timeline-content h3 {
-  font-size: 0.98rem;
-  margin-bottom: 3px;
-}
-
-.timeline-content p {
-  font-size: 0.84rem;
-  color: var(--text-muted);
-}
-
-/* ========== FORMS / CONTACT ========== */
-
-.form-grid {
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-elevated);
-  padding: 14px 14px 16px;
-  display: grid;
-  gap: 10px;
-  box-shadow: var(--shadow-card);
-}
-
-body.dark .form-grid {
-  background: rgba(15, 23, 42, 0.96);
-}
-
-.form-field label {
-  font-size: 0.82rem;
-  margin-bottom: 4px;
-  display: block;
-}
-
-.form-field input,
-.form-field select,
-.form-field textarea {
-  width: 100%;
-  border-radius: 10px;
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  background: #f9fafb;
-  color: var(--text-main);
-  padding: 8px 10px;
-  font-size: 0.9rem;
-  transition: box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
-}
-
-body.dark .form-field input,
-body.dark .form-field select,
-body.dark .form-field textarea {
-  background: rgba(15, 23, 42, 0.96);
-  color: var(--text-main);
-}
-
-.form-field textarea {
-  min-height: 80px;
-  resize: vertical;
-}
-
-.form-field input::placeholder,
-.form-field textarea::placeholder {
-  color: #9ca3af;
-}
-
-.form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.3);
-}
-
-.form-field.full {
-  grid-column: 1 / -1;
-}
-
-.form-footer {
-  margin-top: 6px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.8rem;
-}
-
-.form-note {
-  color: var(--text-muted);
-  max-width: 28rem;
-}
-
-.form-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.btn-sm {
-  padding: 7px 14px;
-  font-size: 0.85rem;
-}
-
-/* ========== REVIEWS ========== */
-
-.reviews-layout {
-  display: grid;
-  gap: 14px;
-}
-
-.reviews-list {
-  display: grid;
-  gap: 8px;
-}
-
-.review-card {
-  border-radius: 14px;
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-elevated);
-  padding: 10px 11px;
-  font-size: 0.82rem;
-  color: var(--text-main);
-}
-
-body.dark .review-card {
-  background: rgba(15, 23, 42, 0.96);
-}
-
-.review-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 3px;
-}
-
-.review-name {
-  font-weight: 600;
-  font-size: 0.8rem;
-}
-
-.review-tag {
-  font-size: 0.75rem;
-  color: var(--accent);
-}
-
-.review-text {
-  font-size: 0.82rem;
-  color: var(--text-muted);
-}
-
-.reviews-form {
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-elevated);
-  padding: 14px 14px 16px;
-  box-shadow: var(--shadow-card);
-  display: grid;
-  gap: 8px;
-}
-
-body.dark .reviews-form {
-  background: rgba(15, 23, 42, 0.96);
-}
-
-/* ========== FINAL CTA ========== */
-
-.final-cta {
-  margin-top: 10px;
-}
-
-.final-cta-inner {
-  border-radius: var(--radius-lg);
-  padding: 22px 18px 20px;
-  background:
-    radial-gradient(circle at top left, rgba(219, 234, 254, 0.7), transparent 55%),
-    radial-gradient(circle at bottom right, rgba(254, 252, 232, 0.9), transparent 55%),
-    linear-gradient(135deg, #2563eb, #22c55e);
-  color: #f9fafb;
-  text-align: center;
-  box-shadow: 0 24px 60px rgba(37, 99, 235, 0.5);
-}
-
-.final-cta-inner h2 {
-  font-size: 1.5rem;
-  margin-bottom: 6px;
-}
-
-.final-cta-inner p {
-  font-size: 0.9rem;
-  opacity: 0.95;
-  margin-bottom: 14px;
-}
-
-.final-cta-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-/* ========== FOOTER ========== */
-
-.footer {
-  margin-top: 24px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(148, 163, 184, 0.6);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: space-between;
-  font-size: 0.78rem;
-  color: var(--text-muted);
-}
-
-.footer-links {
-  display: flex;
-  gap: 12px;
-}
-
-/* ========== REVEAL ANIMATION ========== */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ========== ANIMATIONS ==========
-   orbit animation for hero rings
-================================== */
-
-@keyframes orbit {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-/* ========== SKIP LINK (נגישות) ========== */
-
-.skip-link {
-  position: absolute;
-  top: -40px;
-  right: 16px;
-  padding: 8px 14px;
-  background: var(--primary);
-  color: #f9fafb;
-  border-radius: 999px;
-  font-size: 0.82rem;
-  z-index: 9999;
-  transition: top 0.25s ease;
-}
-
-.skip-link:focus {
-  top: 16px;
-}
-
-/* ========== FOCUS STATES גלובליים ========== */
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 2px solid rgba(56, 189, 248, 0.9);
-  outline-offset: 2px;
-}
-
-/* ========== RESPONSIVE BREAKPOINTS ========== */
-
-@media (min-width: 768px) {
-  .page {
-    padding-inline: 26px;
-  }
-  .cards-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .projects-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .reviews-layout {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 900px) {
-  .hero-inner {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-  .hamburger {
-    display: flex;
-  }
-  .page {
-    padding-inline: 16px;
-  }
-  .hero-inner {
-    padding: 20px 16px 24px;
-    border-radius: 22px;
-  }
-  .hero-strip {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .timeline {
-    padding-inline: 12px;
-  }
-  .form-grid,
-  .reviews-form {
-    padding-inline: 12px;
-  }
-  .footer {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 600px) {
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-  .hero-title {
-    font-size: 2.1rem;
-  }
-}
-
-/* מובייל אקסטרה */
-@media (max-width: 480px) {
-  body {
-    font-size: 15px;
-  }
-  .nav {
-    padding: 0 14px;
-  }
-  .btn {
-    width: 100%;
-    text-align: center;
-  }
-}
-/* =============================
-   SERVICES NAV — FUTURE / 2030
-   ============================= */
-
-.services-nav {
-  display: flex;
-  gap: 14px;
-  overflow-x: auto;
-  padding: 14px 4px 18px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  justify-content: flex-start;
-}
-
-.services-nav::-webkit-scrollbar {
-  display: none;
-}
-
-.services-btn {
-  flex: 0 0 auto;
-  scroll-snap-align: center;
-  padding: 12px 22px;
-  border-radius: 50px;
-  background: var(--card-bg);
-  color: var(--text);
-  border: 1px solid rgba(0,0,0,0.08);
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  transition: 0.28s ease, transform 0.25s cubic-bezier(.23,1.3,.32,1);
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-body.dark .services-btn {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.15);
-}
-
-.services-btn:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 8px 22px rgba(0,0,0,0.1);
-}
-
-.services-btn.active {
-  background: var(--primary);
-  color: #fff;
-  border-color: transparent;
-  box-shadow: 0 0 15px var(--glow);
-  transform: translateY(-3px) scale(1.06);
-}
-/* ===========================
-   PAGE TEMPLATE (UNIVERSAL)
-   =========================== */
-
-.page-hero {
-  padding: 120px 0 60px;
-  background: radial-gradient(
-      circle at 50% 0%,
-      rgba(13,110,253,0.15),
-      transparent 65%
-    ),
-    linear-gradient(180deg, #f8fafc, #eef1f6);
-  text-align: center;
-}
-
-body.dark .page-hero {
-  background: radial-gradient(
-      circle at 50% 0%,
-      rgba(102,179,255,0.17),
-      transparent 65%
-    ),
-    linear-gradient(180deg, #0c0e12, #0a0c0f);
-}
-
-.page-title {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 20px;
-  color: var(--text);
-}
-
-.page-sub {
-  font-size: 1.2rem;
-  opacity: 0.8;
-  max-width: 720px;
-  margin: 0 auto;
-  color: var(--text);
-}
-
-.page-content {
-  padding: 40px 0 120px;
-  max-width: 1000px;
-  line-height: 1.8;
-  font-size: 1.1rem;
-}
-
-.page-content img {
-  width: 100%;
-  border-radius: 18px;
-  margin: 28px 0;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-}
-
-.page-section {
-  margin: 60px 0;
-}
-
-.page-section h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 14px;
-  color: var(--text);
-}
-
-.page-section p {
-  font-size: 1.05rem;
-  opacity: 0.95;
-}
-/* FIX — prevent hero from blocking navbar on mobile */
-.nav {
-    position: sticky;
-    top: 0;
-    z-index: 999;
-}
-.nav-mobile {
-    z-index: 998;
-}
-
-.page-content {
-  display: block;
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-}
-.page-hero,
-.page-content {
-    position: relative;
-    z-index: 1;
-}
-/* =====================================
-   BLOG PAGE – מגזין אינטראקטיבי מרחף
-   ===================================== */
-
-.blog-page {
-  position: relative;
-}
-
-/* הדגשת קישור פעיל בתפריט */
-.nav-link.active {
-  color: var(--primary);
-}
-.nav-link.active::after {
-  width: 100%;
-}
-
-/* HERO מיוחד לבלוג */
-.blog-hero {
-  position: relative;
-  overflow: hidden;
-}
-
-.blog-hero-inner {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 90px 0 40px;
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-  gap: 32px;
-  align-items: center;
-}
-
-.blog-hero::before,
-.blog-hero::after {
-  content: "";
-  position: absolute;
-  border-radius: 999px;
-  filter: blur(70px);
-  opacity: 0.55;
-  pointer-events: none;
-}
-
-.blog-hero::before {
-  inset-inline-start: -160px;
-  inset-block-start: -180px;
-  width: 420px;
-  height: 420px;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.25), transparent 70%);
-}
-
-.blog-hero::after {
-  inset-inline-end: -120px;
-  inset-block-end: -200px;
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, rgba(34, 197, 94, 0.21), transparent 70%);
-}
-
-.blog-title {
-  font-size: clamp(2.3rem, 3.4vw, 3.1rem);
-  margin-bottom: 12px;
-}
-
-.blog-title span {
-  background: linear-gradient(90deg, #2563eb, #22c55e, #0ea5e9);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.blog-subtitle {
-  font-size: 1rem;
-  color: var(--text-muted);
-  line-height: 1.7;
-}
-
-.blog-meta-row {
-  margin-top: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.blog-pill {
-  font-size: 0.8rem;
-  padding: 5px 11px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.6);
-  background: var(--bg-soft);
-}
-
-/* צד ויזואלי – מגזין בחלל */
-.blog-hero-visual {
-  position: relative;
-}
-
-.blog-mag-orbit {
-  position: relative;
-  width: 100%;
-  max-width: 360px;
-  aspect-ratio: 3 / 4;
-  margin-inline: auto;
-  border-radius: 28px;
-  background:
-    radial-gradient(circle at 10% 0%, rgba(248, 250, 252, 0.9), transparent 55%),
-    radial-gradient(circle at 80% 100%, rgba(239, 246, 255, 0.9), transparent 55%),
-    linear-gradient(145deg, #020617, #020617);
-  box-shadow:
-    0 26px 70px rgba(15, 23, 42, 0.55),
-    0 0 0 1px rgba(148, 163, 184, 0.3);
-  overflow: hidden;
-}
-
-body.dark .blog-mag-orbit {
-  background:
-    radial-gradient(circle at 12% 0%, rgba(37, 99, 235, 0.4), transparent 55%),
-    radial-gradient(circle at 90% 100%, rgba(34, 197, 94, 0.45), transparent 55%),
-    #020617;
-}
-
-/* שכבות מגזין מרחפות */
-.blog-mag-layer {
-  position: absolute;
-  inset: 12%;
-  border-radius: 24px;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  mix-blend-mode: screen;
-}
-
-.layer-cover {
-  inset: 8% 14%;
-  background:
-    linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.98)),
-    radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.4), transparent 60%);
-  border: none;
-}
-
-.layer-line-1 {
-  border-style: dashed;
-  animation: blogOrbitSlow 18s linear infinite;
-}
-
-.layer-line-2 {
-  inset: 20% 10%;
-  border-style: solid;
-  opacity: 0.5;
-  animation: blogOrbitSlow 26s linear infinite reverse;
-}
-
-.layer-glow {
-  inset: 40% 22%;
-  border-radius: 999px;
-  border: none;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.6), transparent 70%);
-  filter: blur(20px);
-}
-
-/* כרטיס צף על המגזין */
-.blog-mag-float-card {
-  position: absolute;
-  inset-inline: 14%;
-  inset-block-end: 10%;
-  padding: 12px 14px;
-  border-radius: 18px;
-  background: rgba(15, 23, 42, 0.9);
-  color: #e5e7eb;
-  box-shadow:
-    0 14px 36px rgba(15, 23, 42, 0.9),
-    0 0 0 1px rgba(148, 163, 184, 0.4);
-  transform: translateY(0);
-  animation: blogFloat 5.4s ease-in-out infinite alternate;
-}
-
-.blog-mag-float-card h3 {
-  font-size: 0.95rem;
-  margin-bottom: 4px;
-}
-
-.blog-mag-float-card p {
-  font-size: 0.8rem;
-  color: #cbd5f5;
-  margin-bottom: 8px;
-}
-
-.blog-mag-tag {
-  display: inline-flex;
-  font-size: 0.72rem;
-  padding: 3px 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(96, 165, 250, 0.8);
-  color: #bfdbfe;
-  margin-bottom: 4px;
-}
-
-.blog-mag-btn {
-  background: linear-gradient(130deg, #2563eb, #22c55e);
-  color: #f9fafb;
-  border: none;
-}
-
-/* כיתוב מתחת לויז'ואל */
-.blog-hero-caption {
-  margin-top: 10px;
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  text-align: center;
-}
-
-/* FILTRES + SEARCH */
-.blog-filters {
-  margin-top: 10px;
-}
-
-.blog-filters-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.blog-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.blog-chip {
-  padding: 7px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  background: var(--bg-elevated);
-  font-size: 0.84rem;
-  cursor: pointer;
-  transition: 0.18s ease;
-}
-
-.blog-chip:hover {
-  border-color: var(--primary);
-}
-
-.blog-chip.active {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: #f9fafb;
-  box-shadow: 0 0 18px rgba(37, 99, 235, 0.4);
-}
-
-.blog-search {
-  min-width: min(340px, 100%);
-}
-
-.blog-search input {
-  width: 100%;
-  padding: 9px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  background: var(--bg-elevated);
-  font-size: 0.9rem;
-}
-
-/* FEATURED GRID */
-.blog-feature-grid {
-  display: grid;
-  gap: 18px;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-}
-
-.blog-feature-card {
-  border-radius: 20px;
-  padding: 18px 18px 16px;
-  background: var(--bg-elevated);
-  box-shadow: var(--shadow-card);
-}
-
-.blog-feature-badge-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 6px;
-}
-
-.blog-feature-badge {
-  font-size: 0.78rem;
-  padding: 4px 9px;
-  border-radius: 999px;
-  background: var(--primary-soft);
-  color: var(--primary);
-}
-
-.blog-feature-badge.soft {
-  background: rgba(148, 163, 184, 0.12);
-  color: var(--text-muted);
-}
-
-.blog-feature-card h2 {
-  font-size: 1.25rem;
-  margin-bottom: 8px;
-}
-
-.blog-feature-card p {
-  font-size: 0.92rem;
-  color: var(--text-muted);
-  margin-bottom: 10px;
-}
-
-.blog-feature-list {
-  list-style: none;
-  padding-right: 0;
-  margin: 0 0 12px;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.blog-feature-list li::before {
-  content: "• ";
-  color: var(--accent);
-}
-
-.blog-feature-footer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.blog-author {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.author-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  background: linear-gradient(135deg, #2563eb, #22c55e);
-  color: #f9fafb;
-}
-
-.author-name {
-  font-size: 0.88rem;
-  font-weight: 600;
-}
-
-.author-meta {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-.blog-side-panel {
-  border-radius: 18px;
-  padding: 14px 14px 16px;
-  background: var(--bg-elevated);
-  box-shadow: var(--shadow-card);
-  font-size: 0.9rem;
-}
-
-.blog-side-panel h3 {
-  margin-bottom: 8px;
-}
-
-.blog-side-panel ul {
-  list-style: none;
-  padding-right: 0;
-  margin-bottom: 10px;
-}
-
-.blog-side-panel li::before {
-  content: "➜ ";
-  color: var(--primary);
-}
-
-.blog-side-note {
-  font-size: 0.84rem;
-  color: var(--text-muted);
-}
-
-/* BLOG GRID – מגזין */
-.blog-grid-section {
-  margin-top: 10px;
-}
-
-.blog-grid {
-  display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.blog-card {
-  position: relative;
-  border-radius: 20px;
-  padding: 16px 16px 18px;
-  background:
-    radial-gradient(circle at 0 0, rgba(37, 99, 235, 0.18), transparent 60%),
-    var(--bg-elevated);
-  box-shadow: var(--shadow-card);
-  overflow: hidden;
-  transform-origin: center;
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-  border: 1px solid rgba(148, 163, 184, 0.5);
-}
-
-.blog-card::before {
-  content: "";
-  position: absolute;
-  inset-inline: -40%;
-  inset-block-start: -60%;
-  height: 80%;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.7), transparent 70%);
-  opacity: 0;
-  transform: translateY(40px) rotate(-8deg);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
-}
-
-.blog-card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 26px 70px rgba(15, 23, 42, 0.16);
-  border-color: var(--primary);
-}
-
-.blog-card:hover::before {
-  opacity: 1;
-  transform: translateY(0) rotate(-8deg);
-}
-
-.blog-card-tag {
-  display: inline-flex;
-  font-size: 0.78rem;
-  padding: 3px 9px;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.04);
-  color: var(--text-muted);
-  margin-bottom: 8px;
-}
-
-.blog-card h3 {
-  font-size: 1rem;
-  margin-bottom: 6px;
-}
-
-.blog-card p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 10px;
-}
-
-.blog-card-meta {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-bottom: 10px;
-}
-
-.blog-card-btn {
-  border-radius: 999px;
-  border: 1px solid rgba(37, 99, 235, 0.7);
-  background: #ffffff;
-  color: #1f2937;
-}
-
-body.dark .blog-card-btn {
-  background: rgba(15, 23, 42, 0.96);
-  color: var(--text-main);
-}
-
-/* FINAL CTA התאמה קטנה */
-.blog-final-cta .final-cta-inner {
-  max-width: 880px;
-  margin: 0 auto;
-}
-
-/* אנימציות */
-@keyframes blogFloat {
-  from {
-    transform: translateY(6px);
-  }
-  to {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes blogOrbitSlow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* RESPONSIVE לבלוג */
-@media (max-width: 900px) {
-  .blog-hero-inner {
-    grid-template-columns: minmax(0, 1fr);
-    padding-top: 70px;
-  }
-  .blog-hero-text {
-    text-align: right;
-  }
-  .blog-feature-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 780px) {
-  .blog-filters-row {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .blog-search {
-    min-width: 100%;
-  }
-  .blog-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 600px) {
-  .blog-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .blog-hero-inner {
-    padding-top: 60px;
-  }
-}
-/* =========================================================
-AutoRoy — UI Polish Patch (safe add-on)
-Add this block at the END of styles.css
-========================================================= */
-
-/* ---------- Floating Accessibility Button (bottom-left) ---------- */
-#a11yBtn {
-position: fixed;
-left: 16px;
-bottom: 16px;
-z-index: 9999;
-width: 54px;
-height: 54px;
-border-radius: 16px;
-border: 1px solid rgba(0,0,0,0.08);
-background: rgba(255,255,255,0.9);
-color: var(--text-main);
-box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-backdrop-filter: blur(10px);
--webkit-backdrop-filter: blur(10px);
-cursor: pointer;
-display: grid;
-place-items: center;
-transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
-}
-
-#a11yBtn:hover {
-transform: translateY(-2px);
-box-shadow: 0 16px 44px rgba(0,0,0,0.16);
-background: rgba(255,255,255,0.96);
-}
-
-#a11yBtn:active { transform: translateY(0); }
-
-#a11yBtn .icon {
-font-size: 22px;
-line-height: 1;
-}
-
-/* Optional: small label bubble on hover (if you add data-label attr) */
-#a11yBtn[data-label]:hover::after {
-content: attr(data-label);
-position: absolute;
-left: 64px;
-bottom: 10px;
-white-space: nowrap;
-font-size: 13px;
-padding: 8px 10px;
-border-radius: 12px;
-background: rgba(20, 25, 30, 0.88);
-color: #fff;
-}
-
-/* ---------- Contact form polish (won't break if classes exist) ---------- */
-.contact-form, form.contact-form {
-background: var(--bg-elevated);
-border: 1px solid rgba(0,0,0,0.06);
-border-radius: 18px;
-padding: 18px;
-box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
-.contact-form label {
-display: block;
-font-weight: 600;
-margin: 10px 0 6px;
-color: var(--text-main);
-}
-
-.contact-form input,
-.contact-form textarea,
-.contact-form select {
-width: 100%;
-border-radius: 14px;
-border: 1px solid rgba(0,0,0,0.10);
-background: rgba(255,255,255,0.9);
-padding: 12px 12px;
-font-size: 15px;
-outline: none;
-transition: border .15s ease, box-shadow .15s ease, transform .15s ease;
-}
-
-.contact-form textarea { min-height: 120px; resize: vertical; }
-
-.contact-form input:focus,
-.contact-form textarea:focus,
-.contact-form select:focus {
-border-color: rgba(0, 140, 255, 0.45);
-box-shadow: 0 0 0 5px rgba(0, 140, 255, 0.12);
-}
-
-.contact-form .form-actions {
-display: flex;
-gap: 10px;
-align-items: center;
-justify-content: flex-start;
-flex-wrap: wrap;
-margin-top: 14px;
-}
-
-/* ---------- CTA buttons consistent ---------- */
-.btn-primary,
-button.btn-primary,
-a.btn-primary {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 8px;
-padding: 12px 16px;
-border-radius: 999px;
-border: 1px solid rgba(0,0,0,0.08);
-background: linear-gradient(135deg, rgba(0,140,255,0.95), rgba(0,200,170,0.95));
-color: #fff !important;
-text-decoration: none;
-font-weight: 700;
-box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-transition: transform .15s ease, box-shadow .15s ease;
-}
-
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 44px rgba(0,0,0,0.16); }
-.btn-primary:active { transform: translateY(0); }
-
-.btn-ghost,
-button.btn-ghost,
-a.btn-ghost {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 8px;
-padding: 12px 16px;
-border-radius: 999px;
-border: 1px solid rgba(0,0,0,0.10);
-background: rgba(255,255,255,0.75);
-color: var(--text-main) !important;
-text-decoration: none;
-font-weight: 700;
-transition: transform .15s ease, background .15s ease;
-}
-
-.btn-ghost:hover { transform: translateY(-2px); background: rgba(255,255,255,0.92); }
-.btn-ghost:active { transform: translateY(0); }
-
-/* ---------- Services / cards: add subtle hover depth ---------- */
-.card,
-.service-card,
-.project-card,
-.review-card {
-border: 1px solid rgba(0,0,0,0.06);
-border-radius: 18px;
-background: var(--bg-elevated);
-box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-transition: transform .16s ease, box-shadow .16s ease;
-}
-
-.card:hover,
-.service-card:hover,
-.project-card:hover,
-.review-card:hover {
-transform: translateY(-4px);
-box-shadow: 0 16px 44px rgba(0,0,0,0.14);
-}
-
-/* ---------- Mobile safety: prevent squished nav ---------- */
-@media (max-width: 520px) {
-.contact-form { padding: 14px; border-radius: 16px; }
-.btn-primary, .btn-ghost { width: 100%; }
-}
-/* =========================================================
-AutoRoy — NAVBAR POLISH (safe override)
-Paste at the END of styles.css
-هدف: להפוך סרגלים ליותר אסתטיים בלי לשבור כלום
-========================================================= */
-
-.nav {
-height: 74px;
-padding: 0 22px;
-border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-box-shadow: 0 10px 34px rgba(15, 23, 42, 0.06);
-}
-
-body.dark .nav {
-border-bottom-color: rgba(148, 163, 184, 0.22);
-box-shadow: 0 12px 42px rgba(15, 23, 42, 0.65);
-}
-
-.nav-left {
-gap: 12px;
-}
-
-.nav-logo {
-width: 42px;
-height: 42px;
-border-radius: 16px;
-box-shadow: 0 18px 40px rgba(37, 99, 235, 0.30);
-}
-
-.nav-brand {
-font-size: 1.02rem;
-line-height: 1.1;
-}
-
-.nav-sub {
-margin-top: 2px;
-font-size: 0.74rem;
-opacity: 0.9;
-}
-
-.nav-links {
-gap: 22px;
-font-size: 0.92rem;
-}
-
-.nav-link {
-padding: 8px 2px;
-border-radius: 10px;
-transition: background .16s ease, color .16s ease;
-}
-
-.nav-link:hover {
-background: rgba(37, 99, 235, 0.08);
-}
-
-body.dark .nav-link:hover {
-background: rgba(99, 102, 241, 0.16);
-}
-
-.nav-link::after {
-bottom: 6px; /* מרים את הקו קצת כדי שייראה עדין */
-height: 2px;
-opacity: 0.9;
-}
-
-.nav-actions {
-gap: 10px;
-}
-
-/* CTA ב-navbar שיהיה פרימיום */
-.nav-cta {
-padding: 9px 16px;
-border-radius: 999px;
-border: 1px solid rgba(37, 99, 235, 0.65);
-background: linear-gradient(135deg, rgba(37, 99, 235, 0.92), rgba(34, 197, 94, 0.92));
-color: #fff;
-box-shadow: 0 14px 40px rgba(37, 99, 235, 0.30);
-}
-
-.nav-cta:hover {
-transform: translateY(-1px);
-box-shadow: 0 18px 54px rgba(37, 99, 235, 0.42);
-}
-
-/* כפתורי אייקון (theme/hamburger) יותר יפים */
-.theme-toggle,
-.hamburger {
-border: 1px solid rgba(148, 163, 184, 0.55);
-box-shadow: 0 12px 28px rgba(15, 23, 42, 0.16);
-}
-
-body.dark .theme-toggle,
-body.dark .hamburger {
-border-color: rgba(148, 163, 184, 0.35);
-}
-
-/* Mobile menu: יותר כמו מוצר */
-.nav-mobile {
-padding: 14px 18px 16px;
-gap: 10px;
-border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-box-shadow: 0 18px 44px rgba(15, 23, 42, 0.08);
-}
-
-.nav-mobile a {
-padding: 10px 12px;
-border-radius: 14px;
-background: rgba(255, 255, 255, 0.55);
-border: 1px solid rgba(148, 163, 184, 0.25);
-}
-
-body.dark .nav-mobile a {
-background: rgba(15, 23, 42, 0.65);
-border-color: rgba(148, 163, 184, 0.20);
-}
-
-/* מונע "קפיצות" כלליות ב-navbar במובייל */
-@media (max-width: 480px) {
-.nav { padding: 0 14px; }
-.nav-links { display: none; }
-.nav-logo { width: 40px; height: 40px; }
-.nav-brand { font-size: 0.98rem; }
-}
-/* AutoRoy — Builder page styles (safe & isolated) */
-
-.builder-page {
-max-width: 980px;
-margin: 0 auto;
-padding: 28px 16px 60px;
-}
-
-.builder-hero {
-text-align: center;
-margin: 18px auto 22px;
-}
-
-.builder-hero h1 {
-font-size: clamp(26px, 3.2vw, 42px);
-margin: 0 0 8px;
-}
-
-.builder-hero p {
-opacity: 0.85;
-margin: 0;
-line-height: 1.6;
-}
-
-.builder-grid {
-display: grid;
-grid-template-columns: repeat(2, minmax(0, 1fr));
-gap: 14px;
-margin-top: 18px;
-}
-
-.builder-card {
-border: 1px solid rgba(0,0,0,0.08);
-border-radius: 18px;
-background: rgba(255,255,255,0.78);
-box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-padding: 14px 14px 12px;
-transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
-}
-
-.builder-card:hover {
-transform: translateY(-3px);
-box-shadow: 0 16px 44px rgba(0,0,0,0.12);
-background: rgba(255,255,255,0.92);
-}
-
-.builder-card h3 {
-margin: 2px 0 8px;
-font-size: 18px;
-}
-
-.builder-card p {
-margin: 0 0 12px;
-opacity: 0.85;
-line-height: 1.55;
-font-size: 14px;
-}
-
-.builder-actions {
-display: flex;
-gap: 10px;
-flex-wrap: wrap;
-}
-
-.builder-btn {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 8px;
-border-radius: 999px;
-padding: 10px 14px;
-border: 1px solid rgba(0,0,0,0.10);
-text-decoration: none;
-font-weight: 800;
-cursor: pointer;
-transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
-}
-
-.builder-btn.primary {
-color: #fff;
-background: linear-gradient(135deg, rgba(0,140,255,0.95), rgba(0,200,170,0.95));
-box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-}
-
-.builder-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 16px 44px rgba(0,0,0,0.16); }
-.builder-btn.ghost {
-background: rgba(255,255,255,0.70);
-color: inherit;
-}
-.builder-btn.ghost:hover { transform: translateY(-2px); background: rgba(255,255,255,0.92); }
-
-.builder-form {
-margin-top: 16px;
-border: 1px solid rgba(0,0,0,0.08);
-border-radius: 18px;
-background: rgba(255,255,255,0.78);
-box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-padding: 16px;
-}
-
-.builder-form .row {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 12px;
-margin-bottom: 12px;
-}
-
-.builder-form label {
-display: block;
-font-weight: 800;
-margin: 0 0 6px;
-}
-
-.builder-form input, .builder-form textarea, .builder-form select {
-width: 100%;
-border-radius: 14px;
-border: 1px solid rgba(0,0,0,0.10);
-background: rgba(255,255,255,0.95);
-padding: 12px;
-font-size: 15px;
-outline: none;
-}
-
-.builder-form textarea { min-height: 110px; resize: vertical; }
-
-.builder-form input:focus, .builder-form textarea:focus, .builder-form select:focus {
-border-color: rgba(0, 140, 255, 0.45);
-box-shadow: 0 0 0 5px rgba(0, 140, 255, 0.12);
-}
-
-@media (max-width: 720px) {
-.builder-grid { grid-template-columns: 1fr; }
-.builder-form .row { grid-template-columns: 1fr; }
-}
+   3  <head>
+        4    <meta charset="UTF-8" />
+        5    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        6 -  <title>AutoRoy Cloud — DevOps, תויצמוטואו םירתא</title>
+        7 -  <meta name="description" content="AutoRoy Cloud — םיקסעל תומדקתמ תויצמוטואו התיחנ יפד ,םוימירפ םירתא תיינב.
+          -" />
+        8 -
+        6 +  <title>AutoRoy Cloud — תורכומש תוילטיגיד תוכרעמ</title>
+        7 +  <meta name="description" content="AutoRoy Cloud ידיל תויצמוטוא ,םוימירפ ירתא :תורכומש תוילטיגיד תוכרעמ הנוב
+                                                                                         >/ ".םיקסעל ןנע תויתשתו ם+
+        8    <link rel="icon" href="favicon.ico" />
+        9    <link rel="stylesheet" href="styles.css" />
+       10  </head>
+       11  <body>
+       13 -  <!-- ===== Skip link (תושיגנ) ===== -->
+       12    <a href="#main" class="skip-link">ןכותל גלד</a>
+       13
+       14    <!-- ===== NAVBAR ===== -->
+       15    <header class="nav">
+       16      <div class="nav-left">
+       19 -      <div class="nav-logo">
+       20 -        <span>🚀</span>
+       21 -      </div>
+       17 +      <div class="nav-logo"><span>🚀</span></div>
+       18        <div>
+       19          <div class="nav-brand">AutoRoy Cloud</div>
+       24 -        <div class="nav-sub">DevOps • Web • Automations</div>
+       20 +        <div class="nav-sub">תוילטיגיד תוכרעמ</div>
+       21        </div>
+       22      </div>
+       23
+       24      <nav class="nav-links">
+       29 -      <a href="index.html" class="nav-link">תיבה ףד</a>
+       30 -      <a href="app.html" class="nav-link">תויצמוטוא הנוב</a>
+       25        <a href="services_final.html" class="nav-link">םיתוריש</a>
+       26        <a href="projects.html" class="nav-link">םיטקיורפ</a>
+       33 -      <a href="process.html" class="nav-link">הדובע ךילהת</a>
+       34 -      <a href="updated_blog.html" class="nav-link">גולב</a>
+       35 -      <a href="reviews.html" class="nav-link">תורוקיב</a>
+       27 +      <a href="process.html" class="nav-link">ךילהת</a>
+       28 +      <a href="reviews.html" class="nav-link">תוחוקל</a>
+       29        <a href="about.html" class="nav-link">תודוא</a>
+       37 -      <a href="contact.html" class="nav-link">רשק תריצי</a>
+       30      </nav>
+       31
+       32      <div class="nav-actions">
+       33        <button class="theme-toggle" id="themeToggle" aria-label="הרואת יוניש">☀️</button>
+       42 -      <button class="nav-cta" id="btnContactHeader">
+                                                                                                  רבדנ אוב        - 43
+       44 -      </button>
+       34 +      <button class="nav-cta" id="btnContactHeader">העצה לבק →</button>
+       35        <button class="hamburger" id="hamburger" aria-label="טירפת" aria-expanded="false">
+       36          <span class="hamburger-line"></span>
+       37        </button>
+       38      </div>
+       39    </header>
+       40
+                                                                                           >-- לייבומ טירפת --!<  - 51
+       41 +  <!-- Mobile nav -->
+       42    <nav class="nav-mobile" id="navMobile" aria-hidden="true">
+       53 -    <a href="index.html" onclick="closeMobile()">תיבה ףד</a>
+       54 -    <a href="app.html" onclick="closeMobile()">תויצמוטוא הנוב</a>
+       43      <a href="services_final.html" onclick="closeMobile()">םיתוריש</a>
+       44      <a href="projects.html" onclick="closeMobile()">םיטקיורפ</a>
+       57 -    <a href="process.html" onclick="closeMobile()">הדובע ךילהת</a>
+       58 -    <a href="updated_blog.html" onclick="closeMobile()">גולב</a>
+       59 -    <a href="reviews.html" onclick="closeMobile()">תורוקיב</a>
+       45 +    <a href="process.html" onclick="closeMobile()">ךילהת</a>
+       46 +    <a href="reviews.html" onclick="closeMobile()">תוחוקל</a>
+       47      <a href="about.html" onclick="closeMobile()">תודוא</a>
+       48      <a href="contact.html" onclick="closeMobile()">רשק תריצי</a>
+       49    </nav>
+       50
+       51    <main class="page" id="main">
+       65 -    <!-- ===== HERO ===== -->
+       52 +
+       53 +    <!-- ===== 1. HERO ===== -->
+       54      <section id="hero" class="hero section">
+       55        <div class="hero-inner">
+       56          <div class="hero-content reveal">
+       69 -          <p class="hero-kicker">CLOUD • DEVOPS • AUTOMATIONS • WEB</p>
+       57 +          <p class="hero-kicker">AUTOROY CLOUD • ןנע • םירתא • תויצמוטוא</p>
+       58            <h1 class="hero-title">
+                                                                                  תכרעמ ךלש קסעל םינוב            - 71
+       72 -            <span>תבצועמו הריהמ ,המכח
+                                                                                                2026־ל            - 73
+       74 -            </span>
+       75 -
+                                                                                     .ליגר רתא דוע אל-            - 76
+                                                                              .רתאל םיעיגמ ךלש תוחוקלה            + 59
+       60 +            <span>תונפל ילב םיבזועו.</span>
+       61            </h1>
+       62            <p class="hero-sub">
+       79 -            AutoRoy Cloud ןיב רבחמ <strong>םוימירפ ירתא</strong>, <strong>תויצמוטוא</strong> ו<strong>תויתשת
+                                                                                                     .>strong/<ןנע-
+                                            .השוע התא המ קוידב םיניבמש תוחוקל רתוי ,תינכט תוקסעתה תוחפ            - 80
+     גמש תויצמוטוא ,םיריממש םיספט ,תוינש שולשב ריבסמש רתא :ךליבשב תורכומש תוילטיגיד תוכרעמ םינוב ונחנא            + 63
+                                                                                   .דבוע לכה ,רבוחמ לכה — דימ תובי+
+       64            </p>
+       65
+       66            <div class="hero-ctas">
+       67              <button class="btn-primary" id="heroCTA">
+                                                                             🚀 ?טקיורפ לע רבדל הצור              - 85
+                                                                              → ךלש קסעה לע רבדנ אוב              + 68
+       69              </button>
+       87 -            <a href="projects.html" class="btn-ghost" id="startNow">
+                                                                               תולוכיו תואמגוד תוארל              - 88
+       70 +            <a href="projects.html" class="btn-ghost">
+                                                                                 תויתימא תואמגוד האר              + 71
+       72              </a>
+       73            </div>
+       74
+       75            <div class="hero-tags">
+       76              <div class="hero-tag">
+       77                <span class="dot dot-green"></span>
+                                                                             גותימו התיחנ יפד ,םירתא              - 95
+                                                                      בוט םיארנ קר אל ,םירכומש םירתא              + 78
+       79              </div>
+       80              <div class="hero-tag">
+       81                <span class="dot dot-cyan"></span>
+                                                                            פאסטאווו םידיל תויצמוטוא              - 99
+                                                                              24/7 תולעופש תויצמוטוא              + 82
+       83              </div>
+       84              <div class="hero-tag">
+       85                <span class="dot dot-purple"></span>
+      103 -              DevOps ןנע תויתשתו
+                                                                                 סמועב הקיזחמש תיתשת              + 86
+       87              </div>
+       88            </div>
+       89          </div>
+     ...
+       93              <div class="orbit orbit-1"></div>
+       94              <div class="orbit orbit-2"></div>
+       95              <div class="orbit orbit-3"></div>
+      113 -
+      114 -            <div class="hero-node hero-node-main">
+      115 -              <span>AutoRoy Cloud</span>
+      116 -            </div>
+      117 -            <div class="hero-node hero-node-devops">
+      118 -              <span>DevOps</span>
+      119 -            </div>
+      120 -            <div class="hero-node hero-node-auto">
+      121 -              <span>Automations</span>
+      122 -            </div>
+      123 -            <div class="hero-node hero-node-web">
+      124 -              <span>Web</span>
+      125 -            </div>
+      126 -            <div class="hero-node hero-node-chat">
+      127 -              <span>Chat &amp; Leads</span>
+      128 -            </div>
+       96 +            <div class="hero-node hero-node-main"><span>AutoRoy</span></div>
+       97 +            <div class="hero-node hero-node-devops"><span>DevOps</span></div>
+       98 +            <div class="hero-node hero-node-auto"><span>Automations</span></div>
+       99 +            <div class="hero-node hero-node-web"><span>Web</span></div>
+      100 +            <div class="hero-node hero-node-chat"><span>Leads</span></div>
+      101            </div>
+      102            <p class="hero-visual-caption">
+                      .םידיל לש רדוסמ דחא וקל – תויצמוטואו פאסטאוו ,טא’צ ,םיספט ,רתא :תרבחמש תחא תכרעמ            - 131
+                                                .רוגס דיל → פאסטאוו → היצמוטוא → ספוט → רתא :תחא תכרעמ            + 103
+      104            </p>
+      105          </div>
+      106        </div>
+      107
+      136 -      <div class="hero-strip reveal">
+      137 -        <span class="strip-label">Stack יגולונכט</span>
+      138 -        <div class="strip-items">
+      139 -          <span>HTML • CSS • JS</span>
+      140 -          <span>Node.js</span>
+      141 -          <span>Render / Vercel</span>
+      142 -          <span>GitHub Actions</span>
+      143 -          <span>Zapier / Make</span>
+      144 -          <span>Google Sheets</span>
+      145 -          <span>WhatsApp Business API</span>
+      108 +      <!-- STAT BAR -->
+      109 +      <div class="stat-bar reveal">
+      110 +        <div class="stat-item">
+      111 +          <span class="stat-number">30+</span>
+      112 +          <span class="stat-label">ורסמנש םיטקיורפ</span>
+      113          </div>
+      114 +        <div class="stat-divider"></div>
+      115 +        <div class="stat-item">
+      116 +          <span class="stat-number">48h</span>
+      117 +          <span class="stat-label">היח הסרג דע עצוממ</span>
+      118 +        </div>
+      119 +        <div class="stat-divider"></div>
+      120 +        <div class="stat-item">
+      121 +          <span class="stat-number">100%</span>
+      122 +          <span class="stat-label">ןמזב ריוואל היילע</span>
+      123 +        </div>
+      124 +        <div class="stat-divider"></div>
+      125 +        <div class="stat-item">
+      126 +          <span class="stat-number">24/7</span>
+      127 +          <span class="stat-label">תוליעפ תויצמוטוא</span>
+      128 +        </div>
+      129        </div>
+      130      </section>
+      131
+      150 -    <!-- ===== SERVICES PREVIEW ===== -->
+      151 -    <section id="services-preview" class="section">
+      132 +    <!-- ===== 2. PROBLEM ===== -->
+      133 +    <section class="section">
+      134        <div class="section-header reveal">
+      153 -        <h2 class="section-title">המ AutoRoy Cloud לעופב השוע?</h2>
+      135 +        <p class="hero-kicker" style="margin-bottom:6px">תיתימאה היעבה</p>
+      136 +        <h2 class="section-title section-title-lg">
+                                                                    .קסעב קסעתהל םוקמב לטיגידב קסעתמ התא          + 137
+      138 +        </h2>
+      139          <p class="section-subtitle">
+     אטראטסל רצומ אוה וליאכ הנבנ טקיורפ לכ .סמוע ךממ תודירומש תויצמוטואו יקנ דוק ,םוימירפ בוציע לש בוליש          - 155
+                                                                                                                .פ-
+                  .דחי דבוע אל רבד םוש המל םיניבמ אלו — ידמ תוחפ םילבקמ ,ידמ רתוי םימלשמ םיקסעה ילעב בור          + 140
+      141          </p>
+      142        </div>
+      143
+      159 -      <div class="cards-grid">
+      160 -        <article class="card reveal">
+      144 +      <div class="problem-grid reveal">
+      145 +        <div class="problem-item">
+      146 +          <span class="problem-icon">📉</span>
+      147 +          <h3>ריממ אל רתאה</h3>
+      148 +          <p>ןיא .םיבזועו ,םיניבמ אל ,םיאור םירקבמ CTA וישכע תונפל הביס ןיא ,יתיצמת רבסה ןיא ,רורב.</p>
+      149 +        </div>
+      150 +        <div class="problem-item">
+      151 +          <span class="problem-icon">🕳️</span>
+      152 +          <h3>תואסיכה ןיב םילפונ םידיל</h3>
+      153 +          <p>חלש דחא ,ספוטב בתכ דיל WhatsApp, המ ימ רכוז אל התא עובש ירחאו — ליימ חלש ישילש.</p>
+      154 +        </div>
+      155 +        <div class="problem-item">
+      156 +          <span class="problem-icon">😤</span>
+      157 +          <h3>םיבצע ךל הלוע "ןורתפ" לכ</h3>
+      158 +          <p>היעבה התוא םע ףוסב התאו .םאתומ רצומ לש עיצקתב תוינבת תורכומש תויונכוס ,םימלענש םירסנלירפ.</p>
+      159 +        </div>
+      160 +      </div>
+      161 +    </section>
+      162 +
+      163 +    <!-- ===== 3. SOLUTION ===== -->
+      164 +    <section class="section">
+      165 +      <div class="section-header reveal">
+      166 +        <p class="hero-kicker" style="margin-bottom:6px">םינוב ונחנאש המ</p>
+      167 +        <h2 class="section-title section-title-lg">
+                                                                   .ךליבשב תדבועו — לכה תרבחמש תחא תכרעמ          + 168
+      169 +        </h2>
+      170 +        <p class="section-subtitle">
+                        .תוריגסב דקמתהל ךל תרשפאמו ,םתוא תלהנמ ,םידיל תרציימש המלש תכרעמ .ילכ אל .רתא אל          + 171
+      172 +        </p>
+      173 +      </div>
+      174 +
+      175 +      <div class="cards-grid cards-grid-3 reveal">
+      176 +        <article class="card">
+      177            <div class="card-header">
+      162 -            <span class="card-title">התיחנ יפדו תימדת ירתא</span>
+      178 +            <span class="card-title">רכומש רתא</span>
+      179              <span class="card-icon">🌐</span>
+      180            </div>
+      181            <p class="card-text">
+                           .רורבו דח רשק תריצי ספוטו ךלש ךרעה לש הריהמ הנבה :האצותב םידקמתמש התיחנ יפד            - 166
+             .דבועש רתא ."הפי רתא" אל .הנופו — ול הווש הז המלו השוע התא המ תוינש 5 ךות ןיבמ ,עיגמ רקבמ            + 182
+      183            </p>
+      184            <div class="card-chips">
+      169 -            <span class="chip">UX דח</span>
+      170 -            <span class="chip">הובג תוריהמ</span>
+      185 +            <span class="chip">Copy רכומש</span>
+      186 +            <span class="chip">UX ריממ</span>
+      187              <span class="chip">אלמ יביסנופסר</span>
+      188            </div>
+      189          </article>
+      190
+      175 -        <article class="card reveal">
+      191 +        <article class="card">
+      192            <div class="card-header">
+      177 -            <span class="card-title">פאסטאווו םידיל תויצמוטוא</span>
+      178 -            <span class="card-icon">🤖</span>
+      193 +            <span class="card-title">םידיל תפסואש היצמוטוא</span>
+      194 +            <span class="card-icon">⚡</span>
+      195            </div>
+      196            <p class="card-text">
+                                   .ךרדב ספספתי אל דיל םושש ידכ – פאסטאווו סטיש לגוג ,םיספט ,רתא רוביח            - 181
+          .עגיתש ילב .תוינש 30 ךות — ךילא הארתה + חוקלל WhatsApp תעדוה → Sheets-ב הרוש → ספוט אלממ דיל            + 197
+      198            </p>
+      199            <div class="card-chips">
+      184 -            <span class="chip">Tally / Typeform</span>
+      185 -            <span class="chip">Google Sheets</span>
+      200              <span class="chip">WhatsApp Business</span>
+      201 +            <span class="chip">Google Sheets</span>
+      202 +            <span class="chip">Zapier / Make</span>
+      203            </div>
+      204          </article>
+      205
+      190 -        <article class="card reveal">
+      206 +        <article class="card">
+      207            <div class="card-header">
+      192 -            <span class="card-title">יטקיורפ DevOps םיינכט םיכילהתו</span>
+      193 -            <span class="card-icon">⚙️</span>
+      208 +            <span class="card-title">הקיזחמש תיתשת</span>
+      209 +            <span class="card-icon">🔧</span>
+      210            </div>
+      211            <p class="card-text">
+                          .תינכט תלוכי תחכוהכ – תויתשתו CI/CD ,ןנעל יולפיד ,םיתוריש לש תויתימא תואמגוד            - 196
+      212 +            Deploy ןנעל, CI/CD םעפ יא .הב קסעתהל ךרטצתש ילב לעפת תכרעמהש ידכ — גנירוטינומ ,יטמוטוא.
+      213            </p>
+      214            <div class="card-chips">
+      199 -            <span class="chip">Microservices</span>
+      215 +            <span class="chip">Cloud Deploy</span>
+      216              <span class="chip">CI/CD</span>
+      217              <span class="chip">Monitoring</span>
+      218            </div>
+      219          </article>
+      204 -
+      205 -        <article class="card reveal">
+      206 -          <div class="card-header">
+      207 -            <span class="card-title">תויח תוכרעמו םידרובשד ,םיטא'צ</span>
+      208 -            <span class="card-icon">💬</span>
+      209 -          </div>
+      210 -          <p class="card-text">
+              .תויפוקש קר אל ,תמאב היחש תכרעמ הארתש ידכ – םידיל לוהינו םידרובשד ,תמא ןמזב םיטא'צ תריצי            - 211
+      212 -          </p>
+      213 -          <div class="card-chips">
+      214 -            <span class="chip">Realtime</span>
+      215 -            <span class="chip">Socket / APIs</span>
+      216 -            <span class="chip">Admin Views</span>
+      217 -          </div>
+      218 -        </article>
+      220        </div>
+      221
+      222        <div class="hero-ctas" style="margin-top:18px">
+      222 -        <a href="services_final.html" class="btn-ghost">
+                                                                                  םיאלמה םיתורישל קימעהל          - 223
+      224 -        </a>
+      223 +        <a href="services_final.html" class="btn-ghost">םיאלמה םיתורישה לכל</a>
+      224        </div>
+      225      </section>
+      226
+      228 -    <!-- ===== PROJECTS PREVIEW ===== -->
+      227 +    <!-- ===== 4. PROJECTS ===== -->
+      228      <section id="projects" class="section">
+      229        <div class="section-header reveal">
+      231 -        <h2 class="section-title">םיטקיורפו תואמגוד</h2>
+      230 +        <p class="hero-kicker" style="margin-bottom:6px">םייתימא םיטקיורפ</p>
+      231 +        <h2 class="section-title section-title-lg">
+                                                                                      .תואצות .תוחטבה אל          + 232
+      233 +        </h2>
+      234          <p class="section-subtitle">
+                                  .תרדוסמ תחא תכרעמל – םירתאו םידיל ,םיספט םיכפוה ךיא םיארמש םישיחרת המכ          - 233
+                                                                 .לעופב ושע ןה המו — ונינבש תוכרעמהמ המכ          + 235
+      236          </p>
+      237        </div>
+      238
+      239        <div class="projects-grid">
+      240          <article class="project-card reveal">
+      241            <div class="project-tag">Web • Brand</div>
+      240 -          <h3 class="project-title">ל םוימירפ תימדת רתא-AutoRoy</h3>
+      242 +          <h3 class="project-title">םוימירפ תימדת רתא — AutoRoy Cloud</h3>
+      243            <p class="project-text">
+         .היינפ ספוטו האלמ תויביסנופסר ,המכח הרואת ,הקלח העונת ,ינרדומ One Page – וישכע האור התאש רתאה            - 242
+           .היינפל ספאמ אלמ הרמה ךילהתו ,תוקלח תויצמינא ,יקנ RTL טווינ ,ינרדומ One Page .ומצע הזה רתאה            + 244
+      245            </p>
+      246            <ul class="project-list">
+      245 -            <li>Hero םע יביטמינא Orbit</li>
+      246 -            <li>םירורבו םירדוסמ םינשקס</li>
+      247 -            <li>רשק תריצי ספוטל רוביח</li>
+      247 +            <li>Hero םע יביטמינא Orbit יביטקרטניא</li>
+      248 +            <li>ליימ רוביח + םיספט תכרעמ</li>
+      249 +            <li>Dark/Light mode + האלמ תושיגנ</li>
+      250            </ul>
+      249 -          <div class="project-footer">
+      250 -            HTML • CSS • Vanilla JS • GitHub • Render
+      251 -          </div>
+      251 +          <div class="project-footer">HTML • CSS • Vanilla JS • GitHub • Render</div>
+      252          </article>
+      253
+      254          <article class="project-card reveal">
+      255            <div class="project-tag">Automations • Leads</div>
+      256 -          <h3 class="project-title">Flow ןטק קסעל םידיל</h3>
+      256 +          <h3 class="project-title">ןטק קסעל תיטמוטוא םידיל תכרעמ</h3>
+      257            <p class="project-text">
+                    .םיטרפה לכ םע ךילא ליימ ⇒ חוקלל תיטמוטוא פאסטאוו תעדוה ⇒ Sheets-ב הרוש ⇒ רתאב ספוט            - 258
+                 .תועש 48 ךות ריוואל ספאמ .קסעה לעבל ליימ → חוקלל Sheets → WhatsApp-ב הרוש → רתאב ספוט            + 258
+      259            </p>
+      260            <ul class="project-list">
+      261 -            <li>רתאב םכח ספוט</li>
+      262 -            <li>Google Sheets ןגרואמ</li>
+      263 -            <li>תוידיימ תוארתה</li>
+      261 +            <li>ןושארה עגרהמ םידובא םידיל ספא</li>
+      262 +            <li>הקד ךות הבוגת לבקמ חוקלה</li>
+      263 +            <li>ב לכה האור קסעה לעב-Sheets רדוסמ</li>
+      264            </ul>
+      265 -          <div class="project-footer">
+      266 -            Tally • Google Sheets • Zapier / Make
+      267 -          </div>
+      265 +          <div class="project-footer">Tally • Google Sheets • Zapier / Make</div>
+      266          </article>
+      267
+      268          <article class="project-card reveal">
+      269            <div class="project-tag">Cloud • DevOps</div>
+      270            <h3 class="project-title">תיליבלייקס טא'צ תכרעמ</h3>
+      271            <p class="project-text">
+            .DevOps תלוכי תמגדהכ – ןנעב םתיא רבדמש UI-ו דרפנ Chat תוריש ,דרפנ Auth תוריש םע טא'צ תכרעמ            - 274
+      272 +            Auth דרפנ, Chat דרפנ, UI ןנעב םתיא רבדמש — CI/CD תלוכי תמגדהכ .אלמ DevOps תיתימא.
+      273            </p>
+      274            <ul class="project-list">
+      277 -            <li>יתוריש backend םידרפנ</li>
+      278 -            <li>ל יולפיד-Render / Vercel</li>
+      279 -            <li>יסיסב גנירוטינומ</li>
+      275 +            <li>Microservices םע Deploy יטמוטוא</li>
+      276 +            <li>תועיגפו סמוע ינפב דימע</li>
+      277 +            <li>ו גנירוטינומ-alerting יסיסב</li>
+      278            </ul>
+      281 -          <div class="project-footer">
+      282 -            Node.js • Socket • Render
+      283 -          </div>
+      279 +          <div class="project-footer">Node.js • Socket.io • Render • GitHub Actions</div>
+      280          </article>
+      281        </div>
+      282
+      283        <div class="hero-ctas" style="margin-top:18px">
+      288 -        <a href="projects.html" class="btn-ghost">
+                                                                                      םיטקיורפ דוע תוארל          - 289
+      290 -        </a>
+      284 +        <a href="projects.html" class="btn-ghost">םיטקיורפה לכל</a>
+      285        </div>
+      286      </section>
+      287
+      294 -    <!-- ===== PROCESS PREVIEW ===== -->
+      288 +    <!-- ===== 5. PROCESS ===== -->
+      289      <section id="process" class="section">
+      290        <div class="section-header reveal">
+      297 -        <h2 class="section-title">יתיא הדובע ךילהת הארנ ךיא?</h2>
+      298 -        <p class="section-subtitle">
+               .שמתשמה תייווחבו תויתשתב ינא ,קסעב קסעתמ התא .םיינכט שאר יבאכ ילב – ףוקשו רורב ,רצק ךילהת          - 299
+      300 -        </p>
+      291 +        <p class="hero-kicker" style="margin-bottom:6px">הדובעה ךילהת</p>
+      292 +        <h2 class="section-title section-title-lg">
+                                                    .תועתפה ילב ,ריהמ ,רורב — ריוואל היילע דע ןושאר םוימ          + 293
+      294 +        </h2>
+      295        </div>
+      296
+      297        <div class="timeline reveal">
+      298          <div class="timeline-item">
+      299            <div class="timeline-dot"></div>
+      300            <div class="timeline-content">
+      307 -            <h3>1. המאתה תחיש</h3>
+      308 -            <p>תכרעמב וא רתאב הרקיש בושח המו ,להקה ימ ,השוע קסעה המ םיניבמ.</p>
+      301 +            <h3>1. תוקד 30-ה תחיש</h3>
+      302 +            <p>תולאש — תוירנג תולאש אל .עיגמ אוהש ירחא תורקל ךירצ המו ,תוארל ךירצ אוה המ ,ךלש חוקלה ימ םיניבמ
+                                                                                          >p/<.היינבה לע תועיפשמש +
+      303            </div>
+      304          </div>
+      305          <div class="timeline-item">
+      306            <div class="timeline-dot"></div>
+      307            <div class="timeline-content">
+      314 -            <h3>2. פה טוטרשו ןויפאLow</h3>
+      315 -            <p>אלממ אוה המו ,האור אוה המ ,עיגמ אוה הפיאמ :חוקלה לש לולסמה תא דחי םיטטרשמ.</p>
+      308 +            <h3>2. הביתכ + ןויפא + Flow</h3>
+      309 +            <p>תחא דוק תרוש ליחתמש ינפל רשאמ התא .תסנכנ היצרגטניא לכ הפיאו ,חוקלה לולסמ ,רסמה תא םירידגמ.</p>
+      310            </div>
+      311          </div>
+      312          <div class="timeline-item">
+      313            <div class="timeline-dot"></div>
+      314            <div class="timeline-content">
+      321 -            <h3>3. םירוביחו תויצמוטוא ,היינב</h3>
+      322 -            <p>ליימ / פאסטאוול םירוביחהו תויצמוטואה ,רתאה לש היינב / Sheets תדבוע הסרגל דע.</p>
+      315 +            <h3>3. םירוביח + האלמ היינב</h3>
+      316 +            <p>תויצמוטוא ,םיספט ,רתא, Sheets, WhatsApp, Deploy — ןכומ טעמכ" אל .תדבועו היח הסרגל דע לכה".</p>
+      317            </div>
+      318          </div>
+      319          <div class="timeline-item">
+      320            <div class="timeline-dot"></div>
+      321            <div class="timeline-content">
+      328 -            <h3>4. יווילו ריוואל היילע</h3>
+      329 -            <p>ל היילע-Production, חטשב הרוקש המ יפל םיגורדשו תיסיסב הדידמ.</p>
+      322 +            <h3>4. יוויל + ריוואל היילע</h3>
+      323 +            <p>ה ירחא םימלענ אל .םינימז םיראשנו ,דבוע לכהש םיקדוב ,ןשקדורפל םילעמ-delivery.</p>
+      324            </div>
+      325          </div>
+      326        </div>
+      327
+      328        <div class="hero-ctas" style="margin-top:18px">
+      335 -        <a href="process.html" class="btn-ghost">
+                                                                                    אלמה ךילהתה תא ןיבהל          - 336
+      337 -        </a>
+      329 +        <a href="process.html" class="btn-ghost">אלמה ךילהתה לע ארק</a>
+      330        </div>
+      331      </section>
+      332
+      341 -    <!-- ===== CONTACT (ספוט) ===== -->
+      333 +    <!-- ===== 6. SOCIAL PROOF ===== -->
+      334 +    <section id="reviews" class="section">
+      335 +      <div class="section-header reveal">
+      336 +        <p class="hero-kicker" style="margin-bottom:6px">םירבדמ תוחוקל</p>
+      337 +        <h2 class="section-title section-title-lg">
+                                                                              .םתוא ועמש ?ונל םינימאמ אל          + 338
+      339 +        </h2>
+      340 +      </div>
+      341 +
+      342 +      <div class="reviews-list reveal" id="reviewsList">
+      343 +        <article class="review-card review-card-lg">
+      344 +          <div class="review-head">
+      345 +            <span class="review-name">ביבא לת ,תיטרפ הקינילק לעב — .כ ירוא</span>
+      346 +            <span class="review-tag">היצמוטוא + רתא</span>
+      347 +          </div>
+      348 +          <p class="review-text">
+     2-ב עיגה ןושארה דילה .החישב ריבסמ ינאש הממ רתוי בוט השוע ינא המ ריבסמש רתא יל היה םימי השולש ךות"            + 349
+                                                                                                ".תונושארה תועשה 4+
+      350 +          </p>
+      351 +        </article>
+      352 +
+      353 +        <article class="review-card review-card-lg">
+      354 +          <div class="review-head">
+      355 +            <span class="review-name">הילצרה ,סיטאליפל וידוטס — .מ הריש</span>
+      356 +            <span class="review-tag">םידיל תויצמוטוא</span>
+      357 +          </div>
+      358 +          <p class="review-text">
+     רבכ ינא .הקד ךות WhatsApp לבקמ ספוט אלממש ימ לכ וישכע .תונעל יתקפסה אל יכ תוינפ תספספמ יתייה םעפ"            + 359
+                                                                                  ".טרחתהל םיקיפסמ םהש ינפל תרגוס +
+      360 +          </p>
+      361 +        </article>
+      362 +
+      363 +        <article class="review-card review-card-lg">
+      364 +          <div class="review-head">
+      365 +            <span class="review-name">םיטקיורפ להנמ — .ב ןולא B2B</span>
+      366 +            <span class="review-tag">DevOps + תכרעמ</span>
+      367 +          </div>
+      368 +          <p class="review-text">
+     ראשנ תורישהו ,ריהמ יולפידה ,קיודמ tech stack-ה .םידבוע 50 םע הרבח לש רצומ ומכ תיארנש תכרעמ ונינב"            + 369
+                                                                                            ".הריסמה ירחא םג ןימז +
+      370 +          </p>
+      371 +        </article>
+      372 +      </div>
+      373 +
+      374 +      <div class="hero-ctas" style="margin-top:18px">
+      375 +        <a href="reviews.html" class="btn-ghost">תורוקיבה לכל</a>
+      376 +      </div>
+      377 +    </section>
+      378 +
+      379 +    <!-- ===== 7. CONTACT ===== -->
+      380      <section id="contact" class="section">
+      381        <div class="section-header reveal">
+      344 -        <h2 class="section-title">ךל בושח יכהש המ לע רבדנ אוב</h2>
+      382 +        <p class="hero-kicker" style="margin-bottom:6px">וישכע ליחתת</p>
+      383 +        <h2 class="section-title section-title-lg" style="max-width:28rem">
+                                                      .רורב ןוויכ םע תועש 24 ךות רוזחנ — קסעה לע ונל רפס          + 384
+      385 +        </h2>
+      386          <p class="section-subtitle">
+     עי הז ךיאו ,חקיי הז ןמז המכ ,תונבל רשפא המ :רורב ןוויכ םע תישיא ךילא רוזחאו ,םייסיסב םיטרפ המכ ראשה          - 346
+                                                                                                     .ךלש קסעל רוז-
+                               .ךל הווש הז המלו תונבל רשפא המ קוידב ןיבת הבש הרצק החיש .ץחל אל .הריכמ אל          + 387
+      388          </p>
+      389        </div>
+      390
+     ...
+      394            <input id="lead-name" type="text" placeholder="ךילא תונפל ךיא?" required />
+      395          </div>
+      396          <div class="form-field">
+      356 -          <label for="lead-business">םוחת / קסעה םש</label>
+      357 -          <input id="lead-business" type="text" placeholder="ץועיי ,ןומיא ,וידוטס ,הדעסמ..." />
+      397 +          <label for="lead-business">ךלש קסעה</label>
+      398 +          <input id="lead-business" type="text" placeholder="תונח ,ץועיי ,וידוטס ,הקינילק..." />
+      399          </div>
+      400          <div class="form-field">
+      401            <label for="lead-contact">ליימ וא ןופלט</label>
+      361 -          <input id="lead-contact" type="text" placeholder="ךילא רוזחל ידכ הבוחש דחא טרפ" required />
+      402 +          <input id="lead-contact" type="text" placeholder="ךילא רוזחל ךיא?" required />
+      403          </div>
+      404          <div class="form-field">
+      364 -          <label for="lead-type">ךתוא ןיינעמ המ?</label>
+      405 +          <label for="lead-type">ךל ףוחד יכה המ?</label>
+      406            <select id="lead-type">
+      407              <option value="">רחב...</option>
+      408              <option>התיחנ ףד / רתא</option>
+      409              <option>פאסטאווו םידיל תויצמוטוא</option>
+      369 -            <option>טקיורפ DevOps / ינכט ךילהת</option>
+      370 -            <option>דחיב בושחנ – רחא והשמ</option>
+      410 +            <option>DevOps / ןנע תיתשת</option>
+      411 +            <option>דחיב בושחל הצור — חוטב אל</option>
+      412            </select>
+      413          </div>
+      414          <div class="form-field full">
+      374 -          <label for="lead-message">הארייש הצור תייה ךיאו ,םויה הארנ בצמה ךיא?</label>
+      375 -          <textarea id="lead-message" placeholder="םיישפוח םיטפשמ המכ."></textarea>
+      415 +          <label for="lead-message">וישכע ךלצא הרוק המ?</label>
+      416 +          <textarea id="lead-message" placeholder="הנתשיש הצור תייה המו יחכונה בצמה לע תורוש המכ."></textarea
+          +>
+      417          </div>
+      418
+      419          <div class="form-footer">
+      420            <div class="form-note">
+                                                    ילש יקסעה ליימל תורישי םיחלשנ ןאכ אלממ התאש םיטרפה            - 380
+      381 -            <strong>autoroybiz@gmail.com</strong>.
+                                           .םאפס םיחלוש אל ,עדימ םירכומ אל .ונילא תורישי םיחלשנ םיטרפה            + 421
+      422            </div>
+      423            <div class="form-actions">
+      424              <button type="submit" class="btn-primary btn-sm">
+                                                                                 תרדוסמ העצה יל וחלש              - 385
+                                                                           → תועש 24 ךות רוזחנ — חלש              + 425
+      426              </button>
+      387 -            <a href="https://wa.me/972547222023?text=%D7%94%D7%99%D7%99%20%D7%A8%D7%95%D7%99%2C%20%D7%94%D7%9
+          -2%D7%A2%D7%AA%D7%99%20%D7%9E%D7%90%D7%AA%D7%A8%20AutoRoy%20Cloud%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7
+          -%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98."
+      427 +            <a href="https://wa.me/972547222023?text=%D7%94%D7%99%D7%99%20%D7%A8%D7%95%D7%99%2C%20%D7%94%D7%9
+          +2%D7%A2%D7%AA%D7%99%20%D7%9E%D7%90%D7%AA%D7%A8%20AutoRoy%20Cloud%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7
+          +%93%D7%91%D7%A8."
+      428                 class="btn-ghost btn-sm" target="_blank">
+                                                                                       פאסטאווב רבדל              - 389
+                                                                                        פאסטאווב רבד              + 429
+      430              </a>
+      431            </div>
+      432          </div>
+      433        </form>
+      434      </section>
+      435
+      396 -    <!-- ===== REVIEWS PREVIEW ===== -->
+      397 -    <section id="reviews" class="section">
+      436 +    <!-- ===== 8. FAQ ===== -->
+      437 +    <section class="section">
+      438        <div class="section-header reveal">
+      399 -        <h2 class="section-title">תובוגתו תורוקיב</h2>
+      400 -        <p class="section-subtitle">
+                                                       .יתינבש תוכרעמה תא וארש םישנאמו תוחוקלמ קבדיפ תצק          - 401
+      402 -        </p>
+      439 +        <p class="hero-kicker" style="margin-bottom:6px">תוצופנ תולאש</p>
+      440 +        <h2 class="section-title section-title-lg">
+                                                                              .תויוטש ילב .תורישי תובושת          + 441
+      442 +        </h2>
+      443        </div>
+      444
+      405 -      <div class="reviews-layout reveal">
+      406 -        <div class="reviews-list" id="reviewsList">
+      407 -          <article class="review-card">
+      408 -            <div class="review-head">
+      409 -              <span class="review-name">וידוטס לעב</span>
+      410 -              <span class="review-tag">םידיל + תויצמוטוא</span>
+      411 -            </div>
+      412 -            <p class="review-text">
+     גסנ ימו לופיטב ימ קוידב עדוי ינאו ,תחא הלבטל סנכנ לכה וישכע .רחא םוקמב עקתנ היה דיל לכ הז ינפל"              - 413
+                                                                                                               ".ר-
+      414 -            </p>
+      415 -          </article>
+      416 -
+      417 -          <article class="review-card">
+      418 -            <div class="review-head">
+      419 -              <span class="review-name">יקסע ץעוי</span>
+      420 -              <span class="review-tag">תימדת רתא</span>
+      421 -            </div>
+      422 -            <p class="review-text">
+     וע ינא המו ינא ימ ריבסהל לק רתוי הברה – רתאה ירחא .תוחוקל וילא חולשל רדוסמ דחא םוקמ ךירצ יתייה"              - 423
+                                                                                                              ".הש-
+      424 -            </p>
+      425 -          </article>
+      426 -        </div>
+      427 -
+      428 -        <form class="reviews-form">
+      429 -          <div class="form-field">
+      430 -            <label for="review-name">)הבוח אל( קסע םש / םש</label>
+      431 -            <input id="review-name" type="text" placeholder="ימינונא םג רשפא" />
+      432 -          </div>
+      433 -          <div class="form-field">
+      434 -            <label for="review-text">ןוויכה לע בשוח התא המ?</label>
+      435 -            <textarea id="review-text" placeholder="רפשמ תייה המ וא תבהא המ לע תוישפוח םילימ המכ."></textarea
+          ->
+      436 -          </div>
+      437 -          <div class="form-footer">
+      438 -            <div class="form-note" id="review-note">
+                              .יתימא םינותנ דסמל רבחל דיתעב רשפא – ךלש ןפדפדב קר וישכע תרמשנ תרוקיבה              - 439
+      440 -            </div>
+      441 -            <button type="submit" class="btn-ghost btn-sm">
+                                                                                        תרוקיב תרימש              - 442
+      443 -            </button>
+      444 -          </div>
+      445 -        </form>
+      445 +      <div class="faq-list reveal">
+      446 +        <details class="faq-item">
+      447 +          <summary class="faq-q">רתא תונבל חקול ןמז המכ?</summary>
+      448 +          <p class="faq-a">ו םידומעה תומכב יולת .הדובע ימי 10–5 — תויצמוטוא םע אלמ רתא .תועש 72–48 — התיחנ ףד
+                                                                                         >p/<.תויצרגטניאה תובכרומב+
+      449 +        </details>
+      450 +        <details class="faq-item">
+      451 +          <summary class="faq-q">יל םיאתמ הז — ללכב ינכט אל ינא?</summary>
+      452 +          <p class="faq-a">תכרעמל הז תא םימגרתמ ונחנא — השוע ךלש קסעה המ ריבסמ התא .ןאכ ונחנא הז ליבשב קוידב.
+                                                                                   >p/<.שרדנ ינכט עדי םומינימ ןיא +
+      453 +        </details>
+      454 +        <details class="faq-item">
+      455 +          <summary class="faq-q">ליגר רסנלירפמ לדבהה המ?</summary>
+      456 +          <p class="faq-a">הביתכ רמוא הז .ךירצ ךלש קסעהש המ לע םיבשוח ונחנא .תשקיבש המ הנוב רסנלירפ, UX, וטוא
+                                                                                      >p/<.דוק קר אל — תיתשתו היצמ+
+      457 +        </details>
+      458 +        <details class="faq-item">
+      459 +          <summary class="faq-q">ותוא רפשל רשפא — רתא רבכ יל שי?</summary>
+      460 +          <p class="faq-a">דחמ היינב וא דקוממ רופיש — דחיב טילחנו ,תוינפ דיספמ אוה הפיא ןחבאנ ,ותוא קודבנ .ןכ
+                                                                                 >p/<.לכה הווש דחא יוניש םימעפל .ש+
+      461 +        </details>
+      462 +        <details class="faq-item">
+      463 +          <summary class="faq-q">הלוע הז המכ?</summary>
+      464 +          <p class="faq-a">םע האלמ תכרעמ .₪1,500-מ ליחתמ היצמוטוא םע התיחנ ףד DevOps םירבדמ .פוקסה יפל תכרעומ
+                                                                            >p/<.תועתפה ילב — דחיב םירידגמ ,החישב +
+      465 +        </details>
+      466        </div>
+      447 -
+      448 -      <div class="hero-ctas" style="margin-top:18px">
+      449 -        <a href="reviews.html" class="btn-ghost">
+                                                                                   תואמגודו תורוקיב דועל          - 450
+      451 -        </a>
+      452 -      </div>
+      467      </section>
+      468
+      455 -    <!-- ===== FINAL CTA ===== -->
+      469 +    <!-- ===== 9. FINAL CTA ===== -->
+      470      <section class="section final-cta">
+      471        <div class="final-cta-inner reveal">
+      458 -        <h2>2013 אל – 2026 ומכ שיגרת ךלש תכרעמהש הצור?</h2>
+      472 +        <h2>תונבל רשפא המ קוידב ךל הארנ — תוקד 20 ונל ןת.</h2>
+      473          <p>
+                .ךליבשב לעופש םכח דחא רצומ ומכ אלא ,יאלט לע יאלט ומכ םישיגרמ אלש DevOps־ו תויצמוטוא ,רתא          - 460
+             .הברה יכה הנשת הנוכנה היינבה הפיאו ,אל המ ,דבוע המ :ךלש קסעה לע תיפיצפס החיש .תירנג העצה אל          + 474
+      475          </p>
+      476          <div class="final-cta-actions">
+      477            <button class="btn-primary" id="ctaTalk">
+                                                                                        רבדל ליחתנ אוב            - 464
+                                                                                       → הרצק החיש עבק            + 478
+      479            </button>
+      466 -          <a href="projects.html" class="btn-ghost">
+                                                                                 תואמגודה תא בוש תוארל            - 467
+      480 +          <a href="projects.html" class="btn-ghost" style="color:#fff;border-color:rgba(255,255,255,0.35)">
+                                                                                   םימדוק םיטקיורפ האר            + 481
+      482            </a>
+      483          </div>
+      484        </div>
+     ...
+      488    <!-- ===== FOOTER ===== -->
+      489    <footer class="footer">
+      490      <div class="footer-main">
+      477 -      <span>© 2025 AutoRoy Cloud.</span>
+      478 -      <span>DevOps &amp; Automations • םיקסעל תויצמוטואו התיחנ יפד ,םירתא.</span>
+      491 +      <span>© 2026 AutoRoy Cloud.</span>
+      492 +      <span>ןנע תויתשתו תויצמוטוא ,םירתא — תורכומש תוילטיגיד תוכרעמ.</span>
+      493      </div>
+      494      <div class="footer-links">
+      495        <a href="#hero">הלעמל</a>
+     ...
+      499    </footer>
+      500
+      501    <!-- Scripts -->
+      488 -    <script>
+      489 -    // Fix: closeMobile() used in mobile menu links
+      502 +  <script>
+      503      function closeMobile() {
+      504        const nav = document.getElementById("navMobile");
+      505        const burger = document.getElementById("hamburger");
+     ...
+      510      }
+      511    </script>
+      512    <script src="app.js"></script>
+      500 - <!-- =================== AutoRoy Smart Chat Widget =================== -->
+      501 -<style>
+      502 -  #ar-chat-root {
+      503 -    position: fixed;
+      504 -    bottom: 22px;
+      505 -    right: 22px;
+      506 -    z-index: 999999;
+      507 -    font-family: "Segoe UI", sans-serif;
+      508 -  }
+      513
+      510 -  /* FAB */
+      511 -  #arChatFab {
+      512 -    width: 58px;
+      513 -    height: 58px;
+      514 -    border-radius: 50%;
+      515 -    background: linear-gradient(135deg, #4f46e5, #6366f1);
+      516 -    box-shadow: 0 6px 22px rgba(0,0,0,0.28);
+      517 -    display: flex;
+      518 -    align-items: center;
+      519 -    justify-content: center;
+      520 -    cursor: pointer;
+      521 -    font-size: 26px;
+      522 -    color: white;
+      523 -    transition: 0.2s;
+      524 -  }
+      525 -  #arChatFab:hover {
+      526 -    transform: scale(1.06) translateY(-3px);
+      527 -  }
+      514 +  <!-- =================== AutoRoy Smart Chat Widget =================== -->
+      515 +  <style>
+      516 +    #ar-chat-root {
+      517 +      position: fixed;
+      518 +      bottom: 22px;
+      519 +      right: 22px;
+      520 +      z-index: 999999;
+      521 +      font-family: "Segoe UI", sans-serif;
+      522 +    }
+      523 +    #arChatFab {
+      524 +      width: 58px;
+      525 +      height: 58px;
+      526 +      border-radius: 50%;
+      527 +      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      528 +      box-shadow: 0 6px 22px rgba(0,0,0,0.28);
+      529 +      display: flex;
+      530 +      align-items: center;
+      531 +      justify-content: center;
+      532 +      cursor: pointer;
+      533 +      font-size: 26px;
+      534 +      color: white;
+      535 +      transition: 0.2s;
+      536 +    }
+      537 +    #arChatFab:hover { transform: scale(1.06) translateY(-3px); }
+      538 +    #arChatPanel {
+      539 +      position: absolute;
+      540 +      bottom: 72px;
+      541 +      right: 0;
+      542 +      width: 330px;
+      543 +      height: 460px;
+      544 +      border-radius: 18px;
+      545 +      background: #0f0f15;
+      546 +      border: 1px solid rgba(255,255,255,0.08);
+      547 +      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+      548 +      overflow: hidden;
+      549 +      transform: translateY(20px) scale(0.94);
+      550 +      opacity: 0;
+      551 +      pointer-events: none;
+      552 +      transition: 0.22s ease;
+      553 +      color: white;
+      554 +    }
+      555 +    .ar-open #arChatPanel { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+      556 +    #arChatPanel .ar-close { position: absolute; top: 10px; left: 12px; font-size: 15px; cursor: pointer; opa
+          +city: 0.7; transition: 0.15s; }
+      557 +    #arChatPanel .ar-close:hover { opacity: 1; transform: scale(1.1); }
+      558 +    #arChatHeader { padding: 16px; background: linear-gradient(135deg, #4f46e5, #6366f1); font-size: 15px; fo
+          +nt-weight: 600; }
+      559 +    #arChatMessages { height: 305px; overflow-y: auto; padding: 14px; scrollbar-width: thin; }
+      560 +    .ar-bubble { max-width: 80%; padding: 8px 12px; border-radius: 12px; margin-bottom: 10px; line-height: 1.
+          +35; font-size: 13px; }
+      561 +    .ar-user { background: #2563eb; margin-left: auto; border-bottom-right-radius: 4px; }
+      562 +    .ar-bot { background: #1e1e28; border: 1px solid rgba(255,255,255,0.08); margin-right: auto; border-botto
+          +m-left-radius: 4px; }
+      563 +    #arChatInputWrap { display: flex; gap: 6px; padding: 10px; background: #13131a; border-top: 1px solid rgb
+          +a(255,255,255,0.08); }
+      564 +    #arChatInput { flex: 1; background: #1c1c25; border: 1px solid rgba(255,255,255,0.08); border-radius: 999
+          +px; padding: 8px 14px; color: white; font-size: 13px; }
+      565 +    #arChatInput:focus { outline: none; border-color: #6366f1; }
+      566 +    #arChatSend { padding: 8px 14px; border-radius: 999px; background: #6366f1; color: white; cursor: pointer
+          +; border: none; font-size: 12px; transition: 0.15s; }
+      567 +    #arChatSend:hover { background: #4f46e5; }
+      568 +  </style>
+      569
+      529 -  /* PANEL */
+      530 -  #arChatPanel {
+      531 -    position: absolute;
+      532 -    bottom: 72px;
+      533 -    right: 0;
+      534 -    width: 330px;
+      535 -    height: 460px;
+      536 -    border-radius: 18px;
+      537 -    background: #0f0f15;
+      538 -    border: 1px solid rgba(255,255,255,0.08);
+      539 -    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+      540 -    overflow: hidden;
+      541 -    transform: translateY(20px) scale(0.94);
+      542 -    opacity: 0;
+      543 -    pointer-events: none;
+      544 -    transition: 0.22s ease;
+      545 -    color: white;
+      546 -  }
+      547 -
+      548 -  .ar-open #arChatPanel {
+      549 -    opacity: 1;
+      550 -    pointer-events: auto;
+      551 -    transform: translateY(0) scale(1);
+      552 -  }
+      553 -
+      554 -  /* CLOSE BUTTON */
+      555 -  #arChatPanel .ar-close {
+      556 -    position: absolute;
+      557 -    top: 10px;
+      558 -    left: 12px;
+      559 -    font-size: 15px;
+      560 -    cursor: pointer;
+      561 -    opacity: 0.7;
+      562 -    transition: 0.15s;
+      563 -  }
+      564 -  #arChatPanel .ar-close:hover {
+      565 -    opacity: 1;
+      566 -    transform: scale(1.1);
+      567 -  }
+      568 -
+      569 -  /* HEADER */
+      570 -  #arChatHeader {
+      571 -    padding: 16px;
+      572 -    background: linear-gradient(135deg, #4f46e5, #6366f1);
+      573 -    font-size: 15px;
+      574 -    font-weight: 600;
+      575 -  }
+      576 -
+      577 -  /* MESSAGES AREA */
+      578 -  #arChatMessages {
+      579 -    height: 305px;
+      580 -    overflow-y: auto;
+      581 -    padding: 14px;
+      582 -    scrollbar-width: thin;
+      583 -  }
+      584 -
+      585 -  .ar-bubble {
+      586 -    max-width: 80%;
+      587 -    padding: 8px 12px;
+      588 -    border-radius: 12px;
+      589 -    margin-bottom: 10px;
+      590 -    line-height: 1.35;
+      591 -    font-size: 13px;
+      592 -  }
+      593 -
+      594 -  .ar-user {
+      595 -    background: #2563eb;
+      596 -    margin-left: auto;
+      597 -    border-bottom-right-radius: 4px;
+      598 -  }
+      599 -
+      600 -  .ar-bot {
+      601 -    background: #1e1e28;
+      602 -    border: 1px solid rgba(255,255,255,0.08);
+      603 -    margin-right: auto;
+      604 -    border-bottom-left-radius: 4px;
+      605 -  }
+      606 -
+      607 -  /* INPUT AREA */
+      608 -  #arChatInputWrap {
+      609 -    display: flex;
+      610 -    gap: 6px;
+      611 -    padding: 10px;
+      612 -    background: #13131a;
+      613 -    border-top: 1px solid rgba(255,255,255,0.08);
+      614 -  }
+      615 -
+      616 -  #arChatInput {
+      617 -    flex: 1;
+      618 -    background: #1c1c25;
+      619 -    border: 1px solid rgba(255,255,255,0.08);
+      620 -    border-radius: 999px;
+      621 -    padding: 8px 14px;
+      622 -    color: white;
+      623 -    font-size: 13px;
+      624 -  }
+      625 -
+      626 -  #arChatInput:focus {
+      627 -    outline: none;
+      628 -    border-color: #6366f1;
+      629 -  }
+      630 -
+      631 -  #arChatSend {
+      632 -    padding: 8px 14px;
+      633 -    border-radius: 999px;
+      634 -    background: #6366f1;
+      635 -    color: white;
+      636 -    cursor: pointer;
+      637 -    border: none;
+      638 -    font-size: 12px;
+      639 -    transition: 0.15s;
+      640 -  }
+      641 -  #arChatSend:hover {
+      642 -    background: #4f46e5;
+      643 -  }
+      644 -</style>
+      645 -
+      646 -<div id="ar-chat-root">
+      647 -  <div id="arChatFab">💬</div>
+      648 -
+      649 -  <div id="arChatPanel">
+      650 -    <div class="ar-close" id="arChatClose">✖</div>
+      651 -    <div id="arChatHeader">AutoRoy – תוחוקל תוריש</div>
+      652 -    <div id="arChatMessages"></div>
+      653 -
+      654 -    <div id="arChatInputWrap">
+      655 -      <input id="arChatInput" type="text" placeholder="העדוה בותכ..." autocomplete="off" />
+      656 -      <button id="arChatSend">חלש</button>
+      570 +  <div id="ar-chat-root">
+      571 +    <div id="arChatFab">💬</div>
+      572 +    <div id="arChatPanel">
+      573 +      <div class="ar-close" id="arChatClose">✖</div>
+      574 +      <div id="arChatHeader">AutoRoy — תוחוקל תוריש</div>
+      575 +      <div id="arChatMessages"></div>
+      576 +      <div id="arChatInputWrap">
+      577 +        <input id="arChatInput" type="text" placeholder="העדוה בותכ..." autocomplete="off" />
+      578 +        <button id="arChatSend">חלש</button>
+      579 +      </div>
+      580      </div>
+      581    </div>
+      659 -</div>
+      582
+      661 -<script>
+      662 -(function(){
+      583 +  <script>
+      584 +  (function(){
+      585 +    const WEBHOOK = "https://hook.eu1.make.com/wdcaoe8jb463hbqv1mit2wp1mn2xqqt7";
+      586 +    const root = document.getElementById("ar-chat-root");
+      587 +    const fab = document.getElementById("arChatFab");
+      588 +    const closeBtn = document.getElementById("arChatClose");
+      589 +    const messages = document.getElementById("arChatMessages");
+      590 +    const input = document.getElementById("arChatInput");
+      591 +    const sendBtn = document.getElementById("arChatSend");
+      592 +    let opened = false;
+      593
+      664 -const WEBHOOK = "https://hook.eu1.make.com/wdcaoe8jb463hbqv1mit2wp1mn2xqqt7";
+      594 +    fab.onclick = toggleChat;
+      595 +    closeBtn.onclick = toggleChat;
+      596
+      666 -const root     = document.getElementById("ar-chat-root");
+      667 -const fab      = document.getElementById("arChatFab");
+      668 -const panel    = document.getElementById("arChatPanel");
+      669 -const closeBtn = document.getElementById("arChatClose");
+      670 -const messages = document.getElementById("arChatMessages");
+      671 -const input    = document.getElementById("arChatInput");
+      672 -const sendBtn  = document.getElementById("arChatSend");
+      597 +    function toggleChat(){
+      598 +      opened = !opened;
+      599 +      if(opened){
+      600 +        root.classList.add("ar-open");
+      601 +        if(!messages.dataset.init){
+      602 +          setTimeout(()=>{ addBubble("לש ןכוסה ינא !ייה AutoRoy 😊 רוזעל רשפא ךיא?"); }, 300);
+      603 +          messages.dataset.init = "yes";
+      604 +        }
+      605 +      } else {
+      606 +        root.classList.remove("ar-open");
+      607 +      }
+      608 +    }
+      609
+      674 -let opened = false;
+      610 +    function addBubble(text, who="bot"){
+      611 +      const bubble = document.createElement("div");
+      612 +      bubble.className = "ar-bubble " + (who==="user" ? "ar-user" : "ar-bot");
+      613 +      bubble.textContent = text;
+      614 +      messages.appendChild(bubble);
+      615 +      messages.scrollTop = messages.scrollHeight;
+      616 +    }
+      617
+      676 -fab.onclick = toggleChat;
+      677 -closeBtn.onclick = toggleChat;
+      618 +    sendBtn.onclick = sendMsg;
+      619 +    input.onkeydown = e => { if(e.key==="Enter") sendMsg(); };
+      620
+      679 -function toggleChat(){
+      680 -  opened = !opened;
+      681 -
+      682 -  if(opened){
+      683 -    root.classList.add("ar-open");
+      684 -    if(!messages.dataset.init){
+      685 -      setTimeout(()=>{
+      686 -        addBubble("לש ילטיגידה ןכוסה ינא !ייה AutoRoy 😊 רוזעל רשפא ךיא?");
+      687 -      },300);
+      688 -      messages.dataset.init = "yes";
+      621 +    function sendMsg(){
+      622 +      const text = input.value.trim();
+      623 +      if(!text) return;
+      624 +      addBubble(text, "user");
+      625 +      input.value = "";
+      626 +      fetch(WEBHOOK, { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({mess
+          +age: text}) })
+      627 +        .then(r=>r.text())
+      628 +        .then(res => addBubble(res || "בוש הסנ ,תינמז הלקת 🙏"))
+      629 +        .catch(() => addBubble("תרשל רבחתהל יתחלצה אל 🙏"));
+      630      }
+      690 -  } else {
+      691 -    root.classList.remove("ar-open");
+      692 -  }
+      693 -}
+      631 +  })();
+      632 +  </script>
+      633 +  <!-- =================== /AutoRoy Smart Chat Widget =================== -->
+      634
+      695 -function addBubble(text, who="bot"){
+      696 -  const bubble = document.createElement("div");
+      697 -  bubble.className = "ar-bubble " + (who==="user" ? "ar-user" : "ar-bot");
+      698 -  bubble.textContent = text;
+      699 -  messages.appendChild(bubble);
+      700 -  messages.scrollTop = messages.scrollHeight;
+      701 -}
+      702 -
+      703 -sendBtn.onclick = sendMsg;
+      704 -input.onkeydown = e => { if(e.key==="Enter") sendMsg(); };
+      705 -
+      706 -function sendMsg(){
+      707 -  const text = input.value.trim();
+      708 -  if(!text) return;
+      709 -
+      710 -  addBubble(text, "user");
+      711 -  input.value = "";
+      712 -
+      713 -  fetch(WEBHOOK,{
+      714 -    method:"POST",
+      715 -    headers:{ "Content-Type":"application/json" },
+      716 -    body: JSON.stringify({ message: text })
+      717 -  })
+      718 -  .then(r=>r.text())
+      719 -  .then(res => addBubble(res || "בוש הסנ ,תינמז הלקת 🙏"))
+      720 -  .catch(() => addBubble("תרשל רבחתהל יתחלצה אל 🙏"));
+      721 -}
+      722 -
+      723 -})();
+      724 -</script>
+      725 -<!-- =================== /AutoRoy Smart Chat Widget =================== -->
+      726 -
+      635  </body>
+      636  </html>
+
+● Now append the new CSS for stat-bar, problem section, and FAQ:
+
+  Read 1 file (ctrl+o to expand)
+
+● Update(~\Downloads\AutoRoy-WebSite-extracted\AutoRoy-WebSite-main\styles.css)
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ Edit file
+ ..\Downloads\AutoRoy-WebSite-extracted\AutoRoy-WebSite-main\styles.css
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+ 1134      text-align: center;
+ 1135    }
+ 1136  }
+ 1137 +/* ========== SECTION TITLE LARGE ========== */
+ 1138 +
+ 1139 +.section-title-lg {
+ 1140 +  font-size: clamp(1.4rem, 2.4vw, 2.1rem);
+ 1141 +  max-width: 32rem;
+ 1142 +}
+ 1143 +
+ 1144 +/* ========== STAT BAR ========== */
+ 1145 +
+ 1146 +.stat-bar {
+ 1147 +  margin-top: 16px;
+ 1148 +  padding: 14px 20px;
+ 1149 +  border-radius: var(--radius-pill);
+ 1150 +  border: 1px solid rgba(148, 163, 184, 0.6);
+ 1151 +  background:
+ 1152 +    radial-gradient(circle at left, rgba(37, 99, 235, 0.07), transparent 60%),
+ 1153 +    var(--bg-elevated);
+ 1154 +  display: flex;
+ 1155 +  align-items: center;
+ 1156 +  justify-content: space-around;
+ 1157 +  flex-wrap: wrap;
+ 1158 +  gap: 12px;
+ 1159 +  box-shadow: var(--shadow-soft);
+ 1160 +}
+ 1161 +
+ 1162 +body.dark .stat-bar {
+ 1163 +  background:
+ 1164 +    radial-gradient(circle at left, rgba(56, 189, 248, 0.12), transparent 60%),
+ 1165 +    rgba(15, 23, 42, 0.95);
+ 1166 +}
+ 1167 +
+ 1168 +.stat-item {
+ 1169 +  display: flex;
+ 1170 +  flex-direction: column;
+ 1171 +  align-items: center;
+ 1172 +  gap: 2px;
+ 1173 +}
+ 1174 +
+ 1175 +.stat-number {
+ 1176 +  font-size: 1.6rem;
+ 1177 +  font-weight: 800;
+ 1178 +  letter-spacing: -0.04em;
+ 1179 +  background: linear-gradient(90deg, var(--primary), var(--accent));
+ 1180 +  -webkit-background-clip: text;
+ 1181 +  color: transparent;
+ 1182 +  line-height: 1;
+ 1183 +}
+ 1184 +
+ 1185 +.stat-label {
+ 1186 +  font-size: 0.75rem;
+ 1187 +  color: var(--text-muted);
+ 1188 +  white-space: nowrap;
+ 1189 +}
+ 1190 +
+ 1191 +.stat-divider {
+ 1192 +  width: 1px;
+ 1193 +  height: 32px;
+ 1194 +  background: rgba(148, 163, 184, 0.4);
+ 1195 +}
+ 1196 +
+ 1197 +@media (max-width: 600px) {
+ 1198 +  .stat-divider { display: none; }
+ 1199 +  .stat-bar { justify-content: flex-start; gap: 18px; padding: 12px 16px; }
+ 1200 +}
+ 1201 +
+ 1202 +/* ========== PROBLEM GRID ========== */
+ 1203 +
+ 1204 +.problem-grid {
+ 1205 +  display: grid;
+ 1206 +  gap: 14px;
+ 1207 +  margin-top: 18px;
+ 1208 +}
+ 1209 +
+ 1210 +@media (min-width: 640px) {
+ 1211 +  .problem-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+ 1212 +}
+ 1213 +
+ 1214 +.problem-item {
+ 1215 +  border-radius: var(--radius-md);
+ 1216 +  border: 1px solid var(--border-subtle);
+ 1217 +  background: var(--bg-elevated);
+ 1218 +  padding: 18px 16px 20px;
+ 1219 +  box-shadow: var(--shadow-card);
+ 1220 +  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+ 1221 +}
+ 1222 +
+ 1223 +.problem-item:hover {
+ 1224 +  transform: translateY(-5px);
+ 1225 +  border-color: var(--danger);
+ 1226 +  box-shadow: 0 20px 60px rgba(239, 68, 68, 0.12);
+ 1227 +}
+ 1228 +
+ 1229 +body.dark .problem-item {
+ 1230 +  background:
+ 1231 +    radial-gradient(circle at top left, rgba(239, 68, 68, 0.1), transparent 60%),
+ 1232 +    rgba(15, 23, 42, 0.98);
+ 1233 +  border-color: rgba(148, 163, 184, 0.5);
+ 1234 +}
+ 1235 +
+ 1236 +.problem-icon {
+ 1237 +  font-size: 1.6rem;
+ 1238 +  display: block;
+ 1239 +  margin-bottom: 8px;
+ 1240 +}
+ 1241 +
+ 1242 +.problem-item h3 {
+ 1243 +  font-size: 0.98rem;
+ 1244 +  font-weight: 700;
+ 1245 +  margin-bottom: 6px;
+ 1246 +}
+ 1247 +
+ 1248 +.problem-item p {
+ 1249 +  font-size: 0.88rem;
+ 1250 +  color: var(--text-muted);
+ 1251 +  line-height: 1.55;
+ 1252 +}
+ 1253 +
+ 1254 +/* ========== CARDS GRID 3 ========== */
+ 1255 +
+ 1256 +.cards-grid-3 {
+ 1257 +  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+ 1258 +}
+ 1259 +
+ 1260 +/* ========== REVIEWS LIST FULL WIDTH ========== */
+ 1261 +
+ 1262 +.reviews-list {
+ 1263 +  display: grid;
+ 1264 +  gap: 10px;
+ 1265 +}
+ 1266 +
+ 1267 +@media (min-width: 640px) {
+ 1268 +  .reviews-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+ 1269 +}
+ 1270 +
+ 1271 +.review-card-lg {
+ 1272 +  padding: 14px 16px 18px;
+ 1273 +}
+ 1274 +
+ 1275 +.review-card-lg .review-text {
+ 1276 +  font-size: 0.88rem;
+ 1277 +  line-height: 1.6;
+ 1278 +  margin-top: 8px;
+ 1279 +}
+ 1280 +
+ 1281 +/* ========== FAQ ========== */
+ 1282 +
+ 1283 +.faq-list {
+ 1284 +  display: grid;
+ 1285 +  gap: 8px;
+ 1286 +  margin-top: 16px;
+ 1287 +}
+ 1288 +
+ 1289 +.faq-item {
+ 1290 +  border-radius: var(--radius-sm);
+ 1291 +  border: 1px solid var(--border-subtle);
+ 1292 +  background: var(--bg-elevated);
+ 1293 +  overflow: hidden;
+ 1294 +  box-shadow: var(--shadow-card);
+ 1295 +  transition: border-color 0.2s ease;
+ 1296 +}
+ 1297 +
+ 1298 +.faq-item[open] {
+ 1299 +  border-color: var(--primary);
+ 1300 +}
+ 1301 +
+ 1302 +body.dark .faq-item {
+ 1303 +  background: rgba(15, 23, 42, 0.96);
+ 1304 +}
+ 1305 +
+ 1306 +.faq-q {
+ 1307 +  padding: 14px 16px;
+ 1308 +  font-size: 0.96rem;
+ 1309 +  font-weight: 600;
+ 1310 +  cursor: pointer;
+ 1311 +  list-style: none;
+ 1312 +  display: flex;
+ 1313 +  justify-content: space-between;
+ 1314 +  align-items: center;
+ 1315 +  user-select: none;
+ 1316 +  transition: color 0.15s ease;
+ 1317 +}
+ 1318 +
+ 1319 +.faq-q::-webkit-details-marker { display: none; }
+ 1320 +
+ 1321 +.faq-q::after {
+ 1322 +  content: "+";
+ 1323 +  font-size: 1.2rem;
+ 1324 +  font-weight: 300;
+ 1325 +  color: var(--text-muted);
+ 1326 +  transition: transform 0.2s ease;
+ 1327 +  flex-shrink: 0;
+ 1328 +  margin-right: 10px;
+ 1329 +}
+ 1330 +
+ 1331 +.faq-item[open] .faq-q::after {
+ 1332 +  transform: rotate(45deg);
+ 1333 +}
+ 1334 +
+ 1335 +.faq-item[open] .faq-q {
+ 1336 +  color: var(--primary);
+ 1337 +}
+ 1338 +
+ 1339 +.faq-a {
+ 1340 +  padding: 0 16px 14px;
+ 1341 +  font-size: 0.9rem;
+ 1342 +  color: var(--text-muted);
+ 1343 +  line-height: 1.6;
+ 1344 +  border-top: 1px solid var(--border-subtle);
+ 1345 +  padding-top: 10px;
+ 1346 +}
+ 1347 +
+ 1348  /* =============================
+ 1349     SERVICES NAV — FUTURE / 2030
+ 1350     ============================= */
